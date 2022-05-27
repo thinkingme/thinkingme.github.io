@@ -18,7 +18,7 @@
     "vue": "^3.2.33",
     "vuepress": "^2.0.0-beta.46",
     "@vuepress/plugin-search": "^2.0.0-beta.38",
-    "vuepress-theme-hope": "^2.0.0-beta.72",
+    "vuepress-theme-hope": "^2.0.0-beta.71",
     "vuepress-vite": "2.0.0-beta.38",
     "vuepress-webpack": "2.0.0-beta.38"
   },
