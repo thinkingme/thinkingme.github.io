@@ -29,21 +29,21 @@ export default defineUserConfig({
       },
     ],
   ],
-  plugins: [
-    searchPlugin({
-      // ...
-      isSearchable: (page) => page.path !== "/",
-      maxSuggestions: 10,
-      hotKeys: ["s", "/"],
-      // 用于在页面的搜索索引中添加额外字段
-      getExtraFields: () => [],
-      locales: {
-        "/zh/": {
-          placeholder: "搜索",
-        },
-      },
-    }),
-  ],
+  // plugins: [
+  //   searchPlugin({
+  //     // ...
+  //     isSearchable: (page) => page.path !== "/",
+  //     maxSuggestions: 10,
+  //     hotKeys: ["s", "/"],
+  //     // 用于在页面的搜索索引中添加额外字段
+  //     getExtraFields: () => [],
+  //     locales: {
+  //       "/zh/": {
+  //         placeholder: "搜索",
+  //       },
+  //     },
+  //   }),
+  // ],
   locales: {
     "/": {
       lang: "zh-CN",
