@@ -22,7 +22,7 @@ jobs:
         with:
           # 选择要使用的 node 版本
           node-version: 16
-          cache: npm
+          cache: yarn
 
       # 缓存 node_modules
 #      - name: Cache dependencies
@@ -48,12 +48,12 @@ jobs:
 #        run: yarn vite-clean-serve
 
       - name: 安装依赖
-        run: npm install
+        run: yarn install
 
       - name: 构建文档
         env:
           NODE_OPTIONS: --max_old_space_size=4096
-        run: npm run docs:build
+        run: yarn docs:build
 
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
