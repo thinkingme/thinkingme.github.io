@@ -6,8 +6,7 @@ tag:
   - Java
 ---
 
-# 我竟然不再抗拒Java的类加载机制了
-
+# 我竟然不再抗拒 Java 的类加载机制了
 
 ### 01、字节码
 
@@ -18,7 +17,6 @@ tag:
 Java 在诞生的时候喊出了一个非常牛逼的口号：“Write Once, Run Anywhere”，为了达成这个目的，Sun 公司发布了许多可以在不同平台（Windows、Linux）上运行的 Java 虚拟机（JVM）——负责载入和执行 Java 编译后的字节码。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-load-01.png)
-
 
 到底 Java 字节码是什么样子，我们借助一段简单的代码来看一看。
 
@@ -121,8 +119,8 @@ String cmower = new String("沉默王二");
 
 聊完类加载过程，就不得不聊聊类加载器。
 
-一般来说，Java 程序员并不需要直接同类加载器进行交互。JVM 默认的行为就已经足够满足大多数情况的需求了。不过，如果遇到了需要和类加载器进行交互的情况，而对类加载器的机制又不是很了解的话，就不得不花大量的时间去调试 
- `ClassNotFoundException` 和 `NoClassDefFoundError` 等异常。
+一般来说，Java 程序员并不需要直接同类加载器进行交互。JVM 默认的行为就已经足够满足大多数情况的需求了。不过，如果遇到了需要和类加载器进行交互的情况，而对类加载器的机制又不是很了解的话，就不得不花大量的时间去调试
+`ClassNotFoundException` 和 `NoClassDefFoundError` 等异常。
 
 对于任意一个类，都需要由它的类加载器和这个类本身一同确定其在 JVM 中的唯一性。也就是说，如果两个类的加载器不同，即使两个类来源于同一个字节码文件，那这两个类就必定不相等（比如两个类的 Class 对象不 `equals`）。
 
@@ -162,7 +160,6 @@ sun.misc.Launcher$ExtClassLoader@15db9742
 第一行输出为 Test 的类加载器，即应用类加载器，它是 `sun.misc.Launcher$AppClassLoader` 类的实例；第二行输出为扩展类加载器，是 `sun.misc.Launcher$ExtClassLoader` 类的实例。那启动类加载器呢？
 
 按理说，扩展类加载器的上层类加载器是启动类加载器，但在我这个版本的 JDK 中， 扩展类加载器的 `getParent()` 返回 `null`。所以没有输出。
-
 
 ### 04、双亲委派模型
 

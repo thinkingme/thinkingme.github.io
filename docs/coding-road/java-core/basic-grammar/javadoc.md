@@ -5,16 +5,13 @@ tag:
   - Java
 ---
 
-# Java注释：单行、多行和文档注释
+# Java 注释：单行、多行和文档注释
 
 “二哥，Java 中的注释好像真没什么可讲的，我已经提前预习了，不过是单行注释，多行注释，还有文档注释。”三妹的脸上泛着甜甜的笑容，她竟然提前预习了接下来要学习的知识，有一种“士别三日，当刮目相看”的感觉。
 
 “注释的种类确实不多，但还是挺有意思的，且听哥来给你说道说道。”
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/fourteen-01.png)
-
-
-
 
 ### 01、单行注释
 
@@ -35,20 +32,19 @@ public void method() {
 ```java
 public void method() {
     // age 用于表示年龄
-    int age = 18; 
+    int age = 18;
 }
 ```
-
 
 ### 02、多行注释
 
 多行注释使用的频率其实并不高，通常用于解释一段代码的作用。
 
 ```java
-/* 
+/*
 age 用于表示年纪
 name 用于表示姓名
-*/ 
+*/
 int age = 18;
 String name = "沉默王二";
 ```
@@ -95,7 +91,6 @@ PS：在 Intellij IDEA 中，按下 `/**` 后敲下回车键就可以自动添�
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/fourteen-03.png)
 
-
 **第二步**，执行 javadoc 命令 `javadoc Demo.java -encoding utf-8`。`-encoding utf-8` 可以保证中文不发生乱码。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/fourteen-04.png)
@@ -134,7 +129,7 @@ default 和 private 修饰的字段和方法的注释将会被忽略掉。因为
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/fourteen-09.png)
 
-2）所有的抽象方法(包括接口中的方法)必须要用Javadoc注释、除了返回值、参数、 异常说明外，还必须指出该方法做什么事情，实现什么功能。
+2）所有的抽象方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、 异常说明外，还必须指出该方法做什么事情，实现什么功能。
 
 3）所有的类都必须添加创建者和创建日期。
 
@@ -169,11 +164,10 @@ public class Test {
 
 5）代码修改的同时，注释也要进行相应的修改。
 
-
 “好了，三妹，关于 Java 中的注释就先说这么多吧。”转动了一下僵硬的脖子后，我对三妹说。“记住一点，注释是程序固有的一部分。”
 
->第一、注释要能够准确反映设计思想和代码逻辑;第二、注释要能够描述业务含 义，使别的程序员能够迅速了解到代码背后的信息。完全没有注释的大段代码对于阅读者形同 天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路;注释也是给继任者看 的，使其能够快速接替自己的工作。
+> 第一、注释要能够准确反映设计思想和代码逻辑;第二、注释要能够描述业务含 义，使别的程序员能够迅速了解到代码背后的信息。完全没有注释的大段代码对于阅读者形同 天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路;注释也是给继任者看 的，使其能够快速接替自己的工作。
 
------
+---
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

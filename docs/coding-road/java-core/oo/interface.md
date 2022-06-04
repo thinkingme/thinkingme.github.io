@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java接口
-
+# Java 接口
 
 “哥，我看你朋友圈说《Java 程序员进阶之路》专栏收到了第一笔赞赏呀，虽然只有一块钱，但我也替你感到开心。”三妹的脸上洋溢着自信的微笑，仿佛这钱是打给她的一样。
 
@@ -16,12 +15,11 @@ tag:
 
 “有了这份鼓励，我相信你更新下去的动力更足了！”三妹今天说的话真的是特别令人喜欢。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/interface-02.png)
 
 “是啊是啊，所以，今天要更新第 26 讲了——接口。”我接着说，“对于面向对象编程来说，抽象是一个极具魅力的特征。如果一个程序员的抽象思维很差，那他在编程中就会遇到很多困难，无法把业务变成具体的代码。在 Java 中，可以通过两种形式来达到抽象的目的，一种上一篇的主角——[抽象类](https://mp.weixin.qq.com/s/WSmGwdtlimIFVVDVKfvrWQ)，另外一种就是今天的主角——接口。”
 
-----------
+---
 
 “接口是什么呀？”三妹顺着我的话题及时的插话到。
 
@@ -77,7 +75,7 @@ public interface Electronic
 
 Java 官方文档上有这样的声明：
 
->Every field declaration in the body of an interface is implicitly public, static, and final.
+> Every field declaration in the body of an interface is implicitly public, static, and final.
 
 换句话说，接口可以用来作为常量类使用，还能省略掉 `public static final`，看似不错的一种选择，对吧？
 
@@ -199,13 +197,11 @@ Exception in thread "main" java.lang.CloneNotSupportedException: com.cmower.bael
 	at com.cmower.baeldung.interface1.CloneableTest.main(CloneableTest.java:11)
 ```
 
-
 第二，Java 原则上只支持单一继承，但通过接口可以实现多重继承的目的。
 
 如果有两个类共同继承（extends）一个父类，那么父类的方法就会被两个子类重写。然后，如果有一个新类同时继承了这两个子类，那么在调用重写方法的时候，编译器就不能识别要调用哪个类的方法了。这也正是著名的菱形问题，见下图。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/interface-07.png)
-
 
 简单解释下，ClassC 同时继承了 ClassA 和 ClassB，ClassC 的对象在调用 ClassA 和 ClassB 中重写的方法时，就不知道该调用 ClassA 的方法，还是 ClassB 的方法。
 

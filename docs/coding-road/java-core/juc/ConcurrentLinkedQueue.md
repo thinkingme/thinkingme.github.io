@@ -7,12 +7,11 @@ tag:
   - Java
 ---
 
-
-队列是我们常用的一种数据结构，为了解决线程安全的问题，Doug Lea大师为我们准备了ConcurrentLinkedQueue这个线程安全的队列。从类名就可以看的出来实现队列的数据结构是链式。
+队列是我们常用的一种数据结构，为了解决线程安全的问题，Doug Lea 大师为我们准备了 ConcurrentLinkedQueue 这个线程安全的队列。从类名就可以看的出来实现队列的数据结构是链式。
 
 ## Node
 
-要想先学习ConcurrentLinkedQueue自然而然得先从它的节点类看起，明白它的底层数据结构。Node类的源码为：
+要想先学习 ConcurrentLinkedQueue 自然而然得先从它的节点类看起，明白它的底层数据结构。Node 类的源码为：
 
 ```java
 private static class Node<E> {
@@ -22,14 +21,14 @@ private static class Node<E> {
 }
 ```
 
-Node节点主要包含了两个域：一个是数据域item，另一个是next指针，用于指向下一个节点从而构成链式队列。并且都是用volatile进行修饰的，以保证内存可见性。另外ConcurrentLinkedQueue含有这样两个成员变量：
+Node 节点主要包含了两个域：一个是数据域 item，另一个是 next 指针，用于指向下一个节点从而构成链式队列。并且都是用 volatile 进行修饰的，以保证内存可见性。另外 ConcurrentLinkedQueue 含有这样两个成员变量：
 
 ```java
 private transient volatile Node<E> head;
 private transient volatile Node<E> tail;
 ```
 
-说明ConcurrentLinkedQueue通过持有头尾指针进行管理队列。当我们调用无参构造器时，其源码为：
+说明 ConcurrentLinkedQueue 通过持有头尾指针进行管理队列。当我们调用无参构造器时，其源码为：
 
 ```java
 public ConcurrentLinkedQueue() {
@@ -37,23 +36,18 @@ public ConcurrentLinkedQueue() {
 }
 ```
 
-head和tail指针会指向一个item域为null的节点,此时ConcurrentLinkedQueue状态如下图所示：
+head 和 tail 指针会指向一个 item 域为 null 的节点,此时 ConcurrentLinkedQueue 状态如下图所示：
 
-如图，head和tail指向同一个节点Node0，该节点item域为null,next域为null。
-
-
-
+如图，head 和 tail 指向同一个节点 Node0，该节点 item 域为 null,next 域为 null。
 
 ![ConcurrentLinkedQueue初始化状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-01.png)
 
+### 操作 Node 的几个 CAS 操作
 
-
-### 操作Node的几个CAS操作
-
-在队列进行出队入队的时候免不了对节点需要进行操作，在多线程就很容易出现线程安全的问题。可以看出在处理器指令集能够支持**CMPXCHG**指令后，在java源码中涉及到并发处理都会使用CAS操作，那么在ConcurrentLinkedQueue对Node的CAS操作有这样几个：
+在队列进行出队入队的时候免不了对节点需要进行操作，在多线程就很容易出现线程安全的问题。可以看出在处理器指令集能够支持**CMPXCHG**指令后，在 java 源码中涉及到并发处理都会使用 CAS 操作，那么在 ConcurrentLinkedQueue 对 Node 的 CAS 操作有这样几个：
 
 ```java
-//更改Node中的数据域item	
+//更改Node中的数据域item
 boolean casItem(E cmp, E val) {
     return UNSAFE.compareAndSwapObject(this, itemOffset, cmp, val);
 }
@@ -67,25 +61,24 @@ boolean casNext(Node<E> cmp, Node<E> val) {
 }
 ```
 
-可以看出这些方法实际上是通过调用UNSAFE实例的方法，UNSAFE为**sun.misc.Unsafe**类，该类是hotspot底层方法，目前为止了解即可，知道CAS的操作归根结底是由该类提供就好。
+可以看出这些方法实际上是通过调用 UNSAFE 实例的方法，UNSAFE 为**sun.misc.Unsafe**类，该类是 hotspot 底层方法，目前为止了解即可，知道 CAS 的操作归根结底是由该类提供就好。
 
-## offer方法
+## offer 方法
 
-对一个队列来说，插入满足FIFO特性，插入元素总是在队列最末尾的地方进行插入，而取（移除）元素总是从队列的队头。所有要想能够彻底弄懂ConcurrentLinkedQueue自然而然是从offer方法和poll方法开始。那么为了能够理解offer方法，采用debug的方式来一行一行的看代码走。
+对一个队列来说，插入满足 FIFO 特性，插入元素总是在队列最末尾的地方进行插入，而取（移除）元素总是从队列的队头。所有要想能够彻底弄懂 ConcurrentLinkedQueue 自然而然是从 offer 方法和 poll 方法开始。那么为了能够理解 offer 方法，采用 debug 的方式来一行一行的看代码走。
 
 另外，在看多线程的代码时，可采用这样的思维方式：
 
-> - **单个线程offer**
-> - **多个线程offer**
-> - **部分线程offer，部分线程poll**
-> - ----offer的速度快于poll
-> - --------队列长度会越来越长，由于offer节点总是在对队列队尾，而poll节点总是在队列对头，也就是说offer线程和poll线程两者并无“交集”，也就是说两类线程间并不会相互影响，这种情况站在相对速率的角度来看，也就是一个"单线程offer"
-> - ----offer的速度慢于poll
-> - --------poll的相对速率快于offer，也就是队头删的速度要快于队尾添加节点的速度，导致的结果就是队列长度会越来越短，而offer线程和poll线程就会出现“交集”，即那一时刻就可以称之为offer线程和poll线程同时操作的节点为 **临界点** ，且在该节点offer线程和poll线程必定相互影响。根据在临界点时offer和poll发生的相对顺序又可从两个角度去思考：
+> - **单个线程 offer**
+> - **多个线程 offer**
+> - **部分线程 offer，部分线程 poll**
+> - ----offer 的速度快于 poll
+> - --------队列长度会越来越长，由于 offer 节点总是在对队列队尾，而 poll 节点总是在队列对头，也就是说 offer 线程和 poll 线程两者并无“交集”，也就是说两类线程间并不会相互影响，这种情况站在相对速率的角度来看，也就是一个"单线程 offer"
+> - ----offer 的速度慢于 poll
+> - --------poll 的相对速率快于 offer，也就是队头删的速度要快于队尾添加节点的速度，导致的结果就是队列长度会越来越短，而 offer 线程和 poll 线程就会出现“交集”，即那一时刻就可以称之为 offer 线程和 poll 线程同时操作的节点为 **临界点** ，且在该节点 offer 线程和 poll 线程必定相互影响。根据在临界点时 offer 和 poll 发生的相对顺序又可从两个角度去思考：
 
-1. 执行顺序为offer-->poll-->offer，即表现为当offer线程在Node1后插入Node2时，此时poll线程已经将Node1删除，这种情况很显然需要在offer方法中考虑； 
-2. 执行顺序可能为：poll-->offer-->poll，即表现为当poll线程准备删除的节点为null时（队列为空队列），此时offer线程插入一个节点使得队列变为非空队列
-
+1. 执行顺序为 offer-->poll-->offer，即表现为当 offer 线程在 Node1 后插入 Node2 时，此时 poll 线程已经将 Node1 删除，这种情况很显然需要在 offer 方法中考虑；
+2. 执行顺序可能为：poll-->offer-->poll，即表现为当 poll 线程准备删除的节点为 null 时（队列为空队列），此时 offer 线程插入一个节点使得队列变为非空队列
 
 先看这么一段代码：
 
@@ -93,9 +86,9 @@ boolean casNext(Node<E> cmp, Node<E> val) {
 ConcurrentLinkedQueue<Integer> queue = new ConcurrentLinkedQueue<>();
 queue.offer(1);
 queue.offer(2);
-```  
+```
 
-创建一个ConcurrentLinkedQueue实例，先offer 1，然后再offer 2。offer的源码为：
+创建一个 ConcurrentLinkedQueue 实例，先 offer 1，然后再 offer 2。offer 的源码为：
 
 ```java
 public boolean offer(E e) {
@@ -131,19 +124,19 @@ public boolean offer(E e) {
 
 ### **单线程执行角度分析**：
 
-先从**单线程执行的角度**看起，分析offer 1的过程。
+先从**单线程执行的角度**看起，分析 offer 1 的过程。
 
-第1行代码会对是否为null进行判断，为null的话就直接抛出空指针异常，第2行代码将e包装成一个Node类，第3行为for循环，只有初始化条件没有循环结束条件，这很符合CAS的“套路”，在循环体CAS操作成功会直接return返回，如果CAS操作失败的话就在for循环中不断重试直至成功。这里实例变量t被初始化为tail，p被初始化为t即tail。
+第 1 行代码会对是否为 null 进行判断，为 null 的话就直接抛出空指针异常，第 2 行代码将 e 包装成一个 Node 类，第 3 行为 for 循环，只有初始化条件没有循环结束条件，这很符合 CAS 的“套路”，在循环体 CAS 操作成功会直接 return 返回，如果 CAS 操作失败的话就在 for 循环中不断重试直至成功。这里实例变量 t 被初始化为 tail，p 被初始化为 t 即 tail。
 
-为了方便下面的理解，**p被认为队列真正的尾节点，tail不一定指向对象真正的尾节点，因为在ConcurrentLinkedQueue中tail是被延迟更新的**，具体原因我们慢慢来看。代码走到第3行的时候，t和p都分别指向初始化时创建的item域为null，next域为null的Node0。第4行变量q被赋值为null，第5行if判断为true，在第7行使用casNext将插入的Node设置成当前队列尾节点p的next节点，如果CAS操作失败，此次循环结束在下次循环中进行重试。
+为了方便下面的理解，**p 被认为队列真正的尾节点，tail 不一定指向对象真正的尾节点，因为在 ConcurrentLinkedQueue 中 tail 是被延迟更新的**，具体原因我们慢慢来看。代码走到第 3 行的时候，t 和 p 都分别指向初始化时创建的 item 域为 null，next 域为 null 的 Node0。第 4 行变量 q 被赋值为 null，第 5 行 if 判断为 true，在第 7 行使用 casNext 将插入的 Node 设置成当前队列尾节点 p 的 next 节点，如果 CAS 操作失败，此次循环结束在下次循环中进行重试。
 
-CAS操作成功走到第8行，此时p==t，if判断为false,直接return true返回。如果成功插入1的话，此时ConcurrentLinkedQueue的状态如下图所示：
+CAS 操作成功走到第 8 行，此时 p==t，if 判断为 false,直接 return true 返回。如果成功插入 1 的话，此时 ConcurrentLinkedQueue 的状态如下图所示：
 
 ![offer 1后队列的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-02.png)
 
-如图，此时队列的尾节点应该为Node1,而tail指向的节点依然还是Node0,因此可以说明tail是延迟更新的。那么我们继续来看offer 2的时候的情况，很显然此时第4行q指向的节点不为null了，而是指向Node1,第5行if判断为false,第11行if判断为false,代码会走到第13行。
+如图，此时队列的尾节点应该为 Node1,而 tail 指向的节点依然还是 Node0,因此可以说明 tail 是延迟更新的。那么我们继续来看 offer 2 的时候的情况，很显然此时第 4 行 q 指向的节点不为 null 了，而是指向 Node1,第 5 行 if 判断为 false,第 11 行 if 判断为 false,代码会走到第 13 行。
 
-好了，**再插入节点的时候我们会问自己这样一个问题？上面已经解释了tail并不是指向队列真正的尾节点，那么在插入节点的时候，我们是不是应该最开始做的就是找到队列当前的尾节点在哪里才能插入？**那么第13行代码就是**找出队列真正的尾节点**。
+好了，**再插入节点的时候我们会问自己这样一个问题？上面已经解释了 tail 并不是指向队列真正的尾节点，那么在插入节点的时候，我们是不是应该最开始做的就是找到队列当前的尾节点在哪里才能插入？**那么第 13 行代码就是**找出队列真正的尾节点**。
 
 > **定位队列真正的对尾节点**
 
@@ -151,48 +144,43 @@ CAS操作成功走到第8行，此时p==t，if判断为false,直接return true�
 p = (p != t && t != (t = tail)) ? t : q;
 ```
 
-我们来分析一下这行代码，如果这段代码在**单线程环境**执行时，很显然由于p==t,此时p会被赋值为q,而q等于`Node<E> q = p.next`，即Node1。
+我们来分析一下这行代码，如果这段代码在**单线程环境**执行时，很显然由于 p==t,此时 p 会被赋值为 q,而 q 等于`Node<E> q = p.next`，即 Node1。
 
-在第一次循环中指针p指向了队列真正的队尾节点Node1，那么在下一次循环中第4行q指向的节点为null，那么在第5行中if判断为true,那么在第7行依然通过casNext方法设置p节点的next为当前新增的Node,接下来走到第8行，这个时候p!=t，第8行if判断为true,会通过`casTail(t, newNode)`将当前节点Node设置为队列的队尾节点,此时的队列状态示意图如下图所示：
+在第一次循环中指针 p 指向了队列真正的队尾节点 Node1，那么在下一次循环中第 4 行 q 指向的节点为 null，那么在第 5 行中 if 判断为 true,那么在第 7 行依然通过 casNext 方法设置 p 节点的 next 为当前新增的 Node,接下来走到第 8 行，这个时候 p!=t，第 8 行 if 判断为 true,会通过`casTail(t, newNode)`将当前节点 Node 设置为队列的队尾节点,此时的队列状态示意图如下图所示：
 
 ![队列offer 2后的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-03.png)
 
-
-**tail指向的节点由Node0改变为Node2**,这里的casTail失败不需要重试的原因是，offer代码中主要是通过p的next节点q(`Node<E> q = p.next`)决定后面的逻辑走向的，当casTail失败时状态示意图如下：
+**tail 指向的节点由 Node0 改变为 Node2**,这里的 casTail 失败不需要重试的原因是，offer 代码中主要是通过 p 的 next 节点 q(`Node<E> q = p.next`)决定后面的逻辑走向的，当 casTail 失败时状态示意图如下：
 
 ![队列进行入队操作后casTail失败后的状态图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-04.png)
 
+如图，**如果这里 casTail 设置 tail 失败即 tail 还是指向 Node0 节点的话，无非就是多循环几次通过 13 行代码定位到队尾节点**。
 
-如图，**如果这里casTail设置tail失败即tail还是指向Node0节点的话，无非就是多循环几次通过13行代码定位到队尾节点**。
+通过对单线程执行角度进行分析，我们可以了解到 poll 的执行逻辑为：
 
+1. **如果 tail 指向的节点的下一个节点（next 域）为 null 的话，说明 tail 指向的节点即为队列真正的队尾节点，因此可以通过 casNext 插入当前待插入的节点,但此时 tail 并未变化，如图 2;**
 
-通过对单线程执行角度进行分析，我们可以了解到poll的执行逻辑为：
+2. **如果 tail 指向的节点的下一个节点（next 域）不为 null 的话，说明 tail 指向的节点不是队列的真正队尾节点。通过`q（Node<E> q = p.next）`指针往前递进去找到队尾节点，然后通过 casNext 插入当前待插入的节点，并通过 casTail 方式更改 tail，如图 3**。
 
-1. **如果tail指向的节点的下一个节点（next域）为null的话，说明tail指向的节点即为队列真正的队尾节点，因此可以通过casNext插入当前待插入的节点,但此时tail并未变化，如图2;**
-
-2. **如果tail指向的节点的下一个节点（next域）不为null的话，说明tail指向的节点不是队列的真正队尾节点。通过`q（Node<E> q = p.next）`指针往前递进去找到队尾节点，然后通过casNext插入当前待插入的节点，并通过casTail方式更改tail，如图3**。
-
-我们回过头再来看`p = (p != t && t != (t = tail)) ? t : q;`这行代码在单线程中，这段代码永远不会将p赋值为t,那么这么写就不会有任何作用，那我们试着在**多线程**的情况下进行分析。
+我们回过头再来看`p = (p != t && t != (t = tail)) ? t : q;`这行代码在单线程中，这段代码永远不会将 p 赋值为 t,那么这么写就不会有任何作用，那我们试着在**多线程**的情况下进行分析。
 
 ### **多线程执行角度分析**
 
-> **多个线程offer**
+> **多个线程 offer**
 
 很显然这么写另有深意，其实在**多线程环境**下这行代码很有意思的。 `t != (t = tail)`这个操作**并非一个原子操作**，有这样一种情况：
 
 ![线程A和线程B有可能的执行时序](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-05.png)
 
-如图，假设线程A此时读取了变量t，线程B刚好在这个时候offer一个Node后，此时会修改tail指针,那么这个时候线程A再次执行t=tail时t会指向另外一个节点，很显然线程A前后两次读取的变量t指向的节点不相同，即`t != (t = tail)`为true,并且由于t指向节点的变化`p != t`也为true，此时该行代码的执行结果为p和t最新的t指针指向了同一个节点，并且此时t也是队列真正的对尾节点。那么，现在已经定位到队列真正的队尾节点，就可以执行offer操作了。
-
+如图，假设线程 A 此时读取了变量 t，线程 B 刚好在这个时候 offer 一个 Node 后，此时会修改 tail 指针,那么这个时候线程 A 再次执行 t=tail 时 t 会指向另外一个节点，很显然线程 A 前后两次读取的变量 t 指向的节点不相同，即`t != (t = tail)`为 true,并且由于 t 指向节点的变化`p != t`也为 true，此时该行代码的执行结果为 p 和 t 最新的 t 指针指向了同一个节点，并且此时 t 也是队列真正的对尾节点。那么，现在已经定位到队列真正的队尾节点，就可以执行 offer 操作了。
 
 > **offer->poll->offer**
 
-那么还剩下第11行的代码我们没有分析，大致可以猜想到应该就是回答**一部分线程offer，一部分poll**的这种情况。当`if (p == q)`为true时，说明p指向的节点的next也指向它自己，这种节点称之为**哨兵节点**，**这种节点在队列中存在的价值不大，一般表示为要删除的节点或者是空节点**。为了能够很好的理解这种情况，我们先看看poll方法的执行过程后，再回过头来看，总之这是一个很有意思的事情 :)。
+那么还剩下第 11 行的代码我们没有分析，大致可以猜想到应该就是回答**一部分线程 offer，一部分 poll**的这种情况。当`if (p == q)`为 true 时，说明 p 指向的节点的 next 也指向它自己，这种节点称之为**哨兵节点**，**这种节点在队列中存在的价值不大，一般表示为要删除的节点或者是空节点**。为了能够很好的理解这种情况，我们先看看 poll 方法的执行过程后，再回过头来看，总之这是一个很有意思的事情 :)。
 
-## poll方法 
+## poll 方法
 
-poll方法源码如下：
-
+poll 方法源码如下：
 
 ```java
 public E poll() {
@@ -220,32 +208,24 @@ public E poll() {
     }
 }
 ```
-我们还是先站在**单线程的角度**去理清该方法的基本逻辑。假设ConcurrentLinkedQueue初始状态如下图所示：
 
+我们还是先站在**单线程的角度**去理清该方法的基本逻辑。假设 ConcurrentLinkedQueue 初始状态如下图所示：
 
 ![队列初始状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-06.png)
 
-
-参数offer时的定义，我们还是先将**变量p作为队列要删除真正的队头节点，h（head）指向的节点并不一定是队列的队头节点**。先来看poll出Node1时的情况，由于`p=h=head`，参照上图，很显然此时p指向的Node1的数据域不为null,在第4行代码中`item!=null`判断为true后接下来通过`casItem`将Node1的数据域设置为null。如果CAS设置失败则此次循环结束等待下一次循环进行重试。若第4行执行成功进入到第5行代码，此时p和h都指向Node1,第5行if判断为false,然后直接到第7行return回Node1的数据域1，方法运行结束，此时的队列状态如下图。
-
-
+参数 offer 时的定义，我们还是先将**变量 p 作为队列要删除真正的队头节点，h（head）指向的节点并不一定是队列的队头节点**。先来看 poll 出 Node1 时的情况，由于`p=h=head`，参照上图，很显然此时 p 指向的 Node1 的数据域不为 null,在第 4 行代码中`item!=null`判断为 true 后接下来通过`casItem`将 Node1 的数据域设置为 null。如果 CAS 设置失败则此次循环结束等待下一次循环进行重试。若第 4 行执行成功进入到第 5 行代码，此时 p 和 h 都指向 Node1,第 5 行 if 判断为 false,然后直接到第 7 行 return 回 Node1 的数据域 1，方法运行结束，此时的队列状态如下图。
 
 ![队列出队操作后的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-07.png)
 
-
-下面继续从队列中poll，很显然当前h和p指向的Node1的数据域为null，那么第一件事就是要**定位准备删除的队头节点(找到数据域不为null的节点)**。
+下面继续从队列中 poll，很显然当前 h 和 p 指向的 Node1 的数据域为 null，那么第一件事就是要**定位准备删除的队头节点(找到数据域不为 null 的节点)**。
 
 ### 定位删除的队头节点
 
-
-继续看，第三行代码item为null,第4行代码if判断为false,走到第8行代码（`q = p.next`）if也为false，由于q指向了Node2,在第11行的if判断也为false，因此代码走到了第13行，这个时候p和q共同指向了Node2,也就找到了要删除的真正的队头节点。可以总结出，定位待删除的队头节点的过程为：**如果当前节点的数据域为null，很显然该节点不是待删除的节点，就用当前节点的下一个节点去试探**。在经过第一次循环后，此时状态图为下图：
-
-
+继续看，第三行代码 item 为 null,第 4 行代码 if 判断为 false,走到第 8 行代码（`q = p.next`）if 也为 false，由于 q 指向了 Node2,在第 11 行的 if 判断也为 false，因此代码走到了第 13 行，这个时候 p 和 q 共同指向了 Node2,也就找到了要删除的真正的队头节点。可以总结出，定位待删除的队头节点的过程为：**如果当前节点的数据域为 null，很显然该节点不是待删除的节点，就用当前节点的下一个节点去试探**。在经过第一次循环后，此时状态图为下图：
 
 ![经过一次循环后的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-08.png)
 
-
-进行下一次循环，第4行的操作同上述，当前假设第4行中casItem设置成功，由于p已经指向了Node2,而h还依旧指向Node1,此时第5行的if判断为true，然后执行`updateHead(h, ((q = p.next) != null) ? q : p)`，此时q指向的Node3，所有传入updateHead方法的分别是指向Node1的h引用和指向Node3的q引用。updateHead方法的源码为：
+进行下一次循环，第 4 行的操作同上述，当前假设第 4 行中 casItem 设置成功，由于 p 已经指向了 Node2,而 h 还依旧指向 Node1,此时第 5 行的 if 判断为 true，然后执行`updateHead(h, ((q = p.next) != null) ? q : p)`，此时 q 指向的 Node3，所有传入 updateHead 方法的分别是指向 Node1 的 h 引用和指向 Node3 的 q 引用。updateHead 方法的源码为：
 
 ```java
 final void updateHead(Node<E> h, Node<E> p) {
@@ -254,35 +234,34 @@ final void updateHead(Node<E> h, Node<E> p) {
 }
 ```
 
-该方法主要是通过`casHead`将队列的head指向Node3,并且通过 `h.lazySetNext`将Node1的next域指向它自己。最后在第7行代码中返回Node2的值。此时队列的状态如下图所示：
+该方法主要是通过`casHead`将队列的 head 指向 Node3,并且通过 `h.lazySetNext`将 Node1 的 next 域指向它自己。最后在第 7 行代码中返回 Node2 的值。此时队列的状态如下图所示：
 
 ![Node2从队列中出队后的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-09.png)
 
+Node1 的 next 域指向它自己，head 指向了 Node3。如果队列为空队列的话，就会执行到代码的第 8 行`(q = p.next) == null`，if 判断为 true,因此在第 10 行中直接返回 null。以上的分析是从单线程执行的角度去看，也可以让我们了解 poll 的整体思路，现在来做一个总结：
 
+1. **如果当前 head,h 和 p 指向的节点的 Item 不为 null 的话，说明该节点即为真正的队头节点（待删除节点），只需要通过 casItem 方法将 item 域设置为 null,然后将原来的 item 直接返回即可。**
 
-Node1的next域指向它自己，head指向了Node3。如果队列为空队列的话，就会执行到代码的第8行`(q = p.next) == null`，if判断为true,因此在第10行中直接返回null。以上的分析是从单线程执行的角度去看，也可以让我们了解poll的整体思路，现在来做一个总结：
+2. **如果当前 head,h 和 p 指向的节点的 item 为 null 的话，则说明该节点不是真正的待删除节点，那么应该做的就是寻找 item 不为 null 的节点。通过让 q 指向 p 的下一个节点（q = p.next）进行试探，若找到则通过 updateHead 方法更新 head 指向的节点以及构造哨兵节点（`通过updateHead方法的h.lazySetNext(h)`）**。
 
-1. **如果当前head,h和p指向的节点的Item不为null的话，说明该节点即为真正的队头节点（待删除节点），只需要通过casItem方法将item域设置为null,然后将原来的item直接返回即可。**
-
-2. **如果当前head,h和p指向的节点的item为null的话，则说明该节点不是真正的待删除节点，那么应该做的就是寻找item不为null的节点。通过让q指向p的下一个节点（q = p.next）进行试探，若找到则通过updateHead方法更新head指向的节点以及构造哨兵节点（`通过updateHead方法的h.lazySetNext(h)`）**。
-
-接下来，按照上面分析offer的思维方式，下面来分析一下多线程的情况，第一种情况是；
+接下来，按照上面分析 offer 的思维方式，下面来分析一下多线程的情况，第一种情况是；
 
 ### **多线程执行情况分析：**
 
-> **多个线程poll**
+> **多个线程 poll**
 
-现在回过头来看poll方法的源码，有这样一部分：
+现在回过头来看 poll 方法的源码，有这样一部分：
 
 ```java
 else if (p == q)
     continue restartFromHead;
 ```
-这一部分就是处理多个线程poll的情况，`q = p.next`也就是说q永远指向的是p的下一个节点，那么什么情况下会使得p,q指向同一个节点呢？根据上面我们的分析，只有p指向的节点在poll的时候转变成了**哨兵节点**（通过updateHead方法中的h.lazySetNext）。当线程A在判断`p==q`时，线程B已经将执行完poll方法将p指向的节点转换为**哨兵节点**并且head指向的节点已经发生了改变，所以就需要从restartFromHead处执行，保证用到的是最新的head。
+
+这一部分就是处理多个线程 poll 的情况，`q = p.next`也就是说 q 永远指向的是 p 的下一个节点，那么什么情况下会使得 p,q 指向同一个节点呢？根据上面我们的分析，只有 p 指向的节点在 poll 的时候转变成了**哨兵节点**（通过 updateHead 方法中的 h.lazySetNext）。当线程 A 在判断`p==q`时，线程 B 已经将执行完 poll 方法将 p 指向的节点转换为**哨兵节点**并且 head 指向的节点已经发生了改变，所以就需要从 restartFromHead 处执行，保证用到的是最新的 head。
 
 > **poll->offer->poll**
 
-试想，还有这样一种情况，如果当前队列为空队列，线程A进行poll操作，同时线程B执行offer，然后线程A在执行poll，那么此时线程A返回的是null还是线程B刚插入的最新的那个节点呢？我们来写一代demo：
+试想，还有这样一种情况，如果当前队列为空队列，线程 A 进行 poll 操作，同时线程 B 执行 offer，然后线程 A 在执行 poll，那么此时线程 A 返回的是 null 还是线程 B 刚插入的最新的那个节点呢？我们来写一代 demo：
 
 ```java
 public static void main(String[] args) {
@@ -298,6 +277,7 @@ public static void main(String[] args) {
     thread2.start();
 }
 ```
+
 输出结果为：
 
 ```
@@ -305,49 +285,46 @@ Thread-0 poll 的值为：null
 queue当前是否为空队列：false
 ```
 
-通过debug控制线程thread1和线程thread2的执行顺序，thread1先执行到第8行代码`if ((q = p.next) == null)`，由于此时队列为空队列if判断为true，进入if块，此时先让thread1暂停，然后thread2进行offer插入值为1的节点后，thread2执行结束。再让thread1执行，这时**thread1并没有进行重试**，而是代码继续往下走，返回null，尽管此时队列由于thread2已经插入了值为1的新的节点。所以输出结果为thread0 poll的为null,然队列不为空队列。因此，**在判断队列是否为空队列的时候是不能通过线程在poll的时候返回为null进行判断的，可以通过isEmpty方法进行判断**。
+通过 debug 控制线程 thread1 和线程 thread2 的执行顺序，thread1 先执行到第 8 行代码`if ((q = p.next) == null)`，由于此时队列为空队列 if 判断为 true，进入 if 块，此时先让 thread1 暂停，然后 thread2 进行 offer 插入值为 1 的节点后，thread2 执行结束。再让 thread1 执行，这时**thread1 并没有进行重试**，而是代码继续往下走，返回 null，尽管此时队列由于 thread2 已经插入了值为 1 的新的节点。所以输出结果为 thread0 poll 的为 null,然队列不为空队列。因此，**在判断队列是否为空队列的时候是不能通过线程在 poll 的时候返回为 null 进行判断的，可以通过 isEmpty 方法进行判断**。
 
+## offer 方法中部分线程 offer 部分线程 poll
 
-## offer方法中部分线程offer部分线程poll 
-
-在分析offer方法的时候我们还留下了一个问题，即对offer方法中第11行代码的理解。
+在分析 offer 方法的时候我们还留下了一个问题，即对 offer 方法中第 11 行代码的理解。
 
 > **offer->poll->offer**
 
-在offer方法的第11行代码`if (p == q)`，能够让if判断为true的情况为p指向的节点为**哨兵节点**，而什么时候会构造哨兵节点呢？在对poll方法的讨论中，我们已经找到了答案，即**当head指向的节点的item域为null时会寻找真正的队头节点，等到待插入的节点插入之后，会更新head，并且将原来head指向的节点设置为哨兵节点。**假设队列初始状态如下图所示：
+在 offer 方法的第 11 行代码`if (p == q)`，能够让 if 判断为 true 的情况为 p 指向的节点为**哨兵节点**，而什么时候会构造哨兵节点呢？在对 poll 方法的讨论中，我们已经找到了答案，即**当 head 指向的节点的 item 域为 null 时会寻找真正的队头节点，等到待插入的节点插入之后，会更新 head，并且将原来 head 指向的节点设置为哨兵节点。**假设队列初始状态如下图所示：
 
 ![offer和poll相互影响分析时队列初始状态.png](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-10.png)
 
-因此在线程A执行offer时，线程B执行poll就会存在如下一种情况：
+因此在线程 A 执行 offer 时，线程 B 执行 poll 就会存在如下一种情况：
 
 ![线程A和线程B可能存在的执行时序](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-11.png)
 
-如图，线程A的tail节点存在next节点Node1,因此会通过引用q往前寻找队列真正的队尾节点，当执行到判断`if (p == q)`时，此时线程B执行poll操作，在对线程B来说，head和p指向Node0,由于Node0的item域为null,同样会往前递进找到队列真正的队头节点Node1,在线程B执行完poll之后，Node0就会转换为**哨兵节点**，也就意味着队列的head发生了改变，此时队列状态为下图。
+如图，线程 A 的 tail 节点存在 next 节点 Node1,因此会通过引用 q 往前寻找队列真正的队尾节点，当执行到判断`if (p == q)`时，此时线程 B 执行 poll 操作，在对线程 B 来说，head 和 p 指向 Node0,由于 Node0 的 item 域为 null,同样会往前递进找到队列真正的队头节点 Node1,在线程 B 执行完 poll 之后，Node0 就会转换为**哨兵节点**，也就意味着队列的 head 发生了改变，此时队列状态为下图。
 
 ![线程B进行poll后队列的状态图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-12.png)
 
+此时线程 A 在执行判断`if (p == q)`时就为 true,会继续执行` p = (t != (t = tail)) ? t : head;`，由于 tail 指针没有发生改变所以 p 被赋值为 head,重新从 head 开始完成插入操作。
 
-此时线程A在执行判断`if (p == q)`时就为true,会继续执行` p = (t != (t = tail)) ? t : head;`，由于tail指针没有发生改变所以p被赋值为head,重新从head开始完成插入操作。
+## HOPS 的设计
 
+通过上面对 offer 和 poll 方法的分析，我们发现 tail 和 head 是延迟更新的，两者更新触发时机为：
 
-## HOPS的设计 
+**tail 更新触发时机**：当 tail 指向的节点的下一个节点不为 null 的时候，会执行定位队列真正的队尾节点的操作，找到队尾节点后完成插入之后才会通过 casTail 进行 tail 更新；当 tail 指向的节点的下一个节点为 null 的时候，只插入节点不更新 tail。
 
-通过上面对offer和poll方法的分析，我们发现tail和head是延迟更新的，两者更新触发时机为：
+**head 更新触发时机：**当 head 指向的节点的 item 域为 null 的时候，会执行定位队列真正的队头节点的操作，找到队头节点后完成删除之后才会通过 updateHead 进行 head 更新；当 head 指向的节点的 item 域不为 null 的时候，只删除节点不更新 head。
 
-**tail更新触发时机**：当tail指向的节点的下一个节点不为null的时候，会执行定位队列真正的队尾节点的操作，找到队尾节点后完成插入之后才会通过casTail进行tail更新；当tail指向的节点的下一个节点为null的时候，只插入节点不更新tail。
+并且在更新操作时，源码中会有注释为：**hop two nodes at a time**。所以这种延迟更新的策略就被叫做 HOPS 的大概原因是这个（猜的 :)），从上面更新时的状态图可以看出，head 和 tail 的更新是“跳着的”即中间总是间隔了一个。那么这样设计的意图是什么呢？
 
-**head更新触发时机：**当head指向的节点的item域为null的时候，会执行定位队列真正的队头节点的操作，找到队头节点后完成删除之后才会通过updateHead进行head更新；当head指向的节点的item域不为null的时候，只删除节点不更新head。
-
-并且在更新操作时，源码中会有注释为：**hop two nodes at a time**。所以这种延迟更新的策略就被叫做HOPS的大概原因是这个（猜的 :)），从上面更新时的状态图可以看出，head和tail的更新是“跳着的”即中间总是间隔了一个。那么这样设计的意图是什么呢？
-
-如果让tail永远作为队列的队尾节点，实现的代码量会更少，而且逻辑更易懂。但是，这样做有一个缺点，**如果大量的入队操作，每次都要执行CAS进行tail的更新，汇总起来对性能也会是大大的损耗。如果能减少CAS更新的操作，无疑可以大大提升入队的操作效率，所以doug lea大师每间隔1次（tail和队尾节点的距离为1）进行才利用CAS更新tail。**对head的更新也是同样的道理，虽然，这样设计会多出在循环中定位队尾节点，但总体来说读的操作效率要远远高于写的性能，因此，多出来的在循环中定位尾节点的操作的性能损耗相对而言是很小的。
-
+如果让 tail 永远作为队列的队尾节点，实现的代码量会更少，而且逻辑更易懂。但是，这样做有一个缺点，**如果大量的入队操作，每次都要执行 CAS 进行 tail 的更新，汇总起来对性能也会是大大的损耗。如果能减少 CAS 更新的操作，无疑可以大大提升入队的操作效率，所以 doug lea 大师每间隔 1 次（tail 和队尾节点的距离为 1）进行才利用 CAS 更新 tail。**对 head 的更新也是同样的道理，虽然，这样设计会多出在循环中定位队尾节点，但总体来说读的操作效率要远远高于写的性能，因此，多出来的在循环中定位尾节点的操作的性能损耗相对而言是很小的。
 
 ---
 
->编辑：沉默王二，内容大部分来源以下三个开源仓库：
->- [深入浅出 Java 多线程](http://concurrent.redspider.group/)
->- [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
->- [Java八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
+> 编辑：沉默王二，内容大部分来源以下三个开源仓库：
+>
+> - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
+> - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
+> - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
 <img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">

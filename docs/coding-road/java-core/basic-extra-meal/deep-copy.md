@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# 彻底讲明白的Java浅拷贝与深拷贝
+# 彻底讲明白的 Java 浅拷贝与深拷贝
 
 “哥，听说浅拷贝和深拷贝是 Java 面试中经常会被问到的一个问题，是这样吗？”
 
@@ -113,7 +113,7 @@ writer2：Writer@b97c004{age=18, name='三妹'}
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/deep-copy-01.png)
 
- 之前的例子中，Writer 类只有两个字段，没有引用类型字段。那么，我们再来看另外一个例子，为 Writer 类增加一个自定义的引用类型字段 Book，先来看 Book 的定义。
+之前的例子中，Writer 类只有两个字段，没有引用类型字段。那么，我们再来看另外一个例子，为 Writer 类增加一个自定义的引用类型字段 Book，先来看 Book 的定义。
 
 ```java
 class Book {

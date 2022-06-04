@@ -5,9 +5,9 @@ tag:
   - Java
 ---
 
-# 详解Java中Comparable和Comparator的区别
+# 详解 Java 中 Comparable 和 Comparator 的区别
 
-那天，小二去马蜂窝面试，面试官老王一上来就甩给了他一道面试题：请问Comparable和Comparator有什么区别？小二差点笑出声，因为三年前，也就是 2021 年，他在《Java 程序员进阶之路》专栏上看到过这题😆。
+那天，小二去马蜂窝面试，面试官老王一上来就甩给了他一道面试题：请问 Comparable 和 Comparator 有什么区别？小二差点笑出声，因为三年前，也就是 2021 年，他在《Java 程序员进阶之路》专栏上看到过这题 😆。
 
 Comparable 和 Comparator 是 Java 的两个接口，从名字上我们就能够读出来它们俩的相似性：以某种方式来比较两个对象。但它们之间到底有什么区别呢？请随我来，打怪进阶喽！
 
@@ -52,7 +52,6 @@ public class Cmower implements Comparable<Cmower> {
 ```
 
 在上面的示例中，我创建了一个 Cmower 类，它有两个字段：age 和 name。Cmower 类实现了 Comparable 接口，并重写了 `compareTo()` 方法。
-
 
 程序输出的结果是“沉默王三比较年轻有为”，因为他比沉默王二小三岁。这个结果有什么凭证吗？
 
@@ -161,14 +160,8 @@ for (Cmower c : list) {
 
 举个不恰当的例子。我想从洛阳出发去北京看长城，体验一下好汉的感觉，要么坐飞机，要么坐高铁；但如果是孙悟空的话，翻个筋斗就到了。我和孙悟空之间有什么区别呢？孙悟空自己实现了 Comparable 接口（他那年代也没有飞机和高铁，没得选），而我可以借助 Comparator 接口（现代化的交通工具）。
 
-
-
-
-
-------
-
+---
 
 好了，关于 Comparable 和 Comparator 我们就先聊这么多。总而言之，如果对象的排序需要基于自然顺序，请选择 `Comparable`，如果需要按照对象的不同属性进行排序，请选择 `Comparator`。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

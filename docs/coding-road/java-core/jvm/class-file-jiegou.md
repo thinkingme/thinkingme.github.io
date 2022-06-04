@@ -6,8 +6,7 @@ tag:
   - Java
 ---
 
-# 详解Java的类文件（class文件）结构
-
+# 详解 Java 的类文件（class 文件）结构
 
 大家好，我是二哥呀，今天我拿了一把小刀，准备解剖一下 Java 的 class 文件。
 
@@ -70,7 +69,7 @@ class Hello {
 
 紧跟着魔数后面的四个字节 `0000 0037` 分别表示副版本号和主版本号。也就是说，主版本号为 55（0x37 的十进制），也就是 Java 11 对应的版本号，副版本号为 0。
 
-上一个 LTS 版本是 Java 8，对应的主版本号为 52，也就是说 Java 9 是 53，Java 10 是 54，只不过 Java 9 和 Java 10 都是过渡版本，下一个 LTS 版本是 Java 17，预计 2021 年 9 月份推出。 
+上一个 LTS 版本是 Java 8，对应的主版本号为 52，也就是说 Java 9 是 53，Java 10 是 54，只不过 Java 9 和 Java 10 都是过渡版本，下一个 LTS 版本是 Java 17，预计 2021 年 9 月份推出。
 
 ### 03、常量池
 
@@ -92,7 +91,7 @@ public class ConstantTest {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-bbe4c673-c3a5-4952-901d-35446f91a3af.png)
 
-第一个字节 0x03 表示常量的类型为 *CONSTANT_Integer_info*，是 JVM 中定义的 14 种常量类型之一，对应的还有 *CONSTANT_Float_info*、*CONSTANT_Long_info*、*CONSTANT_Double_info*，对应的标识分别是 0x04、0x05、0x06。
+第一个字节 0x03 表示常量的类型为 _CONSTANT_Integer_info_，是 JVM 中定义的 14 种常量类型之一，对应的还有 _CONSTANT_Float_info_、_CONSTANT_Long_info_、_CONSTANT_Double_info_，对应的标识分别是 0x04、0x05、0x06。
 
 对于 int 和 float 来说，它们占 4 个字节；对于 long 和 double 来说，它们占 8 个字节。来个 long 型的最大值观察下。
 
@@ -118,35 +117,33 @@ class Hello {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-801ed589-658c-407e-ac64-81fd525d7324.png)
 
-前面还有 3 个字节，第一个字节 0x01 是标识，标识类型为 *CONSTANT_Uft8_info*，第二个和第三个自己 0x00 0x05 用来表示第三部分字节数组的长度。
+前面还有 3 个字节，第一个字节 0x01 是标识，标识类型为 _CONSTANT_Uft8_info_，第二个和第三个自己 0x00 0x05 用来表示第三部分字节数组的长度。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-ae4f38c9-68fe-40ad-91c6-3e7fd360de05.png)
 
-与 *CONSTANT_Uft8_info* 类型对应的，还有一个 *CONSTANT_String_info*，用来表示字符串对象（之前代码中的 s），标识是 0x08。前者存储了字符串真正的值，后者并不包含字符串的内容，仅仅包含了一个指向常量池中 *CONSTANT_Uft8_info* 的索引。来看一下它在 class 文件中的位置。
-
-
+与 _CONSTANT_Uft8_info_ 类型对应的，还有一个 _CONSTANT_String_info_，用来表示字符串对象（之前代码中的 s），标识是 0x08。前者存储了字符串真正的值，后者并不包含字符串的内容，仅仅包含了一个指向常量池中 _CONSTANT_Uft8_info_ 的索引。来看一下它在 class 文件中的位置。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-4e093bef-d592-4be7-847e-0ef5900c5fa4.png)
 
-*CONSTANT_String_info* 通过索引 19 来找到 *CONSTANT_Uft8_info*。
+_CONSTANT_String_info_ 通过索引 19 来找到 _CONSTANT_Uft8_info_。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-85af064d-5dc6-4187-b4f3-3501ccfc99b3.png)
 
-除此之外，还有 *CONSTANT_Class_info*，用来表示类和接口，结构和 *CONSTANT_String_info* 类似，第一个字节是标识，值为 0x07，后面两个字节是常量池索引，指向 *CONSTANT_Utf8_info*——字符串存储的是类或者接口的全路径限定名。
+除此之外，还有 _CONSTANT_Class_info_，用来表示类和接口，结构和 _CONSTANT_String_info_ 类似，第一个字节是标识，值为 0x07，后面两个字节是常量池索引，指向 _CONSTANT_Utf8_info_——字符串存储的是类或者接口的全路径限定名。
 
-拿 Hello.java 类来说，它的全路径限定名为 `com/itwanger/jvm/Hello`，对应的十六进制为“636f6d2f697477616e6765722f6a766d2f48656c6c6f”，是一串 *CONSTANT_Uft8_info*，指向它的 *CONSTANT_Class_info* 在 class 文件中的什么位置呢？
+拿 Hello.java 类来说，它的全路径限定名为 `com/itwanger/jvm/Hello`，对应的十六进制为“636f6d2f697477616e6765722f6a766d2f48656c6c6f”，是一串 _CONSTANT_Uft8_info_，指向它的 _CONSTANT_Class_info_ 在 class 文件中的什么位置呢？
 
 先不着急，这里给大家介绍一款可视化字节码的工具 jclasslib bytecode viewer，可以直接在 IDEA 的插件市场安装。安装完成后，选中 class 文件，然后在 View 菜单里找到 Show Bytecode With Jclasslib 子菜单，就可以查看 class 文件的关键信息了。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-ac6cc8cf-ed25-4bbb-8685-d473ecf15a60.png)
 
-从上图中可以看到，常量池的总大小为 23，索引为 04 的 *CONSTANT_Class_info* 指向的是是索引为 21 的 *CONSTANT_Uft8_info*，值为 `com/itwanger/jvm/Hello`。21 的十六进制为 0x15，有了这个信息，我们就可以找到 *CONSTANT_Class_info* 在 class 文件中的位置了。
+从上图中可以看到，常量池的总大小为 23，索引为 04 的 _CONSTANT_Class_info_ 指向的是是索引为 21 的 _CONSTANT_Uft8_info_，值为 `com/itwanger/jvm/Hello`。21 的十六进制为 0x15，有了这个信息，我们就可以找到 _CONSTANT_Class_info_ 在 class 文件中的位置了。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-74816960-b8f7-42f3-9001-c05ebd25f58d.png)
 
-0x07 是第一个字节，*CONSTANT_Class_info* 的标识符，然后是两个字节，标识索引。
+0x07 是第一个字节，_CONSTANT_Class_info_ 的标识符，然后是两个字节，标识索引。
 
-还有 *CONSTANT_NameAndType_info*，用来标识字段或方法，标识符为 12，对应的十六进制是 0x0c。后面还有 4 个字节，前两个是字段或者方法的索引，后两个是字段或方法的描述符，也就是字段或者方法的类型。
+还有 _CONSTANT_NameAndType_info_，用来标识字段或方法，标识符为 12，对应的十六进制是 0x0c。后面还有 4 个字节，前两个是字段或者方法的索引，后两个是字段或方法的描述符，也就是字段或者方法的类型。
 
 来看下面这段代码。
 
@@ -157,11 +154,11 @@ class Hello {
 }
 ```
 
-用 jclasslib 可以看到 *CONSTANT_NameAndType_info* 包含的索引有两个。
+用 jclasslib 可以看到 _CONSTANT_NameAndType_info_ 包含的索引有两个。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-70cd8902-136c-42a4-ab57-d6baf202e462.png)
 
-一个是 4，一个是 5，可以通过下图来表示 *CONSTANT_NameAndType_info* 的构成。
+一个是 4，一个是 5，可以通过下图来表示 _CONSTANT_NameAndType_info_ 的构成。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-5ac7d4c4-b905-462c-90f7-58b46fc5dda1.png)
 
@@ -169,7 +166,7 @@ class Hello {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-eba9e047-d6fb-43e7-8c27-3683a076ccdd.png)
 
-接下来是 *CONSTANT_Fieldref_info* 、*CONSTANT_Methodref_info* 和 *CONSTANT_InterfaceMethodref_info*，它们三个的结构比较类似，可以通过下面的伪代码来表示。
+接下来是 _CONSTANT_Fieldref_info_ 、_CONSTANT_Methodref_info_ 和 _CONSTANT_InterfaceMethodref_info_，它们三个的结构比较类似，可以通过下面的伪代码来表示。
 
 ```
 CONSTANT_*ref_info {
@@ -182,10 +179,10 @@ CONSTANT_*ref_info {
 学过 C 语言的符号表（Symbol Table）的话，对这段伪代码并不会陌生。
 
 - tag 为标识符，Fieldref 的为 9，也就是十六进制的 0x09；Methodref 的为 10，也就是十六进制的 0x0a；InterfaceMethodref 的为 11， 也就是十六进制的 0x0b。
-- class_index 为 *CONSTANT_Class_info* 的常量池索引，表示字段 | 方法 | 接口方法所在的类信息。
-- name_and_type_index 为 *CONSTANT_NameAndType_info* 的常量池索引，拿 Fieldref 来说，表示字段名和字段类型；拿 Methodref 来说，表示方法名、方法的参数和返回值类型；拿 InterfaceMethodref 来说，表示接口方法名、接口方法的参数和返回值类型。
+- class_index 为 _CONSTANT_Class_info_ 的常量池索引，表示字段 | 方法 | 接口方法所在的类信息。
+- name_and_type_index 为 _CONSTANT_NameAndType_info_ 的常量池索引，拿 Fieldref 来说，表示字段名和字段类型；拿 Methodref 来说，表示方法名、方法的参数和返回值类型；拿 InterfaceMethodref 来说，表示接口方法名、接口方法的参数和返回值类型。
 
-还有 *CONSTANT_MethodHandle_info* 、*CONSTANT_MethodType_info* 和 *CONSTANT_InvokeDynamic_info*，我就不再一一说明了，大家也可以拿把小刀去试一试。
+还有 _CONSTANT_MethodHandle_info_ 、_CONSTANT_MethodType_info_ 和 _CONSTANT_InvokeDynamic_info_，我就不再一一说明了，大家也可以拿把小刀去试一试。
 
 啊，class 文件中最复杂的常量池部分就算是解剖完了，真不容易！
 
@@ -220,7 +217,7 @@ public enum Color {
 ```java
 class Hello {
     public static void main(String[] args) {
-        
+
     }
 }
 ```
@@ -229,8 +226,8 @@ class Hello {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-77c4ecff-6d36-405d-93da-ee06431bf312.png)
 
-- this_class 指向常量池中索引为 2 的 *CONSTANT_Class_info*。
-- super_class 指向常量池中索引为 3 的 *CONSTANT_Class_info*。
+- this_class 指向常量池中索引为 2 的 _CONSTANT_Class_info_。
+- super_class 指向常量池中索引为 3 的 _CONSTANT_Class_info_。
 - 由于没有接口，所以 interfaces 的信息为空。
 
 对应 class 文件中的位置如下图所示。
@@ -260,8 +257,8 @@ field_info {
 ```
 
 - access_flag 为字段的访问标记，比如说是不是 public | private | protected，是不是 static，是不是 final 等。
-- name_index 为字段名的索引，指向常量池中的 *CONSTANT_Utf8_info*， 比如说上例中的值就为 name。
-- description_index 为字段的描述类型索引，也指向常量池中的 *CONSTANT_Utf8_info*，针对不同的数据类型，会有不同规则的描述信息。
+- name_index 为字段名的索引，指向常量池中的 _CONSTANT_Utf8_info_， 比如说上例中的值就为 name。
+- description_index 为字段的描述类型索引，也指向常量池中的 _CONSTANT_Utf8_info_，针对不同的数据类型，会有不同规则的描述信息。
 
 1）对于基本数据类型来说，使用一个字符来表示，比如说 I 对应的是 int，B 对应的是 byte。
 
@@ -275,14 +272,14 @@ field_info {
 
 ### 07、方法表
 
-方法表和字段表类似，区别是用来存储方法的信息，包括方法名，方法的参数，方法的签名。 
+方法表和字段表类似，区别是用来存储方法的信息，包括方法名，方法的参数，方法的签名。
 
 就拿 main 方法来说吧。
 
 ```java
 public class MethodsTest {
     public static void main(String[] args) {
-        
+
     }
 }
 ```
@@ -315,10 +312,9 @@ public class AttributeTest {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-dee995d6-e285-4a31-b11f-e93c3599cd8e.png)
 
-
 - Attribute name index 指向常量池中值为“ConstantValue”的常量。
 - Attribute length 的值为固定的 2，因为索引只占两个字节的大小。
-- Constant value index 指向常量池中具体的常量，如果常量类型为 int，指向的就是 *CONSTANT_Integer_info*。
+- Constant value index 指向常量池中具体的常量，如果常量类型为 int，指向的就是 _CONSTANT_Integer_info_。
 
 我画了一副图，可以完整的表示字段的结构，包含属性表在内。
 
@@ -344,7 +340,6 @@ public class MethodCode {
 main 方法中调用了 foo 方法。通过 jclasslib 看一下它当中一个很重要的属性——Code， 方法的关键信息都存储在里面。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/class-file-jiegou-e76339a8-0aab-418b-9722-4b3c8591693c.png)
-
 
 - Attribute name index 指向常量池中值为“Code”的常量。
 - Attribute length 为属性值的长度大小。

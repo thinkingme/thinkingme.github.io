@@ -5,10 +5,12 @@ tag:
   - Spring Boot
 title: Spring Boot 整合 JPA
 ---
+
 # Spring Boot 整合 JPA
+
 ### Spring Data JPA 简介
 
-Spring Data 是 Spring 提供的一个操作数据的框架，Spring Data JPA是 Spring Data 下的一个基于 JPA 标准的操作数据的模块。
+Spring Data 是 Spring 提供的一个操作数据的框架，Spring Data JPA 是 Spring Data 下的一个基于 JPA 标准的操作数据的模块。
 
 JPA（Java Persistence API）是 Java 亲妈 Sun 公司提出的一套 Java 持久化规范。所谓规范，就是只定义标准，不提供实现。
 
@@ -64,18 +66,17 @@ public class User {
 - `@Table` 注解是非必选项，它的优先级高于 `@Entity` 注解，比如说 `@Entity(name="user")` 和 `@Table(name="users")` 同时存在的话，对应的表名为 users。
 - `@Id` 表名该字段为主键字段，当声明了 @Entity 注解，`@Id` 就必须也得声明。
 
-
 这里推荐大家在 Intellij IDEA 中安装 JPA Buddy 插件，该插件提供了可视化的代码生成器，可以帮我们简化 JPA 的开发工作。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jpa-dbd461e0-f74b-4914-9f79-37c09bce8db4.png)
 
-安装完 JPA Buddy 插件后，当我们创建好实体类后，会自动打开三个面板：JPA Structure，JPA Palette和JPA Inspector。
+安装完 JPA Buddy 插件后，当我们创建好实体类后，会自动打开三个面板：JPA Structure，JPA Palette 和 JPA Inspector。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jpa-f8e43568-d286-4da6-a61a-c88b50642824.png)
 
->更多详细介绍：[https://codingdict.com/blog/1406](https://codingdict.com/blog/1406)
+> 更多详细介绍：[https://codingdict.com/blog/1406](https://codingdict.com/blog/1406)
 
-在JPA Buddy 插件的帮助下，我们其实可以直接在项目的目录上右键选择通过 JPA 的方式创建实体类。
+在 JPA Buddy 插件的帮助下，我们其实可以直接在项目的目录上右键选择通过 JPA 的方式创建实体类。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jpa-ef1d4416-1ac5-4ad8-b305-dafd454cec3b.png)
 
@@ -106,7 +107,6 @@ public class User {
 
 }
 ```
-
 
 第四步，新建 UserRepository 接口。
 
@@ -172,7 +172,7 @@ public class UserServiceImpl implements UserService{
 - `@Service` 注解用在服务层，和 `@Component` 注解作用类似（通用注解），Spring Boot 会自动扫描该类注解注解的类，并把它们假如到 Spring 容器中。
 - `@Resource` 和 `@Autowired` 注解都是用来自动装配对象的，可以用在字段上，也可以用在 setter 方法上。@Autowired 是 Spring 提供的注解，@Resource 是 Java 提供的注解，也就是说，如果项目没有使用 Spring 框架而是 JFinal 框架，@Resource 注解也是支持的。另外，@Resource 是 byName 自动装配，@Autowired 是 byType 自动装配，当有两个类型完全一样的对象时，@Autowired 就会出错了。
 
->苏三写了一篇@Autowired的文章，很不错：[https://www.zhihu.com/question/39356740](https://www.zhihu.com/question/39356740)
+> 苏三写了一篇@Autowired 的文章，很不错：[https://www.zhihu.com/question/39356740](https://www.zhihu.com/question/39356740)
 
 当然了，只是简单的增删改查已经不能提起我们学习的兴趣了，必须得来点不一样的，所以我们在 UserService 接口中添加一个分页的接口。
 
@@ -195,7 +195,6 @@ public Page<User> findAll(Pageable pageable) {
 再增加一个自定义查询接口（按照 name 的模糊查询）吧。
 
 首先是 UserRepository，直接用 JPA Buddy 插件：
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jpa-d4f2619a-85ea-437f-860d-3738669b4582.png)
 
@@ -224,7 +223,7 @@ public List<User> findByNameLikeIgnoreCase(String name) {
 
 ### 测试 Spring Data JPA
 
-在测试类中对服务类中的 5 个接口进行测试，顺带在application.yml 中开启 SQL 语句的输出，看看 JPA 自动生成的 SQL 语句到底长什么样子。
+在测试类中对服务类中的 5 个接口进行测试，顺带在 application.yml 中开启 SQL 语句的输出，看看 JPA 自动生成的 SQL 语句到底长什么样子。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jpa-a3d8641a-c701-47bb-ae44-f53eb8e05f65.png)
 
@@ -325,7 +324,7 @@ Hibernate: delete from user where id=?
 
 我想原因有这么几个：
 
-1）MyBatis 是针对SQL 的，上手难度比 Spring Data JPA 面向 JPQL 要稍微容易一些。但在 Intellij IDEA 这种集成开发环境的代码提示下，优势并不大。
+1）MyBatis 是针对 SQL 的，上手难度比 Spring Data JPA 面向 JPQL 要稍微容易一些。但在 Intellij IDEA 这种集成开发环境的代码提示下，优势并不大。
 
 2）Spring Data JPA 的资料相对少一些，而 MyBatis 的资料可以说非常全面了，遇到问题基本上都能找到解决方案，另外像 MyBatis-Plus 的出现，在一定程度上增强了 MyBatis 的能力。
 
@@ -343,8 +342,6 @@ Hibernate: delete from user where id=?
 
 > - 编程喵：[https://github.com/itwanger/coding-more](https://github.com/itwanger/coding-more)
 > - Spring Boot 整合 JPA：[https://github.com/itwanger/codingmore-learning](https://github.com/itwanger/codingmore-learning)
-
-
 
 ---
 

@@ -5,12 +5,11 @@ tag:
   - Spring Boot
 ---
 
-
-# Spring Boot为什么不需要额外安装Tomcat？
+# Spring Boot 为什么不需要额外安装 Tomcat？
 
 首次接触 Spring Boot 的时候，绝大多数小伙伴应该和我一样好奇：
 
->为什么 Spring Boot 不需要额外安装 Tomcat 啊？
+> 为什么 Spring Boot 不需要额外安装 Tomcat 啊？
 
 到底为什么呢？让我们带着好奇心开始今天的旅程吧。
 
@@ -34,7 +33,6 @@ tag:
 如果你不确定自己的 Maven 本地仓库在哪里，可以在终端执行 `mvn help:effective-settings` 命令。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/tomcat-01.png)
-
 
 顺藤摸瓜，根据 parent 的 groupId、artifactId、version 可以锁定 spring-boot-starter-parent.pom 文件的位置。
 
@@ -62,7 +60,6 @@ tag:
 Spring Boot 会帮我们选好最稳定的新版本，这体现出了 Spring Boot 项目的灵魂：“**约定优于配置**”，你想配置当然可以，但没必要，按照约定俗成的来就行。
 
 理解了这一点，我们再来继续看 pom.xml 文件，里面有一个 `spring-boot-starter-web` 依赖。这一次，我们直接按住 Ctrl 键（macOS 是 Command 键），点击鼠标左键就可以跳转到 spring-boot-starter-web.pom 的源文件了。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/tomcat-05.png)
 
@@ -157,22 +154,18 @@ spring-webmvc 是 Spring MVC 的一个实现。spring-webmvc 依赖于 spring-we
 </project>
 ```
 
-从这里可以看出来SpringBoot默认的启动容器是Tomcat，Tomcat 的组成核心 jakarta.annotation、tomcat-embed-core、tomcat-annotations-api、org.apache.tomcat.embed 全部都通过 Maven 引入过来了。
-
+从这里可以看出来 SpringBoot 默认的启动容器是 Tomcat，Tomcat 的组成核心 jakarta.annotation、tomcat-embed-core、tomcat-annotations-api、org.apache.tomcat.embed 全部都通过 Maven 引入过来了。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/tomcat-06.png)
 
 core 的版本是 9.0.55，Tomcat 官网上最新的 9.0.x 版本是 9.0.56，高了一个版本。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/tomcat-07.png)
 
 不过无所谓，直接下载 9.0.56 的 src，对比看一下，是否大致相同。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/tomcat-08.png)
 
-对比之下可以看得出，Spring Boot 引入的 Tomcat 更精简一点，大体上都是相同的，这也就是**为什么Spring Boot 不需要额外安装 Tomcat 的根本原因了**。
+对比之下可以看得出，Spring Boot 引入的 Tomcat 更精简一点，大体上都是相同的，这也就是**为什么 Spring Boot 不需要额外安装 Tomcat 的根本原因了**。
 
-Spring Boot 的 starter 已经帮我们搞定过了。这也是Spring Boot 大行其道的重要原因，省去了开发人员配置的时间，更专注于业务逻辑的实现、性能的优化，至于那些繁杂的配置嘛，交给 Spring Boot 这个大管家就可以了，他约定好的东西，只要没问题，不需要特殊化定制，用就对了。
-
+Spring Boot 的 starter 已经帮我们搞定过了。这也是 Spring Boot 大行其道的重要原因，省去了开发人员配置的时间，更专注于业务逻辑的实现、性能的优化，至于那些繁杂的配置嘛，交给 Spring Boot 这个大管家就可以了，他约定好的东西，只要没问题，不需要特殊化定制，用就对了。

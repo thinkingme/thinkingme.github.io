@@ -5,10 +5,9 @@ tag:
   - 辅助工具/轮子
 ---
 
+# knife4j：一款界面更炫酷的 API 文档生成神器
 
-# knife4j：一款界面更炫酷的API文档生成神器
-
-一般在使用 Spring Boot 开发前后端分离项目的时候，都会用到 Swagger。Swagger 是一个规范和完整的框架，用于生成、描述、调试和可视化 RESTful 风格的 Web  API 服务框架。
+一般在使用 Spring Boot 开发前后端分离项目的时候，都会用到 Swagger。Swagger 是一个规范和完整的框架，用于生成、描述、调试和可视化 RESTful 风格的 Web API 服务框架。
 
 但随着系统功能的不断增加，接口数量的爆炸式增长，Swagger 的使用体验就会变得越来越差，比如请求参数为 JSON 的时候没办法格式化，返回结果没办法折叠，还有就是没有提供搜索功能。
 
@@ -32,15 +31,15 @@ swagger-bootstrap-ui 增强后的样子长下面这样。单纯从直观体验�
 
 官方文档：
 
->[https://doc.xiaominfo.com/knife4j/documentation/](https://doc.xiaominfo.com/knife4j/documentation/)
+> [https://doc.xiaominfo.com/knife4j/documentation/](https://doc.xiaominfo.com/knife4j/documentation/)
 
 码云地址：
 
->https://gitee.com/xiaoym/knife4j
+> https://gitee.com/xiaoym/knife4j
 
 示例地址：
 
->https://gitee.com/xiaoym/swagger-bootstrap-ui-demo
+> https://gitee.com/xiaoym/swagger-bootstrap-ui-demo
 
 ### 二、整合 Swagger
 
@@ -87,7 +86,7 @@ public class SwaggerConfig {
 
 第二步，访问 API 文档，访问地址如下所示：
 
->http://localhost:9002/swagger-ui/
+> http://localhost:9002/swagger-ui/
 
 在项目路径后面添加上 `swagger-ui` 就可以了。
 
@@ -140,7 +139,7 @@ public class SwaggerConfig {}
 
 第三步，重新运行 Spring Boot 项目，访问 API 文档，查看效果。
 
->访问地址：http://localhost:9002/doc.html
+> 访问地址：http://localhost:9002/doc.html
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/knife4j-5.png)
 
@@ -211,7 +210,7 @@ Swagger 是没有搜索功能的，当要测试的接口有很多的时候，当
 
 除了我上面提到的增强功能，Knife4j 还提供了很多实用的功能，大家可以通过官网的介绍一一尝试下，生产效率会提高不少。
 
->https://doc.xiaominfo.com/knife4j/documentation/enhance.html
+> https://doc.xiaominfo.com/knife4j/documentation/enhance.html
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/knife4j-15.png)
 
@@ -219,6 +218,5 @@ Swagger 是没有搜索功能的，当要测试的接口有很多的时候，当
 
 - 在 pom.xml 文件中把 `springfox-boot-starter` 替换为 `knife4j-spring-boot-starter`；
 - 访问地址由原来的 `http://${host}:${port}/swagger-ui.html` 切换到 `http://${host}:${port}/doc.html`，如果有权限限制的话，记得开白名单。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

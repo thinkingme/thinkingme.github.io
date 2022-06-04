@@ -9,7 +9,7 @@ tag:
 
 之前已经详细、全面地介绍了 [Log4j](https://mp.weixin.qq.com/s/AXgNnJe8djD901EmhFkWUg)，相信小伙伴们已经完全掌握了。那我在读嵩山版的阿里巴巴开发手册（没有的小伙伴，记着找我要）的时候，就发现了一条「**强制**」性质的日志规约：
 
->应用中不可以直接使用日志系统（Log4j、Logback）中的 API，而应该使用日志框架中的 API，比如说 SLF4J，使用门面模式的日志框架，有利于维护和统一各个类的日志处理方式。
+> 应用中不可以直接使用日志系统（Log4j、Logback）中的 API，而应该使用日志框架中的 API，比如说 SLF4J，使用门面模式的日志框架，有利于维护和统一各个类的日志处理方式。
 
 （为什么我把这段文字手敲了下来呢，因为我发现阿里巴巴开发手册上的有语病，瞧下面红色标出的部分）
 
@@ -168,7 +168,7 @@ log4j.appender.stdout.layout.ConversionPattern = [%-5p] %d{yyyy-MM-dd HH:mm:ss,S
 log4j.appender.D = org.apache.log4j.DailyRollingFileAppender
 log4j.appender.D.File = debug.log
 log4j.appender.D.Append = true
-log4j.appender.D.Threshold = DEBUG 
+log4j.appender.D.Threshold = DEBUG
 log4j.appender.D.layout = org.apache.log4j.PatternLayout
 log4j.appender.D.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n
 ```
@@ -208,7 +208,7 @@ SLF4J 除了提供这种解决方案，绑定 Log4j 替换 JUL 和 JCL；还提�
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/slf4j-e9233a42-d13e-4d7d-9d9e-b049d08303aa.png)
 
-###  03、SLF4J 比 Log4J 强在哪
+### 03、SLF4J 比 Log4J 强在哪
 
 SLF4J 除了解决掉以上的痛点，帮助我们的应用程序独立于任何特定的日志系统，还有一个非常牛逼的功能，那就是 SLF4J 在打印日志的时候使用了占位符 `{}`，它有点类似于 String 类的 `format()` 方法（使用 `%s` 等填充参数），但更加便捷，这在很大程度上提高了程序的性能。
 
@@ -248,15 +248,15 @@ log4j.appender.stdout.layout.ConversionPattern = [%-5p] %d{yyyy-MM-dd HH:mm:ss,S
 log4j.appender.D = org.apache.log4j.DailyRollingFileAppender
 log4j.appender.D.File = debug.log
 log4j.appender.D.Append = true
-log4j.appender.D.Threshold = DEBUG 
+log4j.appender.D.Threshold = DEBUG
 log4j.appender.D.layout = org.apache.log4j.PatternLayout
 log4j.appender.D.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n
 
 ### 输出ERROR 级别以上的日志到=error.log ###
 log4j.appender.E = org.apache.log4j.DailyRollingFileAppender
-log4j.appender.E.File =error.log 
+log4j.appender.E.File =error.log
 log4j.appender.E.Append = true
-log4j.appender.E.Threshold = ERROR 
+log4j.appender.E.Threshold = ERROR
 log4j.appender.E.layout = org.apache.log4j.PatternLayout
 log4j.appender.E.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n
 ```
@@ -284,7 +284,6 @@ public class Log4jSLF4JDemo {
 看到了吧，使用占位符要比“+”操作符方便的多。并且此时不再需要 `isDebugEnabled()` 先进行判断，`debug()` 方法会在字符串拼接之前执行。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/slf4j-5e831353-b2a3-4a39-80e3-47a044009d95.png)
-
 
 如果只是 Log4J 的话，会先进行字符串拼接，再执行 `debug()` 方法，来看示例代码：
 
@@ -335,7 +334,5 @@ logger.debug("\u6C89\u9ED8\u738B\u4E8C\uFF0C{}\u5C81", Integer.valueOf(18));
 3）SLF4J 在打印日志的时候可以使用占位符，既提高了程序性能（临时字符串少了，垃圾回收的工作量就小），又让代码变得美观统一。
 
 4）小伙伴们如果知道更多秘密的话，建议在留言区贴出来哦。
-
-
 
 <img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">

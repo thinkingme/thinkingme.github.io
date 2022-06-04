@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java中this和super的用法总结
+# Java 中 this 和 super 的用法总结
 
 “哥，被喊大舅子的感觉怎么样啊？”三妹不怀好意地对我说，她眼睛里充满着不屑。
 
@@ -106,8 +106,6 @@ public class WithThisStudent {
 ```
 
 “这次，实例变量有值了，在构造方法中，`this.xxx` 指向的就是实例变量，而不再是参数本身了。”我慢吞吞地说着，“当然了，如果参数名和实例变量名不同的话，就不必使用 this 关键字，但我建议使用 this 关键字，这样的代码更有意义。”
-
-
 
 ### 03、调用当前类的方法
 
@@ -306,7 +304,7 @@ public class ThisAsMethodResult {
     ThisAsMethodResult getThisAsMethodResult() {
         return this;
     }
-    
+
     void out() {
         System.out.println("hello");
     }
@@ -385,7 +383,6 @@ class Dog extends Animal {
 
 “当子类和父类的方法名相同时，可以使用 super 关键字来调用父类的方法。换句话说，super 关键字可以用于方法重写时访问到父类的方法。”
 
-
 ```java
 public class ReferParentMethod {
     public static void main(String[] args) {
@@ -413,7 +410,7 @@ class Dog extends Animal {
         super.eat();
         bark();
     }
-}  
+}
 ```
 
 “瞧，三妹。父类 Animal 和子类 Dog 中都有一个名为 `eat()` 的方法，通过 `super.eat()` 可以访问到父类的 `eat()` 方法。”

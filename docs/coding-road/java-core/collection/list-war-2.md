@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java中ArrayList和LinkedList的区别
-
+# Java 中 ArrayList 和 LinkedList 的区别
 
 ### 01、ArrayList 是如何实现的？
 
@@ -15,7 +14,6 @@ ArrayList 实现了 List 接口，继承了 AbstractList 抽象类。
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/list-war-2-01.png)
 
 底层是基于数组实现的，并且实现了动态扩容
-
 
 ```java
 public class ArrayList<E> extends AbstractList<E>
@@ -141,9 +139,7 @@ private void writeObject(java.io.ObjectOutputStream s)
 
 ### 02、LinkedList 是如何实现的？
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/list-war-2-02.png)
-
 
 LinkedList 是一个继承自 AbstractSequentialList 的双向链表，因此它也可以被当作堆栈、队列或双端队列进行操作。
 
@@ -158,7 +154,7 @@ public class LinkedList<E>
 }
 ```
 
- LinkedList 内部定义了一个 Node 节点，它包含 3 个部分：元素内容 item，前引用 prev 和后引用 next。代码如下所示：
+LinkedList 内部定义了一个 Node 节点，它包含 3 个部分：元素内容 item，前引用 prev 和后引用 next。代码如下所示：
 
 ```java
 private static class Node<E> {
@@ -301,7 +297,7 @@ void linkLast(E e) {
 }
 ```
 
-先将队尾的节点 last 存放到临时变量 l 中（不是说不建议使用 I 作为变量名吗？Java 的作者们明知故犯啊），然后生成新的 Node 节点，并赋给 last，如果 l  为 null，说明是第一次添加，所以 first 为新的节点；否则将新的节点赋给之前 last 的 next。
+先将队尾的节点 last 存放到临时变量 l 中（不是说不建议使用 I 作为变量名吗？Java 的作者们明知故犯啊），然后生成新的 Node 节点，并赋给 last，如果 l 为 null，说明是第一次添加，所以 first 为新的节点；否则将新的节点赋给之前 last 的 next。
 
 插入到指定位置的源码：
 
@@ -550,7 +546,6 @@ private void fastRemove(Object[] es, int i) {
 
 从源码可以看得出，只要删除的不是最后一个元素，都需要数组重组。删除的元素位置越靠前，代价就越大。
 
-
 **2）LinkedList**
 
 LinkedList 删除元素的时候，有四种常用的方式：
@@ -717,7 +712,6 @@ int indexOfRange(Object o, int start, int end) {
 
 根据元素找索引的话，就需要遍历整个数组了，从头到尾依次找。
 
-
 **2）LinkedList**
 
 遍历 LinkedList 找到某个元素的话，通常也有两种形式：
@@ -778,8 +772,6 @@ LinkedList.Node<E> node(int index) {
     }
 }
 ```
-
-
 
 那如果使用的是迭代器呢？
 

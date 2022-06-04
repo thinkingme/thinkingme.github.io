@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# 深入浅出 Java 8 Lambda表达式
-
+# 深入浅出 Java 8 Lambda 表达式
 
 今天分享的主题是《Lambda 表达式入门》，这也是之前一些读者留言强烈要求我写一写的，不好意思，让你们久等了，现在来满足你们，为时不晚吧？
 
@@ -36,7 +35,7 @@ Runnable 接口非常简单，仅有一个抽象方法 `run()`；细心的同学
 
 我看了它的源码，里面有这样一段注释：
 
->Note that instances of functional interfaces can be created with lambda expressions, method references, or constructor references.
+> Note that instances of functional interfaces can be created with lambda expressions, method references, or constructor references.
 
 大致的意思就是说，通过 `@FunctionalInterface` 标记的接口可以通过 Lambda 表达式创建实例。具体怎么表现呢？
 
@@ -138,9 +137,9 @@ public static void main(String[] args) {
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/java8/Lambda-3.jpg)
 这个问题发生的原因是因为 Java 规范中是这样规定的：
 
->Any local variable, formal parameter, or exception parameter used but not declared in a lambda expression
-must either be declared final or be effectively final [(§4.12.4)](http://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.4),
-or a compile-time error occurs where the use is attempted.
+> Any local variable, formal parameter, or exception parameter used but not declared in a lambda expression
+> must either be declared final or be effectively final [(§4.12.4)](http://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.4),
+> or a compile-time error occurs where the use is attempted.
 
 大致的意思就是说，Lambda 表达式中要用到的，但又未在 Lambda 表达式中声明的变量，必须声明为 final 或者是 effectively final，否则就会出现编译错误。
 
@@ -345,6 +344,6 @@ this = com.cmower.java_demo.journal.LamadaTest@3feba861
 
 尽管 Lambda 表达式在简化 Java 编程方面做了很多令人惊讶的努力，但在某些情况下，不当的使用仍然会导致不必要的混乱，大家伙慎用。
 
-好了，我亲爱的读者朋友们，以上就是本文的全部内容了。能在疫情期间坚持看技术文，二哥必须要伸出大拇指为你点个赞👍。原创不易，如果觉得有点用的话，请不要吝啬你手中**点赞**的权力——因为这将是我写作的最强动力。
+好了，我亲爱的读者朋友们，以上就是本文的全部内容了。能在疫情期间坚持看技术文，二哥必须要伸出大拇指为你点个赞 👍。原创不易，如果觉得有点用的话，请不要吝啬你手中**点赞**的权力——因为这将是我写作的最强动力。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

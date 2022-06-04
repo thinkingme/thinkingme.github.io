@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java中的static关键字解析
-
+# Java 中的 static 关键字解析
 
 “哥，你牙龈肿痛轻点没？周一的教妹学 Java 你都没有更新，偷懒了呀！”三妹关心地问我。
 
@@ -93,7 +92,6 @@ public class Counter {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/19-02.png)
 
-
 “没关系，三妹，你先盲猜一下，这段代码输出的结果是什么？”
 
 “按照你的逻辑，应该输出三个 1？是这样吗？”三妹眨眨眼，有点不太自信地回答。
@@ -145,7 +143,6 @@ public class StaticCounter {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/keywords/19-03.png)
 
-
 ### 02、静态方法
 
 “说完静态变量，我们来说静态方法。”说完，我准备点一支华子来抽，三妹阻止了我，她指一指烟盒上的「吸烟有害身体健康」，我笑了。
@@ -170,21 +167,21 @@ public class StaticMethodStudent {
         this.name = name;
         this.age = age;
     }
-    
+
     static void change() {
         school = "河南大学";
     }
-    
+
     void out() {
         System.out.println(name + " " + age + " " + school);
     }
 
     public static void main(String[] args) {
         StaticMethodStudent.change();
-        
+
         StaticMethodStudent s1 = new StaticMethodStudent("沉默王二", 18);
         StaticMethodStudent s2 = new StaticMethodStudent("沉默王三", 16);
-        
+
         s1.out();
         s2.out();
     }
@@ -251,7 +248,6 @@ public class StaticBlock {
 ```
 
 “静态代码块通常用来初始化一些静态变量，它会优先于 `main()` 方法执行。”
-
 
 “来看一下程序的输出结果吧。”
 

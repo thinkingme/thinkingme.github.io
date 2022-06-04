@@ -5,16 +5,13 @@ tag:
   - Nginx
 ---
 
-# 5分钟带你深入浅出搞懂 Nginx
-
+# 5 分钟带你深入浅出搞懂 Nginx
 
 最近在搭建一个网站，就不可避免地要用到 Nginx，索性就出一期 Nginx 的入门教程，希望也可以帮助到大家~😁
 
 作为开发者，相信大家都知道 Nginx 的重要性。Nginx 是一个高性能的 HTTP 和反向代理 Web 服务器，由俄罗斯的伊戈尔·赛索耶夫开发，第一个版本发布于 2004 年 10 月 4 日。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/nginx/nginx-01.png)
-
 
 Nginx 的特点是：
 
@@ -65,7 +62,7 @@ Nginx 的特点是：
 
 针对不同的操作系统，Nginx 的安装各不相同。Windows 可以直接到官网下载 zip 绿色安装包，解压后就可以了。
 
->http://nginx.org/en/download.html
+> http://nginx.org/en/download.html
 
 之前带大家白票过阿里云的服务器，有 Linux 服务器的话，直接通过[宝塔面板](https://mp.weixin.qq.com/s/ditN9J80rSWwnYRumwb4ww)这个神器就可以安装了。
 
@@ -201,13 +198,13 @@ root 我指定了 `/home/www` 目录，首页文件为 index.html。这个文件
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/nginx/nginx-13.png)
 
->https://www.bilibili.com/video/BV1F5411J7vK
+> https://www.bilibili.com/video/BV1F5411J7vK
 
-**2）黑马程序员Nginx教程**，总共 159 讲，基本上算是非常全面的 Nginx 的视频教程了。
+**2）黑马程序员 Nginx 教程**，总共 159 讲，基本上算是非常全面的 Nginx 的视频教程了。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/nginx/nginx-14.png)
 
->https://www.bilibili.com/video/BV1ov41187bq
+> https://www.bilibili.com/video/BV1ov41187bq
 
 **3）极客时间上的 Nginx100 讲**，讲的比较深一点，涉及到不少原理层面的东西。钱包比较鼓的话，可以去付费下。不过，听说在某个地方也可以白票。
 
@@ -215,10 +212,8 @@ root 我指定了 `/home/www` 目录，首页文件为 index.html。这个文件
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/nginx/nginx-15.png)
 
->https://juejin.cn/post/6844904144235413512
+> https://juejin.cn/post/6844904144235413512
 
 这些资料如果能全部过一遍的话，我要喊你 Nginx 小王子了，估计公司遇到 Nginx 问题的话，你肯定是解决问题的那一个。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
-

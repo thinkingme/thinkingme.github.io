@@ -66,9 +66,7 @@ execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?
 @Pointcut("execution(public * com.codingmore.controller.*.*(..))")
 ```
 
- 表示 `com.codingmore.controller` 包下的所有 public 方法都要应用切面的通知。
-
-
+表示 `com.codingmore.controller` 包下的所有 public 方法都要应用切面的通知。
 
 ### 三、实操 AOP 记录接口访问日志
 
@@ -80,7 +78,6 @@ execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?
     <artifactId>spring-boot-starter-aop</artifactId>
 </dependency>
 ```
-
 
 第二步，添加日志信息封装类 WebLog，用于记录什么样的操作、操作的人是谁、开始时间、花费的时间、操作的路径、操作的方法名、操作主机的 IP、请求参数、返回结果等。
 
@@ -161,7 +158,7 @@ public class WebLogAspect {
 
 第四步，运行项目，并对 controller 下的某个控制器进行测试。
 
->Swagger knife4j 访问地址：http://localhost:9022/doc.html
+> Swagger knife4j 访问地址：http://localhost:9022/doc.html
 
 执行登录用户查询操作：
 
@@ -172,14 +169,13 @@ public class WebLogAspect {
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/aop-log-4.png)
 源码地址：
 
->[https://github.com/itwanger/coding-more](https://github.com/itwanger/coding-more)
+> [https://github.com/itwanger/coding-more](https://github.com/itwanger/coding-more)
 
 参考链接：
 
->作者 cxuan：https://www.cnblogs.com/cxuanBlog/p/13060510.html<br>
->灰小猿：https://bbs.huaweicloud.com/blogs/289045<br>
->山高我为峰：https://www.cnblogs.com/liaojie970/p/7883687.html<br>
->macrozheng：https://github.com/macrozheng/mall
-
+> 作者 cxuan：https://www.cnblogs.com/cxuanBlog/p/13060510.html<br>
+> 灰小猿：https://bbs.huaweicloud.com/blogs/289045<br>
+> 山高我为峰：https://www.cnblogs.com/liaojie970/p/7883687.html<br>
+> macrozheng：https://github.com/macrozheng/mall
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

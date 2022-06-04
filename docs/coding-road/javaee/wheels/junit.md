@@ -5,8 +5,7 @@ tag:
   - 辅助工具/轮子
 ---
 
-# Junit：一个开源的Java单元测试框架
-
+# Junit：一个开源的 Java 单元测试框架
 
 ### 01、前世今生
 
@@ -60,7 +59,7 @@ public class Factorial {
 
 勾选上要编写测试用例的方法 `fact()`，然后点击「OK」。
 
-此时，IDEA 会自动在当前类所在的包下生成一个类名带 Test（惯例）的测试类。如下图所示。 
+此时，IDEA 会自动在当前类所在的包下生成一个类名带 Test（惯例）的测试类。如下图所示。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/junit-756305d6-7166-4737-8665-89d24a1eefae.png)
 
@@ -167,7 +166,7 @@ public class DatabaseTest {
     public static void init() {
         db = createDb(...);
     }
-    
+
     @AfterAll
     public static void drop() {
         ...

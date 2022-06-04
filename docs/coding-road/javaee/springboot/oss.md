@@ -5,7 +5,6 @@ tag:
   - Spring Boot
 ---
 
-
 # 崩溃！我带的实习生竟然把图片直接存到了服务器上！
 
 小二是新来的实习生，作为技术 leader，我给他安排了一个非常简单的练手任务，把前端 markdown 编辑器里上传的图片保存到服务器端，结果他真的就把图片直接保存到了服务器上，这下可把我气坏了，就不能搞个对象存储服务，比如说 OSS、MinIO？
@@ -16,12 +15,9 @@ tag:
 
 特此声明：阿里云 OSS 的产品负责人看到后请自觉过来结算下推广费用（狗头）。真心讲：Spring Boot+OSS 在实际开发中挺常见的。
 
-
 ### 一、开通 OSS
 
-
-
-OSS 也就是 Object Storage Service，是阿里云提供的一套对象存储服务，国内的竞品还有七牛云的 Kodo和腾讯云的COS。
+OSS 也就是 Object Storage Service，是阿里云提供的一套对象存储服务，国内的竞品还有七牛云的 Kodo 和腾讯云的 COS。
 
 第一步，登录阿里云官网，搜索“OSS”关键字，进入 OSS 产品页。
 
@@ -68,7 +64,7 @@ aliyun:
       prefix: codingmore/images/
 ```
 
-第三步，新增 OssClientConfig.java 配置类，主要就是通过  @Value 注解从配置文件中获取配置项，然后创建 OSSClient。
+第三步，新增 OssClientConfig.java 配置类，主要就是通过 @Value 注解从配置文件中获取配置项，然后创建 OSSClient。
 
 ```java
 @Configuration
@@ -114,15 +110,15 @@ public class OssServiceImpl implements IOssService{
 
     @Value("${aliyun.oss.maxSize}")
     private int maxSize;
-   
+
     @Value("${aliyun.oss.bucketName}")
     private String bucketName;
-  
+
     @Value("${aliyun.oss.dir.prefix}")
     private String dirPrefix;
-    
+
     @Autowired
-    private OSSClient ossClient;   
+    private OSSClient ossClient;
     @Override
     public String upload(MultipartFile file) {
         try {
@@ -154,7 +150,7 @@ public class OssServiceImpl implements IOssService{
     private String formatPath(String objectName){
         return "https://"  +bucketName+"."+ ossClient.getEndpoint().getHost() + "/" + objectName;
     }
-}  
+}
 ```
 
 第六步，打开 Apipost，测试 OSS 上传接口，注意参数选择文件，点击发送后可以看到服务器端返回的图片链接。
@@ -169,7 +165,7 @@ public class OssServiceImpl implements IOssService{
 
 codingmore-admin-web 是编程喵（Codingmore）的前端管理项目，可以通过下面的地址拉取到本地。
 
->https://github.com/itwanger/codingmore-admin-web
+> https://github.com/itwanger/codingmore-admin-web
 
 执行 `yarn run dev` 命令后就可以启动 Web 管理端了，进入到文章编辑页面，选择一张图片进行上传，可以确认图片是可以正常从前端上传到服务器端，服务器端再上传到 OSS，之后再返回前端图片访问链接的。
 
@@ -220,10 +216,10 @@ private void handleContentImg(Posts posts) {
         } catch (InterruptedException | ExecutionException e) {
             LOGGER.error("获取图片链接出错{}", e.getMessage());
         }
-        
+
     }
     posts.setPostContent(content);
-} 
+}
 ```
 
 第二步，在 OssServiceImpl.java 中添加根据外链地址上传图片到 OSS 的方法。
@@ -252,12 +248,8 @@ public String upload(String url) {
 
 综上来看，实习生小二在 Spring Boot 中整合 OSS 的代码还是挺靠谱的。也许 OSS+CDN 才是图床的最好解决方案，不过[阿里云的 HTTPS CDN 在 GitHub 上无法回源](https://mp.weixin.qq.com/s/VRmXn2_71yy3w-SvKTs1Fg)导致图片不显示的问题仍然没有得到有效的解决。
 
-需要源码的小伙伴可以直接到编程喵🐱源码路径拉取：
+需要源码的小伙伴可以直接到编程喵 🐱 源码路径拉取：
 
->[https://github.com/itwanger/coding-more](https://github.com/itwanger/coding-more)
+> [https://github.com/itwanger/coding-more](https://github.com/itwanger/coding-more)
 
--------
-
-
-
-
+---

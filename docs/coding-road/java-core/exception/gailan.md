@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# 一文读懂Java异常处理
+# 一文读懂 Java 异常处理
 
 ## 一、什么是异常
 
@@ -55,7 +55,7 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
 
 “你看，三妹，这个原生的异常信息对用户来说，显然是不太容易理解的，但对于我们开发者来说，简直不要太直白了——很容易就能定位到异常发生的根源。”
 
-## 二、Exception和Error的区别
+## 二、Exception 和 Error 的区别
 
 “哦，我知道了。下一个问题，我经常看到一些文章里提到 Exception 和 Error，二哥你能帮我解释一下它们之间的区别吗？”三妹问。
 
@@ -71,7 +71,7 @@ Exception 的出现，意味着程序出现了一些在可控范围内的问题�
 
 比如说之前提到的 ArithmeticException，很明显是因为除数出现了 0 的情况，我们可以选择捕获异常，然后提示用户不应该进行除 0 操作，当然了，更好的做法是直接对除数进行判断，如果是 0 就不进行除法运算，而是告诉用户换一个非 0 的数进行运算。
 
-## 三、checked和unchecked异常
+## 三、checked 和 unchecked 异常
 
 “三妹，还能想到其他的问题吗？”
 
@@ -97,7 +97,6 @@ checked 异常（检查型异常）在源代码里必须显式地捕获或者抛
 
 - NoClassDefFoundError：程序在编译时可以找到所依赖的类，但是在运行时找不到指定的类文件，导致抛出该错误；原因可能是 jar 包缺失或者调用了初始化失败的类。
 - ClassNotFoundException：当动态加载 Class 对象的时候找不到对应的类时抛出该异常；原因可能是要加载的类不存在或者类名写错了。
-
 
 其次，像 IOException、ClassNotFoundException、SQLException 都属于 checked 异常；像 RuntimeException 以及子类 ArithmeticException、ClassCastException、ArrayIndexOutOfBoundsException、NullPointerException，都属于 unchecked 异常。
 
@@ -229,7 +228,7 @@ Exception in thread "main" java.lang.ArithmeticException: 年纪未满 18 岁，
 ```java
 public void myMethod() {
     try {
-        // 可能抛出异常 
+        // 可能抛出异常
     } catch (ArithmeticException e) {
         // 算术异常
     } catch (NullPointerException e) {
@@ -259,7 +258,7 @@ public static void myMethod1() throws ArithmeticException, NullPointerException{
 
 “好了，我来总结下 throw 和 throws 的区别，三妹，你记一下。”
 
- 1）throws 关键字用于声明异常，它的作用和 try-catch 相似；而 throw 关键字用于显式的抛出异常。
+1）throws 关键字用于声明异常，它的作用和 try-catch 相似；而 throw 关键字用于显式的抛出异常。
 
 2）throws 关键字后面跟的是异常的名字；而 throw 关键字后面跟的是异常的对象。
 
@@ -273,7 +272,7 @@ throws ArithmeticException;
 throw new ArithmeticException("算术异常");
 ```
 
- 3）throws 关键字出现在方法签名上，而 throw 关键字出现在方法体里。
+3）throws 关键字出现在方法签名上，而 throw 关键字出现在方法体里。
 
 4）throws 关键字在声明异常的时候可以跟多个，用逗号隔开；而 throw 关键字每次只能抛出一个异常。
 

@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# 大白话说Java反射：入门、使用、原理
+# 大白话说 Java 反射：入门、使用、原理
 
 “二哥，什么是反射呀？”三妹开门见山地问。
 
@@ -108,7 +108,7 @@ public class ReflectionDemo1 {
 Class clazz = Class.forName("com.itwanger.s39.Writer");
 ```
 
-第二步，通过  Class 对象获取构造方法 Constructor 对象：
+第二步，通过 Class 对象获取构造方法 Constructor 对象：
 
 ```java
 Constructor constructor = clazz.getConstructor();
@@ -313,11 +313,10 @@ Method[] methods2 = System.class.getMethods();
 
 第一篇：深入理解 Java 反射和动态代理
 
->链接：https://dunwu.github.io/javacore/basics/java-reflection.html#_1-%E5%8F%8D%E5%B0%84%E7%AE%80%E4%BB%8B
+> 链接：https://dunwu.github.io/javacore/basics/java-reflection.html#_1-%E5%8F%8D%E5%B0%84%E7%AE%80%E4%BB%8B
 
-第二篇：大白话说Java反射：入门、使用、原理：
+第二篇：大白话说 Java 反射：入门、使用、原理：
 
->链接：https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html
+> 链接：https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
-

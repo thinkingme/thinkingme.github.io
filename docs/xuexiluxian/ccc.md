@@ -12,7 +12,7 @@ tag:
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/ccc-primer-book.png)
 
-*是不是一下子就暴露自己工作年限了*？
+_是不是一下子就暴露自己工作年限了_？
 
 这本书非常全面地讲解了 C++ 的语法以及 C++ 的各种特性，如果能坚持看完的话，帮助会很大。如果时间比较充分的话，建议至少看两遍。如果时间比较紧张的话，至少通读一遍吧，要能把握住这本书的大体框架，然后结合个人的实际情况选择性地看一些重点章节。
 
@@ -20,11 +20,11 @@ tag:
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/ccc-2.jpg)
 
-第三本是《STL源码剖析》这本书，侯捷老师写的，这本书讲了C++的底层实现，包括各种容器（vector、list、heap、deque、Red Black tree、hash table、set/map）的实现、各种常见算法（排序、查找、排列组合、数据移动与复制技术）的实现等。
+第三本是《STL 源码剖析》这本书，侯捷老师写的，这本书讲了 C++的底层实现，包括各种容器（vector、list、heap、deque、Red Black tree、hash table、set/map）的实现、各种常见算法（排序、查找、排列组合、数据移动与复制技术）的实现等。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/ccc-3.png)
 
-第四本《深度探索C++对象模型》，侯捷老师译的，这本书讲解了 C++ 面向对象特性的底层实现机制，读起来虽然有点晦涩，但读完后就会搞明白“代码跑起来的时候实际发生了什么”。
+第四本《深度探索 C++对象模型》，侯捷老师译的，这本书讲解了 C++ 面向对象特性的底层实现机制，读起来虽然有点晦涩，但读完后就会搞明白“代码跑起来的时候实际发生了什么”。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/ccc-4.jpg)
 
@@ -42,24 +42,22 @@ tag:
 
 ![回复关键字「**cpp**」](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
 
-更多 C++ 的学习资料，可以直接戳我整理的这个 GitHub/码云仓库——📚程序员必读书单整理，附下载地址，里面有大量的 C++ 学习资料。
+更多 C++ 的学习资料，可以直接戳我整理的这个 GitHub/码云仓库——📚 程序员必读书单整理，附下载地址，里面有大量的 C++ 学习资料。
 
 - GitHub 地址：[https://github.com/itwanger/JavaBooks](https://github.com/itwanger/JavaBooks#c-1)
 - 码云地址：[https://gitee.com/itwanger/JavaBooks](https://gitee.com/itwanger/JavaBooks#c-1)
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/cpp-books.jpg)
 
 简单罗列一下：
 
-- 大规模c++程序设计
+- 大规模 c++程序设计
 - 牛客校招面试题（附答案与解析）c++篇
-- 深度探索C++对象模型 PDF中文清晰版
-- 深入理解c11(c11新特性解析与应用)
+- 深度探索 C++对象模型 PDF 中文清晰版
+- 深入理解 c11(c11 新特性解析与应用)
 - C++ Primer 第五版--- 高清版
 - C++语言的设计和演化
 - Effective.Modern.C++ - 中文版
-- Effective+STL中文版：50条有效使用STL的经验
+- Effective+STL 中文版：50 条有效使用 STL 的经验
 - More Effective C++中文
-- STL源码剖析--侯捷
-
+- STL 源码剖析--侯捷

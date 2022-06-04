@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java8系列之重新认识HashMap
+# Java8 系列之重新认识 HashMap
 
 ## 一、hash 方法的原理
 
@@ -60,7 +60,7 @@ final Node<K,V> getNode(int hash, Object key) {
 
 用 $2^n$ 替换下 b 就是：
 
->a % $2^n$ = a & ($2^n$-1)
+> a % $2^n$ = a & ($2^n$-1)
 
 我们来验证一下，假如 a = 14，b = 8，也就是 $2^3$，n=3。
 
@@ -218,7 +218,7 @@ void transfer(Entry[] newTable, boolean rehash) {
 }
 ```
 
-`e.next = newTable[i]`，也就是使用了单链表的头插入方式，同一位置上新元素总会被放在链表的头部位置；这样先放在一个索引上的元素终会被放到链表的尾部（如果发生了hash冲突的话），这一点和 JDK 8 有区别。
+`e.next = newTable[i]`，也就是使用了单链表的头插入方式，同一位置上新元素总会被放在链表的头部位置；这样先放在一个索引上的元素终会被放到链表的尾部（如果发生了 hash 冲突的话），这一点和 JDK 8 有区别。
 
 **在旧数组中同一个链表上的元素，通过重新计算索引位置后，有可能被放到了新数组的不同位置上**（仔细看下面的内容，会解释清楚这一点）。
 
@@ -268,21 +268,20 @@ n 为 table 的长度，默认值为 16。
 
 新的索引就会发生这样的变化：
 
-- 原来的索引是 5（*0* 0101）
+- 原来的索引是 5（_0_ 0101）
 - 原来的容量是 16
 - 扩容后的容量是 32
-- 扩容后的索引是 21（*1* 0101），也就是 5+16，也就是原来的索引+原来的容量
+- 扩容后的索引是 21（_1_ 0101），也就是 5+16，也就是原来的索引+原来的容量
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-04.png)
 
-
-也就是说，JDK 8 不需要像 JDK 7 那样重新计算 hash，只需要看原来的hash值新增的那个bit是1还是0就好了，是0的话就表示索引没变，是1的话，索引就变成了“原索引+原来的容量”。
+也就是说，JDK 8 不需要像 JDK 7 那样重新计算 hash，只需要看原来的 hash 值新增的那个 bit 是 1 还是 0 就好了，是 0 的话就表示索引没变，是 1 的话，索引就变成了“原索引+原来的容量”。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-resize-05.png)
 
-JDK 8 的这个设计非常巧妙，既省去了重新计算hash的时间，同时，由于新增的1 bit是0还是1是随机的，因此扩容的过程，可以均匀地把之前的节点分散到新的位置上。
+JDK 8 的这个设计非常巧妙，既省去了重新计算 hash 的时间，同时，由于新增的 1 bit 是 0 还是 1 是随机的，因此扩容的过程，可以均匀地把之前的节点分散到新的位置上。
 
- woc，只能说 HashMap 的作者 Doug Lea、Josh Bloch、Arthur van Hoff、Neal Gafter 真的强——的一笔。
+woc，只能说 HashMap 的作者 Doug Lea、Josh Bloch、Arthur van Hoff、Neal Gafter 真的强——的一笔。
 
 JDK 8 扩容的源代码：
 
@@ -369,7 +368,7 @@ final Node<K,V>[] resize() {
 }
 ```
 
-## 三、加载因子为什么是0.75
+## 三、加载因子为什么是 0.75
 
 JDK 8 中的 HashMap 是用数组+链表+红黑树实现的，我们要想往 HashMap 中放数据或者取数据，就需要确定数据在数组中的下标。
 
@@ -395,7 +394,7 @@ i = (n - 1) & hash
 
 加载因子是用来表示 HashMap 中数据的填满程度：
 
->加载因子 = 填入哈希表中的数据个数 / 哈希表的长度
+> 加载因子 = 填入哈希表中的数据个数 / 哈希表的长度
 
 这就意味着：
 
@@ -412,7 +411,7 @@ i = (n - 1) & hash
 
 这个临界值由什么来确定呢？
 
->临界值 = 初始容量 * 加载因子
+> 临界值 = 初始容量 \* 加载因子
 
 一开始，HashMap 的容量是 16：
 
@@ -426,25 +425,25 @@ static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // aka 16
 static final float DEFAULT_LOAD_FACTOR = 0.75f;
 ```
 
-也就是说，当 16*0.75=12 时，会触发扩容机制。
+也就是说，当 16\*0.75=12 时，会触发扩容机制。
 
-为什么加载因子会选择 0.75 呢？为什么不是0.8、0.6呢？
+为什么加载因子会选择 0.75 呢？为什么不是 0.8、0.6 呢？
 
 这跟统计学里的一个很重要的原理——泊松分布有关。
 
 是时候上维基百科了：
 
->泊松分布，是一种统计与概率学里常见到的离散概率分布，由法国数学家西莫恩·德尼·泊松在1838年时提出。它会对随机事件的发生次数进行建模，适用于涉及计算在给定的时间段、距离、面积等范围内发生随机事件的次数的应用情形。
+> 泊松分布，是一种统计与概率学里常见到的离散概率分布，由法国数学家西莫恩·德尼·泊松在 1838 年时提出。它会对随机事件的发生次数进行建模，适用于涉及计算在给定的时间段、距离、面积等范围内发生随机事件的次数的应用情形。
 
 阮一峰老师曾在一篇博文中详细的介绍了泊松分布和指数分布，大家可以去看一下。
 
->链接：https://www.ruanyifeng.com/blog/2015/06/poisson-distribution.html
+> 链接：https://www.ruanyifeng.com/blog/2015/06/poisson-distribution.html
 
 具体是用这么一个公式来表示的。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-01.png)
 
-等号的左边，P 表示概率，N表示某种函数关系，t 表示时间，n 表示数量。
+等号的左边，P 表示概率，N 表示某种函数关系，t 表示时间，n 表示数量。
 
 在 HashMap 的 doc 文档里，曾有这么一段描述：
 
@@ -476,39 +475,39 @@ more: less than 1 in ten million
 
 大致的意思就是：
 
-因为 TreeNode（红黑树）的大小约为链表节点的两倍，所以我们只有在一个拉链已经拉了足够节点的时候才会转为tree（参考TREEIFY_THRESHOLD）。并且，当这个hash桶的节点因为移除或者扩容后resize数量变小的时候，我们会将树再转为拉链。如果一个用户的数据的hashcode值分布得很均匀的话，就会很少使用到红黑树。
+因为 TreeNode（红黑树）的大小约为链表节点的两倍，所以我们只有在一个拉链已经拉了足够节点的时候才会转为 tree（参考 TREEIFY_THRESHOLD）。并且，当这个 hash 桶的节点因为移除或者扩容后 resize 数量变小的时候，我们会将树再转为拉链。如果一个用户的数据的 hashcode 值分布得很均匀的话，就会很少使用到红黑树。
 
-理想情况下，我们使用随机的hashcode值，加载因子为0.75情况，尽管由于粒度调整会产生较大的方差，节点的分布频率仍然会服从参数为0.5的泊松分布。链表的长度为 8 发生的概率仅有 0.00000006。
+理想情况下，我们使用随机的 hashcode 值，加载因子为 0.75 情况，尽管由于粒度调整会产生较大的方差，节点的分布频率仍然会服从参数为 0.5 的泊松分布。链表的长度为 8 发生的概率仅有 0.00000006。
 
-虽然这段话的本意更多的是表示 jdk 8中为什么拉链长度超过8的时候进行了红黑树转换，但提到了 0.75 这个加载因子——但这并不是为什么加载因子是 0.75 的答案。
+虽然这段话的本意更多的是表示 jdk 8 中为什么拉链长度超过 8 的时候进行了红黑树转换，但提到了 0.75 这个加载因子——但这并不是为什么加载因子是 0.75 的答案。
 
 为了搞清楚到底为什么，我看到了这篇文章：
 
->参考链接：https://segmentfault.com/a/1190000023308658
+> 参考链接：https://segmentfault.com/a/1190000023308658
 
 里面提到了一个概念：**二项分布**（二哥概率论没学好，只能简单说一说）。
 
-在做一件事情的时候，其结果的概率只有2种情况，和抛硬币一样，不是正面就是反面。
+在做一件事情的时候，其结果的概率只有 2 种情况，和抛硬币一样，不是正面就是反面。
 
 为此，我们做了 N 次实验，那么在每次试验中只有两种可能的结果，并且每次实验是独立的，不同实验之间互不影响，每次实验成功的概率都是一样的。
 
 以此理论为基础，我们来做这样的实验：我们往哈希表中扔数据，如果发生哈希冲突就为失败，否则为成功。
 
-我们可以设想，实验的hash值是随机的，并且经过hash运算的键都会映射到hash表的地址空间上，那么这个结果也是随机的。所以，每次put的时候就相当于我们在扔一个16面（我们先假设默认长度为16）的骰子，扔骰子实验那肯定是相互独立的。碰撞发生即扔了n次有出现重复数字。
+我们可以设想，实验的 hash 值是随机的，并且经过 hash 运算的键都会映射到 hash 表的地址空间上，那么这个结果也是随机的。所以，每次 put 的时候就相当于我们在扔一个 16 面（我们先假设默认长度为 16）的骰子，扔骰子实验那肯定是相互独立的。碰撞发生即扔了 n 次有出现重复数字。
 
 然后，我们的目的是啥呢？
 
-就是掷了k次骰子，没有一次是相同的概率，需要尽可能的大些，一般意义上我们肯定要大于0.5（这个数是个理想数，但是我是能接受的）。
+就是掷了 k 次骰子，没有一次是相同的概率，需要尽可能的大些，一般意义上我们肯定要大于 0.5（这个数是个理想数，但是我是能接受的）。
 
-于是，n次事件里面，碰撞为0的概率，由上面公式得：
+于是，n 次事件里面，碰撞为 0 的概率，由上面公式得：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-02.png)
 
-这个概率值需要大于0.5，我们认为这样的hashmap可以提供很低的碰撞率。所以：
+这个概率值需要大于 0.5，我们认为这样的 hashmap 可以提供很低的碰撞率。所以：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-03png)
 
-这时候，我们对于该公式其实最想求的时候长度s的时候，n为多少次就应该进行扩容了？而负载因子则是$n/s$的值。所以推导如下：
+这时候，我们对于该公式其实最想求的时候长度 s 的时候，n 为多少次就应该进行扩容了？而负载因子则是$n/s$的值。所以推导如下：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-04.png)
 
@@ -532,15 +531,14 @@ more: less than 1 in ten million
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-loadfactor-09.png)
 
-
-考虑到 HashMap的容量有一个要求：它必须是2的n 次幂（这个[之前的文章](https://mp.weixin.qq.com/s/aS2dg4Dj1Efwujmv-6YTBg)讲过了，点击链接回去可以再温故一下）。当加载因子选择了0.75就可以保证它与容量的乘积为整数。
+考虑到 HashMap 的容量有一个要求：它必须是 2 的 n 次幂（这个[之前的文章](https://mp.weixin.qq.com/s/aS2dg4Dj1Efwujmv-6YTBg)讲过了，点击链接回去可以再温故一下）。当加载因子选择了 0.75 就可以保证它与容量的乘积为整数。
 
 ```
 16*0.75=12
 32*0.75=24
 ```
 
-除了 0.75，0.5~1 之间还有 0.625（5/8）、0.875（7/8）可选，从中位数的角度，挑 0.75 比较完美。另外，维基百科上说，拉链法（解决哈希冲突的一种）的加载因子最好限制在 0.7-0.8以下，超过0.8，查表时的CPU缓存不命中（cache missing）会按照指数曲线上升。
+除了 0.75，0.5~1 之间还有 0.625（5/8）、0.875（7/8）可选，从中位数的角度，挑 0.75 比较完美。另外，维基百科上说，拉链法（解决哈希冲突的一种）的加载因子最好限制在 0.7-0.8 以下，超过 0.8，查表时的 CPU 缓存不命中（cache missing）会按照指数曲线上升。
 
 综上，0.75 是个比较完美的选择。
 
@@ -626,15 +624,13 @@ void transfer(Entry[] newTable, boolean rehash) {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-03.png)
 
-
 线程 B 开始执行，并且完成了数据转移。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-04.png)
 
-
 此时，7 的 next 为 3，3 的 next 为 null。
 
-随后线程A获得CPU时间片继续执行 `newTable[i] = e`，将3放入新数组对应的位置，执行完此轮循环后线程A的情况如下：
+随后线程 A 获得 CPU 时间片继续执行 `newTable[i] = e`，将 3 放入新数组对应的位置，执行完此轮循环后线程 A 的情况如下：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-05.png)
 
@@ -675,7 +671,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
     if ((tab = table) == null || (n = tab.length) == 0)
         n = (tab = resize()).length;
 
-    // 步骤②：计算index，并对null做处理 
+    // 步骤②：计算index，并对null做处理
     if ((p = tab[i = (n - 1) & hash]) == null)
         tab[i] = newNode(hash, key, value, null);
     else {
@@ -748,7 +744,7 @@ if ((p = tab[i = (n - 1) & hash]) == null)
 
 ### 03、put 和 get 并发时会导致 get 到 null
 
-线程 A 执行put时，因为元素个数超出阈值而出现扩容，线程B 此时执行get，有可能导致这个问题。
+线程 A 执行 put 时，因为元素个数超出阈值而出现扩容，线程 B 此时执行 get，有可能导致这个问题。
 
 注意来看 resize 源码：
 
@@ -793,7 +789,7 @@ final Node<K,V>[] resize() {
 参考链接：
 
 > - https://blog.csdn.net/lonyw/article/details/80519652
-> - https://zhuanlan.zhihu.com/p/91636401 
+> - https://zhuanlan.zhihu.com/p/91636401
 > - https://www.zhihu.com/question/20733617
 > - https://zhuanlan.zhihu.com/p/21673805
 

@@ -4,7 +4,7 @@
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/cors-1.png)
 
-403 Forbidden 是HTTP协议中的一个状态码（Status Code），意味着后端服务虽然成功解析了请求，但前端却没有访问该资源的权限。
+403 Forbidden 是 HTTP 协议中的一个状态码（Status Code），意味着后端服务虽然成功解析了请求，但前端却没有访问该资源的权限。
 
 那怎么解决这个问题呢？通常有两个思路：
 
@@ -22,7 +22,6 @@
 那正确的打开方式是什么呢？我们前面也提到了，前端使用 Nodejs 代理或者后端开启跨域资源共享，我们一一来实践下。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/cors-2.gif)
-
 
 ### 二、Nodejs 代理
 
@@ -136,7 +135,7 @@ config.addAllowedOriginPattern("*");
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/cors-6.png)
 
-拿编程猫的文章管理页来举例，该页面会向后端发起一个 `posts/queryPageable` 的分页查询，该请求包含了一个自定义的消息头 Authorization，于是浏览器认为该请求是一个非简单请求，然后就会自动发起一次 OPTIONS 请求，但由于我们的 Spring Boot 项目整合了 SpringsScurity 安全管理框架，没有对OPTIONS请求放开登录认证，导致验证失败，文章分页请求的响应数据就没有返回回来。
+拿编程猫的文章管理页来举例，该页面会向后端发起一个 `posts/queryPageable` 的分页查询，该请求包含了一个自定义的消息头 Authorization，于是浏览器认为该请求是一个非简单请求，然后就会自动发起一次 OPTIONS 请求，但由于我们的 Spring Boot 项目整合了 SpringsScurity 安全管理框架，没有对 OPTIONS 请求放开登录认证，导致验证失败，文章分页请求的响应数据就没有返回回来。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/cors-7.png)
 
@@ -169,23 +168,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/cors-10.png)
 
-
 ### 四、源码路径
 
 编程猫后端源码：
 
->https://github.com/itwanger/coding-more
+> https://github.com/itwanger/coding-more
 
 编程猫后台管理的前端源码：
 
->https://github.com/itwanger/codingmore-admin-web
+> https://github.com/itwanger/codingmore-admin-web
 
 参考链接：
 
->跨域：https://segmentfault.com/a/1190000015597029
->CORS：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS
->阮一峰：https://www.ruanyifeng.com/blog/2016/04/cors.html
->简单请求+预检请求：https://github.com/amandakelake/blog/issues/62
+> 跨域：https://segmentfault.com/a/1190000015597029
+> CORS：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS
+> 阮一峰：https://www.ruanyifeng.com/blog/2016/04/cors.html
+> 简单请求+预检请求：https://github.com/amandakelake/blog/issues/62
 
 ---
 
@@ -199,13 +197,4 @@ star 了这个仓库就等于你拥有了成为了一名优秀 Java 工程师的
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/aop-log-5.png)
 
-
-*没有什么使我停留——除了目的，纵然岸旁有玫瑰、有绿荫、有宁静的港湾，我是不系之舟*。
-
-
-
-
-
-
-
-
+_没有什么使我停留——除了目的，纵然岸旁有玫瑰、有绿荫、有宁静的港湾，我是不系之舟_。

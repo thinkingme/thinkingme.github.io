@@ -1,5 +1,3 @@
-
-
 长话短说吧。
 
 相信大家已经被 Log4j2 的重大漏洞刷屏了，估计有不少小伙伴此时此刻已经累趴下了。很不幸，我的小老弟小二的 Spring Boot 项目中恰好用的就是 Log4j2，版本特喵的还是 2.14.1，在这次漏洞波及的版本范围之内。
@@ -45,7 +43,7 @@ Java 后端开发的小伙伴应该都知道，Log4j、SLF4J、Logback 这 3 个
 
 详情可参照 Spring Boot 官方这篇博客：
 
->https://spring.io/blog/2021/12/10/log4j2-vulnerability-and-spring-boot
+> https://spring.io/blog/2021/12/10/log4j2-vulnerability-and-spring-boot
 
 Gradle 构建的项目也有解决方案。
 
@@ -55,9 +53,9 @@ Gradle 构建的项目也有解决方案。
 
 那肯定会有小伙伴在好奇 JNDI 是什么东东？来看一下维基百科的解释。
 
->Java命名和目录接口（Java Naming and Directory Interface，缩写JNDI），是Java的一个目录服务应用程序接口（API），它提供一个目录系统，并将服务名称与对象关联起来，从而使得开发人员在开发过程中可以使用名称来访问对象。
+> Java 命名和目录接口（Java Naming and Directory Interface，缩写 JNDI），是 Java 的一个目录服务应用程序接口（API），它提供一个目录系统，并将服务名称与对象关联起来，从而使得开发人员在开发过程中可以使用名称来访问对象。
 
-利用下面这段代码，攻击者可以通过JNDI来执行LDAP协议来注入一些非法的可执行代码。
+利用下面这段代码，攻击者可以通过 JNDI 来执行 LDAP 协议来注入一些非法的可执行代码。
 
 ```java
 public class VulnerableLog4jExampleHandler implements HttpHandler {
@@ -85,7 +83,7 @@ public class VulnerableLog4jExampleHandler implements HttpHandler {
 
 具体的攻击手段可以参考这里：
 
->https://github.com/apache/pulsar/issues/13232
+> https://github.com/apache/pulsar/issues/13232
 
 下图是程序猿阿朗画的简单的攻击链路步骤图。
 
@@ -99,7 +97,4 @@ public class VulnerableLog4jExampleHandler implements HttpHandler {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/shigu/log4j2-06.png)
 
-如果存在依赖引入，且在受影响版本范围内，请升级到 Apache Log4j2  2.15.0 版本，目前已经 release。
-
-
-
+如果存在依赖引入，且在受影响版本范围内，请升级到 Apache Log4j2 2.15.0 版本，目前已经 release。

@@ -224,22 +224,18 @@ tag:
 - 「招聘情况」：主要招聘 Java、前端等岗位
 - 「面试」 ：难度中等偏上，外企一般比较重视计算机基础知识。
 
-
-
 ---
 
 对于杭州，我印象最深刻的就是在苏州上班时和同事去乌镇-杭州的三日游了，当时阿里还没有兴起，互联网环境也没有现在这般能卷。
 
 顺带再聊聊杭州的房价、教育吧。杭州的房价不忍直视啊！！！涨的实在是太厉害了！
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/cityselect/hangzhou-16.png)
 
 杭州只有一所 985，也就是浙江大学。除了浙江大学之外，浙江省没有 211 院校。不过，杭州电子科技大学虽然不是 211，但是实力很强，外界也很认可。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/cityselect/hangzhou-17.png)
 
->作者：大白，转载链接：[https://mp.weixin.qq.com/s/hrL2tqXHT5AjOqrQlRhR-w](https://mp.weixin.qq.com/s/hrL2tqXHT5AjOqrQlRhR-w)
+> 作者：大白，转载链接：[https://mp.weixin.qq.com/s/hrL2tqXHT5AjOqrQlRhR-w](https://mp.weixin.qq.com/s/hrL2tqXHT5AjOqrQlRhR-w)
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

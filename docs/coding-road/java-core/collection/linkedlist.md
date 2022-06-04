@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java集合LinkedList详解
-
+# Java 集合 LinkedList 详解
 
 ### 一、LinkedList 的剖白
 
@@ -143,7 +142,7 @@ void linkLast(E e) {
 
 我这个增的招式，还可以演化成另外两个：
 
--  `addFirst()` 方法将元素添加到第一位；
+- `addFirst()` 方法将元素添加到第一位；
 - `addLast()` 方法将元素添加到末尾。
 
 addFirst 内部其实调用的是 linkFirst：
@@ -171,7 +170,6 @@ private void linkFirst(E e) {
 ```
 
 addLast 的内核其实和 addFirst 差不多，就交给大家自行理解了。
-
 
 **2）招式二：删**
 
@@ -372,7 +370,7 @@ public E get(int index) {
 - `pollLast()` 方法用于删除并返回最后一个元素；
 - `peekFirst()` 方法用于返回但不删除第一个元素。
 
-###  四、LinkedList 的挑战
+### 四、LinkedList 的挑战
 
 说句实在话，我不是很喜欢和师兄 ArrayList 拿来比较，因为我们各自修炼的内功不同，没有孰高孰低。
 

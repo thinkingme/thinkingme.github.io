@@ -6,8 +6,7 @@ tag:
   - Java
 ---
 
-# 从javap的角度轻松看懂字节码
-
+# 从 javap 的角度轻松看懂字节码
 
 ### 01、字节码
 
@@ -34,11 +33,9 @@ public class Main {
 }
 ```
 
-编译生成  Main.class  文件后，可以在命令行使用 `xxd Main.class` 打开 class 文件（我用的是 Intellij IDEA，在 macOS 环境下）。
+编译生成 Main.class 文件后，可以在命令行使用 `xxd Main.class` 打开 class 文件（我用的是 Intellij IDEA，在 macOS 环境下）。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/bytecode-bd941085-ff0e-4abf-a5f9-afb0493bfed7.png)
-
-
 
 对于这些 16 进制内容，除了开头的 cafe babe，剩下的内容大致可以翻译成：啥玩意啊这......
 
@@ -53,7 +50,6 @@ public class Main {
 Java 内置了一个反编译命令 javap，可以通过 `javap -help` 了解 javap 的基本用法。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/bytecode-84b7af5c-93b1-4f63-bb30-946ab3d7e98c.png)
-
 
 OK，我们输入命令 `javap -v -p Main.class` 来查看一下输出的内容。
 
@@ -163,7 +159,7 @@ SHA-256 checksum 6688843e4f70ae8d83040dc7c8e2dd3694bf10ba7c518a6ea9b88b318a8967c
 Compiled from "Main.java"
 ```
 
- 说明该字节码文件编译自 Main.java 源文件。
+说明该字节码文件编译自 Main.java 源文件。
 
 第 5 行：
 
@@ -229,7 +225,7 @@ Java 虚拟机是在加载字节码文件的时候才进行的动态链接，也
 
 当前字节码文件中一共有 21 个常量，它们之间是有链接的，逐个分析会比较乱，我们采用顺藤摸瓜的方式，从上依次往下看，那些被链接的常量我们就点到为止。
 
-*注*：
+_注_：
 
 - `#` 号后面跟的是索引，索引没有从 0 开始而是从 1 开始，是因为设计者考虑到，“如果要表达不引用任何一个常量的含义时，可以将索引值设为 0 来表示”（《深入理解 Java 虚拟机》描述的）。
 
@@ -237,7 +233,7 @@ Java 虚拟机是在加载字节码文件的时候才进行的动态链接，也
 
 - 全文中提到的索引等同于下标，为了灵活描述，没有做统一。
 
---- 
+---
 
 第 1 个常量：
 
@@ -289,7 +285,7 @@ Java 虚拟机是在加载字节码文件的时候才进行的动态链接，也
 
 到此为止，第 1 个常量算是摸完了。组合起来的意思就是，Main 类使用的是默认的构造方法，来源于 Object 类。
 
-----
+---
 
 第 2 个常量：
 
@@ -337,7 +333,7 @@ Java 虚拟机是在加载字节码文件的时候才进行的动态链接，也
 
 到此为止，第 2 个常量算是摸完了。组合起来的意思就是，声明了一个类型为 int 的字段 age。
 
-----
+---
 
 ### 04、字段表集合
 
@@ -366,9 +362,6 @@ private int age;
 字段的访问标志和类的访问标志非常类似。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/bytecode-5f328e11-3486-4eb4-8fa9-5c5febfab894.png)
-
-
-
 
 ### **05、方法表集合**
 
@@ -427,7 +420,7 @@ private int age;
     flags: (0x0001) ACC_PUBLIC
 ```
 
-理解了构造方法的 Code 属性后，再看  `getAge()` 方法的 Code 属性时，就很容易理解了。
+理解了构造方法的 Code 属性后，再看 `getAge()` 方法的 Code 属性时，就很容易理解了。
 
 ```
     Code:
@@ -444,8 +437,7 @@ private int age;
 
 最大操作数栈为 1，局部变量所需要的存储空间为 1，方法的参数个数为 1，是因为局部变量只有一个隐藏的 this，并且字节码指令中只执行了一次 aload_0。
 
--------
-
+---
 
 其实学习是这样的，可以横向扩展，也可以纵向扩展。当我们初学编程的时候，特别想多学一点，属于横向扩展，当有了一定的编程经验后，想更上一层楼，就需要纵向扩展，不断深入地学，连根拔起，从而形成自己的知识体系。
 

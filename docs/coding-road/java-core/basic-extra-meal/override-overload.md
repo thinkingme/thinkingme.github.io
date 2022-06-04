@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java重写(Override)与重载(Overload)
+# Java 重写(Override)与重载(Overload)
 
 ### 01、开篇
 
@@ -53,7 +53,7 @@ class Adder {
     static int add(int a, int b, int c) {
         return a + b + c;
     }
-}  
+}
 ```
 
 “Adder 类有两个方法，第一个 `add()` 方法有两个参数，在调用的时候可以传递两个参数；第二个 `add()` 方法有三个参数，在调用的时候可以传递三个参数。”

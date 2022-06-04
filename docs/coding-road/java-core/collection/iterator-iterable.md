@@ -5,12 +5,11 @@ tag:
   - Java
 ---
 
-# Java中的Iterator和Iterable区别
+# Java 中的 Iterator 和 Iterable 区别
 
+那天，小二去海康威视面试，面试官老王一上来就甩给了他一道面试题：请问 Iterator 与 Iterable 有什么区别？
 
-那天，小二去海康威视面试，面试官老王一上来就甩给了他一道面试题：请问 Iterator与Iterable有什么区别？
-
------
+---
 
 在 Java 中，我们对 List 进行遍历的时候，主要有这么三种方式。
 
@@ -83,7 +82,7 @@ default void forEach(Consumer<? super T> action) {
 }
 ```
 
-它对 Iterable 的每个元素执行给定操作，具体指定的操作需要自己写Consumer接口通过accept方法回调出来。
+它对 Iterable 的每个元素执行给定操作，具体指定的操作需要自己写 Consumer 接口通过 accept 方法回调出来。
 
 ```java
 List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3));
@@ -102,7 +101,7 @@ list.forEach(new Consumer<Integer>() {
 });
 ```
 
-如果我们仔细观察ArrayList 或者 LinkedList 的“户口本”就会发现，并没有直接找到 Iterator 的影子。
+如果我们仔细观察 ArrayList 或者 LinkedList 的“户口本”就会发现，并没有直接找到 Iterator 的影子。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/iterator-iterable-01.png)
 
@@ -178,7 +177,7 @@ while (it.hasNext()) {
 
 原则上，只要一个 List 实现了 Iterable 接口，那么它就可以使用 for-each 这种方式来遍历，那具体该怎么遍历，还是要看它自己是怎么实现 Iterator 接口的。
 
-Map 就没办法直接使用 for-each，因为 Map 没有实现 Iterable 接口，只有通过 `map.entrySet()`、`map.keySet()`、`map.values()` 这种返回一个  Collection 的方式才能 使用 for-each。
+Map 就没办法直接使用 for-each，因为 Map 没有实现 Iterable 接口，只有通过 `map.entrySet()`、`map.keySet()`、`map.values()` 这种返回一个 Collection 的方式才能 使用 for-each。
 
 如果我们仔细研究 LinkedList 的源码就会发现，LinkedList 并没有直接重写 Iterable 接口的 iterator 方法，而是由它的父类 AbstractSequentialList 来完成。
 
@@ -197,7 +196,7 @@ public ListIterator<E> listIterator(int index) {
 }
 ```
 
-这里我们发现了一个新的迭代器 ListIterator，它继承了 Iterator 接口，在遍历List 时可以从任意下标开始遍历，而且支持双向遍历。
+这里我们发现了一个新的迭代器 ListIterator，它继承了 Iterator 接口，在遍历 List 时可以从任意下标开始遍历，而且支持双向遍历。
 
 ```java
 public interface ListIterator<E> extends Iterator<E> {
@@ -236,12 +235,12 @@ Iterator it = list.descendingIterator();
 while (it.hasNext()) {
 }
 ```
------
 
-好了，关于Iterator与Iterable我们就先聊这么多，总结两点：
+---
+
+好了，关于 Iterator 与 Iterable 我们就先聊这么多，总结两点：
 
 - 学会深入思考，一点点抽丝剥茧，多想想为什么这样实现，很多问题没有自己想象中的那么复杂。
 - 遇到疑惑不放弃，这是提升自己最好的机会，遇到某个疑难的点，解决的过程中会挖掘出很多相关的东西。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

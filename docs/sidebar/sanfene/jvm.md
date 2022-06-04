@@ -7,8 +7,7 @@ tag:
 
 # 面渣逆袭（Java 虚拟机篇）必看:+1:
 
->  图文详解 50 道Java虚拟机高频面试题，这次面试，一定吊打面试官，整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/bHhqhl8mH3OAPt3EkaVc8Q)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/XYsEJyIo46jXhHE1sOR_0Q)。
-
+> 图文详解 50 道 Java 虚拟机高频面试题，这次面试，一定吊打面试官，整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/bHhqhl8mH3OAPt3EkaVc8Q)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/XYsEJyIo46jXhHE1sOR_0Q)。
 
 ## 一、引言
 
@@ -925,11 +924,11 @@ jmap -dump:format=b,file=heap pid
 
 4）将线程 ID 转换为 16 进制：`printf "%x\n" [pid]`，输出的值就是线程栈信息中的 **nid**。
 
-   例如：`printf "%x\n" 29471`，换行输出 **731f**。
+例如：`printf "%x\n" 29471`，换行输出 **731f**。
 
 5）抓取线程栈：`jstack 29452 > 29452.txt`，可以多抓几次做个对比。
 
-   在线程栈信息中找到对应线程号的 16 进制值，如下是 **731f** 线程的信息。线程栈分析可使用 Visualvm 插件 **TDA**。
+在线程栈信息中找到对应线程号的 16 进制值，如下是 **731f** 线程的信息。线程栈分析可使用 Visualvm 插件 **TDA**。
 
 ```java
 "Service Thread" #7 daemon prio=9 os_prio=0 tid=0x00007fbe2c164000 nid=0x731f runnable [0x0000000000000000]
@@ -938,9 +937,9 @@ jmap -dump:format=b,file=heap pid
 
 6）使用`jstat -gcutil [pid] 5000 10` 每隔 5 秒输出 GC 信息，输出 10 次，查看 **YGC** 和 **Full GC** 次数。通常会出现 YGC 不增加或增加缓慢，而 Full GC 增加很快。
 
-   或使用 `jstat -gccause [pid] 5000` ，同样是输出 GC 摘要信息。
+或使用 `jstat -gccause [pid] 5000` ，同样是输出 GC 摘要信息。
 
-   或使用 `jmap -heap [pid]` 查看堆的摘要信息，关注老年代内存使用是否达到阀值，若达到阀值就会执行 Full GC。
+或使用 `jmap -heap [pid]` 查看堆的摘要信息，关注老年代内存使用是否达到阀值，若达到阀值就会执行 Full GC。
 
 7）如果发现 `Full GC` 次数太多，就很大概率存在内存泄漏了
 
@@ -948,27 +947,27 @@ jmap -dump:format=b,file=heap pid
 
 9）生成 `dump` 文件，借助工具分析哪 个对象非常多，基本就能定位到问题在那了
 
-   使用 jmap 生成 dump 文件：
+使用 jmap 生成 dump 文件：
 
-   ```java
-   # jmap -dump:live,format=b,file=29471.dump 29471
-   Dumping heap to /root/dump ...
-   Heap dump file created
-   ```
+```java
+# jmap -dump:live,format=b,file=29471.dump 29471
+Dumping heap to /root/dump ...
+Heap dump file created
+```
 
 10）dump 文件分析
 
-   可以使用 **jhat** 命令分析：`jhat -port 8000 29471.dump`，浏览器访问 jhat 服务，端口是 8000。
+可以使用 **jhat** 命令分析：`jhat -port 8000 29471.dump`，浏览器访问 jhat 服务，端口是 8000。
 
-   通常使用图形化工具分析，如 JDK 自带的 **jvisualvm**，从菜单 > 文件 > 装入 dump 文件。
+通常使用图形化工具分析，如 JDK 自带的 **jvisualvm**，从菜单 > 文件 > 装入 dump 文件。
 
-   或使用第三方式具分析的，如 **JProfiler** 也是个图形化工具，**GCViewer** 工具。Eclipse 或以使用 MAT 工具查看。或使用在线分析平台 **GCEasy**。
+或使用第三方式具分析的，如 **JProfiler** 也是个图形化工具，**GCViewer** 工具。Eclipse 或以使用 MAT 工具查看。或使用在线分析平台 **GCEasy**。
 
-   **注意**：如果 dump 文件较大的话，分析会占比较大的内存。
+**注意**：如果 dump 文件较大的话，分析会占比较大的内存。
 
 11）在 dump 文析结果中查找存在大量的对象，再查对其的引用。
 
-   基本上就可以定位到代码层的逻辑了。
+基本上就可以定位到代码层的逻辑了。
 
 ### 41.有没有处理过内存溢出问题？
 
@@ -1100,4 +1099,4 @@ Tomact 是 web 容器，可能需要部署多个应用程序。不同的应用�
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
 
->  图文详解 50 道Java虚拟机高频面试题，这次面试，一定吊打面试官，整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/bHhqhl8mH3OAPt3EkaVc8Q)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/XYsEJyIo46jXhHE1sOR_0Q)。
+> 图文详解 50 道 Java 虚拟机高频面试题，这次面试，一定吊打面试官，整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/bHhqhl8mH3OAPt3EkaVc8Q)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/XYsEJyIo46jXhHE1sOR_0Q)。

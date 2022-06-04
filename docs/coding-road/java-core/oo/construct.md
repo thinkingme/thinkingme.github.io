@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java构造方法
-
+# Java 构造方法
 
 我对三妹说，“[上一节](https://mp.weixin.qq.com/s/L4jAgQPurGZPvWu8ECtBpA)学了 Java 中的方法，接着学构造方法的话，难度就小很多了。”
 
@@ -71,7 +70,6 @@ public class Demo {
 
 不过，可以使用访问权限修饰符（private、protected、public、default）来修饰构造方法，访问权限修饰符决定了构造方法的创建方式。
 
-
 ### 02、 什么是默认构造方法
 
 如果一个构造方法中没有任何参数，那么它就是一个默认构造方法，也称为无参构造方法。
@@ -130,7 +128,6 @@ public class Person {
 
 在上面的例子中，默认构造方法初始化了 name 和 age 的值，name 是 String 类型，所以默认值为 null，age 是 int 类型，所以默认值为 0。如果没有默认构造方法的话，这项工作就无法完成了。
 
-
 ### 03、什么是有参构造方法
 
 有参数的构造方法被称为有参构造方法，参数可以有一个或多个。有参构造方法可以为不同的对象提供不同的值。当然，也可以提供相同的值。
@@ -170,7 +167,6 @@ new ParamConstructorPerson("沉默王三",16);
 ```
 
 如果没有有参构造方法的话，就需要通过 setter 方法给字段赋值了。
-
 
 ### 04、如何重载构造方法
 
@@ -212,14 +208,11 @@ public class OverloadingConstrutorPerson {
 
 创建对象的时候，如果传递的是三个参数，那么就会调用 `OverloadingConstrutorPerson(String name, int age, int sex)` 这个构造方法；如果传递的是两个参数，那么就会调用 `OverloadingConstrutorPerson(String name, int age)` 这个构造方法。
 
-
 ### 05、构造方法和方法有什么区别
 
 构造方法和方法之间的区别还是蛮多的，比如说下面这些：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/18-02.png)
-
-
 
 ### 06、如何复制对象
 
@@ -294,7 +287,7 @@ public class CopyValuePerson {
         CopyValuePerson p2 = new CopyValuePerson();
         p2.name = p1.name;
         p2.age = p1.age;
-        
+
         p2.out();
     }
 }

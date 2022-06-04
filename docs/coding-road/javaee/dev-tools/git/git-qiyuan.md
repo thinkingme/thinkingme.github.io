@@ -4,6 +4,7 @@ category:
 tag:
   - Git
 ---
+
 # 我在工作中是如何使用 Git 的
 
 ## 一、Git 起源
@@ -16,7 +17,7 @@ PS：**为了能够帮助更多的 Java 爱好者，已将《Java 程序员进�
 
 [https://github.com/itwanger/toBeBetterJavaer](https://github.com/itwanger/toBeBetterJavaer)
 
-*每天看着 star 数的上涨我心里非常的开心，希望越来越多的 Java 爱好者能因为这个开源项目而受益，而越来越多人的 star，也会激励我继续更新下去*~
+_每天看着 star 数的上涨我心里非常的开心，希望越来越多的 Java 爱好者能因为这个开源项目而受益，而越来越多人的 star，也会激励我继续更新下去_~
 
 大家都知道，Linux 内核是开源的，参与者众多，到目前为止，共有两万多名开发者给 Linux Kernel 提交过代码。
 
@@ -36,7 +37,7 @@ PS：**为了能够帮助更多的 Java 爱好者，已将《Java 程序员进�
 - 完全分布式
 - 有能力高效管理类似 Linux 内核一样的超大规模项目
 
-结果，令人意想不到的是，Linus 只用了 10 天时间就用 C语言完成了第一个版本，嗯。。神就是神。并且给这个版本起了一个略带嘲讽意味的名字——Git（在英式英语俚语中表示“不愉快的人”）。
+结果，令人意想不到的是，Linus 只用了 10 天时间就用 C 语言完成了第一个版本，嗯。。神就是神。并且给这个版本起了一个略带嘲讽意味的名字——Git（在英式英语俚语中表示“不愉快的人”）。
 
 源代码的自述文件有进一步的阐述：
 
@@ -54,11 +55,11 @@ Junio Hamano 觉得 Linus 设计的这些命令对于普通用户不太友好，
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/git-qiyuan-02.png)
 
-原本的 Git 只适用于 Unix/Linux 平台，但随着 Cygwin、msysGit 环境的成熟，以及 TortoiseGit 这样易用的GUI工具，Git 在 Windows 平台下也逐渐成熟。
+原本的 Git 只适用于 Unix/Linux 平台，但随着 Cygwin、msysGit 环境的成熟，以及 TortoiseGit 这样易用的 GUI 工具，Git 在 Windows 平台下也逐渐成熟。
 
-> PS1：Cygwin 的主要目的是通过重新编译，将 POSIX 系统（例如Linux、BSD，以及其他Unix系统）上的软件移植到Windows上。
+> PS1：Cygwin 的主要目的是通过重新编译，将 POSIX 系统（例如 Linux、BSD，以及其他 Unix 系统）上的软件移植到 Windows 上。
 
-> PS2：msysGit 前面的 4 个字幕来源于 MSYS 项目，而 MSYS 又源于 MinGW（Minimalist GNU for Windows，最简GNU工具集），通过增加了一个由bash提供的shell环境以及其他相关工具软件，组成了一个最简系统（Minimal System），利用MinGW提供的工具，以及Git针对MinGW的一个分支版本，可以在Windows平台为Git编译出一个原生应用，结合MSYS就组成了msysGit。
+> PS2：msysGit 前面的 4 个字幕来源于 MSYS 项目，而 MSYS 又源于 MinGW（Minimalist GNU for Windows，最简 GNU 工具集），通过增加了一个由 bash 提供的 shell 环境以及其他相关工具软件，组成了一个最简系统（Minimal System），利用 MinGW 提供的工具，以及 Git 针对 MinGW 的一个分支版本，可以在 Windows 平台为 Git 编译出一个原生应用，结合 MSYS 就组成了 msysGit。
 
 Git 和传统的版本控制工具 CVS、SVN 有不小的区别，前者关心的是文件的整体性是否发生了改变，后两者更关心文件内容上的差异。
 
@@ -134,7 +135,7 @@ Git 将顶级目录中的文件和文件夹称作集合，并通过一系列快�
 
 ```
 o <-- o <-- o <-- o
-            ^  
+            ^
              \
               --- o <-- o
 ```
@@ -261,12 +262,12 @@ Date:   Thu Apr 7 15:13:13 2005 -0700
 
 Git 的本质就是一系列的文件对象集合，代码文件是对象、文件目录树是对象、commit 也是对象。这些文件对象的名称即内容的 SHA1 值，SHA1 哈希算法的值为 40 位。Linus 将前二位作为文件夹、后 38 位作为文件名。大家可以在 .git 目录里的 objects 里看到有很多两位字母/数字名称的目录，里面存储了很多 38 位 hash 值名称的文件，这就是 Git 的所有信息。
 
-Linus 在设计对象的数据结构时按照 <标签ascii码表示>(blob/tree/commit) + <空格> + <长度ascii码表示> + <\0> + <二进制数据内容> 来定义，大家可以用 xxd 命令看下 objects 目录里的对象文件(需 zlib 解压)，比如一个 tree 对象文件内容如下：
+Linus 在设计对象的数据结构时按照 <标签 ascii 码表示>(blob/tree/commit) + <空格> + <长度 ascii 码表示> + <\0> + <二进制数据内容> 来定义，大家可以用 xxd 命令看下 objects 目录里的对象文件(需 zlib 解压)，比如一个 tree 对象文件内容如下：
 
 ```
 00000000: 7472 6565 2033 3700 3130 3036 3434 2068  tree 37.100644 h
 00000010: 656c 6c6f 2e74 7874 0027 0c61 1ee7 2c56  ello.txt.'.a..,V
-00000020: 7bc1 b2ab ec4c bc34 5bab 9f15 ba  
+00000020: 7bc1 b2ab ec4c bc34 5bab 9f15 ba
 ```
 
 对象有三种：BLOB、TREE、CHANGESET。
@@ -302,14 +303,14 @@ Linus 解释了“当前目录缓存”的设计，该缓存就是一个二进�
 
 Linus 在 Git 的第一次代码提交里便完成了 Git 的最基础功能，并可以编译使用。代码极为简洁，加上 Makefile 一共只有 848 行。感兴趣的话可以通过上一段所述方法 checkout Git 最早的 commit 上手编译玩玩，只要有 Linux 环境即可。
 
-因为依赖库版本的问题，需要对原始 Makefile 脚本做些小修改。Git 第一个版本依赖 openssl 和 zlib 两个库，需要手工安装这两个开发库。在 ubuntu 上执行： sudo apt install libssl-dev libz-dev ；然后修改 makefile 在 LIBS= -lssl 行 中的 -lssl 改成 -lcrypto 并增加 -lz ；最后执行 make，忽略编译告警，会发现编出了7个可执行程序文件：init-db, update-cache, write-tree, commit-tree, cat-file, show-diff 和 read-tree。
+因为依赖库版本的问题，需要对原始 Makefile 脚本做些小修改。Git 第一个版本依赖 openssl 和 zlib 两个库，需要手工安装这两个开发库。在 ubuntu 上执行： sudo apt install libssl-dev libz-dev ；然后修改 makefile 在 LIBS= -lssl 行 中的 -lssl 改成 -lcrypto 并增加 -lz ；最后执行 make，忽略编译告警，会发现编出了 7 个可执行程序文件：init-db, update-cache, write-tree, commit-tree, cat-file, show-diff 和 read-tree。
 
 下面分别简要介绍下这些可执行程序的实现：
 
 - init-db: 初始化一个 git 本地仓库，这也就是我们现在每次初始化建立 git 库式敲击的 git init 命令。只不过一开始 Linus 建立的仓库及 cache 文件夹名称叫 .dircache，而不是我们现在所熟知的 .git 文件夹。
-- update-cache: 输入文件路径，将该文件（或多个文件）加入缓冲区中。具体实现是：校验路径合法性，然后将文件计算 SHA1值，将文件内容加上 blob 头信息进行 zlib 压缩后写入到对象数据库(.dircache/objects)中；最后将文件路径、文件属性及 blob sha1 值更新到 .dircache/index 缓存文件中。
+- update-cache: 输入文件路径，将该文件（或多个文件）加入缓冲区中。具体实现是：校验路径合法性，然后将文件计算 SHA1 值，将文件内容加上 blob 头信息进行 zlib 压缩后写入到对象数据库(.dircache/objects)中；最后将文件路径、文件属性及 blob sha1 值更新到 .dircache/index 缓存文件中。
 - write-tree: 将缓存的目录树信息生成 TREE 对象，并写入对象数据库中。TREE 对象的数据结构为：‘tree ‘ + 长度 + \0 + 文件树列表。文件树列表中按照 文件属性 + 文件名 + \0 + SHA1 值结构存储。写入对象成功后，返回该 TREE 对象的 SHA1 值。
-- commit-tree: 将 TREE 对象信息生成 commit 节点对象并提交到版本历史中。具体实现是输入要提交的 TREE 对象 SHA1 值，并选择输入父 commit 节点（最多 16个），commit 对象信息中包含 TREE、父节点、committer 及作者的 name、email及日期信息，最后写入新的 commit 节点对象文件，并返回 commit 节点的 SHA1 值。
+- commit-tree: 将 TREE 对象信息生成 commit 节点对象并提交到版本历史中。具体实现是输入要提交的 TREE 对象 SHA1 值，并选择输入父 commit 节点（最多 16 个），commit 对象信息中包含 TREE、父节点、committer 及作者的 name、email 及日期信息，最后写入新的 commit 节点对象文件，并返回 commit 节点的 SHA1 值。
 - cat-file: 由于所有的对象文件都经过 zlib 压缩，因此想要查看文件内容的话需要使用这个工具来解压生成临时文件，以便查看对象文件的内容。
 - show-diff: 快速比较当前缓存与当前工作区的差异，因为文件的属性信息（包括修改时间、长度等）也保存在缓存的数据结构中，因此可以快速比较文件是否有修改，并展示差异部分。
 - read-tree: 根据输入的 TREE 对象 SHA1 值输出打印 TREE 的内容信息。
@@ -324,7 +325,7 @@ Linus 在 Git 的第一次代码提交里便完成了 Git 的最基础功能，�
 
 虽然每天多多少少都会敲一些 Git 命令，但仍然有很多记不住，可怜我这脑袋瓜子了。。
 
-一般来说，日常使用只要记住下图中这 6 个命令就可以了，但是熟练使用 Git，恐怕要记住60～100个命令~
+一般来说，日常使用只要记住下图中这 6 个命令就可以了，但是熟练使用 Git，恐怕要记住 60 ～ 100 个命令~
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/mingling-01.png)
 
@@ -356,7 +357,7 @@ $ git clone [url]
 
 ### 2、配置
 
-Git的配置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
+Git 的配置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
 ```
 # 显示当前的Git配置
@@ -635,9 +636,9 @@ $ git archive
 
 ## 六、图解 Git 分支
 
-相比同类软件，Git有很多优点。其中很显著的一点，就是版本的分支（branch）和合并（merge）十分方便。
+相比同类软件，Git 有很多优点。其中很显著的一点，就是版本的分支（branch）和合并（merge）十分方便。
 
-有些传统的版本管理软件，分支操作实际上会生成一份现有代码的物理拷贝，而Git只生成一个指向当前版本（又称"快照"）的指针，因此非常快捷易用。
+有些传统的版本管理软件，分支操作实际上会生成一份现有代码的物理拷贝，而 Git 只生成一个指向当前版本（又称"快照"）的指针，因此非常快捷易用。
 
 但是，太方便了也会产生副作用。如果你不加注意，很可能会留下一个枝节蔓生、四处开放的版本库，到处都是分支，完全看不出主干发展的脉络。
 
@@ -645,29 +646,29 @@ $ git archive
 
 那有没有一个好的分支策略呢？答案当然是有的。
 
-### 1、主分支Master
+### 1、主分支 Master
 
 首先，代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-02.png)
 
-Git主分支的名字，默认叫做Master。它是自动建立的，版本库初始化以后，默认就是在主分支在进行开发。
+Git 主分支的名字，默认叫做 Master。它是自动建立的，版本库初始化以后，默认就是在主分支在进行开发。
 
-### 2、开发分支Develop
+### 2、开发分支 Develop
 
-主分支只用来发布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做Develop。
+主分支只用来发布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做 Develop。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-03.png)
 
-这个分支可以用来生成代码的最新隔夜版本（nightly）。如果想正式对外发布，就在Master分支上，对Develop分支进行"合并"（merge）。
+这个分支可以用来生成代码的最新隔夜版本（nightly）。如果想正式对外发布，就在 Master 分支上，对 Develop 分支进行"合并"（merge）。
 
-Git创建Develop分支的命令：
+Git 创建 Develop 分支的命令：
 
 ```
 　　git checkout -b develop master
 ```
 
-将Develop分支发布到Master分支的命令：
+将 Develop 分支发布到 Master 分支的命令：
 
 ```
 　　# 切换到Master分支
@@ -677,33 +678,33 @@ Git创建Develop分支的命令：
 　　git merge --no-ff develop
 ```
 
-这里稍微解释一下上一条命令的--no-ff参数是什么意思。默认情况下，Git执行"快进式合并"（fast-farward merge），会直接将Master分支指向Develop分支。
+这里稍微解释一下上一条命令的--no-ff 参数是什么意思。默认情况下，Git 执行"快进式合并"（fast-farward merge），会直接将 Master 分支指向 Develop 分支。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-04.png)
 
-使用--no-ff参数后，会执行正常合并，在Master分支上生成一个新节点。为了保证版本演进的清晰，我们希望采用这种做法。
+使用--no-ff 参数后，会执行正常合并，在 Master 分支上生成一个新节点。为了保证版本演进的清晰，我们希望采用这种做法。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-05.png)
 
 ### 3、临时性分支
 
-前面讲到版本库的两条主要分支：Master和Develop。前者用于正式发布，后者用于日常开发。其实，常设分支只需要这两条就够了，不需要其他了。
+前面讲到版本库的两条主要分支：Master 和 Develop。前者用于正式发布，后者用于日常开发。其实，常设分支只需要这两条就够了，不需要其他了。
 
 但是，除了常设分支以外，还有一些临时性分支，用于应对一些特定目的的版本开发。临时性分支主要有三种：
 
-* 功能（feature）分支
-* 预发布（release）分支
-* 修补bug（fixbug）分支
+- 功能（feature）分支
+- 预发布（release）分支
+- 修补 bug（fixbug）分支
 
-这三种分支都属于临时性需要，使用完以后，应该删除，使得代码库的常设分支始终只有Master和Develop。
+这三种分支都属于临时性需要，使用完以后，应该删除，使得代码库的常设分支始终只有 Master 和 Develop。
 
 接下来，一个个来看这三种"临时性分支"。
 
-**第一种是功能分支**，它是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要再并入Develop。
+**第一种是功能分支**，它是为了开发某种特定功能，从 Develop 分支上面分出来的。开发完成后，要再并入 Develop。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-06.png)
 
-功能分支的名字，可以采用feature-*的形式命名。
+功能分支的名字，可以采用 feature-\*的形式命名。
 
 创建一个功能分支：
 
@@ -711,7 +712,7 @@ Git创建Develop分支的命令：
 　　git checkout -b feature-x develop
 ```
 
-开发完成后，将功能分支合并到develop分支：
+开发完成后，将功能分支合并到 develop 分支：
 
 ```
 　　git checkout develop
@@ -719,15 +720,15 @@ Git创建Develop分支的命令：
 　　git merge --no-ff feature-x
 ```
 
-删除feature分支：
+删除 feature 分支：
 
 ```
 　　git branch -d feature-x
 ```
 
-**第二种是预发布分支**，它是指发布正式版本之前（即合并到Master分支之前），我们可能需要有一个预发布的版本进行测试。
+**第二种是预发布分支**，它是指发布正式版本之前（即合并到 Master 分支之前），我们可能需要有一个预发布的版本进行测试。
 
-预发布分支是从Develop分支上面分出来的，预发布结束以后，必须合并进Develop和Master分支。它的命名，可以采用release-*的形式。
+预发布分支是从 Develop 分支上面分出来的，预发布结束以后，必须合并进 Develop 和 Master 分支。它的命名，可以采用 release-\*的形式。
 
 创建一个预发布分支：
 
@@ -735,7 +736,7 @@ Git创建Develop分支的命令：
 　　git checkout -b release-1.2 develop
 ```
 
-确认没有问题后，合并到master分支：
+确认没有问题后，合并到 master 分支：
 
 ```
 　　git checkout master
@@ -746,7 +747,7 @@ Git创建Develop分支的命令：
 　　git tag -a 1.2
 ```
 
-再合并到develop分支：
+再合并到 develop 分支：
 
 ```
 　　git checkout develop
@@ -760,19 +761,19 @@ Git创建Develop分支的命令：
 　　git branch -d release-1.2
 ```
 
-**最后一种是修补bug分支**。软件正式发布以后，难免会出现bug。这时就需要创建一个分支，进行bug修补。
+**最后一种是修补 bug 分支**。软件正式发布以后，难免会出现 bug。这时就需要创建一个分支，进行 bug 修补。
 
-修补bug分支是从Master分支上面分出来的。修补结束以后，再合并进Master和Develop分支。它的命名，可以采用fixbug-*的形式。
+修补 bug 分支是从 Master 分支上面分出来的。修补结束以后，再合并进 Master 和 Develop 分支。它的命名，可以采用 fixbug-\*的形式。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/fenzhi-07.png)
 
-创建一个修补bug分支：
+创建一个修补 bug 分支：
 
 ```
 　　git checkout -b fixbug-0.1 master
 ```
 
-修补结束后，合并到master分支：
+修补结束后，合并到 master 分支：
 
 ```
 　　git checkout master
@@ -782,7 +783,7 @@ Git创建Develop分支的命令：
 　　git tag -a 0.1.1
 ```
 
-再合并到develop分支：
+再合并到 develop 分支：
 
 ```
 　　git checkout develop
@@ -790,7 +791,7 @@ Git创建Develop分支的命令：
 　　git merge --no-ff fixbug-0.1
 ```
 
-最后，删除"修补bug分支"：
+最后，删除"修补 bug 分支"：
 
 ```
 　　git branch -d fixbug-0.1
@@ -808,7 +809,7 @@ Git创建Develop分支的命令：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-01.png)
 
-初始化Git 仓库成功后，可以看到多了一个 .git 的目录，没事不要乱动，免得破坏了 Git 仓库的结构。
+初始化 Git 仓库成功后，可以看到多了一个 .git 的目录，没事不要乱动，免得破坏了 Git 仓库的结构。
 
 接下来，我们来新增一个文件 readme.txt，内容为“老铁，记得给二哥三连啊”，并将其提交到 Git 仓库。
 
@@ -832,7 +833,7 @@ Git创建Develop分支的命令：
 
 ### 2、版本回滚
 
-再次对文件进行修改，追加一行内容为：“xxx，我爱你❤”，并且提交到 Git 仓库。
+再次对文件进行修改，追加一行内容为：“xxx，我爱你 ❤”，并且提交到 Git 仓库。
 
 现在我已经对 readme.txt 文件做了三次修改了。可以通过 `git log` 命令来查看历史记录：
 
@@ -870,7 +871,7 @@ Git 在提交文件的时候分两步，第一步 `git add` 命令是把文件�
 
 “**为什么要先 add 才能 commit 呢？**”
 
-最直接的原因就是Linus 搞了这个“暂存区”的概念。那为什么要搞这个概念呢？没有暂存区不行吗？
+最直接的原因就是 Linus 搞了这个“暂存区”的概念。那为什么要搞这个概念呢？没有暂存区不行吗？
 
 嗯，要回答这个问题，我们就需要追本溯源了。
 
@@ -986,7 +987,7 @@ Title 可不填写，提交成功后会列出对应的密钥：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-22.png)
 
-当我们第一次使用Git 的 push 命令连接 GitHub 时，会得到一个警告⚠️：
+当我们第一次使用 Git 的 push 命令连接 GitHub 时，会得到一个警告 ⚠️：
 
 ```
 The authenticity of host 'github.com (20.205.243.166)' can't be established.
@@ -996,7 +997,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
 这是因为需要你手动确认，输入 yes 即可。
 
-接下来，我们使用 `git push` 命令将当前本地分支推送到 GitHub。加上了 -u 参数后，Git 不但会把本地的 master 分支推送的远程 master 分支上，还会把本地的 master 分支和远程的master 分支关联起来，在以后的推送或者拉取时就可以简化命令（比如说 `git push github master`）。
+接下来，我们使用 `git push` 命令将当前本地分支推送到 GitHub。加上了 -u 参数后，Git 不但会把本地的 master 分支推送的远程 master 分支上，还会把本地的 master 分支和远程的 master 分支关联起来，在以后的推送或者拉取时就可以简化命令（比如说 `git push github master`）。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/jibenshiyong-23.png)
 
@@ -1046,7 +1047,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 - codes 是代码目录，里面是教程的配套源码。
 - images 是图片目录，里面是教程的配套手绘图。
 
-这样就可以利用 GitHub 来做免费的图床，并且还可以白票  jsDelivr CDN 的全球加速，简直不要太爽！
+这样就可以利用 GitHub 来做免费的图床，并且还可以白票 jsDelivr CDN 的全球加速，简直不要太爽！
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/git/sparse-checkout-05.png)
 
@@ -1159,9 +1160,9 @@ Git 是真的牛逼，Linus 是真的牛逼，神不愧是神！
 
 推荐阅读：
 
-> - [下载→豆瓣9.1分的 Pro Git 学习手册 YYDS！](https://mp.weixin.qq.com/s/RpFzXOa2VlFNd7ylLmr9LQ)
+> - [下载 → 豆瓣 9.1 分的 Pro Git 学习手册 YYDS！](https://mp.weixin.qq.com/s/RpFzXOa2VlFNd7ylLmr9LQ)
 > - [摸清 Git 的门路，就靠这 22 张图](https://mp.weixin.qq.com/s/lY79hI7URuFh3gD9DJKInQ)
-> - [保姆级Git入门教程，万字详解](https://mp.weixin.qq.com/s/Z766Egape2QicYndsQjZ4g)
+> - [保姆级 Git 入门教程，万字详解](https://mp.weixin.qq.com/s/Z766Egape2QicYndsQjZ4g)
 
 参考资料：
 
@@ -1169,4 +1170,3 @@ Git 是真的牛逼，Linus 是真的牛逼，神不愧是神！
 > - hutusi：[改变世界的一次代码提交](https://mp.weixin.qq.com/s/gM__sQPILkAKWsMejOO8cA)
 
 <img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
-

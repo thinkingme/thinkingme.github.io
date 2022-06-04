@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java IO学习整理
-
+# Java IO 学习整理
 
 “老王，Java IO 也太上头了吧？”新兵蛋子小二向头顶很凉快的老王抱怨道，“你瞧，我就按照传输方式对 IO 进行了一个简单的分类，就能搞出来这么多的玩意！”
 
@@ -32,7 +31,7 @@ tag:
 
 具体还要看字符编码，比如说在 UTF-8 编码下，一个英文字母（不分大小写）为一个字节，一个中文汉字为三个字节；在 Unicode 编码中，一个英文字母为一个字节，一个中文汉字为两个字节。
 
- PS：关于字符编码，可以看前面的章节：[锟斤拷](https://mp.weixin.qq.com/s/pNQjlXOivIgO3pbYc0GnpA)
+PS：关于字符编码，可以看前面的章节：[锟斤拷](https://mp.weixin.qq.com/s/pNQjlXOivIgO3pbYc0GnpA)
 
 明白了字节与字符的区别，再来看字节流和字符流就会轻松多了。
 
@@ -92,7 +91,6 @@ tag:
 文件操作算是 IO 中最典型的操作了，也是最频繁的操作。那其实你可以换个角度来思考，比如说按照 IO 的操作对象来思考，IO 就可以分类为：文件、数组、管道、基本数据类型、缓冲、打印、对象序列化/反序列化，以及转换等。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-03.png)
-
 
 **1）文件**
 
@@ -259,7 +257,6 @@ CPU 很快，它比内存快 100 倍，比磁盘快百万倍。那也就意味�
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/io/shangtou-04.png)
 
-
 缓冲流在内存中设置了一个缓冲区，只有缓冲区存储了足够多的带操作的数据后，才会和内存或者硬盘进行交互。简单来说，就是一次多读/写点，少读/写几次，这样程序的性能就会提高。
 
 **6）打印**
@@ -301,7 +298,6 @@ try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(
 }
 ```
 
-
 **8）转换**
 
 InputStreamReader 是从字节流到字符流的桥连接，它使用指定的字符集读取字节并将它们解码为字符。
@@ -319,8 +315,8 @@ OutputStreamWriter 将一个字符流的输出对象变为字节流的输出对�
 
 ```java
 File f = new File("test.txt") ;
-Writer out = new OutputStreamWriter(new FileOutputStream(f)) ; // 字节流变为字符流  
-out.write("hello world!!") ;    // 使用字符流输出  
+Writer out = new OutputStreamWriter(new FileOutputStream(f)) ; // 字节流变为字符流
+out.write("hello world!!") ;    // 使用字符流输出
 out.close() ;
 ```
 
@@ -328,17 +324,6 @@ out.close() ;
 
 此时此刻的小二，还沉浸在老王的滔滔不绝中。不仅感觉老王的肺活量是真的大，还感慨老王不愧是工作了十多年的“老油条”，一下子就把自己感觉头大的 IO 给梳理得很清晰了。
 
----------
-
+---
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
-
-
-
-
-
-
-
-
-
-

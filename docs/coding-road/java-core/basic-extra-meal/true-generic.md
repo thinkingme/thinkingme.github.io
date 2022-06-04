@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java不能实现真正泛型的原因是什么？
+# Java 不能实现真正泛型的原因是什么？
 
 “二哥，为啥 Java 不能实现真正泛型啊？”三妹开门见山地问。
 
@@ -51,7 +51,6 @@ public class Cmower {
 
 “保持耐心，好不好？”我安慰道。
 
-
 第一，兼容性
 
 Java 在 2004 年已经积累了较为丰富的生态，如果把现有的类修改为泛型类，需要让所有的用户重新修改源代码并且编译，这就会导致 Java 1.4 之前打下的江山可能会完全覆灭。
@@ -64,19 +63,19 @@ Java 在 2004 年已经积累了较为丰富的生态，如果把现有的类修
 
 第二，不是“实现不了”。Pizza，1996 年的实验语言，在 Java 的基础上扩展了泛型。
 
->Pizza 教程地址：http://pizzacompiler.sourceforge.net/doc/tutorial.html
+> Pizza 教程地址：http://pizzacompiler.sourceforge.net/doc/tutorial.html
 
 “1996 年？”三妹表示很吃惊。
 
 “嗯，你那会还没出生。”我说，“插一下 Java 的版本历史吧，你好有一个时间线上的观念。”
 
-- 1995年5月23日，Java语言诞生
-- 1996年1月，JDK1.0 诞生
-- 1997年2月18日，JDK1.1发布
-- 1998年2月，JDK1.1被下载超过2,000,000次
-- 2000年5月8日，JDK1.3发布
-- 2000年5月29日，JDK1.4发布
-- 2004年9月30日18:00 PM，J2SE1.5 发布
+- 1995 年 5 月 23 日，Java 语言诞生
+- 1996 年 1 月，JDK1.0 诞生
+- 1997 年 2 月 18 日，JDK1.1 发布
+- 1998 年 2 月，JDK1.1 被下载超过 2,000,000 次
+- 2000 年 5 月 8 日，JDK1.3 发布
+- 2000 年 5 月 29 日，JDK1.4 发布
+- 2004 年 9 月 30 日 18:00 PM，J2SE1.5 发布
 
 也就是说，Pizza 在 JDK 1.0 的版本上就实现了“真正意义上的”泛型，我引过来两段例子，你一看就明白了。
 
@@ -139,7 +138,7 @@ class java.util.ArrayList
 
 事实上，Java 的核心开发组对 Pizza 的泛型设计非常感兴趣，并且与 Pizza 的设计者 Martin 和 Phil 取得了联系，新合作了一个项目 Generic Java，争取在 Java 中添加泛型支持，但不引入 Pizza 的其他功能，比如说函数式编程。
 
-*这里再补充一点维基百科上的资料，Martin Odersky 是一名德国计算机科学家，他和其他人一起设计了 Scala 编程语言，以及 Generic Java（还有之前的 Pizza），他实现的 Generic Java 编译器成为了 Java 编译器 javac 的基础。*
+_这里再补充一点维基百科上的资料，Martin Odersky 是一名德国计算机科学家，他和其他人一起设计了 Scala 编程语言，以及 Generic Java（还有之前的 Pizza），他实现的 Generic Java 编译器成为了 Java 编译器 javac 的基础。_
 
 站在马后炮的思维来看，Pizza 的泛型设计和函数式编程非常具有历史前瞻性。然而 Java 的核心开发组在当时似乎并不想把函数式编程引入到 Java 中。
 
@@ -181,12 +180,11 @@ Java 语言和其他编程语言不一样，有着沉重的历史包袱，1.5 �
 
 Java 一直以来都强调兼容性，我认为这也是 Java 之所以能被广泛使用的主要原因之一，开发者不必担心 Java 版本升级的问题，一个在 JDK 1.4 上可以跑的代码，放在 JDK 1.5 上仍然可以跑。
 
-*这里必须得说明一点，J2SE1.5 的发布，是 Java 语言发展史上的重要里程碑，为了表示该版本的重要性，J2SE1.5 也正式更名为 Java SE 5.0，往后去就是 Java SE 6.0，Java SE 7.0。。。。*
+_这里必须得说明一点，J2SE1.5 的发布，是 Java 语言发展史上的重要里程碑，为了表示该版本的重要性，J2SE1.5 也正式更名为 Java SE 5.0，往后去就是 Java SE 6.0，Java SE 7.0。。。。_
 
 但 Java 并不支持高版本 JDK 编译生成的字节码文件在低版本的 JRE（Java 运行时环境）上跑。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-02.png)
-
 
 针对泛型，兼容性具体表现在什么地方呢？来看下面这段代码。
 
@@ -216,15 +214,14 @@ Java 神奇就神奇在这，表面上万物皆对象，但为了性能上的考
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-03.png)
 
-
 Project Valhalla：正在进行当中的 OpenJDK 项目，计划给未来的 Java 添加改进的泛型支持。
 
->源码地址：http://openjdk.java.net/projects/valhalla/
+> 源码地址：http://openjdk.java.net/projects/valhalla/
 
 让我们拭目以待吧！
 
 “怎么样？三妹，这下全部都明白了吧！”我问。
 
-“嗯嗯。二哥，你讲得可真棒👍”三妹夸奖得我有点小开心，嘿嘿。
+“嗯嗯。二哥，你讲得可真棒 👍”三妹夸奖得我有点小开心，嘿嘿。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

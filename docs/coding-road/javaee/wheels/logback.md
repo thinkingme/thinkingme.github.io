@@ -5,8 +5,7 @@ tag:
   - 辅助工具/轮子
 ---
 
-# Logback：Spring Boot内置的日志处理框架
-
+# Logback：Spring Boot 内置的日志处理框架
 
 [Log4j](https://mp.weixin.qq.com/s/AXgNnJe8djD901EmhFkWUg) 介绍过了，[SLF4J](https://mp.weixin.qq.com/s/EhKf1rHWL-QII0f6eo0uVA) 也介绍过了，那接下来，你懂的，Logback 就要隆重地登场了，毕竟它哥仨有一个爹，那就是巨佬 Ceki Gulcu。
 
@@ -33,7 +32,6 @@ tag:
 也可以通过源码的形式看得到：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/logback-2df2d06e-1b01-428b-8444-d765056e25bb.png)
-
 
 3）支持自动重新加载配置文件，不需要另外创建扫描线程来监视。
 
@@ -123,7 +121,6 @@ Logback 的配置文件非常灵活，最基本的结构为 `<configuration>` �
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/logback-b81ab795-2a2c-44c3-a4b8-b96ef78dcd88.png)
 
-
 **1）配置 appender**，也就是配置日志的输出目的地，通过 name 属性指定名字，通过 class 属性指定目的地：
 
 - ch.qos.logback.core.ConsoleAppender：输出到控制台。
@@ -143,7 +140,6 @@ pattern 用来指定日志的输出格式：
 反例（没有指定 -5 的情况）：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/logback-b30bc0ca-5c78-4853-922b-36bb0c7d8628.png)
-
 
 - `%logger{length}`：logger 的名称，length 用来缩短名称。没有指定表示完整输出；0 表示只输出 logger 最右边点号之后的字符串；其他数字表示输出小数点最后边点号之前的字符数量。
 - `%msg`：日志的具体信息。
@@ -200,7 +196,7 @@ appender-ref 用来指定具体的 appender。
 
 如果你的项目以前用的 Log4j，那么可以通过下面这个网址把 log4j.properties 转成 logback-test.xml：
 
->http://logback.qos.ch/translator/
+> http://logback.qos.ch/translator/
 
 把之前 log4j.properties 的内容拷贝一份：
 
@@ -218,15 +214,15 @@ log4j.appender.stdout.layout.ConversionPattern = [%-5p] %d{yyyy-MM-dd HH:mm:ss,S
 log4j.appender.D = org.apache.log4j.DailyRollingFileAppender
 log4j.appender.D.File = debug.log
 log4j.appender.D.Append = true
-log4j.appender.D.Threshold = DEBUG 
+log4j.appender.D.Threshold = DEBUG
 log4j.appender.D.layout = org.apache.log4j.PatternLayout
 log4j.appender.D.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n
 
 ### 输出ERROR 级别以上的日志到=error.log ###
 log4j.appender.E = org.apache.log4j.DailyRollingFileAppender
-log4j.appender.E.File =error.log 
+log4j.appender.E.File =error.log
 log4j.appender.E.Append = true
-log4j.appender.E.Threshold = ERROR 
+log4j.appender.E.Threshold = ERROR
 log4j.appender.E.layout = org.apache.log4j.PatternLayout
 log4j.appender.E.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n
 ```
@@ -288,7 +284,7 @@ log4j.appender.E.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] -
 </configuration>
 ```
 
-可以确认一下内容，发现三个 appender 都在。 
+可以确认一下内容，发现三个 appender 都在。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/logback-7a0edcdf-8706-4a83-9c09-413fc07967ad.png)
 
@@ -402,15 +398,14 @@ public class Test {
 
 Logback 的官网上是有一份手册的，非常详细，足足 200 多页，只不过是英文版的。小伙伴们可以看完我这篇文章入门实操的 Logback 教程后，到下面的地址看官方手册。
 
->http://logback.qos.ch/manual/index.html
+> http://logback.qos.ch/manual/index.html
 
 如果英文阅读能力有限的话，可以到 GitHub 上查看雷锋翻译的中文版：
 
->https://github.com/itwanger/logback-chinese-manual
+> https://github.com/itwanger/logback-chinese-manual
 
 当然了，还有一部分小伙伴喜欢看离线版的 PDF，我已经整理好了：
 
->链接:[https://pan.baidu.com/s/16FrbwycYUUIfKknlLhRKYA](https://pan.baidu.com/s/16FrbwycYUUIfKknlLhRKYA)  密码:bptl
-
+> 链接:[https://pan.baidu.com/s/16FrbwycYUUIfKknlLhRKYA](https://pan.baidu.com/s/16FrbwycYUUIfKknlLhRKYA) 密码:bptl
 
 <img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">

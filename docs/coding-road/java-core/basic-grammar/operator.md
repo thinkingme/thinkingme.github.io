@@ -5,14 +5,13 @@ tag:
   - Java
 ---
 
-# Java运算符
+# Java 运算符
 
 “二哥，让我盲猜一下哈，运算符是不是指的就是加减乘除啊？”三妹的脸上泛着甜甜的笑容，我想她一定对提出的问题很有自信。
 
 “是的，三妹。运算符在 Java 中占据着重要的位置，对程序的执行有着很大的帮助。除了常见的加减乘除，还有许多其他类型的运算符，来看下面这张思维导图。”
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-grammar/eleven-01.png)
-
 
 ### 01、算数运算符
 
@@ -43,7 +42,7 @@ public class ArithmeticOperator {
 }
 ```
 
-对于初学者来说，加法（+）、减法（-）、乘法（*）很好理解，但除法（/）和取余（%）会有一点点疑惑。在以往的认知里，10/3 是除不尽的，结果应该是 3.333333...，而不应该是 3。相应的，余数也不应该是 1。这是为什么呢？
+对于初学者来说，加法（+）、减法（-）、乘法（\*）很好理解，但除法（/）和取余（%）会有一点点疑惑。在以往的认知里，10/3 是除不尽的，结果应该是 3.333333...，而不应该是 3。相应的，余数也不应该是 1。这是为什么呢？
 
 因为数字在程序中可以分为两种，一种是整型，一种是浮点型（不清楚的同学可以回头看看[数据类型那篇](https://mp.weixin.qq.com/s/twim3w_dp5ctCigjLGIbFw)），整型和整型的运算结果就是整型，不会出现浮点型。否则，就会出现浮点型。
 
@@ -73,7 +72,6 @@ System.out.println(0.0 / 0.0); // NaN
 
 Infinity 的中文意思是无穷大，NaN 的中文意思是这不是一个数字（Not a Number）。
 
-
 当整数除以 0 的时候（`10 / 0`），会抛出异常：
 
 ```
@@ -89,10 +87,10 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
 public class UnaryOperator1 {
     public static void main(String[] args) {
         int x = 10;
-        System.out.println(x++);//10 (11)  
-        System.out.println(++x);//12  
-        System.out.println(x--);//12 (11)  
-        System.out.println(--x);//10  
+        System.out.println(x++);//10 (11)
+        System.out.println(++x);//12
+        System.out.println(x--);//12 (11)
+        System.out.println(--x);//10
     }
 }
 ```
@@ -112,7 +110,6 @@ System.out.println(y + " " + x);// 10 11
 ```
 
 对于前自减和后自减来说，同学们可以自己试一把。
-
 
 ### 02、关系运算符
 
@@ -155,7 +152,7 @@ public class BitOperator {
 }
 ```
 
- 从程序的输出结果可以看得出来，60 的二进制是 0011 1100（用 0 补到 8 位），13 的二进制是 0000 1101。
+从程序的输出结果可以看得出来，60 的二进制是 0011 1100（用 0 补到 8 位），13 的二进制是 0000 1101。
 
 PS：现代的二进制记数系统由戈特弗里德·威廉·莱布尼茨于 1679 年设计。莱布尼茨是德意志哲学家、数学家，历史上少见的通才。
 
@@ -215,10 +212,10 @@ static final int hash(Object key) {
 ```java
 public class LeftShiftOperator {
     public static void main(String[] args) {
-        System.out.println(10<<2);//10*2^2=10*4=40  
-        System.out.println(10<<3);//10*2^3=10*8=80  
-        System.out.println(20<<2);//20*2^2=20*4=80  
-        System.out.println(15<<4);//15*2^4=15*16=240  
+        System.out.println(10<<2);//10*2^2=10*4=40
+        System.out.println(10<<3);//10*2^3=10*8=80
+        System.out.println(20<<2);//20*2^2=20*4=80
+        System.out.println(15<<4);//15*2^4=15*16=240
     }
 }
 ```
@@ -274,7 +271,7 @@ public class LogicalOperator1 {
         int c=20;
         System.out.println(a<b&a<c);//false & true = false
 
-        System.out.println(a>b|a<c);//true | true = true  
+        System.out.println(a>b|a<c);//true | true = true
     }
 }
 ```
@@ -288,8 +285,8 @@ public class AssignmentOperator {
     public static void main(String[] args) {
         int a=10;
         int b=20;
-        a+=4;//a=a+4 (a=10+4)  
-        b-=4;//b=b-4 (b=20-4)  
+        a+=4;//a=a+4 (a=10+4)
+        b-=4;//b=b-4 (b=20-4)
         System.out.println(a);
         System.out.println(b);
     }

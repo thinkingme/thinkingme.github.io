@@ -1,8 +1,8 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
-  "/zhishixingqiu/": ["java-mianshi-zhinan","readme.md"],
-  "/download/": ["java","pdf","learn-jianyi","nicearticle", "history"],
+  "/zhishixingqiu/": ["java-mianshi-zhinan", "readme.md"],
+  "/download/": ["java", "pdf", "learn-jianyi", "nicearticle", "history"],
   "/xuexiluxian/": [
     {
       text: "Java",
@@ -88,13 +88,13 @@ export default sidebar({
         {
           text: "2.6 IO",
           collapsable: true,
-          prefix:"io/",
+          prefix: "io/",
           children: "structure",
         },
         {
           text: "2.7 异常处理",
           collapsable: true,
-          prefix:"exception/",
+          prefix: "exception/",
           children: "structure",
         },
         {
@@ -111,7 +111,7 @@ export default sidebar({
         },
         {
           text: "2.10 Java重要知识点",
-          prefix:"basic-extra-meal/",
+          prefix: "basic-extra-meal/",
           collapsable: true,
           children: "structure",
         },
@@ -256,10 +256,7 @@ export default sidebar({
           text: "学习建议",
           collapsable: true,
           prefix: "xuexijianyi/",
-          children: [
-              "read-csapp",
-              "electron-information-engineering",
-          ],
+          children: ["read-csapp", "electron-information-engineering"],
         },
       ],
     },
@@ -271,9 +268,7 @@ export default sidebar({
           text: "心路历程",
           prefix: "about-the-author/",
           collapsable: true,
-          children: [
-            "readme.md",
-          ],
+          children: ["readme.md"],
         },
       ],
     },

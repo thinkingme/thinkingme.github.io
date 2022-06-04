@@ -5,8 +5,7 @@ tag:
   - 面试题集合
 ---
 
-# Redis：12道精选高频面试题
-
+# Redis：12 道精选高频面试题
 
 大家好，我是二哥呀。
 
@@ -54,10 +53,7 @@ Redis 数据是存储在内存中的，为了保证 Redis 数据不丢失，那�
 
 AOF 采用的是写后日志的方式，Redis 先执行命令把数据写入内存，然后再记录日志到文件中。AOF 日志记录的是操作命令，不是实际的数据，如果采用 AOF 方法做故障恢复时需要将全量日志都执行一遍。
 
-
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/redis12question-1.png)
-
 
 RDB 采用的是内存快照的方式，它记录的是某一时刻的数据，而不是操作，所以采用 RDB 方法做故障恢复时只需要直接把 RDB 文件读入内存即可，实现快速恢复。
 
@@ -88,9 +84,7 @@ RDB 采用的是内存快照的方式，它记录的是某一时刻的数据，�
 
 小二：额，这个我不太清楚...
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/redis12question-2.png)
-
 
 面试官：
 
@@ -98,7 +92,6 @@ RDB 采用的是内存快照的方式，它记录的是某一时刻的数据，�
 
 - 如果主线程执行读操作，则主线程和 bgsave 子进程互相不影响；
 - 如果主线程执行写操作，则被修改的数据会复制一份副本，然后 bgsave 子进程会把该副本数据写入 RDB 文件，在这个过程中，主线程仍然可以直接修改原来的数据。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/redis12question-3.png)
 
@@ -114,20 +107,17 @@ RDB 采用的是内存快照的方式，它记录的是某一时刻的数据，�
 
 将从前的一台 Redis 服务器，同步数据到多台从 Redis 服务器上，即一主多从的模式，这个跟 MySQL 主从复制的原理一样。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/redis12question-4.png)
 
 **2）哨兵模式**
 
 使用 Redis 主从服务的时候，会有一个问题，就是当 Redis 的主从服务器出现故障宕机时，需要手动进行恢复，为了解决这个问题，Redis 增加了哨兵模式（因为哨兵模式做到了可以监控主从服务器，并且提供自动容灾恢复的功能）。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/redis12question-5.png)
 
 **3）Redis Cluster（集群）**
 
 Redis Cluster 是一种分布式去中心化的运行模式，是在 Redis 3.0 版本中推出的 Redis 集群方案，它将数据分布在不同的服务器上，以此来降低系统对单主节点的依赖，从而提高 Redis 服务的读写性能。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/redis12question-6.png)
 
@@ -138,7 +128,6 @@ Redis Cluster 是一种分布式去中心化的运行模式，是在 Redis 3.0 �
 面试官：集群中那么多 Master 节点，**Redis Cluster 在存储的时候如何确定选择哪个节点呢**？
 
 小二：这应该是使用了某种 hash 算法，但是我不太清楚。。。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mianjing/redis12question-7.png)
 
@@ -158,17 +147,17 @@ Redis Cluster 将自己分成了 16384 个 Slot（槽位），哈希槽类似于
 
 每个 Redis 节点负责处理一部分槽位，假如你有三个 master 节点 ABC，每个节点负责的槽位如下：
 
-节点 | 处理槽位
----|---
-A | 0-5000
-B |5001 - 10000
-C |10001 - 16383
+| 节点 | 处理槽位      |
+| ---- | ------------- |
+| A    | 0-5000        |
+| B    | 5001 - 10000  |
+| C    | 10001 - 16383 |
 
 这样就实现了 cluster 节点的选择。
 
-----
+---
 
-文章来源于JAVA日知录 ，作者飘渺Jam
+文章来源于 JAVA 日知录 ，作者飘渺 Jam
 转载链接：https://mp.weixin.qq.com/s/GFUHslsSm96fJbhsCkFe_w
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

@@ -5,7 +5,7 @@ tag:
   - Elasticsearch
 ---
 
-# 全文搜索引擎Elasticsearch入门教程
+# 全文搜索引擎 Elasticsearch 入门教程
 
 学习真的是一件令人开心的事情，上次分享了 [Redis 入门](https://mp.weixin.qq.com/s/NPJkMy5RppyFk9QhzHxhrw)的文章后，收到了很多小伙伴的鼓励，比如说：“哎呀，不错呀，二哥，通俗易懂，十分钟真的入门了”。瞅瞅，瞅瞅，我决定再接再厉，入门一下 Elasticsearch，因为我们公司的商城系统升级了，需要用 Elasticsearch 做商品的搜索。
 
@@ -15,10 +15,9 @@ tag:
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/elasticsearch/rumen-ebb2bdbc-2cdb-4540-b48f-41f92c848f2f.jpg)
 
-
 ### 01、Elasticsearch 是什么
 
->Elasticsearch 是一个分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。
+> Elasticsearch 是一个分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。
 
 以上引用来自于官方，不得不说，解释得蛮文艺的。意料之中和意料之外，这两个词让我想起来了某一年的高考作文题（情理之中和意料之外）。
 
@@ -108,7 +107,6 @@ Elasticsearch 是免安装的，只需要把 zip 包解压就可以了。
 
 看完上面这幅图（来源于网络，侵删），是不是瞬间就清晰了。向 Elasticsearch 中存储数据，其实就是向 Elasticsearch 中的 index 下面的 type 中存储 JSON 类型的数据。
 
-
 ### 05、在 Java 中使用 Elasticsearch
 
 有些小伙伴可能会问，“二哥，我是一名 Java 程序员，我该如何在 Java 中使用 Elasticsearch 呢？”这个问题问得好，这就来，这就来。
@@ -176,9 +174,6 @@ public class ElasticsearchTest {
 也可以通过 Kibana 的 Dev Tools 面板查看“writer”索引，结果如下图所示。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/elasticsearch/rumen-64baa243-0075-436e-a070-f28813fee284.jpg)
-
-
-
 
 ### 06、鸣谢
 

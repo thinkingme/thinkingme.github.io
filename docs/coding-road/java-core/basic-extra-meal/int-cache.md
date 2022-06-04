@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java中int、Integer、new Integer之间的区别
+# Java 中 int、Integer、new Integer 之间的区别
 
 “三妹，今天我们来补一个小的知识点：Java 数据类型缓存池。”我喝了一口枸杞泡的茶后对三妹说，“考你一个问题哈：`new Integer(18) 与 Integer.valueOf(18) ` 的区别是什么？”
 
@@ -54,7 +54,7 @@ false
 
 拿 Integer 来举例子，Integer 类内部中内置了 256 个 Integer 类型的缓存数据，当使用的数据范围在 -128~127 之间时，会直接返回常量池中数据的引用，而不是创建对象，超过这个范围时会创建新的对象。
 
- 18 在 -128~127 之间，300 不在。
+18 在 -128~127 之间，300 不在。
 
 来看一下 valueOf 方法的源码吧。
 
@@ -106,13 +106,11 @@ private static class IntegerCache {
 }
 ```
 
-
-
 之前我们在[学习 static 关键字](https://github.com/itwanger/toBeBetterJavaer/blob/master/docs/keywords/java-static.md)的时候，提到过静态代码块，还记得吧？三妹。静态代码块通常用来初始化一些静态变量，它会优先于 main() 方法执行。
 
 在静态代码块中，low 为 -128，也就是缓存池的最小值；high 默认为 127，也就是缓存池的最大值，共计 256 个。
 
-*可以在 JVM 启动的时候，通过 `-XX:AutoBoxCacheMax=NNN` 来设置缓存池的大小，当然了，不能无限大，最大到 `Integer.MAX_VALUE -129`*
+_可以在 JVM 启动的时候，通过 `-XX:AutoBoxCacheMax=NNN` 来设置缓存池的大小，当然了，不能无限大，最大到 `Integer.MAX_VALUE -129`_
 
 之后，初始化 cache 数组的大小，然后遍历填充，下标从 0 开始。
 
@@ -145,7 +143,7 @@ public class AssertTest {
  /usr/libexec/java_home -v 1.8 --exec java -ea com.itwanger.s51.AssertTest
 ```
 
-*我用的 macOS 环境，装了好多个版本的 JDK，该命令可以切换到 JDK 8*
+_我用的 macOS 环境，装了好多个版本的 JDK，该命令可以切换到 JDK 8_
 
 也可以不指定 Java 版本直接执行（加上 `-ea` 参数）：
 

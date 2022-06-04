@@ -6,8 +6,7 @@ tag:
   - Java
 ---
 
-# JVM到底是什么？
-
+# JVM 到底是什么？
 
 “二哥，之前的文章里提到 JVM，说实在的， 我还不知道它到底是干嘛的，你能给我普及一下吗？”三妹咪了一口麦香可可奶茶后对我说。
 
@@ -45,7 +44,7 @@ tag:
 
 记得上大学那会，由于没有 Linux 环境，但又需要在上面玩一些命令，于是就在 Windows 上装 Linux 的虚拟机，这个 JVM 就类似这种东西。
 
- 说白了，就是我们编写 Java 代码，编译 Java 代码，目的不是让它在 Linux、Windows 或者 MacOS 上跑，而是在 JVM 上跑。
+说白了，就是我们编写 Java 代码，编译 Java 代码，目的不是让它在 Linux、Windows 或者 MacOS 上跑，而是在 JVM 上跑。
 
 说到这，三妹是不是想问，“都有哪些 Java 虚拟机呢？”来看下面这张思维导图：
 
@@ -97,14 +96,12 @@ Java 虚拟机虽然是虚拟的，但它的内部是可以划分为：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/seven-06.png)
 
-
 **1）类加载器**
-
 
 类加载器是 Java 虚拟机的一个子系统，用于加载类文件。每当我们运行一个 Java 程序，它都会由类加载器首先加载。
 
-一般来说，Java 程序员并不需要直接同类加载器进行交互。JVM 默认的行为就已经足够满足大多数情况的需求了。不过，如果遇到了需要和类加载器进行交互的情况，而对类加载器的机制又不是很了解的话，就不得不花大量的时间去调试 
- `ClassNotFoundException` 和 `NoClassDefFoundError` 等异常。
+一般来说，Java 程序员并不需要直接同类加载器进行交互。JVM 默认的行为就已经足够满足大多数情况的需求了。不过，如果遇到了需要和类加载器进行交互的情况，而对类加载器的机制又不是很了解的话，就不得不花大量的时间去调试
+`ClassNotFoundException` 和 `NoClassDefFoundError` 等异常。
 
 对于任意一个类，都需要由它的类加载器和这个类本身一同确定其在 JVM 中的唯一性。也就是说，如果两个类的加载器不同，即使两个类来源于同一个字节码文件，那这两个类就必定不相等（比如两个类的 Class 对象不 `equals`）。
 
@@ -142,22 +139,19 @@ jdk.internal.loader.ClassLoaders$PlatformClassLoader@2d209079
 
 来看下面这张图：
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/seven-07.png)
 
-
-- PC寄存器（PC Register），也叫程序计数器（Program Counter Register），是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的信号指示器。
+- PC 寄存器（PC Register），也叫程序计数器（Program Counter Register），是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的信号指示器。
 
 - JVM 栈（Java Virtual Machine Stack），与 PC 寄存器一样，JVM 栈也是线程私有的。每一个 JVM 线程都有自己的 JVM 栈，这个栈与线程同时创建，它的生命周期与线程相同。
 
-- 本地方法栈（Native Method Stack），JVM 可能会使用到传统的栈来支持 Native 方法（使用 Java 语言以外的其它语言［C语言］编写的方法）的执行，这个栈就是本地方法栈。
+- 本地方法栈（Native Method Stack），JVM 可能会使用到传统的栈来支持 Native 方法（使用 Java 语言以外的其它语言［C 语言］编写的方法）的执行，这个栈就是本地方法栈。
 
 - 堆（Heap），在 JVM 中，堆是可供各条线程共享的运行时内存区域，也是供所有类实例和数据对象分配内存的区域。
 
 - 方法区（Method area），在 JVM 中，被加载类型的信息都保存在方法区中。包括类型信息（Type Information）和方法列表（Method Tables）。方法区是所有线程共享的，所以访问方法区信息的方法必须是线程安全的。
 
 - 运行时常量池（Runtime Constant Pool），运行时常量池是每一个类或接口的常量池在运行时的表现形式，它包括了编译器可知的数值字面量，以及运行期解析后才能获得的方法或字段的引用。简而言之，当一个方法或者变量被引用时，JVM 通过运行时常量区来查找方法或者变量在内存里的实际地址。
-
 
 **3）执行引擎**
 

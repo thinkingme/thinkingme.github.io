@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java重写（Overriding）时应当遵守的11条规则
+# Java 重写（Overriding）时应当遵守的 11 条规则
 
 重写（Overriding）算是 Java 中一个非常重要的概念，理解重写到底是什么对每个 Java 程序员来说都至关重要，这篇文章就来给大家说说重写过程中应当遵守的 12 条规则。
 
@@ -30,7 +30,7 @@ public class Animal {
     public void move() { }
 
     protected void eat() { }
-    
+
     void sleep(){ }
 }
 ```
@@ -47,7 +47,7 @@ public class Dog extends Animal {
 }
 ```
 
- OK，完全没有问题。但如果父类中的方法是 private 的，就行不通了。
+OK，完全没有问题。但如果父类中的方法是 private 的，就行不通了。
 
 ```java
 public class Animal {
@@ -299,9 +299,9 @@ public abstract class AbstractDog implements Animal {
 
 ```java
 public class BullDog extends AbstractDog {
- 
+
     public void move() {}
- 
+
     protected void bark() {}
 }
 ```

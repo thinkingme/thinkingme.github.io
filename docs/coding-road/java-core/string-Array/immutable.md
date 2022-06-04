@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# 为什么String是不可变的？
+# 为什么 String 是不可变的？
 
 我正坐在沙发上津津有味地读刘欣大佬的《码农翻身》——Java 帝国这一章，门铃响了。起身打开门一看，是三妹，她从学校回来了。
 
@@ -78,7 +78,7 @@ public String substring(int beginIndex) {
             : StringUTF16.newString(value, beginIndex, subLen);
 }
 
-// StringLatin1.newString 
+// StringLatin1.newString
 public static String newString(byte[] val, int index, int len) {
     return new String(Arrays.copyOfRange(val, index, index + len),
             LATIN1);

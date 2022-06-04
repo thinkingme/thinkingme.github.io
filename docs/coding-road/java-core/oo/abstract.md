@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java抽象类
-
+# Java 抽象类
 
 “二哥，你这明显加快了更新的频率呀！”三妹对于我最近的肝劲由衷的佩服了起来。
 
@@ -14,8 +13,7 @@ tag:
 
 “那就开始吧。”三妹说。
 
--------
-
+---
 
 定义抽象类的时候需要用到关键字 `abstract`，放在 `class` 关键字前，就像下面这样。
 
@@ -52,7 +50,7 @@ public class BasketballPlayer extends AbstractPlayer {
 ```java
 public abstract class AbstractPlayer {
     abstract void play();
-    
+
     public void sleep() {
         System.out.println("运动员也要休息而不是挑战极限");
     }
@@ -122,7 +120,7 @@ footballPlayer.sleep();
 
 **第二种场景**。
 
-当我们需要在抽象类中定义好 API，然后在子类中扩展实现的时候就可以使用抽象类。比如说，AbstractPlayer  抽象类中定义了一个抽象方法 `play()`，表明所有运动员都可以从事某项运动，但需要对应子类去扩展实现，表明篮球运动员打篮球，足球运动员踢足球。
+当我们需要在抽象类中定义好 API，然后在子类中扩展实现的时候就可以使用抽象类。比如说，AbstractPlayer 抽象类中定义了一个抽象方法 `play()`，表明所有运动员都可以从事某项运动，但需要对应子类去扩展实现，表明篮球运动员打篮球，足球运动员踢足球。
 
 ```java
 abstract class AbstractPlayer {
@@ -230,7 +228,6 @@ public class FileReaderTest {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/abstract-05.png)
 
-
 在 resource 目录下的文件可以通过 `ClassLoader.getResource()` 的方式获取到 URI 路径，然后就可以取到文本内容了。
 
 输出结果如下所示：
@@ -240,7 +237,7 @@ public class FileReaderTest {
 [HELLO WORLD]
 ```
 
--------
+---
 
 “完了吗？二哥”三妹似乎还沉浸在聆听教诲的快乐中。
 

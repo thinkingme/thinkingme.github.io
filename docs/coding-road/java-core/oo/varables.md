@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java中可变参数的使用
+# Java 中可变参数的使用
 
 为了让铁粉们能白票到阿里云的服务器，老王当了整整两天的客服，真正体验到了什么叫做“为人民群众谋福利”的不易和辛酸。正在他眼睛红肿打算要休息之际，小二跑过来问他：“Java 的可变参数究竟是怎么一回事？”老王一下子又清醒了，他爱 Java，他爱传道解惑，他爱这群尊敬他的读者。
 
@@ -36,9 +36,6 @@ public static void print(String... strs) {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-extra-meal/varables-02.png)
 
-
-
-
 可变参数看起来就像是个语法糖，它背后究竟隐藏了什么呢？老王想要一探究竟，它在追求真理这条路上一直很执着。
 
 其实也很简单。**当使用可变参数的时候，实际上是先创建了一个数组，该数组的大小就是可变参数的个数，然后将参数放入数组当中，再将数组传递给被调用的方法**。
@@ -62,9 +59,7 @@ public static void print(String... strs) {
 
 那如果方法的参数是一个数组，然后像使用可变参数那样去调用方法的时候，能行得通吗？
 
-*留个思考题，大家也可以去试一试*
-
-
+_留个思考题，大家也可以去试一试_
 
 那一般什么时候使用可变参数呢？
 
@@ -119,7 +114,6 @@ public static void print(Integer... ints) {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-extra-meal/varables-03.png)
 
-
 假如真的需要重载带有可变参数的方法，就必须在调用方法的时候给出明确的指示，不要让编译器去猜。
 
 ```java
@@ -139,6 +133,5 @@ public static void print(Integer... ints) {
 ```
 
 上面这段代码是可以编译通过的。因为编译器知道参数是 String 类型还是 Integer 类型，只不过为了运行时不抛出 `NullPointerException`，两个 `print()` 方法的内部要做好判空操作。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

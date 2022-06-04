@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java异常处理的20个最佳实践
+# Java 异常处理的 20 个最佳实践
 
 “三妹啊，今天我来给你传授几个异常处理的最佳实践经验，以免你以后在开发中采坑。”我面带着微笑对三妹说。
 
@@ -13,13 +13,13 @@ tag:
 
 “好，那哥就不废话了。开整。”
 
---------
+---
 
 **1）尽量不要捕获 RuntimeException**
 
 阿里出品的嵩山版 Java 开发手册上这样规定：
 
->尽量不要 catch RuntimeException，比如 NullPointerException、IndexOutOfBoundsException 等等，应该用预检查的方式来规避。
+> 尽量不要 catch RuntimeException，比如 NullPointerException、IndexOutOfBoundsException 等等，应该用预检查的方式来规避。
 
 正例：
 
@@ -32,8 +32,8 @@ if (obj != null) {
 反例：
 
 ```java
-try { 
-  obj.method(); 
+try {
+  obj.method();
 } catch (NullPointerException e) {
   //...
 }
@@ -182,7 +182,7 @@ public void wrapException(String input) throws MyBusinessException {
 
 阿里出品的嵩山版 Java 开发手册上这样规定：
 
->try 块中的 return 语句执行成功后，并不会马上返回，而是继续执行 finally 块中的语句，如果 finally 块中也存在 return 语句，那么 try 块中的 return 就将被覆盖。
+> try 块中的 return 语句执行成功后，并不会马上返回，而是继续执行 finally 块中的语句，如果 finally 块中也存在 return 语句，那么 try 块中的 return 就将被覆盖。
 
 反例：
 
@@ -201,7 +201,7 @@ public int checkReturn() {
 
 “是这样的。”我点点头。
 
-----------
+---
 
 “好了，三妹，关于异常处理实践就先讲这 6 条吧，实际开发中你还会碰到其他的一些坑，自己踩一踩可能印象更深刻一些。”我说。
 
@@ -212,8 +212,3 @@ public int checkReturn() {
 “好吧。”三妹无奈地叹了口气。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
-
-
-
-
-

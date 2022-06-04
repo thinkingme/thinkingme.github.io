@@ -5,13 +5,11 @@ tag:
   - 辅助工具/轮子
 ---
 
-# Jackson：GitHub上star数最多的JSON解析库
-
+# Jackson：GitHub 上 star 数最多的 JSON 解析库
 
 在当今的编程世界里，JSON 已经成为将信息从客户端传输到服务器端的首选协议，可以好不夸张的说，XML 就是那个被拍死在沙滩上的前浪。
 
 很不幸的是，JDK 没有 JSON 库，不知道为什么不搞一下。Log4j 的时候，为了竞争，还推出了 java.util.logging，虽然最后也没多少人用。
-
 
 Java 之所以牛逼，很大的功劳在于它的生态非常完备，JDK 没有 JSON 库，第三方类库有啊，还挺不错，比如说本篇的猪脚——Jackson，GitHub 上标星 6.1k，Spring Boot 的默认 JSON 解析器。
 
@@ -124,7 +122,6 @@ class Writer {
 - 如果字段只有 public 的 setter 方法，而无 public 的 getter 方 法，则该字段只能用于反序列化。
 
 如果想更改默认的序列化和反序列化规则，需要调用 ObjectMapper 的 `setVisibility()` 方法。否则将会抛出 InvalidDefinitionException 异常。
-
 
 ObjectMapper 通过 readValue 的系列方法从不同的数据源将 JSON 反序列化为 Java 对象。
 

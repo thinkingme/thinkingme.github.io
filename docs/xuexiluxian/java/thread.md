@@ -7,14 +7,13 @@ tag:
   - Java
 ---
 
-# Java并发编程学习路线
+# Java 并发编程学习路线
 
 众所周知，Java 并发是 Java 程序员必须懂但又很难懂的一块知识点。一般来说，很少有人敢说自己精通 Java 并发的，一是容易被面试官吊打，二是并发编程涉及到操作系统、内存、CPU 等计算机专业比较核心的内容，比较考验一个程序员的内功。
 
 今天这篇文章就来给大家盘点一下 Java 并发到底该如何从入门到精通，请及时用鸡毛掸子把收藏夹里的灰清理一下。在阅读过程中，如果有所帮助，麻烦点赞/收藏和转发，算是对我码字的这份坚持的亿点点鼓励。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java-thread-1.gif)
-
 
 ### 一、为什么要学 Java 并发？
 
@@ -26,7 +25,7 @@ tag:
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java-thread-2.png)
 
-因此，我们需要一些高效的学习路线图，以及一些优质的学习资源，从而减少我们学习Java 并发编程所投入的时间和精力。
+因此，我们需要一些高效的学习路线图，以及一些优质的学习资源，从而减少我们学习 Java 并发编程所投入的时间和精力。
 
 ### 二、Java 并发学习路线图
 
@@ -53,8 +52,8 @@ tag:
 - 并发容器系的 ConcurrentHashMap、ConcurrentLinkedQueue、CopyOnWriteArrayList、ThreadLocal、BlockingQueue
 - 线程池系的 ThreadPoolExecutor、ScheduledThreadPoolExecutor
 - 原子系的 AtomicInteger、AtomicIntegerArray、AtomicReference 等等
-- 通信工具系的倒计时器 CountDownLatch、循环栅栏 CyclicBarrier、资源访问控制 Semaphore、数据交换 Exchanger、移相器Phaser
-- Fork/Join框架
+- 通信工具系的倒计时器 CountDownLatch、循环栅栏 CyclicBarrier、资源访问控制 Semaphore、数据交换 Exchanger、移相器 Phaser
+- Fork/Join 框架
 
 最后再来个经典的生产者消费者模式进行实践，整个 Java 并发体系就学得非常扎实了！
 
@@ -64,7 +63,7 @@ tag:
 
 学 Java，当然要找 Java 程序员进阶之路，网址我贴下面了哈：
 
->[https://tobebetterjavaer.com/home.html#java并发编程](https://tobebetterjavaer.com/home.html#java并发编程)
+> [https://tobebetterjavaer.com/home.html#java 并发编程](https://tobebetterjavaer.com/home.html#java并发编程)
 
 进去直接找 Java 核心里面的 Java 并发编程就对了。我按照前面的思维导图整理了 27 篇文章，全部都是硬核级别的，跟着学就对了。
 
@@ -72,11 +71,11 @@ tag:
 
 **2）视频**
 
-懂的都懂，看视频到 B 站。黑马的《Java并发编程》评价还不错，300 多个小节，我觉得讲的比较好的有三部分：synchronized优化原理、AQS和线程池。
+懂的都懂，看视频到 B 站。黑马的《Java 并发编程》评价还不错，300 多个小节，我觉得讲的比较好的有三部分：synchronized 优化原理、AQS 和线程池。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java-thread-4.png)
 
->视频地址：[https://www.bilibili.com/video/BV16J411h7Rd](https://www.bilibili.com/video/BV16J411h7Rd)
+> 视频地址：[https://www.bilibili.com/video/BV16J411h7Rd](https://www.bilibili.com/video/BV16J411h7Rd)
 
 **3）书籍**
 
@@ -91,21 +90,19 @@ tag:
 
 到底该如何获得线程安全呢？背会并理解下面这段话：
 
->Writing thread-safe code is, at its core, about managing access to state, and in particular to shared, mutable state.
+> Writing thread-safe code is, at its core, about managing access to state, and in particular to shared, mutable state.
 
-如果发现不是很好懂，想从国内作者下手的话，可以尝试一下《[Java并发编程的艺术](https://book.douban.com/subject/26591326/)》和《[图解Java并发编程](https://book.douban.com/subject/35634953/)》这两本书，虽然豆瓣上评分一般，但对于构建 Java 并发的知识体系还是有很大帮助的。
+如果发现不是很好懂，想从国内作者下手的话，可以尝试一下《[Java 并发编程的艺术](https://book.douban.com/subject/26591326/)》和《[图解 Java 并发编程](https://book.douban.com/subject/35634953/)》这两本书，虽然豆瓣上评分一般，但对于构建 Java 并发的知识体系还是有很大帮助的。
 
 之后，再去啃《Java 并发编程实战》就会发现没有以前那么费劲了，这本书之所以被誉为 Java 并发编程的圣经，确实可以看得出作者在并发编程方面有着丰富的经验。
 
-
-
 **4）开源电子书**
 
-推荐 RedSpider社区的[深入浅出 Java 多线程](http://concurrent.redspider.group/RedSpider.html)，比Java 并发编程实战更通俗易懂一些，因为里面穿插了很多精美的手绘图。
+推荐 RedSpider 社区的[深入浅出 Java 多线程](http://concurrent.redspider.group/RedSpider.html)，比 Java 并发编程实战更通俗易懂一些，因为里面穿插了很多精美的手绘图。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java-thread-6.png)
 
->GitHub地址：[https://github.com/RedSpider1/concurrent](https://github.com/RedSpider1/concurrent)
+> GitHub 地址：[https://github.com/RedSpider1/concurrent](https://github.com/RedSpider1/concurrent)
 
 考虑到有些小伙伴可能需要 [PDF 版本](https://mp.weixin.qq.com/s/pxKrjw_5NTdZfHOKCkwn8w)，我花了一周的时间整理了一份，需要的小伙伴请扫描下方的二维码关注作者的原创公众号「**沉默王二**」回复关键字「**并发**」就可以拉取到了。
 
@@ -113,17 +110,15 @@ tag:
 
 再推荐一份 GitHub 上星标 3.6k+ 的 Java 并发知识点总结：
 
->[https://github.com/CL0610/Java-concurrency](https://github.com/CL0610/Java-concurrency)
+> [https://github.com/CL0610/Java-concurrency](https://github.com/CL0610/Java-concurrency)
 
 仓库里有一句话我非常喜欢，也分享给各位小伙伴：
 
->努力的意义，就是，在以后的日子里，放眼望去全是自己喜欢的人和事！
-
+> 努力的意义，就是，在以后的日子里，放眼望去全是自己喜欢的人和事！
 
 **5）付费专栏**
 
 王宝令老师在极客时间上开了一门《Java 并发编程实战》的付费专栏，质量还是挺高的，喜欢的小伙伴可以戳[链接](http://gk.link/a/11cBH)去购买。
-
 
 ### 四、优质八股文
 
@@ -133,13 +128,13 @@ tag:
 
 为了方便大家的阅读和背诵，我已经将其整理到了二哥的小破站《Java 程序员进阶之路》上，面渣逆袭 Java 并发篇：
 
->[https://tobebetterjavaer.com/sidebar/sanfene/javathread.html](https://tobebetterjavaer.com/sidebar/sanfene/javathread.html)
+> [https://tobebetterjavaer.com/sidebar/sanfene/javathread.html](https://tobebetterjavaer.com/sidebar/sanfene/javathread.html)
 
 Java 并发编程八股文（背诵版）：
 
->[https://tobebetterjavaer.com/baguwen/java-thread.html](https://tobebetterjavaer.com/baguwen/java-thread.html)
+> [https://tobebetterjavaer.com/baguwen/java-thread.html](https://tobebetterjavaer.com/baguwen/java-thread.html)
 
-这两份八股文的质量都非常高，来看一下AQS了解多少小节下的内容，图文并茂，非常容易消化和吸收。
+这两份八股文的质量都非常高，来看一下 AQS 了解多少小节下的内容，图文并茂，非常容易消化和吸收。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java-thread-8.png)
 
@@ -191,13 +186,13 @@ Java 提供的并发组件，大致可以分为两类：
 
 因此，Java 提供了针对不同场景下的锁，比如说读写锁 ReadWriteLock，可以解决多线程同时读，但只有一个线程能写的问题；但 ReadWriteLock 也有自己的问题，就是如果有线程正在读，写线程需要等待度线程释放锁后才能获得写锁，也就是读的过程中不允许写，属于一种悲观的读锁。
 
-为了进一步提升并发执行的效率，Java 8 引入了一个新的读写锁 StampedLock，与ReadWriteLock 相比，StampedLock的优势在于读的过程中也允许获取写锁后写入，但带来的问题就是可能读的数据不一致，需要一点额外的代码来判断读的过程中是否有写入，本质上是一种乐观的锁。
+为了进一步提升并发执行的效率，Java 8 引入了一个新的读写锁 StampedLock，与 ReadWriteLock 相比，StampedLock 的优势在于读的过程中也允许获取写锁后写入，但带来的问题就是可能读的数据不一致，需要一点额外的代码来判断读的过程中是否有写入，本质上是一种乐观的锁。
 
 乐观锁的意思就是估计读的过程中大概率不会有写入，而悲观锁则是读的过程中拒绝有写入，两者的区别就在于性能上会有差异，乐观锁需要针对小概率事件进行多一步的检测，但性能也会有所提升；悲观锁更能保证“线程安全性”。
 
 听我这么一说，是不是一下子就清晰多了！
 
-另外，需要 Java 学习资料的话，可以直接戳我整理的这个 GitHub/码云仓库——📚Java程序员必读书单整理，附下载地址，助力每一个Java程序员构建属于自己的知识体系。包括但不限于Java、设计模式、计算机网络、操作系统、数据库、数据结构与算法、大数据、架构、面试等等。
+另外，需要 Java 学习资料的话，可以直接戳我整理的这个 GitHub/码云仓库——📚Java 程序员必读书单整理，附下载地址，助力每一个 Java 程序员构建属于自己的知识体系。包括但不限于 Java、设计模式、计算机网络、操作系统、数据库、数据结构与算法、大数据、架构、面试等等。
 
 - GitHub 地址：[https://github.com/itwanger/JavaBooks](https://github.com/itwanger/JavaBooks)
 - 码云地址：[https://gitee.com/itwanger/JavaBooks](https://gitee.com/itwanger/JavaBooks)

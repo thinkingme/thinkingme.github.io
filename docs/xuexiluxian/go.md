@@ -6,7 +6,7 @@ tag:
   - Go
 ---
 
-# Go学习路线（建议收藏:+1:）
+# Go 学习路线（建议收藏:+1:）
 
 大家好，我是二哥呀！最近又有一个读者来咨询我的建议：**应届生，要求 Java 进去后转 Go，问我咋样？**
 
@@ -20,11 +20,11 @@ tag:
 
 ### 一、Go 的优势和劣势
 
-Go 语言诞生于 2009 年，发展到现在，已经 12 岁了（应该没算错吧😭）。
+Go 语言诞生于 2009 年，发展到现在，已经 12 岁了（应该没算错吧 😭）。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-2.png)
 
-很多明星级的开源产品，比如说 Kubernetes、Docker等，都是基于 Go 语言编写的。再加上近些年来微服务架构和云原生技术的普及，也大大的带火了 Go 这门编程语言，使其在 C/C++ 和 Java 中杀出了一条血路。
+很多明星级的开源产品，比如说 Kubernetes、Docker 等，都是基于 Go 语言编写的。再加上近些年来微服务架构和云原生技术的普及，也大大的带火了 Go 这门编程语言，使其在 C/C++ 和 Java 中杀出了一条血路。
 
 再加上从 2010 年 5 月起，Google 开始将 Go 语言投入到后端基础设施的实际开发中，很多我们能耳熟能详的应用都有使用 Go 语言，比如说谷歌地图、Google Cloud 等。
 
@@ -66,7 +66,7 @@ Google 和字节两家大厂对 Go 的大力投入，在一定程度上又加速
 
 不管怎么说，Go 语言的确是值得去学习的。如果公司确实需要转 Go 岗，也完全没有必要抗拒。
 
-这里给大家推荐一个 Go 语言的学习路线图，如果你想要成为一名Go语言的开发者的话，可以沿着这张图里面的路径去学习。
+这里给大家推荐一个 Go 语言的学习路线图，如果你想要成为一名 Go 语言的开发者的话，可以沿着这张图里面的路径去学习。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-7.jpg)
 
@@ -80,7 +80,7 @@ Google 和字节两家大厂对 Go 的大力投入，在一定程度上又加速
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-8.jpg)
 
->课程地址：[https://github.com/unknwon/go-fundamental-programming](https://github.com/unknwon/go-fundamental-programming)
+> 课程地址：[https://github.com/unknwon/go-fundamental-programming](https://github.com/unknwon/go-fundamental-programming)
 
 **第二套视频：尚硅谷 Go 入门到实战教程**，采用真实案例，从理论到实践，一步一步将 Go 的核心编程技术、编程思想、底层实现融会贯通。
 
@@ -88,7 +88,7 @@ Google 和字节两家大厂对 Go 的大力投入，在一定程度上又加速
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-9.jpg)
 
->视频地址：[https://www.bilibili.com/video/BV1ME411Y71o](https://www.bilibili.com/video/BV1ME411Y71o)
+> 视频地址：[https://www.bilibili.com/video/BV1ME411Y71o](https://www.bilibili.com/video/BV1ME411Y71o)
 
 **2）教程/书籍**
 
@@ -98,13 +98,13 @@ Google 和字节两家大厂对 Go 的大力投入，在一定程度上又加速
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-10.jpg)
 
->教程地址：[http://tour.studygolang.com/welcome/1](http://tour.studygolang.com/welcome/1)
+> 教程地址：[http://tour.studygolang.com/welcome/1](http://tour.studygolang.com/welcome/1)
 
 **第二套教程：LeetCode-Go**，一本 LeetCode 的刷题笔记，代码是用 Go 语言实现的，收录了超过 500 道题的题解思路和代码，代码方案都是效率超高的“标准答案”：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-11.jpg)
 
->教程地址：[https://books.halfrost.com/leetcode/](https://books.halfrost.com/leetcode/)
+> 教程地址：[https://books.halfrost.com/leetcode/](https://books.halfrost.com/leetcode/)
 
 **第三套教程：《Go 语言设计与实现》**，这份教程的内容可以分成四个部分：
 
@@ -117,11 +117,11 @@ Google 和字节两家大厂对 Go 的大力投入，在一定程度上又加速
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-12.jpg)
 
->在线地址：[https://draveness.me/golang/](https://draveness.me/golang/)
+> 在线地址：[https://draveness.me/golang/](https://draveness.me/golang/)
 
 是开发者内功修炼号主飞哥给我推荐的，当时看完后就大为震撼。目前我看作者已经出版了纸质书。
 
-**第四套教程：《玩转 GO》**，内容包括但不限于并发、网络编程、垃圾回收、组合、Go UNIX系统编程、基本数据类型（Array,Slice,Map）、Go源码、反射，接口，类型方法等高级概念。
+**第四套教程：《玩转 GO》**，内容包括但不限于并发、网络编程、垃圾回收、组合、Go UNIX 系统编程、基本数据类型（Array,Slice,Map）、Go 源码、反射，接口，类型方法等高级概念。
 
 不过遗憾的是，在线阅读地址挂了，我还提交了一个 issue：
 
@@ -135,15 +135,15 @@ Google 和字节两家大厂对 Go 的大力投入，在一定程度上又加速
 
 ![扫码关注后回复「go」关键字](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
 
-**第五套教程：Go标准库文档**，可以查询每个API的具体使用方式，这也是 Go 开发者的必备手册。
+**第五套教程：Go 标准库文档**，可以查询每个 API 的具体使用方式，这也是 Go 开发者的必备手册。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-15.jpg)
 
->在线地址：[https://studygolang.com/static/pkgdoc/main.html](https://studygolang.com/static/pkgdoc/main.html)
+> 在线地址：[https://studygolang.com/static/pkgdoc/main.html](https://studygolang.com/static/pkgdoc/main.html)
 
 再推荐一些比较优质的纸质书籍吧。
 
-**第一本：Go语言实战**，这本书关注于 Go 语言的规范和实现，涉及的内容包括语法、Go 的类型系统、并发、通道和测试等主题。
+**第一本：Go 语言实战**，这本书关注于 Go 语言的规范和实现，涉及的内容包括语法、Go 的类型系统、并发、通道和测试等主题。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-16.jpg)
 
@@ -167,32 +167,30 @@ Google 和字节两家大厂对 Go 的大力投入，在一定程度上又加速
 
 **第一个项目：seaweedfs**，GitHub 上星标 13k+，这是一个分布式文件系统，基于 Go 开发，部署方便，使用简单，功能强大。
 
->地址：[https://github.com/chrislusf/seaweedfs](https://github.com/chrislusf/seaweedfs)
+> 地址：[https://github.com/chrislusf/seaweedfs](https://github.com/chrislusf/seaweedfs)
 
 **第二个项目：seaweedfs**，GitHub 上星标 13k+，这是一个自带文件浏览器的网盘服务，支持文件浏览、生成分享链接、批量上传、创建文件夹等功能、用户系统。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-20.jpg)
 
->地址：[https://github.com/filebrowser/filebrowser](https://github.com/filebrowser/filebrowser)
+> 地址：[https://github.com/filebrowser/filebrowser](https://github.com/filebrowser/filebrowser)
 
 **第三个项目：go-admin**，GitHub 上星标 5k+，基于 Go 语言的一个数据可视化与管理平台，使开发者能在极简短的时间里，用极简短的代码量搭建起一个后台管理。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-21.jpg)
 
->地址：[https://github.com/GoAdminGroup/go-admin](https://github.com/GoAdminGroup/go-admin)
+> 地址：[https://github.com/GoAdminGroup/go-admin](https://github.com/GoAdminGroup/go-admin)
 
-**第四个项目：7天用Go从零实现分布式缓存GeeCache**，每天完成的部分都是可以独立运行和测试的，就像搭积木一样，最终组合在一起就是一个完整的分布式缓存系统。每天的代码在 100 行左右。。
+**第四个项目：7 天用 Go 从零实现分布式缓存 GeeCache**，每天完成的部分都是可以独立运行和测试的，就像搭积木一样，最终组合在一起就是一个完整的分布式缓存系统。每天的代码在 100 行左右。。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/go-22.jpg)
 
->地址：[https://geektutu.com/post/geecache.html](https://geektutu.com/post/geecache.html)
+> 地址：[https://geektutu.com/post/geecache.html](https://geektutu.com/post/geecache.html)
 
-
-更多 Go语言的学习资料，可以直接戳我整理的这个 GitHub/码云仓库——📚程序员必读书单整理，附下载地址，里面有大量的 Go语言学习资料。
+更多 Go 语言的学习资料，可以直接戳我整理的这个 GitHub/码云仓库——📚 程序员必读书单整理，附下载地址，里面有大量的 Go 语言学习资料。
 
 - GitHub 地址：[https://github.com/itwanger/JavaBooks](https://github.com/itwanger/JavaBooks#go)
 - 码云地址：[https://gitee.com/itwanger/JavaBooks](https://gitee.com/itwanger/JavaBooks#go)
-
 
 ### 四、Java 和 Go 如何做取舍？
 

@@ -7,7 +7,7 @@ tag:
 
 # 面渣逆袭（Spring）必看:+1:
 
-> 图文详解 35 道Spring面试高频题，这次吊打面试官，我觉得稳了（手动 dog）。整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/EQge6DmgIqYITM3mAxkatg)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/Y17S85ntHm_MLTZMJdtjQQ)。
+> 图文详解 35 道 Spring 面试高频题，这次吊打面试官，我觉得稳了（手动 dog）。整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/EQge6DmgIqYITM3mAxkatg)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/Y17S85ntHm_MLTZMJdtjQQ)。
 
 ## 基础
 
@@ -270,59 +270,59 @@ Bean 通过一个配置文件定义，把它解析成一个类型。
 
 ![BeanFactory](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-c6b3b707-cf53-4c7c-a6f9-8560950806fc.png)
 
-  - 对象工厂，我们最**核心**的一个类，在它初始化的时候，创建了 bean 注册器，完成了资源的加载。
+- 对象工厂，我们最**核心**的一个类，在它初始化的时候，创建了 bean 注册器，完成了资源的加载。
 
-  - 获取 bean 的时候，先从单例缓存中取，如果没有取到，就创建并注册一个 bean
+- 获取 bean 的时候，先从单例缓存中取，如果没有取到，就创建并注册一个 bean
 
-    ```java
-    public class BeanFactory {
+  ```java
+  public class BeanFactory {
 
-        private Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
+      private Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
 
-        private BeanRegister beanRegister;
+      private BeanRegister beanRegister;
 
-        public BeanFactory() {
-            //创建bean注册器
-            beanRegister = new BeanRegister();
-            //加载资源
-            this.beanDefinitionMap = new ResourceLoader().getResource();
-        }
+      public BeanFactory() {
+          //创建bean注册器
+          beanRegister = new BeanRegister();
+          //加载资源
+          this.beanDefinitionMap = new ResourceLoader().getResource();
+      }
 
-        /**
-         * 获取bean
-         *
-         * @param beanName bean名称
-         * @return
-         */
-        public Object getBean(String beanName) {
-            //从bean缓存中取
-            Object bean = beanRegister.getSingletonBean(beanName);
-            if (bean != null) {
-                return bean;
-            }
-            //根据bean定义，创建bean
-            return createBean(beanDefinitionMap.get(beanName));
-        }
+      /**
+       * 获取bean
+       *
+       * @param beanName bean名称
+       * @return
+       */
+      public Object getBean(String beanName) {
+          //从bean缓存中取
+          Object bean = beanRegister.getSingletonBean(beanName);
+          if (bean != null) {
+              return bean;
+          }
+          //根据bean定义，创建bean
+          return createBean(beanDefinitionMap.get(beanName));
+      }
 
-        /**
-         * 创建Bean
-         *
-         * @param beanDefinition bean定义
-         * @return
-         */
-        private Object createBean(BeanDefinition beanDefinition) {
-            try {
-                Object bean = beanDefinition.getBeanClass().newInstance();
-                //缓存bean
-                beanRegister.registerSingletonBean(beanDefinition.getBeanName(), bean);
-                return bean;
-            } catch (InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-    }
-    ```
+      /**
+       * 创建Bean
+       *
+       * @param beanDefinition bean定义
+       * @return
+       */
+      private Object createBean(BeanDefinition beanDefinition) {
+          try {
+              Object bean = beanDefinition.getBeanClass().newInstance();
+              //缓存bean
+              beanRegister.registerSingletonBean(beanDefinition.getBeanName(), bean);
+              return bean;
+          } catch (InstantiationException | IllegalAccessException e) {
+              e.printStackTrace();
+          }
+          return null;
+      }
+  }
+  ```
 
 - 测试
 
@@ -921,7 +921,7 @@ protected void populateBean(String beanName, RootBeanDefinition mbd, @Nullable B
   }
 ```
 
-* postProcessorPropertyValues()方法的源码如下，在该方法中，会先调用 findAutowiringMetadata()方法解析出 bean 中带有@Autowired 注解、@Inject 和@Value 注解的属性和方法。然后调用 metadata.inject()方法，进行属性填充。
+- postProcessorPropertyValues()方法的源码如下，在该方法中，会先调用 findAutowiringMetadata()方法解析出 bean 中带有@Autowired 注解、@Inject 和@Value 注解的属性和方法。然后调用 metadata.inject()方法，进行属性填充。
 
 ```java
   public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) {
@@ -1104,7 +1104,7 @@ PS：这道题老三的同事面试候选人的时候问到了，候选人说了
   ```
 
 * 执行结果：可以看到日志打印了入参、出参和执行时间
-![执行结果](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-9c14f774-44b9-41b3-a8c0-f2a54385f6ff.png)
+  ![执行结果](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-9c14f774-44b9-41b3-a8c0-f2a54385f6ff.png)
 
 ### 21.说说 JDK 动态代理和 CGLIB 代理 ？
 
@@ -1291,7 +1291,6 @@ AspectJ 属于**静态织入**，通过修改代码来实现，在实际运行�
 
 ![Spring AOP和AspectJ对比](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-d1dbe9d9-c55f-4293-8622-d9759064d613.png)
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
 
 ## 事务
@@ -1343,7 +1342,7 @@ Spring 默认的事务传播行为是 PROPAFATION_REQUIRED，它适合绝大多�
 
 ![图片来源网易技术专栏](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-97493c7f-c596-4e98-a6a8-dab254d6d1ab.png)
 
-  事务拦截器`TransactionInterceptor`在`invoke`方法中，通过调用父类`TransactionAspectSupport`的`invokeWithinTransaction`方法进行事务处理，包括开启事务、事务提交、异常回滚。
+事务拦截器`TransactionInterceptor`在`invoke`方法中，通过调用父类`TransactionAspectSupport`的`invokeWithinTransaction`方法进行事务处理，包括开启事务、事务提交、异常回滚。
 
 ### 27.声明式事务在哪些情况下会失效？
 
@@ -1725,4 +1724,4 @@ PS:微服务后面有机会再扩展，其实面试一般都是结合项目去�
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
 
->  图文详解 35 道Spring面试高频题，这次吊打面试官，我觉得稳了（手动 dog）。整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/EQge6DmgIqYITM3mAxkatg)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/Y17S85ntHm_MLTZMJdtjQQ)。
+> 图文详解 35 道 Spring 面试高频题，这次吊打面试官，我觉得稳了（手动 dog）。整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/EQge6DmgIqYITM3mAxkatg)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/Y17S85ntHm_MLTZMJdtjQQ)。

@@ -5,25 +5,24 @@ tag:
   - Java
 ---
 
-# 为什么阿里巴巴强制不要在foreach里执行删除操作
-
+# 为什么阿里巴巴强制不要在 foreach 里执行删除操作
 
 那天，小二去阿里面试，面试官老王一上来就甩给了他一道面试题：为什么阿里的 Java 开发手册里会强制不要在 foreach 里进行元素的删除操作？
 
------
+---
 
 为了镇楼，先搬一段英文来解释一下 fail-fast。
 
->In systems design, a fail-fast system is one which immediately reports at its interface any condition that is likely to indicate a failure. Fail-fast systems are usually designed to stop normal operation rather than attempt to continue a possibly flawed process. Such designs often check the system's state at several points in an operation, so any failures can be detected early. The responsibility of a fail-fast module is detecting errors, then letting the next-highest level of the system handle them.
+> In systems design, a fail-fast system is one which immediately reports at its interface any condition that is likely to indicate a failure. Fail-fast systems are usually designed to stop normal operation rather than attempt to continue a possibly flawed process. Such designs often check the system's state at several points in an operation, so any failures can be detected early. The responsibility of a fail-fast module is detecting errors, then letting the next-highest level of the system handle them.
 
 这段话的大致意思就是，fail-fast 是一种通用的系统设计思想，一旦检测到可能会发生错误，就立马抛出异常，程序将不再往下执行。
 
 ```java
-public void test(Wanger wanger) {   
+public void test(Wanger wanger) {
     if (wanger == null) {
         throw new RuntimeException("wanger 不能为空");
     }
-    
+
     System.out.println(wanger.toString());
 }
 ```
@@ -52,7 +51,6 @@ System.out.println(list);
 这段代码看起来没有任何问题，但运行起来就报错了。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/fail-fast-01.png)
-
 
 根据错误的堆栈信息，我们可以定位到 ArrayList 的第 901 行代码。
 
@@ -134,7 +132,6 @@ private class Itr implements Iterator<E> {
 - remove 方法调用 fastRemove 方法
 - fastRemove 方法中会执行 `modCount++`
 
-
 ```java
 private void fastRemove(int index) {
     modCount++;
@@ -177,7 +174,6 @@ for (String str : list) {
 break 后循环就不再遍历了，意味着 Iterator 的 next 方法不再执行了，也就意味着 `checkForComodification` 方法不再执行了，所以异常也就不会抛出了。
 
 但是呢，当 List 中有重复元素要删除的时候，break 就不合适了。
-
 
 **2）for 循环**
 
@@ -239,7 +235,7 @@ public void remove() {
 
 删除完会执行 `expectedModCount = modCount`，保证了 expectedModCount 与 modCount 的同步。
 
------
+---
 
 简单地总结一下，fail-fast 是一种保护机制，可以通过 for-each 循环删除集合的元素的方式验证这种保护机制。
 

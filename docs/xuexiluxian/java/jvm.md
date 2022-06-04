@@ -7,7 +7,7 @@ tag:
   - Java
 ---
 
-# Java虚拟机学习路线
+# Java 虚拟机学习路线
 
 2020 年的时候，通读了一遍周志明老师的《深入理解 Java 虚拟机：JVM 高级特性与最佳实践》第三版，读完之后受益匪浅，这让我对 Java 虚拟机有了一个更完整的认识。毫无疑问，《深入理解 Java 虚拟机》是 JVM 书籍中最好的一本书了，国产技术书的天花板。
 
@@ -32,7 +32,6 @@ tag:
 明白了学习 JVM 的重要性，那我们就开搞吧！
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/jvm-4cbbdc72-3bdd-4b14-9d8d-ecd7764afb11.png)
-
 
 ### 二、JVM 学习路线图
 
@@ -61,14 +60,13 @@ tag:
 
 有理论知识，有动手实战，基本上可以把 JVM 这块学的非常扎实了。
 
-
 ### 三、硬核 JVM 学习资料
 
 **1）Java 程序员进阶之路**
 
 学 Java，怎么能少得了二哥的小破站《Java 程序员进阶之路》，网址我贴下面了哈：
 
->[https://tobebetterjavaer.com/home.html#java虚拟机](https://tobebetterjavaer.com/home.html#java虚拟机)
+> [https://tobebetterjavaer.com/home.html#java 虚拟机](https://tobebetterjavaer.com/home.html#java虚拟机)
 
 进去直接找「Java 核心」里面的 Java 虚拟机就对了。我按照前面的思维导图整理了 19 篇文章，全部都是硬核级别的，跟着学就对了。
 
@@ -76,7 +74,7 @@ tag:
 
 **2）视频**
 
-懂的都懂，看视频到 B 站。先推荐宋红康老师的 JVM 全套教程，200多万的播放量，还是非常受欢迎的。全套课程分为：
+懂的都懂，看视频到 B 站。先推荐宋红康老师的 JVM 全套教程，200 多万的播放量，还是非常受欢迎的。全套课程分为：
 
 - 内存与垃圾回收篇
 - 字节码与类的加载篇
@@ -84,25 +82,25 @@ tag:
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/jvm-59c829ce-7fe3-45a5-b074-35dacb08941e.png)
 
->视频地址：[https://www.bilibili.com/video/BV1PJ411n7xZ](https://www.bilibili.com/video/BV1PJ411n7xZ)
+> 视频地址：[https://www.bilibili.com/video/BV1PJ411n7xZ](https://www.bilibili.com/video/BV1PJ411n7xZ)
 
 友情提示，对于找工作面试的小伙伴，看 p01-p203、p266-301 就够了！
 
-再推荐一个狂神说的，40多万的播放量，算是一个面向 JVM 面试的突击版。像一些常见的 JVM 面试题，视频里都有讲到，比如说：
+再推荐一个狂神说的，40 多万的播放量，算是一个面向 JVM 面试的突击版。像一些常见的 JVM 面试题，视频里都有讲到，比如说：
 
 - 什么是 JVM？
 - 说一说类加载器？
 - 栈和堆的区别是什么？
 - JDK 8 和之前发生了什么变化？
 - 新生代和老年代是干嘛的？
-- From区和 To区什么区别？
+- From 区和 To 区什么区别？
 - 如何排查 OOM？
 - 说说垃圾回收算法
-- 说说  JVM 内存结构 
+- 说说 JVM 内存结构
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/jvm-be0910d8-7669-46cb-b8b9-2399162e723d.png)
 
->视频地址：[https://www.bilibili.com/video/BV1iJ411d7jS](https://www.bilibili.com/video/BV1iJ411d7jS)
+> 视频地址：[https://www.bilibili.com/video/BV1iJ411d7jS](https://www.bilibili.com/video/BV1iJ411d7jS)
 
 **3）书籍**
 
@@ -110,7 +108,7 @@ tag:
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/jvm-3f6065c5-2fbf-4107-804e-393b32a4f9ab.png)
 
-这是一部从工作原理和工程实践两个维度深入剖析JVM的著作，是计算机领域公认的经典。
+这是一部从工作原理和工程实践两个维度深入剖析 JVM 的著作，是计算机领域公认的经典。
 
 全书分为五个部分，第一部分为走近 Java，主要是对 JVM 的发展历史进行了介绍，其中第二部分自动内存管理和第三部分虚拟机执行子系统需要重点掌握，这两部分的内容也是最多的。
 
@@ -118,7 +116,7 @@ tag:
 
 可以配合 GitHub 上这个开源的阅读笔记学习：
 
->[https://github.com/TangBean/understanding-the-jvm](https://github.com/TangBean/understanding-the-jvm)
+> [https://github.com/TangBean/understanding-the-jvm](https://github.com/TangBean/understanding-the-jvm)
 
 **4）开源电子书**
 
@@ -126,8 +124,7 @@ tag:
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/jvm-f2e2e5c4-c193-4af5-b1bc-fea8df2006af.png)
 
-
->GitHub 地址：[https://github.com/doocs/jvm](https://github.com/doocs/jvm)
+> GitHub 地址：[https://github.com/doocs/jvm](https://github.com/doocs/jvm)
 
 考虑到有些小伙伴可能需要 PDF 版本，我都整理好了，需要的小伙伴请扫描下方的二维码关注作者的原创公众号「**沉默王二**」回复关键字「**java**」就可以拉取到了。
 
@@ -135,7 +132,7 @@ tag:
 
 再推荐一份 GitHub 上开源的 Java 虚拟机知识点总结：
 
->[https://github.com/heibaiying/Full-Stack-Notes/blob/master/notes/Java_虚拟机.md](https://github.com/heibaiying/Full-Stack-Notes/blob/master/notes/Java_虚拟机.md)
+> [https://github.com/heibaiying/Full-Stack-Notes/blob/master/notes/Java\_虚拟机.md](https://github.com/heibaiying/Full-Stack-Notes/blob/master/notes/Java_虚拟机.md)
 
 为了方便大家的学习，我也将其整理成了 PDF，内容包含了 Java 内存区域、垃圾收集算法、经典垃圾收集器、虚拟机类加载机制、程序编译和代码优化，手绘图也非常的漂亮。
 
@@ -145,8 +142,7 @@ tag:
 
 **5）付费专栏**
 
-郑雨迪老师在极客时间上开了一门《深入拆解Java虚拟机》的付费专栏，质量还是挺高的，喜欢的小伙伴可以戳[链接](http://gk.link/a/11htX)去购买，反正我自己感觉质量还不错。
-
+郑雨迪老师在极客时间上开了一门《深入拆解 Java 虚拟机》的付费专栏，质量还是挺高的，喜欢的小伙伴可以戳[链接](http://gk.link/a/11htX)去购买，反正我自己感觉质量还不错。
 
 ### 四、JVM 八股文
 
@@ -154,14 +150,13 @@ tag:
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/jvm-a11893df-e518-4bdc-a166-884b168a8cf0.png)
 
-
 为了方便大家的阅读和背诵，我已经将其整理到了二哥的小破站《Java 程序员进阶之路》上，面渣逆袭 Java 虚拟机篇：
 
->[https://tobebetterjavaer.com/sidebar/sanfene/jvm.html](https://tobebetterjavaer.com/sidebar/sanfene/jvm.html)
+> [https://tobebetterjavaer.com/sidebar/sanfene/jvm.html](https://tobebetterjavaer.com/sidebar/sanfene/jvm.html)
 
 Java 虚拟机八股文（背诵版）：
 
->[https://tobebetterjavaer.com/baguwen/jvm.html](https://tobebetterjavaer.com/baguwen/jvm.html)
+> [https://tobebetterjavaer.com/baguwen/jvm.html](https://tobebetterjavaer.com/baguwen/jvm.html)
 
 诚实点说，如果能把这两份八股文背会/理解的话，简历上就真的敢写“精通”Java 虚拟机了。
 
@@ -169,7 +164,7 @@ Java 虚拟机八股文（背诵版）：
 
 和 C++ 相比，Java 的内存管理机制可以说是一大特色，Java 开发不再需要自己去写代码手动释放内存，甚至你想自己干，JVM 都不给你这个机会，虚拟机完全掌握了 Java 内存的控制权。
 
-这看起来挺美好的，但并不意味着Java 开发就可以随意写代码，随意使用内存，从我多年的使用体验来看，内存溢出和内存泄露还是会时不时发生的，尤其是初学阶段，尤其在开启多线程的情况下。
+这看起来挺美好的，但并不意味着 Java 开发就可以随意写代码，随意使用内存，从我多年的使用体验来看，内存溢出和内存泄露还是会时不时发生的，尤其是初学阶段，尤其在开启多线程的情况下。
 
 一旦出现内存溢出或者内存泄露，排查问题还是挺困难的，所以知道逊尼基到底是怎么管理内存的就变得十分重要了。
 
@@ -190,11 +185,11 @@ JVM 相关的知识已经成为面试必考的科目了，但老实讲，JVM 相
 
 那这里给大家推荐一个实战项目，基于 Spring Boot 的在线 Java IDE，可以远程执行 Java 代码并将程序的运行结果反馈出来。涉及了 Java 类文件的结构、Java 类加载器和 Java 类的热替换等 JVM 相关的技术。
 
->[https://github.com/TangBean/OnlineExecutor](https://github.com/TangBean/OnlineExecutor)
+> [https://github.com/TangBean/OnlineExecutor](https://github.com/TangBean/OnlineExecutor)
 
 听我这么一说，是不是一下子就清晰多了！
 
-另外，需要 Java 学习资料的话，可以直接戳我整理的这个 GitHub/码云仓库——📚Java程序员必读书单整理，附下载地址，助力每一个Java程序员构建属于自己的知识体系。包括但不限于Java、设计模式、计算机网络、操作系统、数据库、数据结构与算法、大数据、架构、面试等等。
+另外，需要 Java 学习资料的话，可以直接戳我整理的这个 GitHub/码云仓库——📚Java 程序员必读书单整理，附下载地址，助力每一个 Java 程序员构建属于自己的知识体系。包括但不限于 Java、设计模式、计算机网络、操作系统、数据库、数据结构与算法、大数据、架构、面试等等。
 
 - GitHub 地址：[https://github.com/itwanger/JavaBooks](https://github.com/itwanger/JavaBooks)
 - 码云地址：[https://gitee.com/itwanger/JavaBooks](https://gitee.com/itwanger/JavaBooks)

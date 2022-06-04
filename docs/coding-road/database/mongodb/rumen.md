@@ -5,10 +5,9 @@ tag:
   - MongoDB
 ---
 
-# MongoDB最基础入门教程
+# MongoDB 最基础入门教程
 
-
-我以为我对MongoDB十分了解，直到我遇到了字节面试官
+我以为我对 MongoDB 十分了解，直到我遇到了字节面试官
 
 有时候不得不感慨一下，系统升级真的是好处多多，不仅让我有机会重构了之前的烂代码，也满足了我积极好学的虚荣心。你看，[Redis 入门](https://mp.weixin.qq.com/s/NPJkMy5RppyFk9QhzHxhrw)了、[Elasticsearch 入门](https://mp.weixin.qq.com/s/ZjsZxle7m_dfmVwVkq2ayg)了，这次又要入门 MongoDB，感觉自己变秃的同时，也变强大了。
 
@@ -18,10 +17,9 @@ tag:
 
 当然了，小伙伴们遇到文章中有错误的地方，不要手下留情，可以组团过来捶我，但要保证一点，不要打脸，我怕毁容。
 
-
 ### 01、MongoDB 是什么
 
->MongoDB 是一个基于分布式的文件存储数据库，旨在为 Web 应用提供可扩展的高性能数据存储解决方案。
+> MongoDB 是一个基于分布式的文件存储数据库，旨在为 Web 应用提供可扩展的高性能数据存储解决方案。
 
 以上引用来自于官方，不得不说，解释得文绉绉的。那就让我来换一种通俗的说法给小伙伴们解释一下，MongoDB 将数据存储为一个文档（类似于 JSON 对象），数据结构由键值对组成，类似于 Java 中的 Map，通过 key 的方式访问起来效率就高得多，对吧？这也是 MongoDB 最重要的特点。
 
@@ -57,7 +55,6 @@ MongoDB 针对不同的操作系统有不同的安装包，我们这篇入门的
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mongodb/rumen-bcf34981-0c2b-4f86-94e0-711dfb307371.jpg)
 
-
 1）MongoDB 的默认端口号为 27017。
 
 2）MongoDB 的版本号为 4.2.6。
@@ -83,7 +80,6 @@ Robo 3T 提供了对 MongoDB 和 SCRAM-SHA-256（升级的 mongo shell）的支�
 最新的版本是 1.3，选择 zip 格式进行下载，23M 左右。下载完成后，解压就行了。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mongodb/rumen-b178e02c-23b6-4b54-92ec-3a170a8499d0.jpg)
-
 
 包目录不再一一解释了，进入 bin 目录下，双击运行 robo3t.exe 文件，启动 Robo 3T 客户端。
 
@@ -119,14 +115,11 @@ MongoDB 命名源于英文单词 hu**mongo**us，意思是「巨大无比」，�
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mongodb/rumen-814acc38-8934-47f9-991c-666466601bd7.jpg)
 
-
 看完上面这幅图（图片来源于好朋友 macrozheng 的文章），是不是瞬间就清晰了？
 
-
-### 05、在 Java 中使用 MongoDB 
+### 05、在 Java 中使用 MongoDB
 
 有些小伙伴可能会问，“二哥，我是一名 Java 程序员，我该如何在 Java 中使用 MongoDB 呢？”这个问题问得好，这就来，这就来。
-
 
 第一步，在项目中添加 MongoDB 驱动依赖：
 
@@ -202,7 +195,6 @@ Document 对象来源于 org.bson 包下，可以在实例化该对象之后通�
 也可以通过 Robo 3T 查看“mydb”数据库，结果如下图所示。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/mongodb/rumen-95d49578-b1ef-43cc-91da-c7b3a7a7517e.jpg)
-
 
 ### 06、鸣谢
 

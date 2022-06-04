@@ -1,6 +1,6 @@
 # jwt
 
-## 干掉Session？这个跨域认证解决方案真的优雅！
+## 干掉 Session？这个跨域认证解决方案真的优雅！
 
 用户登录认证是 Web 应用中非常常见的一个业务，一般的流程是这样的：
 
@@ -14,8 +14,7 @@
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jwt-1.png)
 
-
-### 一、关于 JWT 
+### 一、关于 JWT
 
 JWT，是目前最流行的一个[跨域](https://mp.weixin.qq.com/s/HTMDZaukCb7pyfHefVcfyg)认证解决方案：客户端发起用户登录请求，服务器端接收并认证成功后，生成一个 JSON 对象（如下所示），然后将其返回给客户端。
 
@@ -36,8 +35,6 @@ JWT，是目前最流行的一个[跨域](https://mp.weixin.qq.com/s/HTMDZaukCb7
 为了让大家看的更清楚一点，我将其复制到了 [jwt 的官网](https://jwt.io/)。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jwt-3.png)
-
-
 
 左侧 Encoded 部分就是 JWT 密文，中间用「`.`」分割成了三部分（右侧 Decoded 部分）：
 
@@ -313,7 +310,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 }
 ```
 
-JwtAuthenticationTokenFilter  继承了 OncePerRequestFilter，该过滤器能确保一次请求只通过一次 filter，而不需要重复执行。也就是说，客户端每发起一次请求，该过滤器就会执行一次。
+JwtAuthenticationTokenFilter 继承了 OncePerRequestFilter，该过滤器能确保一次请求只通过一次 filter，而不需要重复执行。也就是说，客户端每发起一次请求，该过滤器就会执行一次。
 
 这个过滤器非常关键啊，基本上每行代码我都添加了注释，当然了，为了确保大家都能搞清楚这个类到底做了什么，我再来画一幅流程图，这样就一清二楚了。
 
@@ -338,7 +335,6 @@ SecurityContextHolder 默认使用了 ThreadLocal 策略来存储认证信息，
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jwt-6.png)
 
-
 第二步，收集服务器端返回的 tokenHead 和 token，将其填入 Authorize（注意 tokenHead 和 token 之间有一个空格）完成登录认证。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jwt-7.png)
@@ -361,18 +357,17 @@ SecurityContextHolder 默认使用了 ThreadLocal 策略来存储认证信息，
 
 参考链接：
 
->阮一峰：https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html<br>
->春夏秋冬过：https://segmentfault.com/a/1190000012557493<br>
->江南一点雨：https://cloud.tencent.com/developer/article/1612175<br>
->Dearmadman：https://www.jianshu.com/p/576dbf44b2ae<br>
->mcarozheng：http://www.macrozheng.com/
+> 阮一峰：https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html<br>
+> 春夏秋冬过：https://segmentfault.com/a/1190000012557493<br>
+> 江南一点雨：https://cloud.tencent.com/developer/article/1612175<br>
+> Dearmadman：https://www.jianshu.com/p/576dbf44b2ae<br>
+> mcarozheng：http://www.macrozheng.com/
 
 源码路径：
 
->https://github.com/itwanger/coding-more
+> https://github.com/itwanger/coding-more
 
-
-----
+---
 
 **本篇已收录至 GitHub 上星标 1.6k+ star 的开源专栏《Java 程序员进阶之路》，据说每一个优秀的 Java 程序员都喜欢她，风趣幽默、通俗易懂。内容包括 Java 基础、Java 并发编程、Java 虚拟机、Java 企业级开发、Java 面试等核心知识点。学 Java，就认准 Java 程序员进阶之路**😄。
 
@@ -384,5 +379,4 @@ star 了这个仓库就等于你拥有了成为了一名优秀 Java 工程师的
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/jwt-10.png)
 
-
-*没有什么使我停留——除了目的，纵然岸旁有玫瑰、有绿荫、有宁静的港湾，我是不系之舟*。
+_没有什么使我停留——除了目的，纵然岸旁有玫瑰、有绿荫、有宁静的港湾，我是不系之舟_。

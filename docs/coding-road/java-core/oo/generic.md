@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# 深入理解Java泛型
+# 深入理解 Java 泛型
 
 “二哥，为什么要设计泛型啊？”三妹开门见山地问。
 
@@ -34,7 +34,7 @@ class Arraylist {
     public void add(Object obj) {
         objs[i++] = obj;
     }
-    
+
     public Object get(int i) {
         return objs[i];
     }
@@ -63,8 +63,6 @@ String str = (String)list.get(0);
 
 “三妹啊，你一个小白只要会用泛型就行了，还想设计泛型啊？！不过，既然你想了解，那么哥义不容辞。”
 
-
-
 首先，我们来按照泛型的标准重新设计一下 `Arraylist` 类。
 
 ```java
@@ -75,12 +73,12 @@ class Arraylist<E> {
     public Arraylist(int initialCapacity) {
         this.elementData = new Object[initialCapacity];
     }
-    
+
     public boolean add(E e) {
         elementData[size++] = e;
         return true;
     }
-    
+
     E elementData(int index) {
         return (E) elementData[index];
     }
@@ -173,7 +171,7 @@ class Arraylist<E extends Wanger> {
 Arraylist<Wanger> list = new Arraylist<>(3);
 list.add(new Wanger());
 list.add(new Wanglaoer());
-// The method add(Wanger) in the type Arraylist<Wanger> is not applicable for the arguments 
+// The method add(Wanger) in the type Arraylist<Wanger> is not applicable for the arguments
 // (Wanglaoer)
 list.add(new Wangxiaoer());
 ```
@@ -191,7 +189,7 @@ list.add(new Wangxiaoer());
 ```java
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+// Decompiler options: packimports(3)
 // Source File Name:   Arraylist.java
 
 package com.cmower.java_demo.fanxing;
@@ -254,7 +252,7 @@ class Arraylist2<E extends Wanger> {
 ```java
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+// Decompiler options: packimports(3)
 // Source File Name:   Arraylist2.java
 
 package com.cmower.java_demo.fanxing;
@@ -296,7 +294,7 @@ class Arraylist2
 
 ```java
 public class Cmower {
-    
+
     public static void method(Arraylist<String> list) {
         System.out.println("Arraylist<String> list");
     }
@@ -313,13 +311,12 @@ public class Cmower {
 但由于类型擦除的原因，以上代码是不会通过编译的——编译器会提示一个错误（这正是类型擦除引发的那些“问题”）：
 
 ```
->Erasure of method method(Arraylist<String>) is the same as another method in type 
+>Erasure of method method(Arraylist<String>) is the same as another method in type
  Cmower
 >
->Erasure of method method(Arraylist<Date>) is the same as another method in type 
+>Erasure of method method(Arraylist<Date>) is the same as another method in type
  Cmower
 ```
-
 
 大致的意思就是，这两个方法的参数类型在擦除后是相同的。
 
@@ -352,7 +349,7 @@ class Arraylist<E> {
     public E get(int index) {
         return (E) elementData[index];
     }
-    
+
     public int indexOf(Object o) {
         if (o == null) {
             for (int i = 0; i < size; i++)
@@ -365,14 +362,14 @@ class Arraylist<E> {
         }
         return -1;
     }
-    
+
     public boolean contains(Object o) {
         return indexOf(o) >= 0;
     }
-    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        
+
         for (Object o : elementData) {
             if (o != null) {
                 E e = (E)o;
@@ -386,7 +383,7 @@ class Arraylist<E> {
     public int size() {
         return size;
     }
-    
+
     public E set(int index, E element) {
         E oldValue = (E) elementData[index];
         elementData[index] = element;
@@ -459,7 +456,7 @@ list3.add(new Wangxiaoer());
 
 “三妹，关于泛型，这里还有一篇很不错的文章，你等会去看一下。”我说。
 
->https://www.pdai.tech/md/java/basic/java-basic-x-generic.html
+> https://www.pdai.tech/md/java/basic/java-basic-x-generic.html
 
 “对泛型机制讲的也很透彻，你结合二哥给你讲的这些，再深入的学习一下。”
 

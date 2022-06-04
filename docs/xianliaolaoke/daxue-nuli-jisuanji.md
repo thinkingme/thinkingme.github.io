@@ -8,30 +8,30 @@
 
 下面是视频链接，感兴趣的小伙伴可以跳过去给二哥刷个三连，谢谢支持了。
 
->[https://www.bilibili.com/video/BV1434y117xE/](https://www.bilibili.com/video/BV1434y117xE/)
+> [https://www.bilibili.com/video/BV1434y117xE/](https://www.bilibili.com/video/BV1434y117xE/)
 
 下面是文字版，发出来给公众号的读者欣赏一下我这完美无缺的学习计划。
 
-------
+---
 
 我就是啊。
 
 - 晚上 23 点到早上 7 点，睡觉！
 - 7 点到 7.30，赖床
 - 7.30 到 8 点，洗漱吃早饭
-- 8点到 8.10 学习操作系统
+- 8 点到 8.10 学习操作系统
 - 8.10 到 8.20 学习计算机组成原理
 - 8.20 到 8.30 学习计算机网络
 - 8.30 到 8.40 学习数据结构
-- 8.40 到 8.50 刷LeetCode
+- 8.40 到 8.50 刷 LeetCode
 - 8.50 到 9 点 学习数据库
-- 9 点 到 9 点10分 学习 Java 语言
-- 9.10 到 12点 刷一会会小姐姐视频，休息下眼睛
+- 9 点 到 9 点 10 分 学习 Java 语言
+- 9.10 到 12 点 刷一会会小姐姐视频，休息下眼睛
 - 12.00 到 13.00 午饭午休时间
 - 13.00 到 13.10 学习 go 语言
 - 13.10 到 13.20 学习 Python 语言
 - 13.20 到 13.30 学习 C 语言
-- 13.30 到 18点 打一会会王者，放松下
+- 13.30 到 18 点 打一会会王者，放松下
 - 18.00 到 19.00 晚饭时间
 - 19.00 到 19.10 背 Java 八股文
 - 19.10 到 19.20 刷 JavaGuide 面试题
@@ -39,9 +39,7 @@
 
 可以看得出，我这个学习计划安排得非常合理，劳逸结合，不浪费一分一秒。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xianliaolaoke/daxue-nuli-jisuanji-2.gif)
-
 
 只要你在大学一天，你就有责任、有义务把自己的大学生活过得充实，精彩，别犹豫了，卷起来吧！！！！
 
@@ -55,7 +53,6 @@
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xianliaolaoke/daxue-nuli-jisuanji-3.jpg)
 
-
 我向他们请教的问题有：
 
 - 国家奖学金的评比条件有哪些，
@@ -66,11 +63,11 @@
 
 ### 二、专注一门编程语言
 
-刚入门的时候，最大的忌讳就是朝三暮四，这个月学 C语言，下个月学 Python，再下个月学 Java，以至于自己在入门阶段就迷茫了。
+刚入门的时候，最大的忌讳就是朝三暮四，这个月学 C 语言，下个月学 Python，再下个月学 Java，以至于自己在入门阶段就迷茫了。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xianliaolaoke/daxue-nuli-jisuanji-4.jpeg)
 
-我的建议是最好专注于一门编程语言，如果想要走人工智能这条路的话，选 Python 就对了；如果想走算法岗的话，可以选择 C语言，然后再深入学习 C++，之后去把 LeetCode 刷起来；如果想本科毕业就工作赚钱的话，Java 是最优的选择，岗位多，薪资待遇也给力；以后也可以直接转go岗，如果不想那么卷的话，前端也是一个不错的选择。
+我的建议是最好专注于一门编程语言，如果想要走人工智能这条路的话，选 Python 就对了；如果想走算法岗的话，可以选择 C 语言，然后再深入学习 C++，之后去把 LeetCode 刷起来；如果想本科毕业就工作赚钱的话，Java 是最优的选择，岗位多，薪资待遇也给力；以后也可以直接转 go 岗，如果不想那么卷的话，前端也是一个不错的选择。
 
 专注于一门编程语言，能让你快速积累这门编程语言的学习经验，以后想切换到其他编程语言的时候，也会得心应手，毕竟编程语言之间只是语法上的差异而已，底层的数据结构，关键算法都是相通的。
 
@@ -78,13 +75,11 @@
 
 大学四年，我的整体规划是，大一时入门，大二时夯实基础，大三时拼命卷，大四时好好准备校招，能早点出去实习就早点去。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xianliaolaoke/daxue-nuli-jisuanji-5.jpg)
-
 
 至于学习资料，网上已经有很多免费开源的了，并且绝大多数都非常的优质，只要你肯花时间去筛选和整理。
 
-这是我自己整理的一套，偏 Java 后端路线的 PDF 书单，在GitHub上也有3。6k的star了，说明很多小伙伴都很认可，包括入门→工具→框架→数据库→并发编程→jvm→性能优化→设计模式→操作系统→计算机网络→数据结构与算法→面试→架构等等，可以说非常的全面和系统。
+这是我自己整理的一套，偏 Java 后端路线的 PDF 书单，在 GitHub 上也有 3。6k 的 star 了，说明很多小伙伴都很认可，包括入门 → 工具 → 框架 → 数据库 → 并发编程 →jvm→ 性能优化 → 设计模式 → 操作系统 → 计算机网络 → 数据结构与算法 → 面试 → 架构等等，可以说非常的全面和系统。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xianliaolaoke/daxue-nuli-jisuanji-6.jpg)
 
@@ -98,7 +93,6 @@
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xianliaolaoke/daxue-nuli-jisuanji-7.gif)
 
-
 记住卖油翁的那句话：无他，唯手熟尔！
 
 ### 四、早投简历早实习
@@ -108,7 +102,6 @@
 记得大三寒假的时候，很多同学都回家过年了，我一个人选择南下苏州去 ，本以为能找一个实习就很不错了，没想到好几个公司的面试都过了，这给了我很大的信心。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xianliaolaoke/daxue-nuli-jisuanji-8.jpeg)
-
 
 唐代诗人刘禹锡有句诗是这样写的：**千淘万漉虽辛苦，吹尽狂沙始到金**。
 

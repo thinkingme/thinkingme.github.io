@@ -50,10 +50,9 @@
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xianliaolaoke/aliyun-shuaiguo-gongchengshi-8.png)
 
- 2）如果 HTTP 的也显示有问题，有些会只显示一部分（莫名其妙），就改成 OSS 的链接。
+2）如果 HTTP 的也显示有问题，有些会只显示一部分（莫名其妙），就改成 OSS 的链接。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xianliaolaoke/aliyun-shuaiguo-gongchengshi-9.png)
-
 
 先把问题解决了再说。
 

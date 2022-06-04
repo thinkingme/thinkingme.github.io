@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java字符串拼接的几种方式
+# Java 字符串拼接的几种方式
 
 “哥，你让我看的《Java 开发手册》上有这么一段内容：循环体内，拼接字符串最好使用 StringBuilder 的 `append()` 方法，而不是 + 号操作符。这是为什么呀？”三妹疑惑地问。
 
@@ -226,7 +226,7 @@ private void ensureCapacityInternal(int minimumCapacity) {
 
 由于字符串内部是用数组实现的，所以需要先判断拼接后的字符数组长度是否超过当前数组的长度，如果超过，先对数组进行扩容，然后把原有的值复制到新的数组中。
 
- 4）将拼接的字符串 str 复制到目标数组 value 中。
+4）将拼接的字符串 str 复制到目标数组 value 中。
 
 ```java
 str.getChars(0, len, value, count)
@@ -279,7 +279,7 @@ public String concat(String str) {
 
 “和 `+` 号操作符相比，`concat()` 方法在遇到字符串为 null 的时候，会抛出 NullPointerException，而“+”号操作符会把 null 当做是“null”字符串来处理。”
 
-如果拼接的字符串是一个空字符串（""），那么 concat 的效率要更高一点,毕竟不需要 `new  StringBuilder` 对象。
+如果拼接的字符串是一个空字符串（""），那么 concat 的效率要更高一点,毕竟不需要 `new StringBuilder` 对象。
 
 如果拼接的字符串非常多，`concat()` 的效率就会下降，因为创建的字符串对象越来越多。
 

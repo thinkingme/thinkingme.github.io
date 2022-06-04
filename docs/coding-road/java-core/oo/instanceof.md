@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java instanceof关键字用法
-
+# Java instanceof 关键字用法
 
 instanceof 关键字的用法其实很简单：
 
@@ -76,7 +75,7 @@ System.out.println(circle instanceof Shape);
 
 为了验证这一点，我们来创建一个实现了 Shape 但与 Circle 无关的 Triangle 类：
 
-``` java
+```java
 class Triangle implements Shape {
 }
 ```

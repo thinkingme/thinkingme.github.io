@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java集合ArrayList详解
-
+# Java 集合 ArrayList 详解
 
 “二哥，听说今天我们开讲 ArrayList 了？好期待哦！”三妹明知故问，这个托配合得依然天衣无缝。
 
@@ -16,7 +15,7 @@ tag:
 
 数组的大小是固定的，一旦创建的时候指定了大小，就不能再调整了。也就是说，如果数组满了，就不能再添加任何元素了。ArrayList 在数组的基础上实现了自动扩容，并且提供了比数组更丰富的预定义方法（各种增删改查），非常灵活。
 
-Java 这门编程语言和 C语言的不同之处就在这里，如果是 C语言的话，就必须动手实现自己的 ArrayList，原生的库函数里面是没有的。
+Java 这门编程语言和 C 语言的不同之处就在这里，如果是 C 语言的话，就必须动手实现自己的 ArrayList，原生的库函数里面是没有的。
 
 “二哥，**如何创建一个 ArrayList 啊**？”三妹问。
 
@@ -38,7 +37,7 @@ List<String> alist = new ArrayList<>();
 List<String> alist = new ArrayList<>(20);
 ```
 
-这样做的好处是，可以有效地避免在添加新的元素时进行不必要的扩容。但通常情况下，我们很难确定  ArrayList 中元素的个数，因此一般不指定初始大小。
+这样做的好处是，可以有效地避免在添加新的元素时进行不必要的扩容。但通常情况下，我们很难确定 ArrayList 中元素的个数，因此一般不指定初始大小。
 
 “二哥，**那怎么向 ArrayList 中添加一个元素呢**？”三妹继续问。
 
@@ -79,6 +78,7 @@ private void ensureCapacityInternal(int minCapacity) {
 ```java
 private static final int DEFAULT_CAPACITY = 10;
 ```
+
 也就是说，如果 ArrayList 在创建的时候没有指定大小，默认可以容纳 10 个元素。
 
 接下来会进入 `ensureExplicitCapacity` 方法：
@@ -181,7 +181,7 @@ private void grow(int minCapacity) {
 alist.add(0, "沉默王三");
 ```
 
- `add(int index, E element)` 方法的源码如下：
+`add(int index, E element)` 方法的源码如下：
 
 ```java
 public void add(int index, E element) {
@@ -200,7 +200,6 @@ public void add(int index, E element) {
 “三妹，注意看，我画幅图来表示下。”我认真地做起了图。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/arraylist-01.png)
-
 
 “二哥，那怎么**更新 ArrayList 中的元素**呢？”三妹继续问。
 
@@ -298,8 +297,6 @@ private void fastRemove(int index) {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/arraylist-02.png)
 
-
-
 “二哥，那怎么**查找 ArrayList 中的元素**呢？”三妹继续问。
 
 如果要正序查找一个元素，可以使用 `indexOf()` 方法；如果要倒序查找一个元素，可以使用 `lastIndexOf()` 方法。
@@ -383,7 +380,7 @@ public E get(int index) {
 
 4）查找一个未排序的列表时间复杂度为 O(n)（调用 `indexOf()` 或者 `lastIndexOf()` 方法时），因为要遍历列表；查找排序过的列表时间复杂度为 O(log n)，因为可以使用二分查找法，当数据增大 n 倍时，耗时增大 logn 倍（这里的 log 是以 2 为底的，每找一次排除一半的可能）。
 
--------
+---
 
 ArrayList，如果有个中文名的话，应该叫动态数组，也就是可增长的数组，可调整大小的数组。动态数组克服了静态数组的限制，静态数组的容量是固定的，只能在首次创建的时候指定。而动态数组会随着元素的增加自动调整大小，更符合实际的开发需求。
 

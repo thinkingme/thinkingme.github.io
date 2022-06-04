@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# Java枚举（enum）
+# Java 枚举（enum）
 
 “今天我们来学习枚举吧，三妹！”我说，“同学让你去她家玩了两天，感觉怎么样呀？”
 
@@ -53,7 +53,7 @@ public final class PlayerType extends Enum
     public static final PlayerType BASKETBALL;
     private static final PlayerType $VALUES[];
 
-    static 
+    static
     {
         TENNIS = new PlayerType("TENNIS", 0);
         FOOTBALL = new PlayerType("FOOTBALL", 1);
@@ -71,7 +71,7 @@ public final class PlayerType extends Enum
 - 要写构造方法；
 - 要声明静态变量和数组；
 - 要用 static 块来初始化静态变量和数组；
-- 要提供静态方法，比如说 `values()` 和  `valueOf(String name)`。
+- 要提供静态方法，比如说 `values()` 和 `valueOf(String name)`。
 
 “确实，作为开发者，我们的代码量减少了，枚举看起来简洁明了。”三妹说。
 
@@ -85,7 +85,7 @@ public class Player {
         FOOTBALL,
         BASKETBALL
     }
-    
+
     public boolean isBasketballPlayer() {
       return getType() == PlayerType.BASKETBALL;
     }
@@ -164,7 +164,6 @@ public enum PlayerType {
 “EnumSet 是一个专门针对枚举类型的 Set 接口（后面会讲）的实现类，它是处理枚举类型数据的一把利器，非常高效。”我说，“从名字上就可以看得出，EnumSet 不仅和 Set 有关系，和枚举也有关系。”
 
 “因为 EnumSet 是一个抽象类，所以创建 EnumSet 时不能使用 new 关键字。不过，EnumSet 提供了很多有用的静态工厂方法。”
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/enum/enum-02.png)
 
@@ -255,19 +254,19 @@ Runtime runtime = Runtime.getRuntime();
 “通常情况下，实现单例并非易事，来看下面这种写法。”
 
 ```java
-public class Singleton {  
-    private volatile static Singleton singleton; 
-    private Singleton (){}  
-    public static Singleton getSingleton() {  
+public class Singleton {
+    private volatile static Singleton singleton;
+    private Singleton (){}
+    public static Singleton getSingleton() {
     if (singleton == null) {
-        synchronized (Singleton.class) { 
-        if (singleton == null) {  
-            singleton = new Singleton(); 
-        }  
-        }  
-    }  
-    return singleton;  
-    }  
+        synchronized (Singleton.class) {
+        if (singleton == null) {
+            singleton = new Singleton();
+        }
+        }
+    }
+    return singleton;
+    }
 }
 ```
 

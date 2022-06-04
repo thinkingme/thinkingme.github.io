@@ -10,9 +10,9 @@ tag:
 
 ## 线程组(ThreadGroup)
 
-Java中用ThreadGroup来表示线程组，我们可以使用线程组对线程进行批量控制。
+Java 中用 ThreadGroup 来表示线程组，我们可以使用线程组对线程进行批量控制。
 
-ThreadGroup和Thread的关系就如同他们的字面意思一样简单粗暴，每个Thread必然存在于一个ThreadGroup中，Thread不能独立于ThreadGroup存在。执行main()方法线程的名字是main，如果在new Thread时没有显式指定，那么默认将父线程（当前执行new Thread的线程）线程组设置为自己的线程组。 
+ThreadGroup 和 Thread 的关系就如同他们的字面意思一样简单粗暴，每个 Thread 必然存在于一个 ThreadGroup 中，Thread 不能独立于 ThreadGroup 存在。执行 main()方法线程的名字是 main，如果在 new Thread 时没有显式指定，那么默认将父线程（当前执行 new Thread 的线程）线程组设置为自己的线程组。
 
 示例代码：
 
@@ -42,12 +42,13 @@ testThread当前线程组名字：main
 testThread线程名字：Thread-0
 ```
 
-ThreadGroup管理着它下面的Thread，ThreadGroup是一个标准的**向下引用**的树状结构，这样设计的原因是**防止"上级"线程被"下级"线程引用而无法有效地被GC回收**。
+ThreadGroup 管理着它下面的 Thread，ThreadGroup 是一个标准的**向下引用**的树状结构，这样设计的原因是**防止"上级"线程被"下级"线程引用而无法有效地被 GC 回收**。
 
 ## 线程的优先级
-Java中线程优先级可以指定，范围是1~10。但是并不是所有的操作系统都支持10级优先级的划分（比如有些操作系统只支持3级划分：低，中，高），Java只是给操作系统一个优先级的**参考值**，线程最终**在操作系统的优先级**是多少还是由操作系统决定。
 
-Java默认的线程优先级为5，线程的执行顺序由调度程序来决定，线程的优先级会在线程被调用之前设定。
+Java 中线程优先级可以指定，范围是 1~10。但是并不是所有的操作系统都支持 10 级优先级的划分（比如有些操作系统只支持 3 级划分：低，中，高），Java 只是给操作系统一个优先级的**参考值**，线程最终**在操作系统的优先级**是多少还是由操作系统决定。
+
+Java 默认的线程优先级为 5，线程的执行顺序由调度程序来决定，线程的优先级会在线程被调用之前设定。
 
 通常情况下，高优先级的线程将会比低优先级的线程有**更高的几率**得到执行。我们使用方法`Thread`类的`setPriority()`实例方法来设定线程的优先级。
 
@@ -62,6 +63,7 @@ public class Demo {
     }
 }
 ```
+
 输出结果：
 
 ```java
@@ -69,11 +71,11 @@ public class Demo {
 我是设置过的线程优先级：10
 ```
 
-既然有1-10的级别来设定了线程的优先级，这时候可能有些读者会问，那么我是不是可以在业务实现的时候，采用这种方法来指定一些线程执行的先后顺序？
+既然有 1-10 的级别来设定了线程的优先级，这时候可能有些读者会问，那么我是不是可以在业务实现的时候，采用这种方法来指定一些线程执行的先后顺序？
 
 对于这个问题，我们的答案是:No!
 
-Java中的优先级来说不是特别的可靠，**Java程序中对线程所设置的优先级只是给操作系统一个建议，操作系统不一定会采纳。而真正的调用顺序，是由操作系统的线程调度算法决定的**。
+Java 中的优先级来说不是特别的可靠，**Java 程序中对线程所设置的优先级只是给操作系统一个建议，操作系统不一定会采纳。而真正的调用顺序，是由操作系统的线程调度算法决定的**。
 
 我们通过代码来验证一下：
 
@@ -113,7 +115,7 @@ public class Demo {
 当前执行的线程是：Thread-5，优先级：3
 ```
 
-Java提供一个**线程调度器**来监视和控制处于**RUNNABLE状态**的线程。线程的调度策略采用**抢占式**，优先级高的线程比优先级低的线程会有更大的几率优先执行。在优先级相同的情况下，按照“先到先得”的原则。每个Java程序都有一个默认的主线程，就是通过JVM启动的第一个线程main线程。
+Java 提供一个**线程调度器**来监视和控制处于**RUNNABLE 状态**的线程。线程的调度策略采用**抢占式**，优先级高的线程比优先级低的线程会有更大的几率优先执行。在优先级相同的情况下，按照“先到先得”的原则。每个 Java 程序都有一个默认的主线程，就是通过 JVM 启动的第一个线程 main 线程。
 
 还有一种线程称为**守护线程（Daemon）**，守护线程默认的优先级比较低。
 
@@ -121,7 +123,7 @@ Java提供一个**线程调度器**来监视和控制处于**RUNNABLE状态**的
 >
 > 应用场景是：当所有非守护线程结束时，结束其余的子线程（守护线程）自动关闭，就免去了还要继续关闭子线程的麻烦。
 >
-> 一个线程默认是非守护线程，可以通过Thread类的setDaemon(boolean on)来设置。
+> 一个线程默认是非守护线程，可以通过 Thread 类的 setDaemon(boolean on)来设置。
 
 在之前，我们有谈到一个线程必然存在于一个线程组中，那么当线程和线程组的优先级不一致的时候将会怎样呢？我们用下面的案例来验证一下：
 
@@ -135,10 +137,11 @@ public static void main(String[] args) {
     System.out.println("我是线程的优先级"+thread.getPriority());
 }
 ```
+
 输出：
 
-> 我是线程组的优先级6  
-> 我是线程的优先级6
+> 我是线程组的优先级 6  
+> 我是线程的优先级 6
 
 所以，如果某个线程优先级大于线程所在**线程组的最大优先级**，那么该线程的优先级将会失效，取而代之的是线程组的最大优先级。
 
@@ -148,25 +151,25 @@ public static void main(String[] args) {
 
 **获取当前的线程组名字**
 
-~~~java
+```java
 Thread.currentThread().getThreadGroup().getName()
-~~~
+```
 
 **复制线程组**
 
-~~~java
+```java
 // 获取当前的线程组
 ThreadGroup threadGroup = Thread.currentThread().getThreadGroup();
 // 复制一个线程组到一个线程数组（获取Thread信息）
 Thread[] threads = new Thread[threadGroup.activeCount()];
 threadGroup.enumerate(threads);
-~~~
+```
 
 **线程组统一异常处理**
 
-~~~java
+```java
 package com.func.axc.threadgroup;
- 
+
 public class ThreadGroupDemo {
   public static void main(String[] args) {
     ThreadGroup threadGroup1 = new ThreadGroup("group1") {
@@ -177,7 +180,7 @@ public class ThreadGroupDemo {
                 System.out.println(t.getName() + ": " + e.getMessage());
             }
         };
-        
+
         // 这个线程是threadGroup1的一员
     Thread thread1 = new Thread(threadGroup1, new Runnable() {
             public void run() {
@@ -185,12 +188,12 @@ public class ThreadGroupDemo {
                 throw new RuntimeException("测试异常");
             }
         });
-        
+
     thread1.start();
   }
 }
 
-~~~
+```
 
 ### 线程组的数据结构
 
@@ -198,7 +201,7 @@ public class ThreadGroupDemo {
 
 首先看看 `ThreadGroup`源码中的成员变量
 
-~~~java
+```java
 public class ThreadGroup implements Thread.UncaughtExceptionHandler {
     private final ThreadGroup parent; // 父亲ThreadGroup
     String name; // ThreadGroupr 的名称
@@ -206,21 +209,21 @@ public class ThreadGroup implements Thread.UncaughtExceptionHandler {
     boolean destroyed; // 是否被销毁
     boolean daemon; // 是否守护线程
     boolean vmAllowSuspension; // 是否可以中断
- 
+
     int nUnstartedThreads = 0; // 还未启动的线程
     int nthreads; // ThreadGroup中线程数目
     Thread threads[]; // ThreadGroup中的线程
- 
+
     int ngroups; // 线程组数目
     ThreadGroup groups[]; // 线程组数组
 }
-~~~
+```
 
 然后看看构造函数：
 
-~~~java
+```java
 // 私有构造函数
-private ThreadGroup() { 
+private ThreadGroup() {
     this.name = "system";
     this.maxPriority = Thread.MAX_PRIORITY;
     this.parent = null;
@@ -245,10 +248,11 @@ private ThreadGroup(Void unused, ThreadGroup parent, String name) {
     this.parent = parent;
     parent.add(this);
 }
-~~~
+```
+
 第三个构造函数里调用了`checkParentAccess`方法，这里看看这个方法的源码：
 
-~~~java
+```java
 // 检查parent ThreadGroup
 private static Void checkParentAccess(ThreadGroup parent) {
     parent.checkAccess();
@@ -262,20 +266,22 @@ public final void checkAccess() {
         security.checkAccess(this);
     }
 }
-~~~
-> 这里涉及到`SecurityManager`这个类，它是Java的安全管理器，它允许应用程序在执行一个可能不安全或敏感的操作前确定该操作是什么，以及是否是在允许执行该操作的安全上下文中执行它。应用程序可以允许或不允许该操作。
+```
+
+> 这里涉及到`SecurityManager`这个类，它是 Java 的安全管理器，它允许应用程序在执行一个可能不安全或敏感的操作前确定该操作是什么，以及是否是在允许执行该操作的安全上下文中执行它。应用程序可以允许或不允许该操作。
 >
 > 比如引入了第三方类库，但是并不能保证它的安全性。
 >
-> 其实Thread类也有一个checkAccess()方法，不过是用来当前运行的线程是否有权限修改被调用的这个线程实例。（Determines if the currently running thread has permission to modify this thread.）
+> 其实 Thread 类也有一个 checkAccess()方法，不过是用来当前运行的线程是否有权限修改被调用的这个线程实例。（Determines if the currently running thread has permission to modify this thread.）
 
 总结来说，线程组是一个树状的结构，每个线程组下面可以有多个线程或者线程组。线程组可以起到统一控制线程的优先级和检查线程的权限的作用。
 
 ---
 
->编辑：沉默王二，内容大部分来源以下三个开源仓库：
->- [深入浅出 Java 多线程](http://concurrent.redspider.group/)
->- [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
->- [Java八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
+> 编辑：沉默王二，内容大部分来源以下三个开源仓库：
+>
+> - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
+> - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
+> - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
 <img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">

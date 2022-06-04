@@ -5,8 +5,7 @@ tag:
   - 辅助工具/轮子
 ---
 
-# Log4j：Log4j 2的前身，Java日志框架的鼻祖
-
+# Log4j：Log4j 2 的前身，Java 日志框架的鼻祖
 
 空了的时候，我都会在群里偷偷摸摸地潜水，对小伙伴们的一举一动、一言一行筛查诊断。一副班主任的即时感，让我感到非常的快乐，**略微夹带一丝丝的枯燥**。
 
@@ -23,7 +22,6 @@ tag:
 （说好的不在乎，怎么在乎起来了呢？手动狗头）
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/log4j-58282c4d-8178-45bd-8ba3-26740f6dd4a3.png)
-
 
 管他呢，**我行我素**吧，保持初心不改就对了！这篇文章就来说说 Log4j，这个打印日志的鼻祖。Java 中的日志打印其实是个艺术活，我保证，这句话绝不是忽悠。
 
@@ -65,7 +63,6 @@ OFF，最高级别，意味着所有消息都不会输出了。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/log4j-4919cd20-e524-43a2-8b41-9eab6ac0c1e4.png)
 
-
 ### 03、错误的日志记录方式是如何影响性能的
 
 为什么说错误的日志记录方式会影响程序的性能呢？因为日志记录的次数越多，意味着执行文件 IO 操作的次数就越多，这也就意味着会影响到程序的性能，能 get 吧？
@@ -77,9 +74,9 @@ OFF，最高级别，意味着所有消息都不会输出了。
 对于 DEBUG 级别的日志来说，一定要使用下面的方式来记录：
 
 ```java
-if(logger.isDebugEnabled()){ 
-    logger.debug("DEBUG 是开启的"); 
-} 
+if(logger.isDebugEnabled()){
+    logger.debug("DEBUG 是开启的");
+}
 ```
 
 当 DEBUG 级别是开启的时候再打印日志，这种方式在你看很多源码的时候就可以发现，很常见。
@@ -87,7 +84,6 @@ if(logger.isDebugEnabled()){
 切记，在生产环境下，一定不要开启 DEBUG 级别的日志，否则程序在大量记录日志的时候会变很慢，还有可能在你不注意的情况下，悄悄地把磁盘空间撑爆。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/log4j-fd2149c5-2d0c-4c15-897d-d5fa06cce71f.png)
-
 
 ### 04、为什么选择 Log4j 而不是 java.util.logging
 
@@ -153,15 +149,15 @@ log4j.appender.stdout.layout.ConversionPattern = [%-5p] %d{yyyy-MM-dd HH:mm:ss,S
 log4j.appender.D = org.apache.log4j.DailyRollingFileAppender
 log4j.appender.D.File = debug.log
 log4j.appender.D.Append = true
-log4j.appender.D.Threshold = DEBUG 
+log4j.appender.D.Threshold = DEBUG
 log4j.appender.D.layout = org.apache.log4j.PatternLayout
 log4j.appender.D.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n
 
 ### 输出ERROR 级别以上的日志到=error.log ###
 log4j.appender.E = org.apache.log4j.DailyRollingFileAppender
-log4j.appender.E.File =error.log 
+log4j.appender.E.File =error.log
 log4j.appender.E.Append = true
-log4j.appender.E.Threshold = ERROR 
+log4j.appender.E.Threshold = ERROR
 log4j.appender.E.layout = org.apache.log4j.PatternLayout
 log4j.appender.E.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n
 ```
@@ -179,9 +175,9 @@ appenderName 就是指把日志信息输出到什么地方，可以指定多个�
 **2）配置日志输出的目的地**，语法如下所示：
 
 ```
-log4j.appender.appenderName = fully.qualified.name.of.appender.class  
-log4j.appender.appenderName.option1 = value1  
-…  
+log4j.appender.appenderName = fully.qualified.name.of.appender.class
+log4j.appender.appenderName.option1 = value1
+…
 log4j.appender.appenderName.option = valueN
 ```
 
@@ -196,9 +192,9 @@ Log4j 提供的目的地有下面 5 种：
 **3）配置日志信息的格式**，语法如下所示：
 
 ```
-log4j.appender.appenderName.layout = fully.qualified.name.of.layout.class  
-log4j.appender.appenderName.layout.option1 = value1  
-…  
+log4j.appender.appenderName.layout = fully.qualified.name.of.layout.class
+log4j.appender.appenderName.layout.option1 = value1
+…
 log4j.appender.appenderName.layout.option = valueN
 ```
 
@@ -219,7 +215,6 @@ Log4j 提供的格式有下面 4 种：
 - %n：输出一个回车换行符
 - %d：输出日志的时间点
 - %l：输出日志的发生位置，包括类名、线程名、方法名、代码行数，比如：`method:com.itwanger.Log4jDemo.main(Log4jDemo.java:14)`
-
 
 第三步，写个使用 Demo：
 
@@ -261,9 +256,9 @@ private static final Logger logger = LogManager.getLogger(Log4jDemo.class);
 有了 Logger 对象后，就可以按照不同的优先级打印日志了。常见的有以下 4 种：
 
 ```java
-Logger.debug() ;  
-Logger.info() ;  
-Logger.warn() ;  
+Logger.debug() ;
+Logger.info() ;
+Logger.warn() ;
 Logger.error() ;
 ```
 
@@ -350,7 +345,6 @@ if(logger.isDebugEnabled()) {
 8）不要在日志文件中打印密码、银行账号等敏感信息。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/log4j-42d3a052-daeb-450a-a775-a32f983dd688.png)
-
 
 ### 06、 总结
 

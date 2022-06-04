@@ -28,13 +28,11 @@
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tupian-zhuanlian-4.png)
 
-
-
 ### 二、关于 Java 爬虫
 
 Java 爬虫的类库非常多，比如说 crawler4j，我个人更喜欢 jsoup，它更轻量级。jsoup 是一款用于解析 HTML 的 Java 类库，提供了一套非常便捷的 API，用于提取和操作数据。
 
->官网地址：https://jsoup.org/
+> 官网地址：https://jsoup.org/
 
 jsoup 目前在 GitHub 上已经收获 9.3k+ 的 star，可以说是非常的受欢迎了。
 
@@ -45,7 +43,7 @@ jsoup 有以下特性：
 - 可以从 URL、文件或者字符串中抓取和解析
 - 可以使用 DOM 遍历或者 CSS 选择器查找和提取数据
 - 可以操作 HTML 元素、属性和文本
--  可以输出整洁的 HTML
+- 可以输出整洁的 HTML
 
 ### 三、实战 jsoup
 
@@ -72,7 +70,7 @@ String title = doc.title();
 Jsoup 类是 jsoup 的入口类，通过 connect 方法可以从指定链接中加载 HTML 文档（用 Document 对象来表示）。
 
 **第三步，获取图片节点**。
- 
+
 再通过以下代码可以获取文章所有的图片节点：
 
 ```java
@@ -116,7 +114,7 @@ new Thread(new MyRunnable(originImgUrl, destinationImgPath)).start()
 
 读取文件可以借助一下 hutool 这款 GitHub 上开源的工具类库，省去很多繁琐的 IO 操作。
 
->官网：https://hutool.cn/
+> 官网：https://hutool.cn/
 
 第一步，将 hutool 添加到 pom.xml 文件中
 
@@ -142,7 +140,7 @@ List<String> list = fileReader.readLines();
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tupian-zhuanlian-7.png)
 ```
 
-如果匹配到，就替换为 jsDelivr CDN 链接的地址，写文件时需要用到 hutool 的FileWriter 类。
+如果匹配到，就替换为 jsDelivr CDN 链接的地址，写文件时需要用到 hutool 的 FileWriter 类。
 
 ```
 FileWriter writer = new FileWriter(docPath + fileName);
@@ -171,7 +169,6 @@ writer.flush();
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tupian-zhuanlian-10.png)
 
-
 ### 六、一点小心得
 
 不得不说，懂点技术，还是非常爽的。撸了几行代码，解放了双手，可以干点正经事了（狗头）。
@@ -183,5 +180,3 @@ writer.flush();
 再次感谢各位小伙伴的厚爱，我也会一如既往地完善这个专栏，我们下期见~
 
 <img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
-
-

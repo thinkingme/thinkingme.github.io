@@ -6,13 +6,13 @@ tag:
   - 轮子
 ---
 
-# 使用docsify+Git+GitHub+码云+阿里云服务器搭建知识库网站
+# 使用 docsify+Git+GitHub+码云+阿里云服务器搭建知识库网站
 
 大家好，我是二哥呀！
 
 2022 年 1 月 1 日，**二哥的《Java 程序员进阶之路》网站终于上线了**！10 天过去了，网站在没有 SEO 的加持下访问量也突破了 1000 pu，算是一个小小的里程碑吧。
 
-往下看，你不仅会直呼这个网站的颜值贼高，丝毫不输 B 站上那些舞蹈区的小姐姐，hhh，另外你还会学到如何从0 到 1搭建一个个人的学习网站。
+往下看，你不仅会直呼这个网站的颜值贼高，丝毫不输 B 站上那些舞蹈区的小姐姐，hhh，另外你还会学到如何从 0 到 1 搭建一个个人的学习网站。
 
 经常逛 GitHub 的小伙伴应该已经发现了，二哥的《Java 程序员进阶之路》最近在持续霸榜，今天仍然在 GitHub 的周榜上。
 
@@ -22,7 +22,7 @@ tag:
 
 原来的《Java 程序员进阶之路》网站是托管在码云 Pages 上的，而码云 Pages 没办法自定义域名，这样就很不利于小伙伴们直接通过网址去访问。
 
->码云 Pages：https://itwanger.gitee.io/tobebetterjavaer
+> 码云 Pages：https://itwanger.gitee.io/tobebetterjavaer
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tobebetterjavaer-wangzhan-shangxian-02.png)
 
@@ -34,7 +34,7 @@ tag:
 
 首先，《Java 程序员进阶之路》专栏的源头是 GitHub 上的一个开源仓库。
 
->GitHub 地址：https://github.com/itwanger/toBeBetterJavaer
+> GitHub 地址：https://github.com/itwanger/toBeBetterJavaer
 
 里面除了 md 文档和图片之外，还有代码示例，以及 docsify 的基础环境文件。
 
@@ -43,14 +43,14 @@ tag:
 - index.html 入口文件
 - README.md 会做为主页内容渲染
 - .nojekyll 用于阻止 GitHub Pages 忽略掉下划线开头的文件
-- _sidebar.md 会做为侧边栏内容渲染
-- _coverpage.md 会做为封面图渲染
+- \_sidebar.md 会做为侧边栏内容渲染
+- \_coverpage.md 会做为封面图渲染
 
 docsify 是一个神奇的文档网站生成器，不同于 GitBook、Hexo 的是，它不会生成静态的 .html 文件，所有转换工作都是在运行时发生的。只需要一个 index.html 文件以及一些基础配置文件就可以开始编写文档，并直接托管在 GitHub Pages 上（省去了服务器的钱）。
 
 不过，由于 GitHub 的网络访问原因，我就将 《Java 程序员进阶之路》专栏同步到了码云，用码云 Pages 来替代 GitHub Pages，这样的网络访问速度会快很多。
 
->码云地址：https://gitee.com/itwanger/toBeBetterJavaer
+> 码云地址：https://gitee.com/itwanger/toBeBetterJavaer
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tobebetterjavaer-wangzhan-shangxian-04.png)
 
@@ -87,6 +87,7 @@ docsify 是一个神奇的文档网站生成器，不同于 GitBook、Hexo 的�
 不过，这样做会存在一个很严重的问题，就是云服务器和本地、GitHub 仓库之间没办法进行同步。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tobebetterjavaer-wangzhan-shangxian-09.png)
+
 ### 解决方案二
 
 这是比较完善一点的解决方案：**在服务器上搭建一个 Git 仓库，从 GitHub 上拉取，再通过 Nginx 部署静态网站**。
@@ -111,13 +112,11 @@ CentOS 上可以直接通过 `yum install git` 命令来安装 Git 环境。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tobebetterjavaer-wangzhan-shangxian-12.png)
 
-
 **第三步，克隆 GitHub 仓库到云服务器**
 
 为了使 GitHub 相信所有的操作都是“你本人”操作的，所以在 clone 之前需要先配置 SSH 密钥。具体的步骤可参考：[崩溃！实习生把小组的代码仓库搞得一团糟。。。](https://mp.weixin.qq.com/s/Fhh5-7AFDUThmd4tsyA55Q)这篇中的「远程仓库」小节。
 
 这里就不再演示了。
-
 
 在 GitHub 仓库上点击「Code」菜单，复制 SSH 地址。
 
@@ -126,7 +125,6 @@ CentOS 上可以直接通过 `yum install git` 命令来安装 Git 环境。
 然后执行 `git clone` 命令就可以从远程仓库上拉取到最新内容了。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tobebetterjavaer-wangzhan-shangxian-14.png)
-
 
 **第四步，通过 Nginx 部署静态网站**
 
@@ -144,7 +142,7 @@ OK，此时再访问域名 `https://tobebetterjavaer.com` 就可以看到《Java
 
 当 GitHub 上有更新的时候，再将内容拉取到云服务器上。
 
-举例来说，我们在《Java 程序员进阶之路》专栏的 GitHub 仓库中修改 _sidebar.md 文件，追加一个感叹号的标点符号。
+举例来说，我们在《Java 程序员进阶之路》专栏的 GitHub 仓库中修改 \_sidebar.md 文件，追加一个感叹号的标点符号。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tobebetterjavaer-wangzhan-shangxian-18.png)
 
@@ -154,7 +152,7 @@ OK，此时再访问域名 `https://tobebetterjavaer.com` 就可以看到《Java
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tobebetterjavaer-wangzhan-shangxian-19.png)
 
-`9909f82..7f4b815  master     -> origin/master` 就表示内容有变动。
+`9909f82..7f4b815 master -> origin/master` 就表示内容有变动。
 
 第二种，直接执行 `git pull` 命令。
 
@@ -177,7 +175,7 @@ git pull
 
 保存后我们来测试下。
 
-我们在《Java 程序员进阶之路》专栏的 GitHub 仓库中修改 _sidebar.md 文件，修改中文的感叹号为英文的感叹号。
+我们在《Java 程序员进阶之路》专栏的 GitHub 仓库中修改 \_sidebar.md 文件，修改中文的感叹号为英文的感叹号。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/szjy/tobebetterjavaer-wangzhan-shangxian-22.png)
 
@@ -226,12 +224,9 @@ git pull
 
 2022 年，二哥一定会继续肝出更多优质的原创，丰富《Java 程序员进阶之路》的内容，希望这个专栏日后成为大家学习 Java 的第一选择！
 
+---
 
-------
-
-
-
-*没有什么使我停留——除了目的，纵然岸旁有玫瑰、有绿荫、有宁静的港湾，我是不系之舟*。
+_没有什么使我停留——除了目的，纵然岸旁有玫瑰、有绿荫、有宁静的港湾，我是不系之舟_。
 
 我们下期见~
 

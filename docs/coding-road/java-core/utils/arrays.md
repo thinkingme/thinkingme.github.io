@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java Arrays工具类10大常用方法
-
+# Java Arrays 工具类 10 大常用方法
 
 “哥，数组专用工具类是专门用来操作数组的吗？比如说创建数组、数组排序、数组检索等等。”三妹的提问其实已经把答案说了出来。
 
@@ -106,7 +105,6 @@ System.out.println(Arrays.toString(abridgementExpanded));
 
 “嗯，我想是 Arrays 的设计者考虑到了数组越界的问题，不然每次调用 Arrays 类就要先判断很多次长度，很麻烦。”稍作思考后，我给出了这样一个回答。
 
-
 3）fill，直接来看例子：
 
 ```java
@@ -184,7 +182,7 @@ public static int hashCode(Object a[]) {
 
     return result;
 }
-``` 
+```
 
 哈希算法本身是非常严谨的，所以如果两个数组的哈希值相等，那几乎可以判断两个数组是相等的。
 
@@ -241,7 +239,7 @@ int caseInsensitive = Arrays.binarySearch(sorted, "Wang", String::compareToIgnor
 System.out.println(caseInsensitive);
 ```
 
- `binarySearch()` 方法既可以精确检索，也可以模糊检索，比如说忽略大小写。来看一下输出结果：
+`binarySearch()` 方法既可以精确检索，也可以模糊检索，比如说忽略大小写。来看一下输出结果：
 
 ```
 3
@@ -259,7 +257,6 @@ System.out.println(caseInsensitive);
 “流是什么呀？”三妹好奇的问。
 
 “流的英文单词是 Stream，它可以极大提高 Java 程序员的生产力，让程序员写出高效、干净、简洁的代码。 这种风格将要处理的集合看作是一种流，想象一下水流在管道中流过的样子，我们可以在管道中对流进行处理，比如筛选、排序等等。Stream 具体怎么使用，我们留到后面再详细地讲，这里你先有一个大致的印象就可以了。”我回答到。
-
 
 Arrays 类的 `stream()` 方法可以将数组转换成流：
 
@@ -335,7 +332,7 @@ List<String> rets = Arrays.asList(intro);
 System.out.println(rets.contains("二"));
 ```
 
-不过需要注意的是，`Arrays.asList()` 返回的是 `java.util.Arrays.ArrayList`，并不是  `java.util.ArrayList`，它的长度是固定的，无法进行元素的删除或者添加。
+不过需要注意的是，`Arrays.asList()` 返回的是 `java.util.Arrays.ArrayList`，并不是 `java.util.ArrayList`，它的长度是固定的，无法进行元素的删除或者添加。
 
 ```java
 rets.add("三");
@@ -370,11 +367,11 @@ System.out.println(Arrays.toString(array));
 
 “这段代码什么意思呢？”三妹问。
 
-i 就相当于是数组的下标，值从 0 开始，到 9 结束，那么 `i * 10` 就意味着值从 0 * 10 开始，到 9 * 10 结束，来看一下输出结果：
+i 就相当于是数组的下标，值从 0 开始，到 9 结束，那么 `i * 10` 就意味着值从 0 _ 10 开始，到 9 _ 10 结束，来看一下输出结果：
 
 ```
 [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
-``` 
+```
 
 可以用来为新数组填充基于原来数组的新元素。
 
@@ -413,7 +410,6 @@ System.out.println(Arrays.toString(arr));
 - 第一次是 1 和 2 相加，结果是 3，替换下标为 1 的位置
 - 第二次是 3 和 3 相加，结果是 6，也就是第一次的结果和下标为 2 的元素相加的结果
 - 第三次是 6 和 4 相加，结果是 10，也就是第二次的结果和下标为 3 的元素相加的结果
-
 
 ### 10、总结
 

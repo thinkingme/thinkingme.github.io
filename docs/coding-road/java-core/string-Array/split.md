@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# 如何在Java中优雅地分割String字符串？
+# 如何在 Java 中优雅地分割 String 字符串？
 
 “哥，我感觉字符串拆分没什么可讲的呀，直接上 String 类的 `split()` 方法不就可以了！”三妹毫不客气地说。
 
@@ -41,7 +41,6 @@ public class Test {
 
 “这是建立在字符串是确定的情况下，最重要的是分隔符是确定的。否则，麻烦就来了。”我说，“大约有 12 种英文特殊符号，如果直接拿这些特殊符号替换上面代码中的分隔符（中文逗号），这段程序在运行的时候就会出现以下提到的错误。”
 
-
 - 反斜杠 `\`（ArrayIndexOutOfBoundsException）
 - 插入符号 `^`（同上）
 - 美元符号 `$`（同上）
@@ -60,11 +59,11 @@ public class Test {
 
 我在 GitHub 上找打了一个开源的正则表达式学习文档，非常详细。一开始写正则表达式的时候难免会感觉到非常生疏，你可以查看一下这份文档。记不住没关系，遇到就查。
 
->[https://github.com/cdoco/learn-regex-zh](https://github.com/cdoco/learn-regex-zh)
+> [https://github.com/cdoco/learn-regex-zh](https://github.com/cdoco/learn-regex-zh)
 
 除了这份文档，还有一份：
 
->[https://github.com/cdoco/common-regex](https://github.com/cdoco/common-regex)
+> [https://github.com/cdoco/common-regex](https://github.com/cdoco/common-regex)
 
 作者收集了一些在平时项目开发中经常用到的正则表达式，可以直接拿来用。
 

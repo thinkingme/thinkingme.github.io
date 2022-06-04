@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# 一次性搞清楚equals和hashCode
+# 一次性搞清楚 equals 和 hashCode
 
 “二哥，我在读《Effective Java》 的时候，第 11 条规约说重写 equals 的时候必须要重写 hashCode 方法，这是为什么呀？”三妹单刀直入地问。
 
@@ -22,6 +22,7 @@ public boolean equals(Object obj) {
         return (this == obj);
 }
 ```
+
 1）hashCode 方法
 
 这是一个本地方法，用来返回对象的哈希值（一个整数）。在 Java 程序执行期间，对同一个对象多次调用该方法必须返回相同的哈希值。
@@ -224,7 +225,6 @@ result = (31*1 + Integer(18).hashCode()) * 31 + String("张三").hashCode();
 因为此时 s1 和 s2 对象的哈希值都为 776408。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/core-points/equals-hashcode-02.png)
-
 
 “每当重写 equals 方法时，hashCode 方法也需要重写，原因就是为了保证：如果两个对象调用 equals 方法返回的结果为 true，那么两个对象调用 hashCode 方法返回的结果也必然相同。”我点题了。
 

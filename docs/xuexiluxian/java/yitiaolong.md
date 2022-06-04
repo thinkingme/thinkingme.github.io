@@ -6,7 +6,7 @@ tag:
   - Java
 ---
 
-# Java学习路线一条龙版
+# Java 学习路线一条龙版
 
 ### 00、前言
 
@@ -18,13 +18,13 @@ tag:
 
 但好在 Java 的学习资料非常丰富，只要我们稍微用心去整理下，就能找出一条高效的学习路径。过去这两年里，我不断地整理自己的思路，分享了不少关于 Java 方面的文章，但都过于分散，借这个机会，我打算重新梳理一遍，希望能对大家的学习有所帮助。
 
-### 01、学习Java之前可以先学一下C语言
+### 01、学习 Java 之前可以先学一下 C 语言
 
 对于科班的同学来说，我建议在学习 Java 这门编程语言之前，学一下 C 语言。我上大学那会，教材用的是《Java 编程思想》，但说真的，这本书对初学者并不友好。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-d5e5b52c-1744-468c-ab9c-f77c24415394.jpg)
 
-编程语言都是相通的，C语言作为 Java 语言的母胎，**还是非常值得科班去学习一下打打基础的**。其实对于我们程序员来说，学的是计算机科学，而不是编程语言，语言只是工具，没有优劣。像我，就学过 Java、C 语言、Ruby、JavaScript 等等这些编程语言，他们之间确实有很多相似之处。如果学过 JavaScript，能很容易搞懂 Java 的 Lambda 表达式。
+编程语言都是相通的，C 语言作为 Java 语言的母胎，**还是非常值得科班去学习一下打打基础的**。其实对于我们程序员来说，学的是计算机科学，而不是编程语言，语言只是工具，没有优劣。像我，就学过 Java、C 语言、Ruby、JavaScript 等等这些编程语言，他们之间确实有很多相似之处。如果学过 JavaScript，能很容易搞懂 Java 的 Lambda 表达式。
 
 C 语言的特殊性就在于它可能是唯一一门最适合来学习一系列计算机基础的媒介，比如 Linux 操作系统，就是用 C 语言重构的；比如计算机网络，里面有很多网络协议，有不同的 header 定义，这些字段用 C 语言的 union 和 struct 来操作非常便捷。Java 中虽然剔除了指针这种烦人的东西，但说白了，引用其实和指针差不多，理解了 C 语言中的指针，就能很好的理解 Java 中的引用。
 
@@ -32,10 +32,9 @@ C 语言的特殊性就在于它可能是唯一一门最适合来学习一系列
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-82aefde9-8a3f-4f28-aad5-02e39a6b9d4b.png)
 
->B 站地址：[https://www.bilibili.com/video/BV19W411B7w1](https://www.bilibili.com/video/BV19W411B7w1)
+> B 站地址：[https://www.bilibili.com/video/BV19W411B7w1](https://www.bilibili.com/video/BV19W411B7w1)
 
-喜欢看书的同学我只推荐一本，《**阮一峰老师的 C语言入门教程**》，我第一时间就拜读了一遍，受益匪浅！可以说目前我见到的最好的 C语言入门教程了，没有之一！
-
+喜欢看书的同学我只推荐一本，《**阮一峰老师的 C 语言入门教程**》，我第一时间就拜读了一遍，受益匪浅！可以说目前我见到的最好的 C 语言入门教程了，没有之一！
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-3507eb06-8424-4b8e-b20d-046268508c9d.png)
 
@@ -43,11 +42,11 @@ C 语言的特殊性就在于它可能是唯一一门最适合来学习一系列
 
 ![扫码关注后回复「阮一峰」关键字](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
 
-在学习的过程中切记一点，就是一定要多练多练多练，这一点不仅适合学习 C语言，也适合学习 Java 语言。有句话说得好呀，**看懂了+上万行代码=学会了**。无论是看视频学习，还是看书学习，最怕的就是眼高手低，以为自己看懂了，实际上呢，离学会了还差上万行代码。
+在学习的过程中切记一点，就是一定要多练多练多练，这一点不仅适合学习 C 语言，也适合学习 Java 语言。有句话说得好呀，**看懂了+上万行代码=学会了**。无论是看视频学习，还是看书学习，最怕的就是眼高手低，以为自己看懂了，实际上呢，离学会了还差上万行代码。
 
 对于非科班的同学来说，如果时间比较紧迫的话，可以直接上手 Java，我觉得只要学习资料选的好，也是完全没有问题的。
 
-### 02、学习Java之前要安装的软件
+### 02、学习 Java 之前要安装的软件
 
 工欲善其事必先利其器，战斗之前我们要先配备好武器。
 
@@ -59,17 +58,15 @@ JDK 是 Java Development ToolKit 的简称，也就是 Java 开发工具包。JD
 
 Intellij IDEA，不用说，是编写 Java 程序的最佳 IDE，初学者选择社区版就完全够用了。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-3fb56f9d-942a-4439-8bab-0f19bd59ef58.png)
-
 
 初次使用的话，建议阅读一下《IntelliJ IDEA 简体中文专题教程》，GitHub 上已开源。
 
->地址：[https://github.com/judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
+> 地址：[https://github.com/judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
 
 Maven 是一个项目管理和自动化构建工具，基于项目对象模型（POM）的概念，可以管理项目的构建、报告以及文档。作为 Apache 组织中的一个颇为成功的开源项目，Maven 主要服务于基于 Java 的项目构建、依赖管理和项目信息管理。有了 Maven 以后，第三方类库管理起来就舒服多了。
 
-安装和配置教程直接看我写过的这篇文章[10分钟，掌握项目构建神器Maven](https://mp.weixin.qq.com/s/3umZOaI4l0EIZ5RgtEDchw)就好了。
+安装和配置教程直接看我写过的这篇文章[10 分钟，掌握项目构建神器 Maven](https://mp.weixin.qq.com/s/3umZOaI4l0EIZ5RgtEDchw)就好了。
 
 另外，我推荐大家使用 GitHub/码云来作为私有的代码仓库，特别方便，免费还可以云同步。还不太熟悉[Git 命令](https://tobebetterjavaer.com/git/git-qiyuan.html)的话，可以下载[GitHub 桌面版](https://desktop.github.com/)来傻瓜式地操作。
 
@@ -91,14 +88,11 @@ Java 是一门面向对象的编程语言，所以三大特性：封装、继承
 
 记住我们的网址：
 
->[https://tobebetterjavaer.com/](https://tobebetterjavaer.com/home.html#java核心)
-
+> [https://tobebetterjavaer.com/](https://tobebetterjavaer.com/home.html#java核心)
 
 这其中的难点是并发编程和 JVM，显然这两部分的内容学起来并不容易，但却最能考验一名 Java 后端工程师的功底了。
 
-
 ![Java 并发编程核心知识点](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-dac18663-f729-41d6-8253-2473b2174b9e.png)
-
 
 ![JVM 核心知识点](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-35df7e61-99c1-4efc-8f9f-702cc0f08904.png)
 
@@ -112,21 +106,19 @@ Java 是一门面向对象的编程语言，所以三大特性：封装、继承
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/zhishixingqiu/readme-8.png)
 
-
 如果说你已经掌握了 Spring、SpringMVC、MyBatis、Spring Boot 等内容，就有能力进行一些真正有用的应用项目开发了，比如说学生管理系统、商城系统、博客系统、秒杀系统等等。
 
 当然了，要做完整的 Java Web 项目，前端的一些知识肯定是少不了的，但不能放太多心思，界面丑点无所谓，重点在 Java 后端上面。
 
 学习编程就是一个由混沌到有序的过程，如果碰到了理解不了的知识，不要怀疑自己适不适合编程，跳过就行了，这是再正常不过的事了——必须抱有一颗越挫越勇的心。
 
-### 04、哪些Java知识不需要再学了
+### 04、哪些 Java 知识不需要再学了
 
 张无忌在学太极拳的时候，太师父张三丰就对他喊，一定要把之前所学习的武功全部忘掉，**忘得越多就会学得越快**。同样的，自学 Java 的时候一定要先知道哪些 Java 知识不需要再学了，毕竟技术的更新迭代就好像火箭一样快，Java 的一些知识点早已经过时了。如果不懂得断舍离，那学起来就不免太痛苦了。
 
 1）AWT 和 Swing
 
-已经 2022 年了，谁还会用 AWT 和 Swing 去开发桌面应用呢？学好后端开发即可，现在是移动互联网时代，基本上都是手机APP、小程序、Web 网页来做前端了，可以把学习的重心放到 Spring Boot、Spring Cloud、Netty、Dubbo、Zookeeper、Mysql上。
-
+已经 2022 年了，谁还会用 AWT 和 Swing 去开发桌面应用呢？学好后端开发即可，现在是移动互联网时代，基本上都是手机 APP、小程序、Web 网页来做前端了，可以把学习的重心放到 Spring Boot、Spring Cloud、Netty、Dubbo、Zookeeper、Mysql 上。
 
 2）Applet
 
@@ -150,7 +142,7 @@ Struts 是早年一个优秀的 MVC 框架，单从技术的角度来看，还�
 
 7）JSP
 
-JSP 在实际开发中，主要是作为 MVC 模型中的V（View）层出现的。它本来是为 Java 后端程序员开发前端界面而生的，但随着技术的发展，前后端分离的流行，JSP 的生命周期已经到头了。
+JSP 在实际开发中，主要是作为 MVC 模型中的 V（View）层出现的。它本来是为 Java 后端程序员开发前端界面而生的，但随着技术的发展，前后端分离的流行，JSP 的生命周期已经到头了。
 
 8）Servlet
 
@@ -158,7 +150,7 @@ JSP 在实际开发中，主要是作为 MVC 模型中的V（View）层出现的
 
 我这样的说法可能不够可观，不够顾及底层知识，但自学的时间成本还是要适当控制一下。**总之，我们应该省下更多的时间去学习前面小节提到的重点知识**！
 
-### 05、学习Java还需要补充哪些知识
+### 05、学习 Java 还需要补充哪些知识
 
 **1）数据结构与算法**
 
@@ -176,16 +168,13 @@ JSP 在实际开发中，主要是作为 MVC 模型中的V（View）层出现的
 
 B 站上浙江大学的一个数据结构课非常不错，很系统很经典。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-e2812c94-5945-41ad-adcd-4dbb02fae8d5.png)
 
-
->视频地址：[https://www.bilibili.com/video/BV1JW411i731](https://www.bilibili.com/video/BV1JW411i731)
+> 视频地址：[https://www.bilibili.com/video/BV1JW411i731](https://www.bilibili.com/video/BV1JW411i731)
 
 以我接触的领域来说，大部分普通的业务系统都不会涉及到太复杂的**算法**，因此我没有在算法上投入过多时间。但如果你将来要从事一些特殊的领域，如果算法跟不上，可以说是“寸步难行”，比如说图形处理领域，无论是图像的变化还是增强，无一例外都要用到矩阵变换，因此就必然涉及到线性代数的内容，再往深处学的话，必然会牵扯出更多的知识。
 
-所以学习算法要视情况而定，如果想走算法岗，那么《算法第4版》、《算法导论》、《数学之美》、《编程珠玑》、《剑指offer》这些书都要耐着性子啃一啃。
-
+所以学习算法要视情况而定，如果想走算法岗，那么《算法第 4 版》、《算法导论》、《数学之美》、《编程珠玑》、《剑指 offer》这些书都要耐着性子啃一啃。
 
 **2）设计模式**
 
@@ -195,24 +184,21 @@ B 站上浙江大学的一个数据结构课非常不错，很系统很经典。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-3b9ab6b9-67f2-4810-bb39-9e1f48ffe3da.png)
 
-
->在线阅读地址：[https://refactoring.guru](https://refactoring.guru)
+> 在线阅读地址：[https://refactoring.guru](https://refactoring.guru)
 
 需要离线版的小伙伴请长按识别/扫描下方的二维码关注作者的原创公众号「**沉默王二**」回复关键字「**设计模式**」就可以拉取到了。
 
 ![扫码关注后回复「设计模式」关键字](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
 
- 
-
-**3）JDK源码**
+**3）JDK 源码**
 
 面试的时候，面试官都特别喜欢问一些源码方面的知识，比如说 HashMap 的一些经典问题：
 
 - 加载因子为什么是 0.75？
 - 为什么链表改为红黑树的阈值是 8?
-- HashMap的底层数据结构是什么？
-- 解决hash冲突的办法有哪些？
-- HashMap数组的长度为什么是 2 的幂次方？
+- HashMap 的底层数据结构是什么？
+- 解决 hash 冲突的办法有哪些？
+- HashMap 数组的长度为什么是 2 的幂次方？
 - HashMap 的扩容方式？
 
 这些问题只有通过源码才能得出比较准确的回答，对吧？
@@ -221,8 +207,7 @@ B 站上浙江大学的一个数据结构课非常不错，很系统很经典。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-130bcb8a-38bb-448f-8dc1-4e2af22153d2.png)
 
-
->视频地址：[https://www.bilibili.com/video/BV1V7411U78L](https://www.bilibili.com/video/BV1V7411U78L)
+> 视频地址：[https://www.bilibili.com/video/BV1V7411U78L](https://www.bilibili.com/video/BV1V7411U78L)
 
 **4）操作系统、计算机组成原理和计算机网络**
 
@@ -232,32 +217,25 @@ B 站上浙江大学的一个数据结构课非常不错，很系统很经典。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-f5e91f0d-4b30-4693-beab-b879bac237b4.png)
 
->视频地址：[https://www.bilibili.com/video/BV1js411b7vg](https://www.bilibili.com/video/BV1js411b7vg)
+> 视频地址：[https://www.bilibili.com/video/BV1js411b7vg](https://www.bilibili.com/video/BV1js411b7vg)
 
 如果想深入学习计算机组成原理的话，推荐北京大学的《计算机组成》公开课，整体评价非常高。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-6cc5a0d4-7a06-4aca-a9b0-2e8b270d36ba.png)
 
-
->视频地址：[https://www.coursera.org/learn/jisuanji-zucheng](https://www.coursera.org/learn/jisuanji-zucheng)
-
+> 视频地址：[https://www.coursera.org/learn/jisuanji-zucheng](https://www.coursera.org/learn/jisuanji-zucheng)
 
 计算机网络方面的视频我推荐湖科大教书匠的《计算机网络微课堂》，制作得非常用心，是一部不可多得的佳作。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-0686fbbf-723e-4a0b-8082-3b3577050758.png)
 
-
->视频地址：[https://www.bilibili.com/video/BV1c4411d7jb](https://www.bilibili.com/video/BV1c4411d7jb)
-
+> 视频地址：[https://www.bilibili.com/video/BV1c4411d7jb](https://www.bilibili.com/video/BV1c4411d7jb)
 
 5）项目管理与架构
 
 实现一个软件系统的过程，不仅只有编码，还涉及到项目安排，团队协调等一系列非技术因素，如果想从一名程序员走向管理岗，成为 team leader 或者开发经理，软件工程方面的知识就必须得跟得上。
 
 推荐三本书：《构建之法》、《人月神话》和《人件》，虽然有了岁月的痕迹，但依然值得深读。当然，关于软件工程，最好的学习方法是观察，观察你所在的团队是如何处理工程问题的，然后思考，最终形成自己的方法观。
-
 
 要想写出一个好而美的程序，需要经过三个阶段。
 
@@ -280,17 +258,15 @@ B 站上浙江大学的一个数据结构课非常不错，很系统很经典。
 
 最后说一句哈，大家学习 Java，是为了什么，我想大多数不是为了兴趣，是吧？是为了找工作，那么终极的一步，我们需要在找工作之前刷一波面试题，然后找工作的机会也会提升很多。Java 程序员进阶之路上也为大家精心准备了面渣逆袭篇。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xuexiluxian/java/yitiaolong-314e94ce-aa9d-4f09-831b-d1395c4fc07a.png)
-
 
 通过上面这幅图就能感受得到，非常全面，非常精彩。
 
->学习地址：[https://tobebetterjavaer.com/home.html#java面渣逆袭](https://tobebetterjavaer.com/home.html#java面渣逆袭)
+> 学习地址：[https://tobebetterjavaer.com/home.html#java 面渣逆袭](https://tobebetterjavaer.com/home.html#java面渣逆袭)
 
 衷心的希望，大家都能在学习 Java 的这条路上快乐一些，纯粹一些，少听少看一些那些焦虑文，什么 35 岁，什么学历歧视，沉下心来，多学习一点知识，让自己变强一点，比什么都好！
 
-另外，需要 Java 学习资料的话，可以直接戳我整理的这个 GitHub/码云仓库——📚Java程序员必读书单整理，附下载地址，助力每一个Java程序员构建属于自己的知识体系。包括但不限于Java、设计模式、计算机网络、操作系统、数据库、数据结构与算法、大数据、架构、面试等等。
+另外，需要 Java 学习资料的话，可以直接戳我整理的这个 GitHub/码云仓库——📚Java 程序员必读书单整理，附下载地址，助力每一个 Java 程序员构建属于自己的知识体系。包括但不限于 Java、设计模式、计算机网络、操作系统、数据库、数据结构与算法、大数据、架构、面试等等。
 
 - GitHub 地址：[https://github.com/itwanger/JavaBooks](https://github.com/itwanger/JavaBooks)
 - 码云地址：[https://gitee.com/itwanger/JavaBooks](https://gitee.com/itwanger/JavaBooks)

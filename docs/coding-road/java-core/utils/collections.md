@@ -5,15 +5,13 @@ tag:
   - Java
 ---
 
-# Java集合框架：Collections工具类
-
+# Java 集合框架：Collections 工具类
 
 Collections 是 JDK 提供的一个工具类，位于 java.util 包下，提供了一系列的静态方法，方便我们对集合进行各种骚操作，算是集合框架的一个大管家。
 
 还记得我们前面讲过的 [Arrays 工具类](https://mp.weixin.qq.com/s/9dYmKXEErZbyPJ_GxwWYug)吗？可以回去温习下。
 
 Collections 的用法很简单，在 Intellij IDEA 中敲完 `Collections.` 之后就可以看到它提供的方法了，大致看一下方法名和参数就能知道这个方法是干嘛的。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/collections-01.png)
 
@@ -135,7 +133,7 @@ static class SynchronizedList<E>
     public E get(int index) {
         synchronized (mutex) {return list.get(index);}
     }
-    
+
     public void add(int index, E element) {
         synchronized (mutex) {list.add(index, element);}
     }
@@ -249,8 +247,4 @@ addAll 后：[沉默王九, 沉默王十, 沉默王二]
 
 这才是高手要思考的一个问题。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
-
-
-

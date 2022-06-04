@@ -6,15 +6,13 @@ tag:
 date: 2019-01-01
 ---
 
-# Java 8 Optional最佳指南
-
+# Java 8 Optional 最佳指南
 
 想学习，永远都不晚，尤其是针对 Java 8 里面的好东西，Optional 就是其中之一，该类提供了一种用于表示可选值而非空引用的类级别解决方案。作为一名 Java 程序员，我真的是烦透了 NullPointerException（NPE），尽管和它熟得就像一位老朋友，知道它也是迫不得已——程序正在使用一个对象却发现这个对象的值为 null，于是 Java 虚拟机就怒发冲冠地把它抛了出来当做替罪羊。
 
 当然了，我们程序员是富有责任心的，不会坐视不管，于是就有了大量的 null 值检查。尽管有时候这种检查完全没有必要，但我们已经习惯了例行公事。终于，Java 8 看不下去了，就引入了 Optional，以便我们编写的代码不再那么刻薄呆板。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/java8/optional-1.jpg)
-
 
 ### 01、没有 Optional 会有什么问题
 
@@ -294,7 +292,6 @@ public class FilterOptionalDemo {
 
 在上例中，由于 password 的长度为 5 ，所以程序输出的结果为 false。假设密码的长度要求在 6 到 10 位之间，那么还可以再追加一个条件。来看小王增加难度后的代码。
 
-
 ```java
 Predicate<String> len6 = pwd -> pwd.length() > 6;
 Predicate<String> len10 = pwd -> pwd.length() < 10;
@@ -320,7 +317,7 @@ public class OptionalMapDemo {
         Optional<String> nameOptional = Optional.of(name);
         Optional<Integer> intOpt = nameOptional
                 .map(String::length);
-        
+
         System.out.println( intOpt.orElse(0));
     }
 }
@@ -345,10 +342,6 @@ public class OptionalMapFilterDemo {
     }
 }
 ```
-
-
-
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/java8/optional-2.jpg)
 

@@ -22,7 +22,6 @@ export default hopeTheme({
   //docsDir: 文档在仓库中的目录，默认为根目录
   docsDir: "docs",
 
-
   // navbar
   navbar: navbar,
 

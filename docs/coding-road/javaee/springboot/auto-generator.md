@@ -7,15 +7,13 @@ tag:
 
 # MyBatis-Plus AutoGenerator：一款开发效率更高的代码生成工具
 
-
 作为一名 Java 后端开发，日常工作中免不了要生成数据库表对应的持久化对象 PO，操作数据库的接口 DAO，以及 CRUD 的 XML，也就是 mapper。
 
-Mybatis Generator 是 MyBatis 官方提供的一个代码生成工具，完全可以胜任这个工作，不过最近在开发“编程猫”开源网站的时候试用了一下 MyBatis-Plus 官方提供  AutoGenerator，发现配置更简单，开发效率更高！于是就来给小伙伴们安利一波。
+Mybatis Generator 是 MyBatis 官方提供的一个代码生成工具，完全可以胜任这个工作，不过最近在开发“编程猫”开源网站的时候试用了一下 MyBatis-Plus 官方提供 AutoGenerator，发现配置更简单，开发效率更高！于是就来给小伙伴们安利一波。
 
 来个 GIF 感受一下 AutoGenerator 生成代码的快感吧。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/kaiyuan/auto-generator-1.gif)
-
 
 ### 一、使用 Mybatis Generator
 
@@ -42,14 +40,13 @@ Mybatis Generator 是 MyBatis 官方提供的一个代码生成工具，完全�
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/kaiyuan/auto-generator-2.png)
 
-
 否则下一步可能不通过，但又得不到任何错误提示。不要问我为什么，踩过坑后痛苦的领悟。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/kaiyuan/auto-generator-3.png)
 
 添加完成后，可以通过 Maven 插件来生成代码，也可以通过 Java 代码来生成代码，这里以 Maven 插件的形式来演示。Java 代码的形式可参照 Mybatis Generator：
 
->https://mybatis.org/generator/running/runningWithJava.html
+> https://mybatis.org/generator/running/runningWithJava.html
 
 第二步，在 pom.xml 的 MyBatis Generator 插件，先来看一下整体的结构图，注意是在 build→plugins 下节点下添加。
 
@@ -120,7 +117,7 @@ Mybatis Generator 是 MyBatis 官方提供的一个代码生成工具，完全�
 </generatorConfiguration>
 ```
 
-- 配置文件至少得包含一个context
+- 配置文件至少得包含一个 context
 - commentGenerator 用来配置生成的注释
 - jdbcConnection 用来链接数据库
 - javaTypeResolver 配置 JDBC 与 Java 的类型转换规则
@@ -131,9 +128,9 @@ Mybatis Generator 是 MyBatis 官方提供的一个代码生成工具，完全�
 
 更多配置信息可以参照下面这篇文章：
 
->https://juejin.cn/post/6844903982582743048
+> https://juejin.cn/post/6844903982582743048
 
-由于数据库表可能会发生变动，因此我们需要追加一个配置 `<overwrite>true</overwrite>`，允许覆盖旧的文件。为了防止我们编写的 SQL 语句被覆盖掉，MyBatis Generator 只会覆盖旧的 po、dao、而 *mapper.xml 不会覆盖，而是追加。
+由于数据库表可能会发生变动，因此我们需要追加一个配置 `<overwrite>true</overwrite>`，允许覆盖旧的文件。为了防止我们编写的 SQL 语句被覆盖掉，MyBatis Generator 只会覆盖旧的 po、dao、而 \*mapper.xml 不会覆盖，而是追加。
 
 Mybatis Generator 需要链接数据库，所以还需要添加数据库驱动依赖，就像这样：
 
@@ -240,7 +237,7 @@ pc.setParent("top.codingmore.mpg");
 
 更多配置项可以到官方查看：
 
->https://baomidou.com/pages/061573/
+> https://baomidou.com/pages/061573/
 
 示例代码示例如下所示：
 
@@ -276,10 +273,10 @@ public class CodeGenerator {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/kaiyuan/auto-generator-9.png)
 
- 想要完整示例的话，可以到 GitHub 上查看：
+想要完整示例的话，可以到 GitHub 上查看：
 
->https://github.com/itwanger/codingmore-learning/tree/main/codingmore-tiny-02
+> https://github.com/itwanger/codingmore-learning/tree/main/codingmore-tiny-02
 
-------
+---
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

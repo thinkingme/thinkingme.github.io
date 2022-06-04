@@ -7,12 +7,11 @@ tag:
 
 # 郑州有哪些不错的互联网公司？
 
-
 首先我们来看工作机会！
 
 一位读者的评论我觉得特别的好，我贴到这里给大家看下：
 
-网名"咔嚓"：作为在郑州工作的前端，表示遇见好厂的话，生活节奏还是很爽的，房租不贵，直接住公司旁边，通勤5分钟，不加班的话，每天晚上6点下班，双休。确实郑州互联网不强，但是，我们也不应该忘了生活本该有的样子啊。
+网名"咔嚓"：作为在郑州工作的前端，表示遇见好厂的话，生活节奏还是很爽的，房租不贵，直接住公司旁边，通勤 5 分钟，不加班的话，每天晚上 6 点下班，双休。确实郑州互联网不强，但是，我们也不应该忘了生活本该有的样子啊。
 
 ## 工作机会
 
@@ -21,8 +20,6 @@ tag:
 教育资源极度匮乏导致好的企业不来，好的企业不来又导致人才外流，恶性循环。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/cityselect/zhengzhou-0cd5c4ac-4e67-4b06-b5a3-20fad836824b.png)
-
-
 
 ### 数字郑州
 
@@ -40,17 +37,15 @@ tag:
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/cityselect/zhengzhou-ce9e2a6e-8743-49b3-83aa-8719da78b7e1.png)
 
-
-
 ### 浪潮
 
-浪潮在郑州的研发中心法定节假日加班是有加班费的，但平时加班就没有加班费了，每月要求加够50个小时的班。薪资水平大家也可以参考下 Boss 上放出的招聘薪资水平。
+浪潮在郑州的研发中心法定节假日加班是有加班费的，但平时加班就没有加班费了，每月要求加够 50 个小时的班。薪资水平大家也可以参考下 Boss 上放出的招聘薪资水平。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/cityselect/zhengzhou-ef0fe9a0-eff2-4037-96d2-ab84a2f76491.png)
 
 ### 新华三
 
-新华三大部分情况下能双休，周末加班也有加班费，不过涨薪很缓慢。在网上看到一个帖子，有人问 offer 选西安中兴还算郑州新华三，中兴和华三的职工都在互相劝退，说这是一个送命题。薪资水平大家还是参考下Boss上的招聘薪资水平吧。
+新华三大部分情况下能双休，周末加班也有加班费，不过涨薪很缓慢。在网上看到一个帖子，有人问 offer 选西安中兴还算郑州新华三，中兴和华三的职工都在互相劝退，说这是一个送命题。薪资水平大家还是参考下 Boss 上的招聘薪资水平吧。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/cityselect/zhengzhou-caa46657-f65d-4965-b553-c9f4502f3cc9.png)
 
@@ -270,9 +265,6 @@ UU 跑腿的工作环境以及各种福利都还算不错！
 
 像浙菜、豫菜、火锅串串这边都能找到比较好吃的店子，可以满足绝大部分小伙伴的味蕾。
 
-
-
->作者：大白，转载链接：[https://mp.weixin.qq.com/s/SU9drg2xJKcheIwJ6OSSBQ](https://mp.weixin.qq.com/s/SU9drg2xJKcheIwJ6OSSBQ)
+> 作者：大白，转载链接：[https://mp.weixin.qq.com/s/SU9drg2xJKcheIwJ6OSSBQ](https://mp.weixin.qq.com/s/SU9drg2xJKcheIwJ6OSSBQ)
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
-

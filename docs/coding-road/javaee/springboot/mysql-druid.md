@@ -5,7 +5,9 @@ tag:
   - Spring Boot
 title: Spring Boot 整合 MySQL 和 Druid
 ---
+
 # Spring Boot 整合 MySQL 和 Druid
+
 ### MySQL 简介
 
 MySQL 是目前项目中运用最广泛的关系型数据库，无论是互联网大厂，还是中小型公司，几乎都在用。
@@ -18,43 +20,37 @@ MySQL 的安装非常简单，针对不同的操作系统，MySQL 都提供了�
 
 MySQL 目前主推的版本是 8.0，参考手册的地址如下所示：
 
->[https://dev.mysql.com/doc/refman/8.0/en/](https://dev.mysql.com/doc/refman/8.0/en/)
+> [https://dev.mysql.com/doc/refman/8.0/en/](https://dev.mysql.com/doc/refman/8.0/en/)
 
 ### 如何安装 MySQL
 
 如果有云服务器的话，建议安装在云服务器上，这样就可以长时间运行 MySQL 而不用担心服务重启的问题。按照步骤参照下面的文档。
 
->[https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html](https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html)
+> [https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html](https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html)
 
 也可以直接通过宝塔面板的形式来安装，这样更省事省力省心。
 
->宝塔面板安装脚本地址：[https://www.bt.cn/new/download.html](https://www.bt.cn/new/download.html)
-
+> 宝塔面板安装脚本地址：[https://www.bt.cn/new/download.html](https://www.bt.cn/new/download.html)
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-89f6d126-b059-4511-b64d-720aa8df354f.png)
 
 安装完成后，就可以在数据库管理页面添加数据库并且进行管理了。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-86d80ab6-968e-42ec-a532-1eeb341779c1.png)
-
-
 
 如果是 Windows 用户的话，安装步骤参照下面的文档。
 
->[https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html](https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html)
+> [https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html](https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html)
 
 如果是 macOS 用户的话，安装步骤参照下面的文档。
 
->[https://dev.mysql.com/doc/refman/8.0/en/macos-installation-pkg.html](https://dev.mysql.com/doc/refman/8.0/en/macos-installation-pkg.html)
+> [https://dev.mysql.com/doc/refman/8.0/en/macos-installation-pkg.html](https://dev.mysql.com/doc/refman/8.0/en/macos-installation-pkg.html)
 
 Windows 和 macOS 的安装都非常的简单，主要就是下载对应操作系统的 MySQL 包安装管理器。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-ab94f6df-2031-42ff-8746-b4ad5a4e3a81.png)
 
 然后按照包安装向导的提示一步步傻瓜式安装即可。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-e7031aec-74c5-4079-a6f3-97368c921620.png)
 
@@ -66,14 +62,11 @@ Spring Boot 整合 MySQL 数据库非常简单，只需要添加 MySQL 依赖并
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-d7765111-9dcb-4125-a87a-da1439a0a6cf.png)
 
-
-添加 MySQL 的 Java连接驱动依赖和 JDBC Starter。
-
+添加 MySQL 的 Java 连接驱动依赖和 JDBC Starter。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-201eb6fa-0a09-46d7-a555-3988bee92a9f.png)
 
-
-对应pom.xml文件中的代码：
+对应 pom.xml 文件中的代码：
 
 ```
 <dependency>
@@ -87,7 +80,7 @@ Spring Boot 整合 MySQL 数据库非常简单，只需要添加 MySQL 依赖并
 </dependency>
 ```
 
-**2）通过宝塔面板新建codingmore-mysql数据库并添加数据表**
+**2）通过宝塔面板新建 codingmore-mysql 数据库并添加数据表**
 
 ```
 CREATE TABLE `user` (
@@ -128,7 +121,6 @@ spring:
 ```
 
 推荐安装 Spring Initializr and assistant 插件。可以自动补全配置信息。
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-be486130-539a-49b5-ac6f-dc1bf7f8cba6.png)
 
@@ -207,7 +199,6 @@ Spring Boot 的测试类主要放置在 `src/test/java` 目录下面，项目创
 
 Navicat 是一个从我参加工作到现在一直都在用的 MySQL 客户端工具，通过 Navicat 可以轻松连接数据库，并执行增删改查操作。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-2daef9fc-4a97-41bb-bd1c-875f468d90bc.png)
 
 连接数据库也非常的简单，只需要填写主机 IP 地址、端口、用户名和密码即可。
@@ -240,11 +231,11 @@ Navicat 是一个从我参加工作到现在一直都在用的 MySQL 客户端�
 
 ### Spring Boot 整合 Druid
 
-Druid 是阿里巴巴开源的一款数据库连接池，结合了C3P0、DBCP 等 DB 池的优点，同时还加入了日志监控。
+Druid 是阿里巴巴开源的一款数据库连接池，结合了 C3P0、DBCP 等 DB 池的优点，同时还加入了日志监控。
 
 Druid 在 GitHub 上已经收获了 25.4k 的 star，可以说非常的知名，从简介上也能看得出，Druid 就是为了监控而生的。
 
->[https://github.com/alibaba/druid/](https://github.com/alibaba/druid/)
+> [https://github.com/alibaba/druid/](https://github.com/alibaba/druid/)
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-a1f53d5b-1048-4707-bebc-1a59d7793880.png)
 
@@ -276,7 +267,7 @@ Spring Boot2.0 以上默认使用的是 Hikari 连接池，我们从之前的日
 
 ```
 spring:
-  datasource:    
+  datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       #初始化连接池大小
@@ -327,12 +318,11 @@ spring:
 
 第四步，通过 `http://localhost:9002/druid/` 地址就可以在浏览器访问 Druid 的监控页面了，用户名和密码是我们在配置文件里指定的 root 和 root，登录后是这样的。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-daaf401e-e4c4-4057-9b3b-d605eefb6eb3.png)
 
 更多关于监控的配置信息，可以到 Druid 的 GitHub 仓库查看。
 
->[https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98](https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)
+> [https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98](https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/springboot/mysql-druid-a5db84fc-1030-4a38-824d-4e649ad2b768.png)
 

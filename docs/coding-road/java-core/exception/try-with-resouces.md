@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# 详解Java7新增的try-with-resouces语法
-
+# 详解 Java7 新增的 try-with-resouces 语法
 
 “二哥，终于等到你讲 try-with-resouces 了！”三妹夸张的表情让我有些吃惊。
 
@@ -297,5 +296,3 @@ java.lang.Exception: out()
 “靠谱！”三妹说。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
-
-

@@ -7,17 +7,15 @@ tag:
   - Java
 ---
 
-## 什么是Fork/Join
+## 什么是 Fork/Join
 
-Fork/Join框架是一个实现了ExecutorService接口的多线程处理器，它专为那些可以通过递归分解成更细小的任务而设计，最大化的利用多核处理器来提高应用程序的性能。
+Fork/Join 框架是一个实现了 ExecutorService 接口的多线程处理器，它专为那些可以通过递归分解成更细小的任务而设计，最大化的利用多核处理器来提高应用程序的性能。
 
-与其他ExecutorService相关的实现相同的是，Fork/Join框架会将任务分配给线程池中的线程。而与之不同的是，Fork/Join框架在执行任务时使用了**工作窃取算法**。
+与其他 ExecutorService 相关的实现相同的是，Fork/Join 框架会将任务分配给线程池中的线程。而与之不同的是，Fork/Join 框架在执行任务时使用了**工作窃取算法**。
 
+**fork**在英文里有分叉的意思，**join**在英文里连接、结合的意思。顾名思义，fork 就是要使一个大任务分解成若干个小任务，而 join 就是最后将各个小任务的结果结合起来得到大任务的结果。
 
-
-**fork**在英文里有分叉的意思，**join**在英文里连接、结合的意思。顾名思义，fork就是要使一个大任务分解成若干个小任务，而join就是最后将各个小任务的结果结合起来得到大任务的结果。
-
-Fork/Join的运行流程大致如下所示：
+Fork/Join 的运行流程大致如下所示：
 
 ![fork/join流程图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/fork-join-ba0c0e3f-dc9b-445d-874a-5878503a98f7.png)
 
@@ -48,13 +46,13 @@ solve(任务):
 
 另外，当一个线程在窃取任务时要是没有其他可用的任务了，这个线程会进入**阻塞状态**以等待再次“工作”。
 
-## Fork/Join的具体实现
+## Fork/Join 的具体实现
 
-前面我们说Fork/Join框架简单来讲就是对任务的分割与子任务的合并，所以要实现这个框架，先得有**任务**。在Fork/Join框架里提供了抽象类`ForkJoinTask`来实现任务。
+前面我们说 Fork/Join 框架简单来讲就是对任务的分割与子任务的合并，所以要实现这个框架，先得有**任务**。在 Fork/Join 框架里提供了抽象类`ForkJoinTask`来实现任务。
 
 ### ForkJoinTask
 
-ForkJoinTask是一个类似普通线程的实体，但是比普通线程轻量得多。
+ForkJoinTask 是一个类似普通线程的实体，但是比普通线程轻量得多。
 
 **fork()方法**:使用线程池中的空闲线程异步提交任务
 
@@ -74,11 +72,11 @@ public final ForkJoinTask<V> fork() {
 }
 ```
 
-其实fork()只做了一件事，那就是**把任务推入当前工作线程的工作队列里**。
+其实 fork()只做了一件事，那就是**把任务推入当前工作线程的工作队列里**。
 
 **join()方法**：等待处理任务的线程处理完毕，获得返回值。
 
-来看下join()的源码：
+来看下 join()的源码：
 
 ```java
 public final V join() {
@@ -114,40 +112,40 @@ private int doJoin() {
 }
 ```
 
-我们在之前介绍过说Thread.join()会使线程阻塞，而ForkJoinPool.join()会使线程免于阻塞，下面是ForkJoinPool.join()的流程图：
+我们在之前介绍过说 Thread.join()会使线程阻塞，而 ForkJoinPool.join()会使线程免于阻塞，下面是 ForkJoinPool.join()的流程图：
 ![join流程图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/fork-join-8e03485d-efe0-4edf-8516-a9b10dea6e7f.png)
 
-**RecursiveAction和RecursiveTask**
+**RecursiveAction 和 RecursiveTask**
 
-通常情况下，在创建任务的时候我们一般不直接继承ForkJoinTask，而是继承它的子类**RecursiveAction**和**RecursiveTask**。
+通常情况下，在创建任务的时候我们一般不直接继承 ForkJoinTask，而是继承它的子类**RecursiveAction**和**RecursiveTask**。
 
-两个都是ForkJoinTask的子类，**RecursiveAction可以看做是无返回值的ForkJoinTask，RecursiveTask是有返回值的ForkJoinTask**。
+两个都是 ForkJoinTask 的子类，**RecursiveAction 可以看做是无返回值的 ForkJoinTask，RecursiveTask 是有返回值的 ForkJoinTask**。
 
-此外，两个子类都有执行主要计算的方法compute()，当然，RecursiveAction的compute()返回void，RecursiveTask的compute()有具体的返回值。
+此外，两个子类都有执行主要计算的方法 compute()，当然，RecursiveAction 的 compute()返回 void，RecursiveTask 的 compute()有具体的返回值。
 
 ### ForkJoinPool
 
-ForkJoinPool是用于执行ForkJoinTask任务的执行（线程）池。
+ForkJoinPool 是用于执行 ForkJoinTask 任务的执行（线程）池。
 
-ForkJoinPool管理着执行池中的线程和任务队列，此外，执行池是否还接受任务，显示线程的运行状态也是在这里处理。
+ForkJoinPool 管理着执行池中的线程和任务队列，此外，执行池是否还接受任务，显示线程的运行状态也是在这里处理。
 
-我们来大致看下ForkJoinPool的源码：
+我们来大致看下 ForkJoinPool 的源码：
 
 ```java
 @sun.misc.Contended
 public class ForkJoinPool extends AbstractExecutorService {
     // 任务队列
-    volatile WorkQueue[] workQueues;   
-    
+    volatile WorkQueue[] workQueues;
+
     // 线程的运行状态
-    volatile int runState;  
-    
+    volatile int runState;
+
     // 创建ForkJoinWorkerThread的默认工厂，可以通过构造函数重写
     public static final ForkJoinWorkerThreadFactory defaultForkJoinWorkerThreadFactory;
-    
+
     // 公用的线程池，其运行状态不受shutdown()和shutdownNow()的影响
     static final ForkJoinPool common;
-    
+
     // 私有构造方法，没有任何安全检查和参数校验，由makeCommonPool直接调用
     // 其他构造方法都是源自于此方法
     // parallelism: 并行度，
@@ -168,31 +166,29 @@ public class ForkJoinPool extends AbstractExecutorService {
 }
 ```
 
-
-
 #### WorkQueue
 
-双端队列，ForkJoinTask存放在这里。
+双端队列，ForkJoinTask 存放在这里。
 
 当工作线程在处理自己的工作队列时，会从队列首取任务来执行（FIFO）；如果是窃取其他队列的任务时，窃取的任务位于所属任务队列的队尾（LIFO）。
 
-ForkJoinPool与传统线程池最显著的区别就是它维护了一个**工作队列数组**（volatile WorkQueue[] workQueues，ForkJoinPool中的**每个工作线程都维护着一个工作队列**）。
+ForkJoinPool 与传统线程池最显著的区别就是它维护了一个**工作队列数组**（volatile WorkQueue[] workQueues，ForkJoinPool 中的**每个工作线程都维护着一个工作队列**）。
 
 #### runState
 
-ForkJoinPool的运行状态。**SHUTDOWN**状态用负数表示，其他用2的幂次表示。
+ForkJoinPool 的运行状态。**SHUTDOWN**状态用负数表示，其他用 2 的幂次表示。
 
-## Fork/Join的使用
+## Fork/Join 的使用
 
-上面我们说ForkJoinPool负责管理线程和任务，ForkJoinTask实现fork和join操作，所以要使用Fork/Join框架就离不开这两个类了，只是在实际开发中我们常用ForkJoinTask的子类RecursiveTask 和RecursiveAction来替代ForkJoinTask。
+上面我们说 ForkJoinPool 负责管理线程和任务，ForkJoinTask 实现 fork 和 join 操作，所以要使用 Fork/Join 框架就离不开这两个类了，只是在实际开发中我们常用 ForkJoinTask 的子类 RecursiveTask 和 RecursiveAction 来替代 ForkJoinTask。
 
-下面我们用一个计算斐波那契数列第n项的例子来看一下Fork/Join的使用：
+下面我们用一个计算斐波那契数列第 n 项的例子来看一下 Fork/Join 的使用：
 
 > 斐波那契数列数列是一个线性递推数列，从第三项开始，每一项的值都等于前两项之和：
 >
 > 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89······
 >
-> 如果设f(n）为该数列的第n项（n∈N*），那么有：f(n) = f(n-1) + f(n-2)。
+> 如果设 f(n）为该数列的第 n 项（n∈N\*），那么有：f(n) = f(n-1) + f(n-2)。
 
 ```java
 public class FibonacciTest {
@@ -248,9 +244,9 @@ CPU核数：4
 耗时：9490 millis
 ```
 
-需要注意的是，上述计算时间复杂度为`O(2^n)`，随着n的增长计算效率会越来越低，这也是上面的例子中n不敢取太大的原因。
+需要注意的是，上述计算时间复杂度为`O(2^n)`，随着 n 的增长计算效率会越来越低，这也是上面的例子中 n 不敢取太大的原因。
 
-此外，也并不是所有的任务都适合Fork/Join框架，比如上面的例子任务划分过于细小反而体现不出效率，下面我们试试用普通的递归来求f(n)的值，看看是不是要比使用Fork/Join快：
+此外，也并不是所有的任务都适合 Fork/Join 框架，比如上面的例子任务划分过于细小反而体现不出效率，下面我们试试用普通的递归来求 f(n)的值，看看是不是要比使用 Fork/Join 快：
 
 ```java
 // 普通递归，复杂度为O(2^n)
@@ -279,7 +275,7 @@ public void testPlain() {
 耗时：436 millis
 ```
 
-通过输出可以很明显的看出来，使用普通递归的效率都要比使用Fork/Join框架要高很多。
+通过输出可以很明显的看出来，使用普通递归的效率都要比使用 Fork/Join 框架要高很多。
 
 这里我们再用另一种思路来计算：
 
@@ -321,19 +317,20 @@ public void testComputeFibonacci() {
 耗时：0 millis
 ```
 
-这里耗时为0不代表没有耗时，是表明这里计算的耗时几乎可以忽略不计，大家可以在自己的电脑试试，即使是n取大很多量级的数据（注意int溢出的问题）耗时也是很短的，或者可以用System.nanoTime()统计纳秒的时间。
+这里耗时为 0 不代表没有耗时，是表明这里计算的耗时几乎可以忽略不计，大家可以在自己的电脑试试，即使是 n 取大很多量级的数据（注意 int 溢出的问题）耗时也是很短的，或者可以用 System.nanoTime()统计纳秒的时间。
 
-为什么在这里普通的递归或循环效率更快呢？因为Fork/Join是使用多个线程协作来计算的，所以会有线程通信和线程切换的开销。
+为什么在这里普通的递归或循环效率更快呢？因为 Fork/Join 是使用多个线程协作来计算的，所以会有线程通信和线程切换的开销。
 
-如果要计算的任务比较简单（比如我们案例中的斐波那契数列），那当然是直接使用单线程会更快一些。但如果要计算的东西比较复杂，计算机又是多核的情况下，就可以充分利用多核CPU来提高计算速度。
+如果要计算的任务比较简单（比如我们案例中的斐波那契数列），那当然是直接使用单线程会更快一些。但如果要计算的东西比较复杂，计算机又是多核的情况下，就可以充分利用多核 CPU 来提高计算速度。
 
-另外，Java 8 Stream的并行操作底层就是用到了Fork/Join框架，下一章我们将从源码及案例两方面介绍Java 8 Stream的并行操作。
+另外，Java 8 Stream 的并行操作底层就是用到了 Fork/Join 框架，下一章我们将从源码及案例两方面介绍 Java 8 Stream 的并行操作。
 
 ---
 
->编辑：沉默王二，内容大部分来源以下三个开源仓库：
->- [深入浅出 Java 多线程](http://concurrent.redspider.group/)
->- [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
->- [Java八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
+> 编辑：沉默王二，内容大部分来源以下三个开源仓库：
+>
+> - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
+> - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
+> - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
 <img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">

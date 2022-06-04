@@ -5,7 +5,7 @@ tag:
   - Java
 ---
 
-# 深入剖析Java中的拆箱和装箱
+# 深入剖析 Java 中的拆箱和装箱
 
 “哥，听说 Java 的每个基本类型都对应了一个包装类型，比如说 int 的包装类型为 Integer，double 的包装类型为 Double，是这样吗？”从三妹这句话当中，能听得出来，她已经提前预习这块内容了。
 
@@ -48,7 +48,7 @@ class Writer {
 
 “《阿里巴巴 Java 开发手册》上有详细的说明，你看。”我打开 PDF，并翻到了对应的内容，指着屏幕念道。
 
->数据库的查询结果可能是 null，如果使用基本类型的话，因为要自动拆箱，就会抛出 NullPointerException 的异常。
+> 数据库的查询结果可能是 null，如果使用基本类型的话，因为要自动拆箱，就会抛出 NullPointerException 的异常。
 
 “什么是自动拆箱呢？”
 
@@ -240,7 +240,7 @@ Long sum = 0L;
 for (int i = 0; i < Integer.MAX_VALUE;i++) {
     sum += i;
 }
-long t2 = System.currentTimeMillis();        
+long t2 = System.currentTimeMillis();
 System.out.println(t2-t1);
 ```
 

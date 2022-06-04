@@ -5,7 +5,7 @@ tag:
   - 面试题集合
 ---
 
-# Java：34道精选高频面试题必看:+1:
+# Java：34 道精选高频面试题必看:+1:
 
 ## 1.介绍一下 java 吧
 
@@ -25,33 +25,29 @@ java 是一门**开源的跨平台的面向对象的**计算机语言.
 
 **优点**:
 
-> 1.良好的封装能够**减少耦合**，符合程序设计追求'高内聚，低耦合'。<br>
-> 2.**类内部的结构可以自由修改**。<br>
-> 3.可以对成员变量进行更**精确的控制**。<br>
-> 4.**隐藏信息**实现细节。<br>
-
+> 1.良好的封装能够**减少耦合**，符合程序设计追求'高内聚，低耦合'。<br> 2.**类内部的结构可以自由修改**。<br> 3.可以对成员变量进行更**精确的控制**。<br> 4.**隐藏信息**实现细节。<br>
 
 - 2.**继承**
   - 继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。
 
 **优点**:
 
->  1.提高类代码的**复用性**<br>
->  2.提高了代码的**维护性**<br>
+> 1.提高类代码的**复用性**<br> 2.提高了代码的**维护性**<br>
 
 - 3.**多态**
-  - 多态是同一个行为具有多个不同表现形式或形态的能力。Java语言中含有方法重载与对象多态两种形式的多态：
+
+  - 多态是同一个行为具有多个不同表现形式或形态的能力。Java 语言中含有方法重载与对象多态两种形式的多态：
     - 1.**方法重载**：在一个类中，允许多个方法使用同一个名字，但方法的参数不同，完成的功能也不同。
     - 2.**对象多态**：子类对象可以与父类对象进行转换，而且根据其使用的子类不同完成的功能也不同（重写父类的方法）。
 
- **优点**
+  **优点**
 
->   1. **消除类型之间的耦合关系**<br>
->   2. **可替换性**<br>
->   3. **可扩充性**<br>
->   4. **接口性**<br>
->   5. **灵活性**<br>
->   6. **简化性**<br>
+> 1. **消除类型之间的耦合关系**<br>
+> 2. **可替换性**<br>
+> 3. **可扩充性**<br>
+> 4. **接口性**<br>
+> 5. **灵活性**<br>
+> 6. **简化性**<br>
 
 ## 2.java 有哪些数据类型？
 
@@ -59,14 +55,14 @@ java 是一门**开源的跨平台的面向对象的**计算机语言.
 
 java 主要有两种数据类型
 
- - 1.**基本数据类型**
-   - 基本数据有**八个**,
-     - byte,short,int,long属于数值型中的整数型
-     - float,double属于数值型中的浮点型
-     - char属于字符型
-     - boolean属于布尔型
- - 2.**引用数据类型**
-   - 引用数据类型有**三个**,分别是类,接口和数组
+- 1.**基本数据类型**
+  - 基本数据有**八个**,
+    - byte,short,int,long 属于数值型中的整数型
+    - float,double 属于数值型中的浮点型
+    - char 属于字符型
+    - boolean 属于布尔型
+- 2.**引用数据类型**
+  - 引用数据类型有**三个**,分别是类,接口和数组
 
 ## 3.接口和抽象类有什么区别？
 
@@ -96,20 +92,20 @@ java 主要有两种数据类型
 - NullPointerException 空指针异常
 - ArrayIndexOutOfBoundsException 索引越界异常
 - InputFormatException 输入类型不匹配
-- SQLException SQL异常
+- SQLException SQL 异常
 - IllegalArgumentException 非法参数
 - NumberFormatException 类型转换异常
   等等....
 
 ## 6.异常要怎么解决？
 
-Java标准库内建了一些通用的异常，这些类以Throwable为顶层父类。
+Java 标准库内建了一些通用的异常，这些类以 Throwable 为顶层父类。
 
-Throwable又派生出**Error类和Exception类**。
+Throwable 又派生出**Error 类和 Exception 类**。
 
-错误：Error类以及他的子类的实例，代表了JVM本身的错误。错误不能被程序员通过代码处理，Error很少出现。因此，程序员应该关注Exception为父类的分支下的各种异常类。
+错误：Error 类以及他的子类的实例，代表了 JVM 本身的错误。错误不能被程序员通过代码处理，Error 很少出现。因此，程序员应该关注 Exception 为父类的分支下的各种异常类。
 
-异常：Exception以及他的子类，代表程序运行时发送的各种不期望发生的事件。可以被Java异常处理机制使用，是异常处理的核心。
+异常：Exception 以及他的子类，代表程序运行时发送的各种不期望发生的事件。可以被 Java 异常处理机制使用，是异常处理的核心。
 
 处理方法:
 
@@ -123,34 +119,33 @@ try{
 }
 ```
 
-- 2.**throw** 
+- 2.**throw**
   - throw 关键字作用是抛出一个异常，抛出的时候是抛出的是一个异常类的实例化对象，在异常处理中，try 语句要捕获的是一个异常对象，那么此异常对象也可以自己抛出
-- 3.**throws** 
+- 3.**throws**
   - 定义一个方法的时候可以使用 throws 关键字声明。使用 throws 关键字声明的方法表示此方法不处理异常，而交给方法调用处进行处理。
 
 ## 7.arrayList 和 linkedList 的区别？
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/baguwen/basic-34-04.png)
 
 - 1.ArrayList 是实现了基于**数组**的，存储空间是连续的。LinkedList 基于**链表**的，存储空间是不连续的。（LinkedList 是双向链表）
 
-- 2.对于**随机访问** get 和 set ，ArrayList 觉得优于 LinkedList，因为 LinkedList 要移动指针。 
+- 2.对于**随机访问** get 和 set ，ArrayList 觉得优于 LinkedList，因为 LinkedList 要移动指针。
 
 - 3.对于**新增和删除**操作 add 和 remove ，LinedList 比较占优势，因为 ArrayList 要移动数据。
 
-- 4.同样的数据量 LinkedList 所占用空间可能会更小，因为 ArrayList 需要**预留空间**便于后续数据增加，而 LinkedList 增加数据只需要**增加一个节点** 
+- 4.同样的数据量 LinkedList 所占用空间可能会更小，因为 ArrayList 需要**预留空间**便于后续数据增加，而 LinkedList 增加数据只需要**增加一个节点**
 
 ## 8.hashMap 1.7 和 hashMap 1.8 的区别？
 
 只记录**重点**
 
-| 不同点          |          hashMap 1.7           |                    hashMap 1.8 |
-| :-------------- | :----------------------------: | -----------------------------: |
-| 数据结构        |           数组+链表            |               数组+链表+红黑树 |
-| 插入数据的方式  |             头插法             |                         尾插法 |
-| hash 值计算方式 | 9次扰动处理(4次位运算+5次异或) | 2次扰动处理(1次位运算+1次异或) |
-| 扩容策略        |           插入前扩容           |                     插入后扩容 |
+| 不同点          |            hashMap 1.7            |                       hashMap 1.8 |
+| :-------------- | :-------------------------------: | --------------------------------: |
+| 数据结构        |             数组+链表             |                  数组+链表+红黑树 |
+| 插入数据的方式  |              头插法               |                            尾插法 |
+| hash 值计算方式 | 9 次扰动处理(4 次位运算+5 次异或) | 2 次扰动处理(1 次位运算+1 次异或) |
+| 扩容策略        |            插入前扩容             |                        插入后扩容 |
 
 ## 9.hashMap 线程不安全体现在哪里？
 
@@ -172,7 +167,7 @@ try{
 
 | 不同点   |    concurrentHashMap 1.7     |              concurrentHashMap 1.8 |
 | :------- | :--------------------------: | ---------------------------------: |
-| 锁粒度   |         基于segment          |                      基于entry节点 |
+| 锁粒度   |         基于 segment         |                    基于 entry 节点 |
 | 锁       |        reentrantLock         |                       synchronized |
 | 底层结构 | Segment + HashEntry + Unsafe | Synchronized + CAS + Node + Unsafe |
 
@@ -194,7 +189,7 @@ HashSet 是**基于 HashMap 实现**的，底层**采用 HashMap 来保存元素
 
 ## 14.泛型擦除是什么？
 
-因为泛型其实只是在编译器中实现的而虚拟机并不认识泛型类项，所以要在虚拟机中将泛型类型进行擦除。也就是说，**在编译阶段使用泛型，运行阶段取消泛型，即擦除**。 擦除是将泛型类型以其父类代替，如String 变成了Object等。其实在使用的时候还是进行带强制类型的转化，只不过这是比较安全的转换，因为在编译阶段已经确保了数据的一致性。
+因为泛型其实只是在编译器中实现的而虚拟机并不认识泛型类项，所以要在虚拟机中将泛型类型进行擦除。也就是说，**在编译阶段使用泛型，运行阶段取消泛型，即擦除**。 擦除是将泛型类型以其父类代替，如 String 变成了 Object 等。其实在使用的时候还是进行带强制类型的转化，只不过这是比较安全的转换，因为在编译阶段已经确保了数据的一致性。
 
 ## 15.说说进程和线程的区别？
 
@@ -230,30 +225,29 @@ HashSet 是**基于 HashMap 实现**的，底层**采用 HashMap 来保存元素
 - 不符合面向对象思维
 - 包装类提供很多方法，方便使用，如 Integer 类 toHexString(int i)、parseInt(String s) 方法等等
 
-## 18.Integer a = 1000，Integer b = 1000，a==b 的结果是什么？那如果 a，b 都为1，结果又是什么？
+## 18.Integer a = 1000，Integer b = 1000，a==b 的结果是什么？那如果 a，b 都为 1，结果又是什么？
 
 Integer a = 1000，Integer b = 1000，a==b 结果为**false**
 
 Integer a = 1，Integer b = 1，a==b 结果为**true**
 
-这道题主要考察 Integer 包装类缓存的范围,**在-128~127之间会缓存起来**,比较的是直接缓存的数据,在此之外比较的是对象
+这道题主要考察 Integer 包装类缓存的范围,**在-128~127 之间会缓存起来**,比较的是直接缓存的数据,在此之外比较的是对象
 
 ## 19.JMM 是什么？
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/baguwen/basic-34-08.png)
 
-JMM 就是 **Java内存模型**(java memory model)。因为在不同的硬件生产商和不同的操作系统下，内存的访问有一定的差异，所以会造成相同的代码运行在不同的系统上会出现各种问题。所以java内存模型(JMM)**屏蔽掉各种硬件和操作系统的内存访问差异，以实现让java程序在各种平台下都能达到一致的并发效果**。
+JMM 就是 **Java 内存模型**(java memory model)。因为在不同的硬件生产商和不同的操作系统下，内存的访问有一定的差异，所以会造成相同的代码运行在不同的系统上会出现各种问题。所以 java 内存模型(JMM)**屏蔽掉各种硬件和操作系统的内存访问差异，以实现让 java 程序在各种平台下都能达到一致的并发效果**。
 
-Java内存模型规定所有的变量都存储在主内存中，包括实例变量，静态变量，但是不包括局部变量和方法参数。每个线程都有自己的工作内存，线程的工作内存保存了该线程用到的变量和主内存的副本拷贝，线程对变量的操作都在工作内存中进行。**线程不能直接读写主内存中的变量**。
+Java 内存模型规定所有的变量都存储在主内存中，包括实例变量，静态变量，但是不包括局部变量和方法参数。每个线程都有自己的工作内存，线程的工作内存保存了该线程用到的变量和主内存的副本拷贝，线程对变量的操作都在工作内存中进行。**线程不能直接读写主内存中的变量**。
 
 每个线程的工作内存都是独立的，**线程操作数据只能在工作内存中进行，然后刷回到主存**。这是 Java 内存模型定义的线程基本工作方式。
-
 
 ## 20.创建对象有哪些方式
 
 有**五种创建对象的方式**
 
-- 1、new关键字
+- 1、new 关键字
 
 ```
 Person p1 = new Person();
@@ -311,9 +305,9 @@ public class Singleton {
 ```
 
 - 使用 volatile 是**防止指令重排序，保证对象可见**，防止读到半初始化状态的对象
-- 第一层if(singleton == null) 是为了防止有多个线程同时创建
+- 第一层 if(singleton == null) 是为了防止有多个线程同时创建
 - synchronized 是加锁防止多个线程同时进入该方法创建对象
-- 第二层if(singleton == null) 是防止有多个线程同时等待锁，一个执行完了后面一个又继续执行的情况
+- 第二层 if(singleton == null) 是防止有多个线程同时等待锁，一个执行完了后面一个又继续执行的情况
 
 [关于双检锁可以参考](https://blog.csdn.net/fly910905/article/details/79286680)
 
@@ -322,15 +316,15 @@ public class Singleton {
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/baguwen/basic-34-09.png)
 
 - 1.**保证内存可见性**
-  - 当一个被volatile关键字修饰的变量被一个线程修改的时候，其他线程可以立刻得到修改之后的结果。当一个线程向被volatile关键字修饰的变量**写入数据**的时候，虚拟机会**强制它被值刷新到主内存中**。当一个线程**读取**被volatile关键字修饰的值的时候，虚拟机会**强制要求它从主内存中读取**。
+  - 当一个被 volatile 关键字修饰的变量被一个线程修改的时候，其他线程可以立刻得到修改之后的结果。当一个线程向被 volatile 关键字修饰的变量**写入数据**的时候，虚拟机会**强制它被值刷新到主内存中**。当一个线程**读取**被 volatile 关键字修饰的值的时候，虚拟机会**强制要求它从主内存中读取**。
 - 2.**禁止指令重排序**
-  - 指令重排序是编译器和处理器为了高效对程序进行优化的手段，cpu  是与内存交互的，而 cpu 的效率想比内存高很多，所以 cpu 会在不影响最终结果的情况下，不等待返回结果直接进行后续的指令操作，而 volatile 就是给相应代码加了**内存屏障**，在屏障内的代码禁止指令重排序。
+  - 指令重排序是编译器和处理器为了高效对程序进行优化的手段，cpu 是与内存交互的，而 cpu 的效率想比内存高很多，所以 cpu 会在不影响最终结果的情况下，不等待返回结果直接进行后续的指令操作，而 volatile 就是给相应代码加了**内存屏障**，在屏障内的代码禁止指令重排序。
 
 ## 23.怎么保证线程安全？
 
-- 1.synchronized关键字
+- 1.synchronized 关键字
   - 可以用于代码块，方法（静态方法，同步锁是当前字节码对象；实例方法，同步锁是实例对象）
-- 2.lock锁机制
+- 2.lock 锁机制
 
 ```
 Lock lock = new ReentrantLock();
@@ -338,7 +332,7 @@ lock. lock();
 try {
     System. out. println("获得锁");
 } catch (Exception e) {
-   
+
 } finally {
     System. out. println("释放锁");
     lock. unlock();
@@ -366,9 +360,9 @@ cas 叫做 CompareAndSwap，**比较并交换**，很多地方使用到了它，
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/baguwen/basic-34-11.png)
 
-**CAS的缺点**
+**CAS 的缺点**
 
-- **CPU开销比较大**：在并发量比较高的情况下，如果许多线程反复尝试更新某一个变量，却又一直更新不成功，又因为自旋的时候会一直占用CPU，如果CAS一直更新不成功就会一直占用，造成CPU的浪费。
+- **CPU 开销比较大**：在并发量比较高的情况下，如果许多线程反复尝试更新某一个变量，却又一直更新不成功，又因为自旋的时候会一直占用 CPU，如果 CAS 一直更新不成功就会一直占用，造成 CPU 的浪费。
 
 - **ABA 问题**：比如线程 A 去修改 1 这个值，修改成功了，但是中间 线程 B 也修改了这个值，但是修改后的结果还是 1，所以不影响 A 的操作，这就会有问题。可以用**版本号**来解决这个问题。
 
@@ -378,7 +372,7 @@ cas 叫做 CompareAndSwap，**比较并交换**，很多地方使用到了它，
 
 ReentrantLock 意为**可重入锁**，说起 ReentrantLock 就不得不说 AQS ，因为其底层就是**使用 AQS 去实现**的。
 
-ReentrantLock有两种模式，一种是公平锁，一种是非公平锁。
+ReentrantLock 有两种模式，一种是公平锁，一种是非公平锁。
 
 - 公平模式下等待线程入队列后会严格按照队列顺序去执行
 - 非公平模式下等待线程入队列后有可能会出现插队情况
@@ -394,25 +388,25 @@ ReentrantLock有两种模式，一种是公平锁，一种是非公平锁。
   - 如果不存在则直接将锁的所有者设置成当前线程，且更新状态 state 。
   - 如果存在就入队。
 - 第三步：**判断锁的所有者是不是当前线程**
-  -   如果是则更新状态 state 的值。
-  -   如果不是，线程进入队列排队等待。
+  - 如果是则更新状态 state 的值。
+  - 如果不是，线程进入队列排队等待。
 
 **非公平锁**
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/baguwen/basic-34-13.png)
 
--  获取状态的 state 的值
-   - 如果 state=0 即代表锁没有被其它线程占用，则设置当前锁的持有者为当前线程，该操作用 CAS 完成。
-   - 如果不为0或者设置失败，代表锁被占用进行下一步。
--  此时**获取 state 的值**
-   - 如果是，则给state+1，获取锁
-   - 如果不是，则进入队列等待
-   - 如果是0，代表刚好线程释放了锁，此时将锁的持有者设为自己
-   - 如果不是0，则查看线程持有者是不是自己
+- 获取状态的 state 的值
+  - 如果 state=0 即代表锁没有被其它线程占用，则设置当前锁的持有者为当前线程，该操作用 CAS 完成。
+  - 如果不为 0 或者设置失败，代表锁被占用进行下一步。
+- 此时**获取 state 的值**
+  - 如果是，则给 state+1，获取锁
+  - 如果不是，则进入队列等待
+  - 如果是 0，代表刚好线程释放了锁，此时将锁的持有者设为自己
+  - 如果不是 0，则查看线程持有者是不是自己
 
 ## 27.多线程的创建方式有哪些？
 
-- 1、**继承Thread类**，重写run()方法
+- 1、**继承 Thread 类**，重写 run()方法
 
 ```
 public class Demo extends Thread{
@@ -428,7 +422,7 @@ public class Demo extends Thread{
 }
 ```
 
-- 2.**实现Runnable接口**，重写run()
+- 2.**实现 Runnable 接口**，重写 run()
 
 ```
 public class Demo2 implements Runnable{
@@ -436,7 +430,7 @@ public class Demo2 implements Runnable{
     //重写Runnable接口的run()
     public void run() {
     }
-    
+
     public static void main(String[] args) {
         Thread t1 = new Thread(new Demo2());
         Thread t2 = new Thread(new Demo2());
@@ -466,7 +460,7 @@ public class Demo implements Callable<String>{
         //获取任务执行后返回的结果
         String result = task.get();
     }
-    
+
 }
 ```
 
@@ -483,7 +477,7 @@ public class Demo {
                 }
             });
         }
-        
+
     }
 }
 ```
@@ -494,11 +488,11 @@ public class Demo {
 - **2.maximumPoolSize**: **最大线程数**，线程池中允许的最大线程数。
 - **3.keepAliveTime**: **存活时间**，线程没有任务执行时最多保持多久时间会终止。
 
-- **4.unit**: **单位**，参数keepAliveTime的时间单位，7种可选。
-- **5.workQueue**: 一个**阻塞队列**，用来存储等待执行的任务，均为线程安全，7种可选。
+- **4.unit**: **单位**，参数 keepAliveTime 的时间单位，7 种可选。
+- **5.workQueue**: 一个**阻塞队列**，用来存储等待执行的任务，均为线程安全，7 种可选。
 - **6.threadFactory**: **线程工厂**，主要用来创建线程，默及正常优先级、非守护线程。
 
-- **7.handler**：**拒绝策略**，拒绝处理任务时的策略，4种可选，默认为AbortPolicy。
+- **7.handler**：**拒绝策略**，拒绝处理任务时的策略，4 种可选，默认为 AbortPolicy。
 
 ## 29.线程池的执行流程？
 
@@ -524,7 +518,7 @@ public class Demo {
 - **强引用 StrongReference**
 
 ```
-Object obj = new Object(); 
+Object obj = new Object();
 //只要obj还指向Object对象，Object对象就不会被回收
 ```
 
@@ -540,7 +534,7 @@ Object obj = new Object();
 
 - **虚引用 PhantomReference**
 
-虚引用是最弱的一种引用关系，如果一个对象仅持有虚引用，那么它就和没有任何引用一样，它随时可能会被回收，在 JDK1.2 之后，用 PhantomReference 类来表示，通过查看这个类的源码，发现它只有一个构造函数和一个 get() 方法，而且它的 get() 方法仅仅是返回一个null，也就是说将永远无法通过虚引用来获取对象，虚引用必须要和 ReferenceQueue 引用队列一起使用，NIO 的堆外内存就是靠其管理。
+虚引用是最弱的一种引用关系，如果一个对象仅持有虚引用，那么它就和没有任何引用一样，它随时可能会被回收，在 JDK1.2 之后，用 PhantomReference 类来表示，通过查看这个类的源码，发现它只有一个构造函数和一个 get() 方法，而且它的 get() 方法仅仅是返回一个 null，也就是说将永远无法通过虚引用来获取对象，虚引用必须要和 ReferenceQueue 引用队列一起使用，NIO 的堆外内存就是靠其管理。
 
 ## 32.深拷贝、浅拷贝是什么？
 
@@ -549,8 +543,8 @@ Object obj = new Object();
 
 ## 33.聊聊 ThreadLocal 吧
 
-- ThreadLocal其实就是**线程本地变量**，他会在每个线程都创建一个副本，那么在线程之间访问内部副本变量就行了，做到了线程之间互相隔离。
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/baguwen/basic-34-15.png)
+- ThreadLocal 其实就是**线程本地变量**，他会在每个线程都创建一个副本，那么在线程之间访问内部副本变量就行了，做到了线程之间互相隔离。
+  ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/baguwen/basic-34-15.png)
 - ThreadLocal 有一个**静态内部类 ThreadLocalMap**，ThreadLocalMap 又包含了一个 Entry 数组，**Entry 本身是一个弱引用**，他的 key 是指向 ThreadLocal 的弱引用，**弱引用的目的是为了防止内存泄露**,如果是强引用那么除非线程结束,否则无法终止,可能会有内存泄漏的风险。
 - 但是这样还是会存在内存泄露的问题，假如 key 和 ThreadLocal 对象被回收之后，entry 中就存在 key 为 null ，但是 value 有值的 entry 对象，但是永远没办法被访问到，同样除非线程结束运行。**解决方法就是调用 remove 方法删除 entry 对象**。
 
@@ -560,8 +554,8 @@ Object obj = new Object();
 
 - **1.对象头**:
   对象头又分为 **MarkWord** 和 **Class Pointer** 两部分。
-   - **MarkWord**:包含一系列的标记位，比如轻量级锁的标记位，偏向锁标记位,gc记录信息等等。
-   - **ClassPointer**:用来指向对象对应的 Class 对象（其对应的元数据对象）的内存地址。在 32 位系统占 4 字节，在 64 位系统中占 8 字节。
+  - **MarkWord**:包含一系列的标记位，比如轻量级锁的标记位，偏向锁标记位,gc 记录信息等等。
+  - **ClassPointer**:用来指向对象对应的 Class 对象（其对应的元数据对象）的内存地址。在 32 位系统占 4 字节，在 64 位系统中占 8 字节。
 - **2.Length**:只在数组对象中存在，用来记录数组的长度，占用 4 字节
 - **3.Instance data**:
   对象实际数据，对象实际数据包括了对象的所有成员变量，其大小由各个成员变量的大小决定。(这里不包括静态成员变量，因为其是在方法区维护的)
@@ -569,6 +563,6 @@ Object obj = new Object();
 
 ---
 
->作者：moon聊技术，转载链接：[https://mp.weixin.qq.com/s/aTWtqPyMQ-6P_c8iuMVrkg](https://mp.weixin.qq.com/s/aTWtqPyMQ-6P_c8iuMVrkg)
+> 作者：moon 聊技术，转载链接：[https://mp.weixin.qq.com/s/aTWtqPyMQ-6P_c8iuMVrkg](https://mp.weixin.qq.com/s/aTWtqPyMQ-6P_c8iuMVrkg)
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

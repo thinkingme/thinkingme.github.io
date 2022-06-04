@@ -2,9 +2,9 @@
 
 自从因为一篇报道登上热搜后，我差点抑郁，每天要靠 50 片安眠药才能入睡。
 
-网络上曝光的那些关于一码通的消息，有真有假，我这里就不再澄清了。就说说我是怎么把图片从  1M 优化到 100kb 的故事吧。
+网络上曝光的那些关于一码通的消息，有真有假，我这里就不再澄清了。就说说我是怎么把图片从 1M 优化到 100kb 的故事吧。
 
-是的，由于系统群体规模和访问规模的特殊性，每一行代码、每一张图片、每一个技术文档都反复核准，优化再优化，精益求精。为确保系统运行得更高效，我们将一张图片从1MB压缩到500KB，再从500KB优化到100KB。
+是的，由于系统群体规模和访问规模的特殊性，每一行代码、每一张图片、每一个技术文档都反复核准，优化再优化，精益求精。为确保系统运行得更高效，我们将一张图片从 1MB 压缩到 500KB，再从 500KB 优化到 100KB。
 
 这样的工作在外人看起来，简单到就好像悄悄给学妹塞一张情书就能让她做我女朋友一样简单。
 
@@ -28,11 +28,9 @@
 
 更多关于图像压缩的资料可参考以下链接。
 
->机器之心：https://www.jiqizhixin.com/graph/technologies/08b2b25e-21a0-48e1-9de8-f91d424adfe1 
+> 机器之心：https://www.jiqizhixin.com/graph/technologies/08b2b25e-21a0-48e1-9de8-f91d424adfe1
 
-
-
-### 二、Java数字图像处理
+### 二、Java 数字图像处理
 
 作为这次“20 多万外包项目”的“主力开发人员”，我这里就给大家介绍下 Java 数字图像处理技术吧，一开始我就是用它来处理图片的。
 
@@ -54,8 +52,6 @@
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/shigu/image-yasuo-5.png)
 
-
-
 这其中要用到 ImageIO 类，这是一个静态类，提供了一系列方法用来读和写图像，同时还可以对图像进行简单的编码和解码。
 
 比如说通过 `ImageIO.read()` 可以将图像读取到 BufferedImage 对象：
@@ -65,7 +61,7 @@ File input = new File("ceshi.jpg");
 BufferedImage image = ImageIO.read(input);
 ```
 
-比如说通过 `ImageIO.getImageWritersByFormatName()` 可以返回一个Iterator，其中包含了通过命名格式对图像进行编码的 ImageWriter。
+比如说通过 `ImageIO.getImageWritersByFormatName()` 可以返回一个 Iterator，其中包含了通过命名格式对图像进行编码的 ImageWriter。
 
 ```java
 Iterator<ImageWriter> writers =  ImageIO.getImageWritersByFormatName("jpg");
@@ -136,7 +132,6 @@ public class Demo {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/shigu/image-yasuo-6.png)
 
-
 可以看得出，质量因子为 0.01f 的时候图片已经有些失真了，可以适当提高质量因子比如说 0.5f，再来看一下。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/shigu/image-yasuo-7.png)
@@ -151,15 +146,15 @@ public class Demo {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/shigu/image-yasuo-8.png)
 
-2）Apache Commons Imaging，一个读取和写入各种图像格式的库，包括快速解析图像信息（如大小，颜色，空间，ICC配置文件等）和元数据。
+2）Apache Commons Imaging，一个读取和写入各种图像格式的库，包括快速解析图像信息（如大小，颜色，空间，ICC 配置文件等）和元数据。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/shigu/image-yasuo-9.png)
 
-3）ImageMagick，可以读取和写入超过100种格式的图像，包括DPX、EXR、GIF、JPEG、JPEG-2000、PDF、PNG、Postscript、SVG和TIFF。还可以调整大小、翻转、镜像、旋转、扭曲、剪切和变换图像，调整图像颜色，应用各种特殊效果，包括绘制文本、线条、多边形、椭圆和贝塞尔曲线。
+3）ImageMagick，可以读取和写入超过 100 种格式的图像，包括 DPX、EXR、GIF、JPEG、JPEG-2000、PDF、PNG、Postscript、SVG 和 TIFF。还可以调整大小、翻转、镜像、旋转、扭曲、剪切和变换图像，调整图像颜色，应用各种特殊效果，包括绘制文本、线条、多边形、椭圆和贝塞尔曲线。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/shigu/image-yasuo-10.png)
 
-4）OpenCV，由BSD许可证发布，可以免费学习和商业使用，提供了包括 C/C++、Python 和 Java 等主流编程语言在内的接口。OpenCV 专为计算效率而设计，强调实时应用，可以充分发挥多核处理器的优势。
+4）OpenCV，由 BSD 许可证发布，可以免费学习和商业使用，提供了包括 C/C++、Python 和 Java 等主流编程语言在内的接口。OpenCV 专为计算效率而设计，强调实时应用，可以充分发挥多核处理器的优势。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/shigu/image-yasuo-11.png)
 
@@ -219,7 +214,7 @@ jdkCompress压缩完成，所花时间：322
 
 ### 四、一点点心声
 
-经过上面的技术分析后，相信你们都明白了，把1M图片优化到100kb实在是一件“不太容易”的事情。。。。
+经过上面的技术分析后，相信你们都明白了，把 1M 图片优化到 100kb 实在是一件“不太容易”的事情。。。。
 
 100KB 很小了吧？只有原来的 1/10。
 
@@ -233,7 +228,7 @@ jdkCompress压缩完成，所花时间：322
 
 😔，生活不易，且行且珍惜吧~
 
-----
+---
 
 **本篇已收录至 GitHub 上星标 1.6k+ star 的开源专栏《Java 程序员进阶之路》，据说每一个优秀的 Java 程序员都喜欢她，风趣幽默、通俗易懂。内容包括 Java 基础、Java 并发编程、Java 虚拟机、Java 企业级开发、Java 面试等核心知识点。学 Java，就认准 Java 程序员进阶之路**😄。
 
@@ -245,5 +240,4 @@ star 了这个仓库就等于你拥有了成为了一名优秀 Java 工程师的
 
 ![image](https://img-blog.csdnimg.cn/img_convert/79995d0b7cca47da7c124bf1995a0d3b.png)
 
-
-*没有什么使我停留——除了目的，纵然岸旁有玫瑰、有绿荫、有宁静的港湾，我是不系之舟*。
+_没有什么使我停留——除了目的，纵然岸旁有玫瑰、有绿荫、有宁静的港湾，我是不系之舟_。

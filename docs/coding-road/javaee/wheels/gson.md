@@ -5,8 +5,7 @@ tag:
   - 辅助工具/轮子
 ---
 
-# Gson：Google开源的JSON解析库
-
+# Gson：Google 开源的 JSON 解析库
 
 ### 01、前世今生
 
@@ -28,7 +27,7 @@ Fastjson 来自神秘的东方，虽然爆出过一些严重的漏洞，但这�
 
 ### 02、添加依赖
 
-在使用我的 API 之前，需要先把我添加到项目当中，推荐使用  Maven 和 Gradle 两种形式。
+在使用我的 API 之前，需要先把我添加到项目当中，推荐使用 Maven 和 Gradle 两种形式。
 
 Maven：
 
@@ -64,11 +63,11 @@ PS：Gradle 是一个基于 Apache Ant 和 Apache Maven 概念的项目自动化
 
 3）可以反序列化包含 87000 个对象的集合。
 
- 4）将字节数组和集合的反序列化限制从 80K 提高到 11M 以上。
+4）将字节数组和集合的反序列化限制从 80K 提高到 11M 以上。
 
 测试用例我已经帮你写好了，放在 GitHub 上，如果你不相信的话，可以验证一下。
 
->https://github.com/google/gson/blob/master/gson/src/test/java/com/google/gson/metrics/PerformanceTest.java
+> https://github.com/google/gson/blob/master/gson/src/test/java/com/google/gson/metrics/PerformanceTest.java
 
 ### 04、使用指南
 
@@ -239,7 +238,6 @@ class Bar{
     private String name = "图灵";
 }
 ```
-
 
 假如你 debug 的时候，进入到 `toJson()` 方法的内部，就可以观察到。
 
@@ -432,7 +430,7 @@ Gson gson = new GsonBuilder()
 
 **第二种，通过 `@Expose` 注解**。
 
- 要使用 `@Expose` 注解，你需要先这样做：
+要使用 `@Expose` 注解，你需要先这样做：
 
 ```java
 Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -449,7 +447,7 @@ private int age = 18;
 
 如果你还想了解更多的话，请来参观我的 GitHub 主页：
 
->https://github.com/google/gson
+> https://github.com/google/gson
 
 我会向你坦露我的一切，毫不保留的，除了我和女朋友之间的一些秘密，只为能够帮助到你。
 

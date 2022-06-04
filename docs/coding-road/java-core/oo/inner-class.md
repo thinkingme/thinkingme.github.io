@@ -14,13 +14,13 @@ tag:
 一般来说，内部类分为成员内部类、局部内部类、匿名内部类和静态内部类。
 
 **1）成员内部类**
- 
+
 成员内部类是最常见的内部类，看下面的代码：
- 
+
 ```java
 class Wanger {
     int age = 18;
-    
+
     class Wangxiaoer {
         int age = 81;
     }
@@ -37,7 +37,7 @@ public class Wanger {
 
     class Wangxiaoer {
         int age = 81;
-        
+
         public void print() {
             System.out.println(name);
             System.out.println(money);
@@ -139,9 +139,7 @@ public class ThreadDemo {
 
 匿名内部类就好像一个方法的参数一样，用完就没了，以至于我们都不需要为它专门写一个构造方法，它的名字也是由系统自动命名的。仔细观察编译后的字节码文件也可以发现，匿名内部类连名字都不配拥有，哈哈，直接借用的外部类，然后 `&1` 就搞定了。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/oo/inner-class-c0b9bdf5-cb12-45fc-b362-cb14d5d44fdc.png)
-
 
 匿名内部类是唯一一种没有构造方法的类。就上面的写法来说，匿名内部类也不允许我们为其编写构造方法，因为它就像是直接通过 new 关键字创建出来的一个对象。
 
@@ -155,7 +153,7 @@ public class ThreadDemo {
 public class Wangsi {
     static int age;
     double money;
-    
+
     static class Wangxxiaosi {
         public Wangxxiaosi (){
             System.out.println(age);
@@ -166,9 +164,7 @@ public class Wangsi {
 
 由于 static 关键字的存在，静态内部类是不允许访问外部类中非 static 的变量和方法的，这一点也非常好理解：你一个静态的内部类访问我非静态的成员变量干嘛？
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/oo/inner-class-69523196-37fe-43c6-a52e-5a8c94fdd2d8.png)
-
 
 ### 总结
 
@@ -176,10 +172,10 @@ public class Wangsi {
 
 在《Think in java》中有这样一句话：
 
->使用内部类最吸引人的原因是：每个内部类都能独立地继承一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。
+> 使用内部类最吸引人的原因是：每个内部类都能独立地继承一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。
 
 在我们程序设计中有时候会存在一些使用接口很难解决的问题，这个时候我们可以利用内部类提供的、可以继承多个具体的或者抽象的类的能力来解决这些程序设计问题。可以这样说，接口只是解决了部分问题，而内部类使得多重继承的解决方案变得更加完整。
- 
+
 使用内部类还能够为我们带来如下特性（摘自《Think in java》）：
 
 - 1、内部类可以使用多个实例，每个实例都有自己的状态信息，并且与其他外围对象的信息相互独立。
@@ -187,8 +183,5 @@ public class Wangsi {
 - 3、创建内部类对象的时刻并不依赖于外部类对象的创建。
 - 4、内部类并没有令人迷惑的“is-a”关系，他就是一个独立的实体。
 - 5、内部类提供了更好的封装，除了该外围类，其他类都不能访问。
-
-
-
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)

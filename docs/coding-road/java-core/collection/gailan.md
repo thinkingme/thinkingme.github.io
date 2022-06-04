@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Java集合框架
-
+# Java 集合框架
 
 眼瞅着三妹的王者荣耀杀得正嗨，我趁机喊到：“别打了，三妹，我们来一起学习 Java 的集合框架吧。”
 
@@ -15,7 +14,6 @@ tag:
 “好吧。”我只好摊摊手地说，“那我先画张集合框架的结构图等着你。”
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/gailan-01.png)
-
 
 “完了没？三妹。”
 
@@ -32,7 +30,7 @@ Java 集合框架可以分为两条大的支线：
 
 ### 01、List
 
->List 的特点是存取有序，可以存放重复的元素，可以用下标对元素进行操作
+> List 的特点是存取有序，可以存放重复的元素，可以用下标对元素进行操作
 
 **1）ArrayList**
 
@@ -185,7 +183,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 
 **2）LinkedHashMap**
 
-大多数情况下，只要不涉及线程安全问题，Map基本都可以使用HashMap，不过HashMap有一个问题，就是迭代HashMap的顺序并不是HashMap放置的顺序，也就是无序。HashMap的这一缺点往往会带来困扰，因为有些场景，我们期待一个有序的Map。
+大多数情况下，只要不涉及线程安全问题，Map 基本都可以使用 HashMap，不过 HashMap 有一个问题，就是迭代 HashMap 的顺序并不是 HashMap 放置的顺序，也就是无序。HashMap 的这一缺点往往会带来困扰，因为有些场景，我们期待一个有序的 Map。
 
 大多数情况下，只要不涉及到线程安全的问题，有需要键值对的时候就会使用 HashMap，但 HashMap 有一个问题，就是 HashMap 是无序的。在某些场景下，我们需要一个有序的 Map。
 
@@ -229,7 +227,7 @@ public static int sum(int n) {
 
 这段代码非常简单，方法体里总共 5 行代码，包括“}”那一行。每段代码的执行时间可能都不大一样，但假设我们认为每行代码的执行时间是一样的，比如说 unit_time，那么这段代码总的执行时间为多少呢？
 
-“这个我知道呀！”三妹喊道，“第 1、5 行需要 2 个 unit_time，第 2、3 行需要 2*n*unit_time，总的时间就是 2(n+1)*unit_time。”
+“这个我知道呀！”三妹喊道，“第 1、5 行需要 2 个 unit_time，第 2、3 行需要 2*n*unit_time，总的时间就是 2(n+1)\*unit_time。”
 
 “对，一段代码的执行时间 T(n) 和总的执行次数成正比，也就是说，代码执行的次数越多，花费的时间就越多。”我总结道，“这个规律可以用一个公式来表达：”
 
@@ -268,7 +266,7 @@ int k = i + j;
 来看一下代码示例，
 
 ```java
-public static void logn(int n) { 
+public static void logn(int n) {
     int i = 1;
     while (i < n) {
         i *= 2;
@@ -286,7 +284,7 @@ public static void logn(int n) {
     2     |  i*4
    ...    |  ...
    ...    |  ...
-    k     |  i*2^k 
+    k     |  i*2^k
 ```
 
 “好了，三妹，这节就讲到这吧，理解了上面 3 个时间复杂度，后面我们学习 ArrayList、LinkedList 的时候，两者在增删改查时的执行效率就很容易对比清楚了。”我伸了个懒腰后对三妹说，“整体上，集合框架就这么多东西了，随后我们会一一展开来讲，比如说 ArrayList、LinkedList、HashMap 等。”。

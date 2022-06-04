@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# 怎么理解Java中类和对象的概念？
-
+# 怎么理解 Java 中类和对象的概念？
 
 “二哥，我那天在图书馆复习[上一节](https://mp.weixin.qq.com/s/WzMEOEdzI0fFwBQ4s0S-0g)你讲的内容，刚好碰见一个学长，他问我有没有‘对象’，我说还没有啊。结果你猜他说什么，‘要不要我给你 new 一个啊？’我当时就懵了，new 是啥意思啊，二哥？”三妹满是疑惑的问我。
 
@@ -211,7 +210,7 @@ public class Person {
         person.name = "沉默王二";
         person.age = 18;
         person.sex = 1;
-        
+
         System.out.println(person.name);
         System.out.println(person.age);
         System.out.println(person.sex);
@@ -318,7 +317,7 @@ Smalltalk 是历史上第一门获得成功的面向对象语言，也为 Java �
 
 总结一句话就是：
 
->状态+行为+标识=对象，每个对象在内存中都会有一个唯一的地址。
+> 状态+行为+标识=对象，每个对象在内存中都会有一个唯一的地址。
 
 **2）对象具有接口**
 
@@ -341,7 +340,7 @@ JDK 就给我们提供了 Java 的基础实现，JDK 的作者也就是基础 AP
 当然了，假如我们也提供了新的类给其他调用者，我们也就成为了新的创建者。
 
 API 创建者在创建新的类的时候，只暴露必要的接口，而隐藏其他所有不必要的信息，之所以要这么做，是因为如果这些信息对调用者是不可见的，那么创建者就可以随意修改隐藏的信息，而不用担心对调用者的影响。
- 
+
 这里就必须要讲到 Java 的权限修饰符。
 
 访问权限修饰符的第一个作用是，防止类的调用者接触到他们不该接触的内部实现；第二个作用是，让类的创建者可以轻松修改内部机制而不用担心影响到调用者的使用。
@@ -366,7 +365,7 @@ API 创建者在创建新的类的时候，只暴露必要的接口，而隐藏�
 
 **6）多态**
 
-比如说有一个父类Shape
+比如说有一个父类 Shape
 
 ```java
 public class Shape {
@@ -376,7 +375,7 @@ public class Shape {
 }
 ```
 
-子类Circle
+子类 Circle
 
 ```java
 public class Circle extends Shape{
@@ -387,7 +386,7 @@ public class Circle extends Shape{
 }
 ```
 
-子类Line
+子类 Line
 
 ```java
 public class Line extends Shape {
@@ -422,7 +421,7 @@ public class Test {
 
 其实就是 Java 中的多态。
 
-----
+---
 
 更多 Java 对象和类的知识，请移步下一篇。
 

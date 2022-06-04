@@ -5,13 +5,11 @@ tag:
   - Java
 ---
 
-# 为什么阿里巴巴要禁用Executors创建线程池？
+# 为什么阿里巴巴要禁用 Executors 创建线程池？
 
 看阿里巴巴开发手册并发编程这块有一条：**线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式**，今天我们来通过源码分析一下禁用的原因。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ali-executors-1.png)
-
-
 
 通过阅读本篇文章你将了解到：
 
@@ -69,9 +67,7 @@ public ThreadPoolExecutor(int corePoolSize,
 
 线程池执行任务逻辑和线程池参数的关系。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ali-executors-2.png)
-
 
 执行逻辑说明：
 
@@ -79,7 +75,6 @@ public ThreadPoolExecutor(int corePoolSize,
 - 若核心线程池已满，判断队列是否满，队列是否满和 workQueue 参数有关，若未满则加入队列中
 - 若队列已满，判断线程池是否已满，线程池是否已满和 maximumPoolSize 参数有关，若未满创建线程执行任务
 - 若线程池已满，则采用拒绝策略处理无法执执行的任务，拒绝策略和 handler 参数有关
-
 
 Executors 创建返回 ThreadPoolExecutor 对象的方法共有三种：
 
@@ -130,7 +125,6 @@ SingleThreadExecutor 是单线程线程池，只有一个核心线程：
 
 当一个任务提交时，首先会创建一个核心线程来执行任务，如果超过核心线程的数量，将会放入队列中，因为 LinkedBlockingQueue 是长度为 Integer.MAX_VALUE 的队列，可以认为是无界队列，因此往队列中可以插入无限多的任务，在资源有限的时候容易引起 OOM 异常，同时因为无界队列，maximumPoolSize 和 keepAliveTime 参数将无效，压根就不会创建非核心线程。
 
-
 Executors.newFixedThreadPool 方法
 
 ```java
@@ -180,9 +174,7 @@ public class TaskTest {
 
 在启动测试类之前先将 JVM 内存调整小一点，不然很容易将电脑跑出问题【别问我为什么知道，是铁憨憨没错了！！！】，在 idea 里：Run -> Edit Configurations。
 
-
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ali-executors-3.png)
-
 
 JVM 参数说明：
 
@@ -208,19 +200,17 @@ Disconnected from the target VM, address: '127.0.0.1:60416', transport: 'socket'
 
 **2）IO 密集型**
 
-CPU 数量 * CPU 利用率 * (1 + 线程等待时间/线程 CPU 时间)
+CPU 数量 _ CPU 利用率 _ (1 + 线程等待时间/线程 CPU 时间)
 
 **3）混合型**
 
 将任务分为 CPU 密集型和 IO 密集型，然后分别使用不同的线程池去处理，从而使每个线程池可以根据各自的工作负载来调整。
 
-
-**4）阻塞队列** 
+**4）阻塞队列**
 
 推荐使用有界队列，有界队列有助于避免资源耗尽的情况发生
 
-
-**5）拒绝策略** 
+**5）拒绝策略**
 
 默认采用的是 AbortPolicy 拒绝策略，直接在程序中抛出 RejectedExecutionException 异常【因为是运行时异常，不强制 catch】，这种处理方式不够优雅。
 
@@ -235,7 +225,7 @@ CPU 数量 * CPU 利用率 * (1 + 线程等待时间/线程 CPU 时间)
 
 由于线程池参数定义经验较少，都是理论知识，欢迎有经验的大佬在评论区补充。
 
--------
+---
 
 > 编辑：沉默王二
 > 转载链接：https://mp.weixin.qq.com/s/dd_IPt7lQQeIMH7YTdgLIw

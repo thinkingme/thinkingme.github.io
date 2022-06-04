@@ -5,9 +5,7 @@ tag:
   - 辅助工具/轮子
 ---
 
-# Log4j 2：Apache维护的一款高性能日志记录工具
-
-
+# Log4j 2：Apache 维护的一款高性能日志记录工具
 
 [Log4j](https://mp.weixin.qq.com/s/AXgNnJe8djD901EmhFkWUg) 介绍过了，[SLF4J](https://mp.weixin.qq.com/s/EhKf1rHWL-QII0f6eo0uVA) 介绍过了，[Logback](https://mp.weixin.qq.com/s/mm0OYM-raVBi2KwK_QK21g) 也介绍过了，你以为日志系列的文章就到此终结了？
 
@@ -20,7 +18,6 @@ SLF4J 和 Logback 作为 Log4j 的替代品，在很多方面都做了必要的�
 上一篇也说了，老板下死命令要我把日志系统切换到 Logback，我顺利交差了，老板很开心，夸我这个打工人很敬业。为了表达对老板的这份感谢，我决定偷偷摸摸地试水一下 Log4j 2，尽管它还不是个成品，可能会会项目带来一定的隐患。但谁让咱是一个敬岗爱业的打工人呢。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/log4j2-a9461265-7652-4512-9219-6b3e82392415.png)
-
 
 ### 01、Log4j 2 强在哪
 
@@ -141,7 +138,7 @@ Log4j 2 的配置文件格式和 Logback 有点相似，基本的结构为 `< Co
 
 - `%M` 输出所在方法名
 
-- `%l`  输出语句所在的行数, 包括类名、方法名、文件名、行数
+- `%l` 输出语句所在的行数, 包括类名、方法名、文件名、行数
 
 - `%p` 输出日志级别
 
@@ -266,7 +263,6 @@ for (int i = 1;i < 20; i++) {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/log4j2-07af98ca-cf94-427e-adb6-bd935e32a8d0.png)
 
-
 结合日志文件名，再来看 RollingFile 的配置，就很容易理解了。
 
 1）fileName 用来指定文件名。
@@ -284,8 +280,6 @@ for (int i = 1;i < 20; i++) {
 第一个日志文件名为 rolling.log（最近的日志放在这个里面），第二个文件名除去日期为 rolling-1.log，第二个文件名除去日期为 rolling-2.log，根据这些信息，你能猜到其中的规律吗？
 
 其实和 DefaultRolloverStrategy 中的 max 属性有关，目前使用的默认值，也就是 7，那就当 rolling-8.log 要生成的时候，删除 rolling-1.log。可以调整 Demo 中的日志输出量来进行验证。
-
-
 
 3）SizeBasedTriggeringPolicy，基于日志文件大小的时间策略，大小以字节为单位，后缀可以是 KB，MB 或 GB，例如 20 MB。
 
@@ -312,6 +306,5 @@ for (int i = 1;i < 20; i++) {
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/log4j2-1b04167d-a11f-4447-9062-cb3cdd59aa73.png)
 
 到此为止，Log4j 2 的基本使用示例就已经完成了。测试环境搞定，我去问一下老板，要不要在生产环境下使用 Log4j 2。
-
 
 <img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">

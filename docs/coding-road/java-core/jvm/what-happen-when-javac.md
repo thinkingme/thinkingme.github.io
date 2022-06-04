@@ -6,8 +6,7 @@ tag:
   - Java
 ---
 
-# Java程序在编译期发生了什么？
-
+# Java 程序在编译期发生了什么？
 
 “二哥，看了上一篇 [Hello World](https://mp.weixin.qq.com/s/191I_2CVOxVuyfLVtb4jhg) 的程序后，我很好奇，它是怎么在 Run 面板里打印出‘三妹，少看手机少打游戏，好好学，美美哒’呢？”三妹咪了一口麦香可可奶茶后对我说。
 
@@ -30,16 +29,13 @@ public class HelloWorld {
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/five-01.png)
 
-
 这时候，就可以在 src 的同级目录 target 下找到一个名为 HelloWorld.class 的文件。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/five-02.png)
 
-
 如果找不到的话，在目录上右键选择「Reload from Disk，从磁盘上重新加载」，如下图所示：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/five-03.png)
-
 
 可以双击打开它。
 
@@ -126,8 +122,6 @@ PPS：为什么要查看字节码呢？查看字节码文件更容易让我们�
 使用 jclasslib 不仅可以直观地查看类对应的字节码文件，还可以查看类的基本信息、常量池、接口、字段、方法等信息，如下图所示。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/overview/five-09.png)
-
-
 
 也就是说，在编译阶段，Java 会将 Java 源代码文件编译为字节码文件。在这个阶段，编译器会进行一些检查工作，比如说，某个关键字是不是写错了，语法上是不是符合预期了，不能有很明显的错误，否则带到运行时再检查出来就会比较麻烦了。
 

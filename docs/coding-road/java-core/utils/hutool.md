@@ -5,8 +5,7 @@ tag:
   - Java
 ---
 
-# Hutool：国产良心工具包，让你的Java变得更甜
-
+# Hutool：国产良心工具包，让你的 Java 变得更甜
 
 读者群里有个小伙伴感慨说，“Hutool 这款开源类库太厉害了，基本上该有该的工具类，它里面都有。”讲真的，我平常工作中也经常用 Hutool，它确实可以帮助我们简化每一行代码，使 Java 拥有函数式语言般的优雅，让 Java 语言变得“甜甜的”。
 
@@ -15,7 +14,6 @@ Hutool 的作者在官网上说，Hutool 是 Hu+tool 的自造词（好像不用
 看了一下开发团队的一个成员介绍，一个 Java 后端工具的作者竟然爱前端、爱数码，爱美女，嗯嗯嗯，确实“难得糊涂”（手动狗头）。
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-01.png)
-
 
 废话就说到这，来吧，实操走起！
 
@@ -36,9 +34,9 @@ Hutool 的设计思想是尽量减少重复的定义，让项目中的 util 包�
 就像作者在官网上说的那样：
 
 - 以前，我们打开搜索引擎 -> 搜“Java MD5 加密” -> 打开某篇博客 -> 复制粘贴 -> 改改，变得好用些
->有了 Hutool 以后呢，引入 Hutool -> 直接 `SecureUtil.md5()`
+  > 有了 Hutool 以后呢，引入 Hutool -> 直接 `SecureUtil.md5()`
 
-Hutool 对不仅对 JDK 底层的文件、流、加密解密、转码、正则、线程、XML等做了封装，还提供了以下这些组件：
+Hutool 对不仅对 JDK 底层的文件、流、加密解密、转码、正则、线程、XML 等做了封装，还提供了以下这些组件：
 
 ![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-02.png)
 
@@ -386,7 +384,7 @@ ImgUtil.pressText(//
 
 ### 14、配置文件
 
->众所周知，Java 中广泛应用的配置文件 Properties 存在一个特别大的诟病：不支持中文。每次使用时，如果想存放中文字符，就必须借助 IDE 相关插件才能转为 Unicode 符号，而这种反人类的符号在命令行下根本没法看。
+> 众所周知，Java 中广泛应用的配置文件 Properties 存在一个特别大的诟病：不支持中文。每次使用时，如果想存放中文字符，就必须借助 IDE 相关插件才能转为 Unicode 符号，而这种反人类的符号在命令行下根本没法看。
 
 于是，Hutool 的 Setting 运用而生。Setting 除了兼容 Properties 文件格式外，还提供了一些特有功能，这些功能包括：
 
@@ -551,4 +549,3 @@ Hutool 中的类库还有很多，尤其是一些对第三方类库的进一步�
 项目源码地址：[https://github.com/looly/hutool](https://github.com/looly/hutool)
 
 <img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
-
