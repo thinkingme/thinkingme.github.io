@@ -1299,6 +1299,13 @@ packages:
       '@types/react': '>= 16.8.0 < 19.0.0'
       react: '>= 16.8.0 < 19.0.0'
       react-dom: '>= 16.8.0 < 19.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
     dependencies:
       '@algolia/autocomplete-core': 1.6.3
       '@docsearch/css': 3.1.0
@@ -2769,6 +2776,9 @@ packages:
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       webpack: ^5.1.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       fast-glob: 3.2.11
       glob-parent: 6.0.2
@@ -2820,6 +2830,9 @@ packages:
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       icss-utils: 5.1.0_postcss@8.4.14
       postcss: 8.4.14
@@ -3748,6 +3761,9 @@ packages:
     resolution: {integrity: sha512-urGNVE6Tl2rqx92ElKi/LiExXjGvcH6HfDBFzJ9Ppwqh4n6Jmx8x7RKAyMzSM78b6CAaJLhDncG5sPrL0ROh5Q==}
     peerDependencies:
       webpack: ^4.40.0 || ^5.0.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       esbuild: 0.14.42
       joycon: 3.1.1
@@ -4318,6 +4334,9 @@ packages:
     engines: {node: '>=10.13.0'}
     peerDependencies:
       webpack: ^5.20.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -4998,6 +5017,9 @@ packages:
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       schema-utils: 4.0.0
       webpack: 5.73.0
@@ -5293,6 +5315,9 @@ packages:
     peerDependencies:
       postcss: ^7.0.0 || ^8.0.1
       webpack: ^5.0.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       cosmiconfig: 7.0.1
       klona: 2.0.5
@@ -5656,6 +5681,8 @@ packages:
         optional: true
       sass-embedded:
         optional: true
+      webpack:
+        optional: true
     dependencies:
       klona: 2.0.5
       neo-async: 2.6.2
@@ -6008,6 +6035,9 @@ packages:
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       webpack: 5.73.0
     dev: false
@@ -6076,6 +6106,8 @@ packages:
       esbuild:
         optional: true
       uglify-js:
+        optional: true
+      webpack:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.13
@@ -6292,6 +6324,9 @@ packages:
     resolution: {integrity: sha512-OWSXjrzIvbF2LtOUmxT3HYgwwubbfFelN8PAP9R9dwpIkj48TVioHhWWSx7W7fk+iF5cgg3CBJRxwTdtLU4Ecg==}
     peerDependencies:
       webpack: ^4.1.0 || ^5.0.0-0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       chalk: 4.1.2
       hash-sum: 2.0.0
@@ -6705,6 +6740,9 @@ packages:
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       colorette: 2.0.16
       memfs: 3.4.4
@@ -6722,6 +6760,8 @@ packages:
       webpack: ^4.37.0 || ^5.0.0
       webpack-cli: '*'
     peerDependenciesMeta:
+      webpack:
+        optional: true
       webpack-cli:
         optional: true
     dependencies:
