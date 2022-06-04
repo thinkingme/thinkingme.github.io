@@ -2,13 +2,13 @@
 
 ## 一、CAP 原则
 
-![image-20220530142912092](D:\workspace\coding-road\docs\coding-road\javaee\cloud\CAP.assets\image-20220530142912092.png)
+![image-20220530142912092](assets/CAP/image-20220530142912092.png)
 
 CAP 原则又称 CAP 定理，指的是在一个分布式系统中， Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可得兼。
 
 CAP 由 Eric Brewer 在 2000 年 PODC 会议上提出。该猜想在提出两年后被证明成立，成为我们熟知的 CAP 定理。CAP 三者不可兼得。
 
-![image-20220530142922723](D:\workspace\coding-road\docs\coding-road\javaee\cloud\CAP.assets\image-20220530142922723.png)
+![image-20220530142922723](assets/CAP/image-20220530142922723.png)
 
 ### 1、取舍策略
 
