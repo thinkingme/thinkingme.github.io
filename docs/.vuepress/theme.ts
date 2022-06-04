@@ -60,11 +60,12 @@ export default hopeTheme({
       /**
        * Using giscus
        */
+
       type: "giscus",
       repo: "thinkingme/thinkingme.github.io",
-      repoId: "R_kgDOHV22rw",
+      repoId: "R_kgDOHZ0ZSw",
       category: "Announcements",
-      categoryId: "DIC_kwDOHV22r84CPH_m",
+      categoryId: "DIC_kwDOHZ0ZS84CPUSm",
 
       /**
        * Using twikoo
