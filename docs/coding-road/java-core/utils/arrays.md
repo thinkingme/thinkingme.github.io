@@ -419,4 +419,4 @@ System.out.println(Arrays.toString(arr));
 
 我来到客厅，坐到沙发上，捧起黄永玉先生的《无愁河上的浪荡汉子·八年卷 1》看了起来，津津有味。。。。。。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

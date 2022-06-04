@@ -370,4 +370,4 @@ public static String join(final Object[] array, String separator, final int star
 
 “嗯，哥，你休息吧，我把这些例子再重新跑一遍。”三妹说。
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

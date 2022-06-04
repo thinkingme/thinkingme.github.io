@@ -234,4 +234,4 @@ MinorGC 前，虚拟机必须检查老年代最大可用连续空间是否大于
 投稿作者：后端技术小牛说
 转载链接：[https://mp.weixin.qq.com/s/PmeH38qWVxyIhBpsAsjG7w](https://mp.weixin.qq.com/s/PmeH38qWVxyIhBpsAsjG7w)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

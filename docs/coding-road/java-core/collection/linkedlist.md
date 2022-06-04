@@ -63,7 +63,7 @@ private static class Node<E> {
 
 我画幅图给你们展示下吧。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/linkedlist-01.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/linkedlist-01.png)
 
 - 对于第一个节点来说，prev 为 null；
 - 对于最后一个节点来说，next 为 null；
@@ -122,7 +122,7 @@ void linkLast(E e) {
 
 此时还不能称之为链表，因为前后节点都是断裂的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/linkedlist-02.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/linkedlist-02.png)
 
 - 添加第二个元素的时候，first 和 last 都指向的是第一个节点。
 - 然后新建一个节点 newNode，它的 prev 指向的是第一个节点，next 为 null。
@@ -130,7 +130,7 @@ void linkLast(E e) {
 
 此时的链表还不完整。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/linkedlist-03.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/linkedlist-03.png)
 
 - 添加第三个元素的时候，first 指向的是第一个节点，last 指向的是最后一个节点。
 - 然后新建一个节点 newNode，它的 prev 指向的是第二个节点，next 为 null。
@@ -138,7 +138,7 @@ void linkLast(E e) {
 
 此时的链表已经完整了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/linkedlist-04.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/linkedlist-04.png)
 
 我这个增的招式，还可以演化成另外两个：
 
@@ -382,4 +382,4 @@ public E get(int index) {
 
 无论外人怎么看待我们，在我眼里，师兄永远都是一哥，我敬重他，他也愿意保护我。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

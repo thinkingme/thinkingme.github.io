@@ -59,7 +59,7 @@ public class TestVector {
 
 整体架构(列举常用的容器类)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/map-a6a020a3-4573-4cf8-b5ae-1541ae45801c.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/map-a6a020a3-4573-4cf8-b5ae-1541ae45801c.png)
 
 下面分别介绍一些常用的并发容器类和接口，因篇幅原因，这里只介绍这些类的用途和基本的原理，不做过多的源码解析。
 
@@ -111,7 +111,7 @@ ConcurrentHashMap 在 JDK 1.7 中，提供了一种粒度更细的加锁机制�
 
 有些方法需要跨段，比如 size()、isEmpty()、containsValue()，它们可能需要锁定整个表而不仅仅是某个段，这需要按顺序锁定所有段，操作完毕后，又按顺序释放所有段的锁。如下图：
 
-![分段锁机制](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/map-3d991ca1-5d58-465c-b097-ffaf6c31f3bc.png)
+![分段锁机制](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/map-3d991ca1-5d58-465c-b097-ffaf6c31f3bc.png)
 
 ConcurrentHashMap 是由 Segment 数组结构和 HashEntry 数组结构组成。Segment 是一种可重入锁 ReentrantLock，HashEntry 则用于存储键值对数据。
 
@@ -632,4 +632,4 @@ public class BlackListServiceImpl {
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

@@ -30,7 +30,7 @@ tag:
 
 需要的小伙伴请扫描下方的二维码关注作者的原创公众号「**沉默王二**」回复关键字「**08**」就可以拉取到下载链接了。
 
-![扫码关注后回复「08」关键字](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
+![扫码关注后回复「08」关键字](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongzhonghao.png)
 
 也可以微信搜「**沉默王二**」关注后回复关键字「**08**」。
 
@@ -90,7 +90,7 @@ C 语言中，指针是令初学者头痛的一块内容，所以我这里简单
 
 > 需要阮一峰老师的这份《C 语言入门教程》的小伙伴请扫描下方的二维码关注作者的原创公众号「**沉默王二**」回复关键字「**08**」就可以拉取到下载链接了。
 
-![扫码关注后回复「08」关键字](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
+![扫码关注后回复「08」关键字](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongzhonghao.png)
 
 也可以微信搜「**沉默王二**」关注后回复关键字「**08**」。
 

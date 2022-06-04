@@ -13,7 +13,7 @@ tag:
 
 “好吧。”我只好摊摊手地说，“那我先画张集合框架的结构图等着你。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/gailan-01.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/gailan-01.png)
 
 “完了没？三妹。”
 
@@ -122,7 +122,7 @@ HashSet(int initialCapacity, float loadFactor, boolean dummy) {
 
 这是一个包含了 4 个元素的双端队列，和一个包含了 5 个元素的双端队列。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/gailan-02.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/gailan-02.png)
 
 head 指向队首的第一个有效的元素，tail 指向队尾第一个可以插入元素的空位，因为是循环数组，所以 head 不一定从是从 0 开始，tail 也不一定总是比 head 大。
 
@@ -291,4 +291,4 @@ public static void logn(int n) {
 
 “好的，二哥。”三妹重新回答沙发上，一盘王者荣耀即将开始。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

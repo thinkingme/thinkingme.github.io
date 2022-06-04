@@ -90,20 +90,20 @@ public static void main(String[] args) {
 
 这段代码没有任何实际意义，甚至很臭，只是想说明下我们刚才所想的。新建了 10 个线程，没有线程先获取锁，然后调用 condition.await 方法释放锁将当前线程加入到等待队列中，通过 debug 控制当走到第 10 个线程的时候查看`firstWaiter`即等待队列中的头结点，debug 模式下情景图如下：
 
-![debug模式下情景图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/condition-01.png)
+![debug模式下情景图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/condition-01.png)
 
 从这个图我们可以很清楚的看到这样几点：
 
 1. 调用 condition.await 方法后线程依次尾插入到等待队列中，如图队列中的线程引用依次为 Thread-0,Thread-1,Thread-2....Thread-8；
 2. 等待队列是一个单向队列。通过我们的猜想然后进行实验验证，我们可以得出等待队列的示意图如下图所示：
 
-![等待队列的示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/condition-02.png)
+![等待队列的示意图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/condition-02.png)
 
 同时还有一点需要注意的是：我们可以多次调用`lock.newCondition()`方法创建多个 condition 对象，也就是一个 lock 可以持有多个等待队列。
 
 而在之前利用 Object 的方式实际上是指在**对象 Object 对象监视器上只能拥有一个同步队列和一个等待队列，而并发包中的 Lock 拥有一个同步队列和多个等待队列**。示意图如下：
 
-![AQS持有多个Condition](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/condition-03.png)
+![AQS持有多个Condition](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/condition-03.png)
 
 如图所示，ConditionObject 是 AQS 的内部类，因此每个 ConditionObject 能够访问到 AQS 提供的方法，相当于每个 Condition 都拥有所属同步器的引用。
 
@@ -218,7 +218,7 @@ while (!isOnSyncQueue(node)) {
 
 到目前为止，开头的三个问题我们通过阅读源码的方式已经完全找到了答案，也对 await 方法的理解加深。await 方法示意图如下图：
 
-![await方法示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/condition-04.png)
+![await方法示意图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/condition-04.png)
 
 如图，调用 condition.await 方法的线程必须是已经获得了 lock，也就是当前线程是同步队列中的头结点。调用该方法后会使得当前线程所封装的 Node 尾插入到等待队列中。
 
@@ -308,7 +308,7 @@ final boolean transferForSignal(Node node) {
 
 **调用 condition 的 signal 的前提条件是当前线程已经获取了 lock，该方法会使得等待队列中的头节点即等待时间最长的那个节点移入到同步队列，而移入到同步队列后才有机会使得等待线程被唤醒，即从 await 方法中的 LockSupport.park(this)方法中返回，从而才有机会使得调用 await 方法的线程成功退出**。signal 执行示意图如下图：
 
-![signal执行示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/condition-05.png)
+![signal执行示意图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/condition-05.png)
 
 > signalAll
 
@@ -332,7 +332,7 @@ private void doSignalAll(Node first) {
 
 文章开篇提到等待/通知机制，通过使用 condition 提供的 await 和 signal/signalAll 方法就可以实现这种机制，而这种机制能够解决最经典的问题就是“生产者与消费者问题”，关于“生产者消费者问题”之后会用单独的一篇文章进行讲解，这也是面试的高频考点。await 和 signal 和 signalAll 方法就像一个开关控制着线程 A（等待方）和线程 B（通知方）。它们之间的关系可以用下面一个图来表现得更加贴切：
 
-![condition下的等待通知机制.png](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/condition-06.png)
+![condition下的等待通知机制.png](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/condition-06.png)
 
 如图，**线程 awaitThread 先通过 lock.lock()方法获取锁成功后调用了 condition.await 方法进入等待队列，而另一个线程 signalThread 通过 lock.lock()方法获取锁成功后调用了 condition.signal 或者 signalAll 方法，使得线程 awaitThread 能够有机会移入到同步队列中，当其他线程释放 lock 后使得线程 awaitThread 能够有机会获取 lock，从而使得线程 awaitThread 能够从 await 方法中退出执行后续操作。如果 awaitThread 获取 lock 失败会直接进入到同步队列**。
 
@@ -407,4 +407,4 @@ Thread-0接收到通知，条件满足
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

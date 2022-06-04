@@ -34,7 +34,7 @@ compareAndSetState()
 
 而 AQS 类本身实现的是一些排队和阻塞的机制，比如具体线程等待队列的维护（如获取资源失败入队/唤醒出队等）。它内部使用了一个先进先出（FIFO）的双端队列，并使用了两个指针 head 和 tail 用于标识队列的头部和尾部。其数据结构如图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/aqs-c294b5e3-69ef-49bb-ac56-f825894746ab.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/aqs-c294b5e3-69ef-49bb-ac56-f825894746ab.png)
 
 但它并不是直接储存线程，而是储存拥有线程的 Node 节点。
 
@@ -225,7 +225,7 @@ final boolean acquireQueued(final Node node, int arg) {
 
 总结起来的一个流程图：
 
-![acquire流程](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/aqs-a0689bb2-9b18-419d-9617-6d292fbd439d.jpg)
+![acquire流程](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/aqs-a0689bb2-9b18-419d-9617-6d292fbd439d.jpg)
 
 ## 释放资源
 
@@ -272,4 +272,4 @@ private void unparkSuccessor(Node node) {
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

@@ -145,7 +145,7 @@ Hotspot 的作者经过以往的研究发现大多数情况下**锁不仅不存�
 
 线程竞争偏向锁的过程如下：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/synchronized-c223913c-6c10-4dd0-849c-5e8f981cba48.jpg)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/synchronized-c223913c-6c10-4dd0-849c-5e8f981cba48.jpg)
 
 图中涉及到了 lock record 指针指向当前堆栈中的最近一个 lock record，是轻量级锁按照先来先服务的模式进行了轻量级锁的加锁。
 
@@ -167,7 +167,7 @@ Hotspot 的作者经过以往的研究发现大多数情况下**锁不仅不存�
 
 下面这个经典的图总结了偏向锁的获得和撤销：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/synchronized-23a5729f-71d5-44ce-af19-72ee20ae753e.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/synchronized-23a5729f-71d5-44ce-af19-72ee20ae753e.png)
 
 ### 轻量级锁
 
@@ -193,7 +193,7 @@ JVM 会为每个线程在当前线程的栈帧中创建用于存储锁记录的�
 
 一张图说明加锁和释放锁的过程：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/synchronized-1bb5f956-d3da-4e7b-b426-1d5d9314fe5b.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/synchronized-1bb5f956-d3da-4e7b-b426-1d5d9314fe5b.png)
 
 ### 重量级锁
 
@@ -250,4 +250,4 @@ Owner：获得锁的线程称为Owner
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

@@ -113,4 +113,4 @@ PS：按照首字母的自然顺序排列。
 
 “二哥，你辛苦了，足足 48 个啊，容我好好消化一下。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

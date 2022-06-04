@@ -16,19 +16,19 @@ tag:
 
 大部分我们创建的对象，都属于生命周期比较短的，所以会存放在新生代。新生代又细分 Eden 空间、From Survivor 空间、To Survivor 空间，我们创建的对象优先在 Eden 分配。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/whereis-the-object-1.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/whereis-the-object-1.png)
 
 随着对象的创建，Eden 剩余内存空间越来越少，就会触发 Minor GC，于是 Eden 的存活对象会放入 From Survivor 空间。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/whereis-the-object-2.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/whereis-the-object-2.png)
 
 Minor GC 后，新对象依然会往 Eden 分配。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/whereis-the-object-3.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/whereis-the-object-3.png)
 
 Eden 剩余内存空间越来越少，又会触发 Minor GC，于是 Eden 和 From Survivor 的存活对象会放入 To Survivor 空间。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/whereis-the-object-4.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/whereis-the-object-4.png)
 
 ### 二、大对象直接进入老年代
 
@@ -36,7 +36,7 @@ Eden 剩余内存空间越来越少，又会触发 Minor GC，于是 Eden 和 Fr
 
 可以用 `XX:PretenureSizeThreshold` 来设置这些大对象的阈值。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/whereis-the-object-5.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/whereis-the-object-5.png)
 
 ### 三、长期存活的对象将进入老年代
 
@@ -44,7 +44,7 @@ Eden 剩余内存空间越来越少，又会触发 Minor GC，于是 Eden 和 Fr
 
 虚拟机为了给对象计算他到底经历了几次 Minor GC，会给每个对象定义了一个对象年龄计数器。如果对象在 Eden 中经过第一次 Minor GC 后仍然存活，移动到 Survivor 空间年龄加 1，在 Survivor 区中每经历过 Minor GC 后仍然存活年龄再加 1。年龄到了 15，就到了老年代。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/whereis-the-object-6.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/whereis-the-object-6.png)
 
 ### 四、动态年龄判断
 
@@ -52,7 +52,7 @@ Eden 剩余内存空间越来越少，又会触发 Minor GC，于是 Eden 和 Fr
 
 比如 Survivor 是 100M，Hello1 和 Hello2 都是 3 岁，且总和超过了 50M，Hello3 是 4 岁，这个时候，这三个对象都将到老年代。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/whereis-the-object-7.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/whereis-the-object-7.png)
 
 ### 五、空间分配担保
 
@@ -63,7 +63,7 @@ Eden 剩余内存空间越来越少，又会触发 Minor GC，于是 Eden 和 Fr
 - 如果设置了 HandlePromotionFailure，则看老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，如果小于，就发起 full gc。
 - 如果大于，发起 Minor GC。Minor GC 后，看 Survivor 空间是否足够存放存活对象，如果不够，就放入老年代，如果够放，就直接存放 Survivor 空间。如果老年代都不够放存活对象，担保失败（Handle Promotion Failure），发起 full gc。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/whereis-the-object-8.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/whereis-the-object-8.png)
 
 好了，今天就分享到这儿吧，我是二哥呀，我们下期见~~
 
@@ -71,4 +71,4 @@ Eden 剩余内存空间越来越少，又会触发 Minor GC，于是 Eden 和 Fr
 
 > 原文链接：juejin.cn/post/7052894117105238053
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

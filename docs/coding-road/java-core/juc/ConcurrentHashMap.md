@@ -365,7 +365,7 @@ put 方法的代码量有点长，我们按照上面的分解的步骤一步步�
 
 在之前了解过 HashMap 以及 1.8 版本之前的 ConcurrenHashMap 都应该知道 ConcurrentHashMap 结构图，为了方面下面的讲解这里先直接给出，如果对这有疑问的话，可以在网上随便搜搜即可。
 
-![ConcurrentHashMap散列桶数组结构示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentHashMap-01.png)
+![ConcurrentHashMap散列桶数组结构示意图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentHashMap-01.png)
 
 如图（图片摘自网络），ConcurrentHashMap 是一个哈希桶数组，如果不出现哈希冲突的时候，每个元素均匀的分布在哈希桶数组中。当出现哈希冲突的时候，是**标准的链地址的解决方式**，将 hash 值相同的节点构成链表的形式，称为“拉链法”，另外，在 1.8 版本中为了防止拉链过长，当链表的长度大于 8 的时候会将链表转换成红黑树。
 
@@ -678,7 +678,7 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
 3. 如果这个位置是 TreeBin 节点（fh<0），也做一个反序处理，并且判断是否需要 untreefi，把处理的结果分别放在 nextTable 的 i 和 i+n 的位置上
 4. 遍历过所有的节点以后就完成了复制工作，这时让 nextTable 作为新的 table，并且更新 sizeCtl 为新容量的 0.75 倍 ，完成扩容。设置为新容量的 0.75 倍代码为 `sizeCtl = (n << 1) - (n >>> 1)`，仔细体会下是不是很巧妙，n<<1 相当于 n 右移一位表示 n 的两倍即 2n,n>>>1 左右一位相当于 n 除以 2 即 0.5n,然后两者相减为 2n-0.5n=1.5n,是不是刚好等于新容量的 0.75 倍即 2n\*0.75=1.5n。最后用一个示意图来进行总结（图片摘自网络）：
 
-![ConcurrentHashMap扩容示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentHashMap-02.png)
+![ConcurrentHashMap扩容示意图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentHashMap-02.png)
 
 ### 与 size 相关的一些方法
 
@@ -827,4 +827,4 @@ JDK6,7 中的 ConcurrentHashmap 主要使用 Segment 来实现减小锁粒度，
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

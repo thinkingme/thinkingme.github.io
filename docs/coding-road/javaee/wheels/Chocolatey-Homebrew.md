@@ -12,15 +12,15 @@ title: Chocolatey Homebrew：两款惊艳的Shell软件管理器
 
 我以为，他会使用图形化的方式来安装 JDK 的，就像这样。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-3d58d8db-e851-4c3d-97a5-66c8bf94d420.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-3d58d8db-e851-4c3d-97a5-66c8bf94d420.png)
 
 还有这样。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-eda6f2a0-a192-4b92-b3cc-46f679ec5bcb.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-eda6f2a0-a192-4b92-b3cc-46f679ec5bcb.png)
 
 结果他是这样的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-371831e9-4580-4097-a0bf-d9c460f493fb.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-371831e9-4580-4097-a0bf-d9c460f493fb.png)
 
 卧槽！牛逼高大上啊！
 
@@ -28,7 +28,7 @@ title: Chocolatey Homebrew：两款惊艳的Shell软件管理器
 
 于是我就安排他做一个记录，打算发表在我的小破站《Java 程序员进阶之路》上。从他嘴里了解到，他用的命令行软件管理器叫 chocolatey，这是一个 Windows 下的命令行软件管理器，可以方便开发者像在 Linux 下使用 yum 命令来安装软件，或者像在 macOS 下使用 brew 命令来安装软件，我感觉非常酷炫。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-509ea602-39b0-462e-9b8d-2a55fc31a4c8.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-509ea602-39b0-462e-9b8d-2a55fc31a4c8.png)
 
 以下是他的记录，一起来欣赏下。
 
@@ -49,7 +49,7 @@ title: Chocolatey Homebrew：两款惊艳的Shell软件管理器
 
 - 切换目录，可以使用 cd 命令切换目录，`cd ..` 返回上级目录。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-d4f0634f-7b5b-4bbd-97eb-74ec1fe059c5.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-d4f0634f-7b5b-4bbd-97eb-74ec1fe059c5.png)
 
 - 目录列表，macos/linux 下可以使用 ls 命令列出目录下所有的文件和子目录（Windows 下使用 dir 命令），使用通配符 `*` 对展示的内容进行过滤，比如 `ls *.java` 列出所有 `.java`后缀的文件，如果想更进一步的话，可以使用 `ls H*.java` 列出所有以 H 开头 `.java` 后缀的文件。
 - 新建目录，macOS/Linux 下可以使用 mkdir 命令新建一个目录（比如 `mkdir hello` 可以新建一个 hello 的目录），Windows 下可以使用 md 命令。
@@ -57,11 +57,11 @@ title: Chocolatey Homebrew：两款惊艳的Shell软件管理器
 - 删除目录，macOS/Linux 下可以使用 `rm -r` 命令删除目录以及它所包含的所有文件（比如说 `rm -r hello` 删除 hello 目录）。Windows 下可以使用 deltree 命令。
 - 重复命令，macOS/Linux/Windows 下都可以使用上下箭头来选择以往执行过的命令。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-738501d4-c210-449c-9d6c-56d5d16c623b.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-738501d4-c210-449c-9d6c-56d5d16c623b.png)
 
 - 命令历史，macOS/Linux 下可以使用 `history` 命令查看所有使用过的命令。Windows 可以按下 F7 键。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-e90c8f1f-c46c-47da-be88-0e8a00d85089.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-e90c8f1f-c46c-47da-be88-0e8a00d85089.png)
 
 - 解压文件，后缀名为“.zip”的文件是一个包含了其他文件的压缩包，macOS/Linux 系统自身已经提供了用于解压的 unzip 命令， Windows 的话需要手动安装。
 
@@ -80,11 +80,11 @@ title: Chocolatey Homebrew：两款惊艳的Shell软件管理器
 
 安装完成后如下图所示：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-5fd2b098-5685-49be-b424-f13ac288858d.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-5fd2b098-5685-49be-b424-f13ac288858d.png)
 
 如果不确定是否安装成功的话，可以通过键入 `choco` 命令来确认。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-a7ea03ef-aa60-47a8-adfc-8b6dde1cf4cc.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-a7ea03ef-aa60-47a8-adfc-8b6dde1cf4cc.png)
 
 这里推荐几个非常高效的操作命令：
 
@@ -102,13 +102,13 @@ title: Chocolatey Homebrew：两款惊艳的Shell软件管理器
 
 比如说我们来查找 Java。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-a5d6ff0f-f36d-4eb0-a69e-2ba30dd315ea.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-a5d6ff0f-f36d-4eb0-a69e-2ba30dd315ea.png)
 
 好，现在可以直接在 shell 中键入 `choco install jdk8` 来安装 JDK8 了，并且会自动将 Java 加入到环境变量中，不用再去「我的电脑」「环境变量」中新建 JAVA_HOME 并复制 JDK 安装路径配置 PATH 变量了，是不是非常 nice？
 
 稍等片刻，键入 `java -version` 就可以确认 Java 是否安装成功了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-31441e14-b692-4abc-8640-a8b70e08dfae.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-31441e14-b692-4abc-8640-a8b70e08dfae.png)
 
 不得不承认！非常 nice！
 
@@ -116,13 +116,13 @@ title: Chocolatey Homebrew：两款惊艳的Shell软件管理器
 
 首先推荐安装 homebrew，这是 macOS 下的命令行软件管理器，用来简化 macOS 上软件的安装过程。homebrew 是开源的，在 GitHub 已收获 32k star。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-0f9c86a0-e4b2-4103-a77e-8771ab8253f5.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-0f9c86a0-e4b2-4103-a77e-8771ab8253f5.png)
 
 homebrew 的安装也非常的简单，只需要一行命令即可。
 
 > 官方网址：[https://brew.sh/index_zh-cn](https://brew.sh/index_zh-cn)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-b1e8ea1c-2aec-4f79-bdc8-eb3e4fe1a0f0.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-b1e8ea1c-2aec-4f79-bdc8-eb3e4fe1a0f0.png)
 
 - 使用 `brew install xxx` 可以安装 macOS 上没有预装的软件
 - 使用 `brew install --cask yyy` 可以安装 macOS 其他非开源软件。
@@ -164,13 +164,13 @@ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 
 第一种，通过 `brew search xxx` 命令搜索，比如说我们要搜索 jdk
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-11bdc7b9-5060-4563-9e14-1bc9013882ce.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-11bdc7b9-5060-4563-9e14-1bc9013882ce.png)
 
 第二种，通过 homebrew 官网搜索，比如说我们要搜索 openjdk。
 
 > 官方地址：[https://formulae.brew.sh](https://formulae.brew.sh)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-80b4318e-0491-4ebd-8047-7e4528426921.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-80b4318e-0491-4ebd-8047-7e4528426921.png)
 
 这里有一份不错的 homebrew 帮助文档，可供参考：
 
@@ -198,18 +198,18 @@ Intellij IDEA：主要用来编写 Java 代码，并且最好安装旗舰版，�
 
 比如说 idea 旗舰版中可以直接通过 Initializr 来创建 springboot 项目，但社区版就没有此功能。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-d493229a-d62e-42cc-a6f0-7e3c0893a0c5.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-d493229a-d62e-42cc-a6f0-7e3c0893a0c5.png)
 
 vscode：更加轻量级的 IDE，在编写 Java 代码上可以和 idea 媲美，但要想调试 Java 代码的话，vscode 和 idea 的差距还是非常明显的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-5e913932-58a8-415a-a1aa-30a7e0f2b8aa.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-5e913932-58a8-415a-a1aa-30a7e0f2b8aa.png)
 
 我会使用 Intellij IDEA 开发编程喵的后端代码，vscode 来开发编程喵的前端代码。
 
 sublime text：功能更强大的文本编辑器，比记事本这种强大一万倍，也更符合 21 世纪开发者的外观审美。如果只是简单的修改一下代码格式，或者注释，显然更加方便，因为 idea 还是比较吃内存的，出差旅行的时候，在笔记本上紧急修改一些代码时，更易用。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongju/Chocolatey-Homebrew-85aaca81-9e18-4ba9-aaf2-2989abb85fc5.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongju/Chocolatey-Homebrew-85aaca81-9e18-4ba9-aaf2-2989abb85fc5.png)
 
 我会配合 GitHub 桌面版来使用 sublime text，编辑 MD 文档的时候会比较舒服。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

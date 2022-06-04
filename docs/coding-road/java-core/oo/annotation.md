@@ -13,7 +13,7 @@ tag:
 
 三妹毫不犹豫地摇摇头，摆摆手，不好意思地承认自己的确没有自定义过。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/annotation/annotation-01.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/annotation/annotation-01.png)
 
 “好吧，哥来告诉你吧。”
 
@@ -219,4 +219,4 @@ public class JsonFieldTest {
 
 “嗯，你好好复习下，我看会《编译原理》。”说完我拿起桌子边上的一本书就走了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

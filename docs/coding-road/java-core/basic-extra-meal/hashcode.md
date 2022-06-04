@@ -24,7 +24,7 @@ public native int hashCode();
 
 具体的实现可以参考 `jdk/src/hotspot/share/runtime/synchronizer.cpp`（源码可以到 GitHub 上 OpenJDK 的仓库中下载）。`get_next_hash()` 方法会根据 hashCode 的取值来决定采用哪一种哈希值的生成策略。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-extra-meal/hashcode-1.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/basic-extra-meal/hashcode-1.png)
 
 并且 `hashCode()` 方法被 `@HotSpotIntrinsicCandidate` 注解修饰，说明它在 HotSpot 虚拟机中有一套高效的实现，基于 CPU 指令。
 
@@ -166,7 +166,7 @@ public static int hashCode(Object a[]) {
 
 代码似乎很简单，归纳出的数学公式如下所示（n 为字符串长度）。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-extra-meal/hashcode-2.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/basic-extra-meal/hashcode-2.png)
 
 注意：31 是个奇质数，不大不小，一般质数都非常适合哈希计算，偶数相当于移位运算，容易溢出，造成数据信息丢失。
 
@@ -231,4 +231,4 @@ static inline intptr_t get_next_hash(Thread* current, oop obj) {
 - `hashCode == 4`，与创建对象的内存位置有关，原样输出。
 - `hashCode == 5`，默认值，支持多线程，使用了 Marsaglia 的 xor-shift 算法产生伪随机数。所谓的 xor-shift 算法，简单来说，看起来就是一个移位寄存器，每次移入的位由寄存器中若干位取异或生成。所谓的伪随机数，不是完全随机的，但是真随机生成比较困难，所以只要能通过一定的随机数统计检测，就可以当作真随机数来使用。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

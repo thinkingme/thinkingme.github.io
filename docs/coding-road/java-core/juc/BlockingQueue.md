@@ -15,7 +15,7 @@ tag:
 
 BlockingQueue 基本操作总结如下（此图来源于 JAVA API 文档）：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/BlockingQueue-01.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/BlockingQueue-01.png)
 
 BlockingQueue 继承于 Queue 接口，因此，对数据元素的基本操作有：
 
@@ -364,7 +364,7 @@ tryTransfer 方法如果当前有消费者线程（调用 take 方法或者具�
 
 LinkedBlockingDeque 是基于链表数据结构的有界阻塞双端队列，如果在创建对象时为指定大小时，其默认大小为 Integer.MAX_VALUE。与 LinkedBlockingQueue 相比，主要的不同点在于，LinkedBlockingDeque 具有双端队列的特性。LinkedBlockingDeque 基本操作如下图所示（来源于 java 文档）
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/BlockingQueue-02.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/BlockingQueue-02.png)
 
 如上图所示，LinkedBlockingDeque 的基本操作可以分为四种类型：
 
@@ -375,7 +375,7 @@ LinkedBlockingDeque 是基于链表数据结构的有界阻塞双端队列，如
 
 另外，LinkedBlockingDeque 实现了 BlockingDueue 接口而 LinkedBlockingQueue 实现的是 BlockingQueue，这两个接口的主要区别如下图所示（来源于 java 文档）：
 
-![BlockingQueue和BlockingDeque的区别](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/BlockingQueue-03.png)
+![BlockingQueue和BlockingDeque的区别](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/BlockingQueue-03.png)
 
 从上图可以看出，两个接口的功能是可以等价使用的，比如 BlockingQueue 的 add 方法和 BlockingDeque 的 addLast 方法的功能是一样的。
 
@@ -391,4 +391,4 @@ DelayQueue 是一个存放实现 Delayed 接口的数据的无界阻塞队列，
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

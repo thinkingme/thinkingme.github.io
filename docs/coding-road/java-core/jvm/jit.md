@@ -22,7 +22,7 @@ Java 的执行过程整体可以分为两个部分，第一步由 javac 将源�
 
 怎么样才会被认为是热点代码呢？JVM 中会设置一个阈值，当方法或者代码块的在一定时间内的调用次数超过这个阈值时就会被编译，存入 codeCache 中。当下次执行时，再遇到这段代码，就会从 codeCache 中读取机器码，直接执行，以此来提升程序运行的性能。整体的执行过程大致如下图所示：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-9a62fc02-1a6a-451e-bb2b-19fc086d5be0.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-9a62fc02-1a6a-451e-bb2b-19fc086d5be0.png)
 
 ### 1\. JVM 中的编译器
 
@@ -50,7 +50,7 @@ Ideal Graph 的构建是在解析字节码的时候，根据字节码中的指�
 
 无论是否进行全局优化，Ideal Graph 都会被转化为一种更接近机器层面的 MachNode Graph，最后编译的机器码就是从 MachNode Graph 中得的，生成机器码前还会有一些包括寄存器分配、窥孔优化等操作。关于 Ideal Graph 和各种全局的优化手段会在后面的章节详细介绍。Server Compiler 编译优化的过程如下图所示：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-f4d1b763-be02-4bb2-ab0e-45b1f0eb9550.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-f4d1b763-be02-4bb2-ab0e-45b1f0eb9550.png)
 
 **Graal Compiler**
 
@@ -76,7 +76,7 @@ profiling 就是收集能够反映程序执行状态的数据。其中最基本�
 
 通常情况下，C2 代码的执行效率要比 C1 代码的高出 30%以上。C1 层执行的代码，按执行效率排序从高至低则是 1 层>2 层>3 层。这 5 个层次中，1 层和 4 层都是终止状态，当一个方法到达终止状态后，只要编译后的代码并没有失效，那么 JVM 就不会再次发出该方法的编译请求的。服务实际运行时，JVM 会根据服务运行情况，从解释执行开始，选择不同的编译路径，直到到达终止状态。下图中就列举了几种常见的编译路径：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-a6cebc82-ed4d-4b6d-892a-c5b245d227ab.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-a6cebc82-ed4d-4b6d-892a-c5b245d227ab.png)
 
 - 图中第 ① 条路径，代表编译的一般情况，热点方法从解释执行到被 3 层的 C1 编译，最后被 4 层的 C2 编译。
 - 如果方法比较小（比如 Java 服务中常见的 getter/setter 方法），3 层的 profiling 没有收集到有价值的数据，JVM 就会断定该方法对于 C1 代码和 C2 代码的执行效率相同，就会执行图中第 ② 条路径。在这种情况下，JVM 会在 3 层编译之后，放弃进入 C2 编译，直接选择用 1 层的 C1 编译运行。
@@ -239,7 +239,7 @@ public void DeadCodeElimination{
 
 HIR 是由很多基本块（Basic Block）组成的控制流图结构，每个块包含很多 SSA 形式的指令。基本块的结构如下图所示：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-037b406d-1040-4bf8-976c-abf14a92402d.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-037b406d-1040-4bf8-976c-abf14a92402d.png)
 
 其中，predecessors 表示前驱基本块（由于前驱可能是多个，所以是 BlockList 结构，是多个 BlockBegin 组成的可扩容数组）。同样，successors 表示多个后继基本块 BlockEnd。除了这两部分就是主体块，里面包含程序执行的指令和一个 next 指针，指向下一个执行的主体块。
 
@@ -280,7 +280,7 @@ public static int foo(int count) {
 
 对应的 IR 图如下所示：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-f96da42a-568b-45ba-bed1-f4238ac32e14.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-f96da42a-568b-45ba-bed1-f4238ac32e14.png)
 
 图中若干个顺序执行的节点将被包含在同一个基本块之中，如图中的 B0、B1 等。B0 基本块中 0 号 Start 节点是方法入口，B3 中 21 号 Return 节点是方法出口。红色加粗线条为控制流，蓝色线条为数据流，而其他颜色的线条则是特殊的控制流或数据流。被控制流边所连接的是固定节点，其他的则是浮动节点（浮动节点指只要能满足数据依赖关系，可以放在不同位置的节点，浮动节点变动的这个过程称为 Schedule）。
 
@@ -309,7 +309,7 @@ int a = 0;
 
 为了解决这个问题，就引入一个 Phi Nodes 的概念，能够根据不同的执行路径选择不同的值。于是，上面这段代码可以表示为下面这张图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-fb8b2bac-a7b9-45eb-bd28-05e35cf043ae.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-fb8b2bac-a7b9-45eb-bd28-05e35cf043ae.png)
 
 Phi Nodes 中保存不同路径上包含的所有值，Region Nodes 根据不同路径的判断条件，从 Phi Nodes 取得当前执行路径中变量应该赋予的值，带有 Phi 节点的 SSA 形式的伪代码如下：
 
@@ -380,11 +380,11 @@ public static int bar(boolean flag) {
 
 bar 方法的 IR 图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-04ca4a7e-46e7-4782-bb43-333aea31ed57.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-04ca4a7e-46e7-4782-bb43-333aea31ed57.png)
 
 内联后的 IR 图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-4bf4d190-7fd2-4542-b948-0c85ee6963d2.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-4bf4d190-7fd2-4542-b948-0c85ee6963d2.png)
 
 内联不仅将被调用方法的 IR 图节点复制到调用者方法的 IR 图中，还要完成其他操作。
 
@@ -400,7 +400,7 @@ bar 方法的 IR 图：
 
 可以通过虚拟机参数-XX:MaxInlineLevel 调整内联的层数，以及 1 层的直接递归调用（可以通过虚拟机参数-XX:MaxRecursiveInlineLevel 调整）。一些常见的内联相关的参数如下表所示：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-48e4ff65-07ec-487e-8b08-2f8fed1e56bd.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-48e4ff65-07ec-487e-8b08-2f8fed1e56bd.png)
 
 **虚函数内联**
 
@@ -708,13 +708,13 @@ y1=x1*3  经过强度削减后得到  y1=(x1<<1)+x1
 
 通过增加-XX:+UnlockDiagnosticVMOptions -XX:+PrintCompilation -XX:+PrintInlining -XX:+PrintCodeCache -XX:+PrintCodeCacheOnCompilation -XX:+TraceClassLoading -XX:+LogCompilation -XX:LogFile=LogPath 参数可以输出编译、内联、codeCache 信息到文件。但是打印的编译日志多且复杂很难直接从其中得到信息，可以使用 JITwatch 的工具来分析编译日志。JITwatch 首页的 Open Log 选中日志文件，点击 Start 就可以开始分析日志。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-82ee887c-af7d-48d7-88a0-28960e564d4a.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-82ee887c-af7d-48d7-88a0-28960e564d4a.png)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-6158d832-9a0d-4af0-96ff-bf216a9cd5c6.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-6158d832-9a0d-4af0-96ff-bf216a9cd5c6.png)
 
 如上图所示，区域 1 中是整个项目 Java Class 包括引入的第三方依赖；区域 2 是功能区 Timeline 以图形的形式展示 JIT 编译的时间轴，Histo 是直方图展示一些信息，TopList 里面是编译中产生的一些对象和数据的排序，Cache 是空闲 codeCache 空间，NMethod 是 Native 方法，Threads 是 JIT 编译的线程；区域 3 是 JITwatch 对日志分析结果的展示，其中 Suggestions 中会给出一些代码优化的建议，举个例子，如下图中：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/jvm/jit-04b2d9ea-7add-4ee5-bf72-61a6bbaa58cf.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/jvm/jit-04b2d9ea-7add-4ee5-bf72-61a6bbaa58cf.png)
 
 我们可以看到在调用 ZipInputStream 的 read 方法时，因为该方法没有被标记为热点方法，同时又“太大了”，导致无法被内联到。使用-XX:CompileCommand 中 inline 指令可以强制方法进行内联，不过还是建议谨慎使用，除非确定某个方法内联会带来不少的性能提升，否则不建议使用，并且过多使用对编译线程和 codeCache 都会带来不小的压力。
 
@@ -752,4 +752,4 @@ Graal 编译器的优化方式更加激进，因此在启动时会进行更多�
 
 原文链接：https://tech.meituan.com/2020/10/22/java-jit-practice-in-meituan.html
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

@@ -136,4 +136,4 @@ public class FinalVariable {
 
 “那见的次数可就多了，就好像你每天眨眼的次数一样多。”
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

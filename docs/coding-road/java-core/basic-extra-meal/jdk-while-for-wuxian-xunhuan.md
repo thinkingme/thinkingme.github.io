@@ -100,4 +100,4 @@ public void bar() {
 
 以后就可以放心大胆在代码里写 `for(;;) while(true)` 这样的死循环了。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

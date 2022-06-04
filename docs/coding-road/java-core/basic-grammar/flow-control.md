@@ -13,7 +13,7 @@ tag:
 
 ### 01、if-else 相关
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-01.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-01.png)
 
 **1）if 语句**
 
@@ -27,7 +27,7 @@ if(布尔表达式){
 
 画个流程图表示一下：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-02.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-02.png)
 
 来写个示例：
 
@@ -62,7 +62,7 @@ if(布尔表达式){
 
 画个流程图表示一下：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-03.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-03.png)
 
 来写个示例：
 
@@ -145,7 +145,7 @@ else{
 
 画个流程图表示一下：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-04.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-04.png)
 
 来写个示例：
 
@@ -187,7 +187,7 @@ if(外侧条件){
 
 画个流程图表示一下：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-05.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-05.png)
 
 来写个示例：
 
@@ -244,7 +244,7 @@ default: // 该关键字是可选项
 
 画个流程图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-06.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-06.png)
 
 来个示例：
 
@@ -350,7 +350,7 @@ public class SwitchEnumDemo {
 
 ### 03、for 循环
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-07.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-07.png)
 
 **1）普通 for 循环**
 
@@ -374,7 +374,7 @@ for(初识变量;条件;自增/自减){
 
 画个流程图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-08.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-08.png)
 
 来个示例：
 
@@ -509,7 +509,7 @@ while(条件){
 
 画个流程图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-09.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-09.png)
 
 来个示例：
 
@@ -581,7 +581,7 @@ do{
 
 画个流程图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-10.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-10.png)
 
 来个示例：
 
@@ -641,7 +641,7 @@ public class InfinitiveDoWhileExample {
 
 把 do-while 的条件设置为 true，并且循环体中没有 break 关键字的话，程序一旦运行起来，就根本停不下来了，除非强制停止。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-11.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-11.png)
 
 ### 06、break
 
@@ -651,7 +651,7 @@ break 关键字通常用于中断循环或 switch 语句，它在指定条件下
 
 来画个流程图感受一下：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/control/thirteen-12.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/control/thirteen-12.png)
 
 用在 for 循环中的示例：
 
@@ -864,4 +864,4 @@ public class ContinueDoWhileDemo {
 
 注意：同样的，如果把 if 条件中的“i++”省略掉的话，程序就会进入死循环，一直在 continue。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

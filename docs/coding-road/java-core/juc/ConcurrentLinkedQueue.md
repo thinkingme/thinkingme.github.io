@@ -40,7 +40,7 @@ head 和 tail 指针会指向一个 item 域为 null 的节点,此时 Concurrent
 
 如图，head 和 tail 指向同一个节点 Node0，该节点 item 域为 null,next 域为 null。
 
-![ConcurrentLinkedQueue初始化状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-01.png)
+![ConcurrentLinkedQueue初始化状态](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-01.png)
 
 ### 操作 Node 的几个 CAS 操作
 
@@ -132,7 +132,7 @@ public boolean offer(E e) {
 
 CAS 操作成功走到第 8 行，此时 p==t，if 判断为 false,直接 return true 返回。如果成功插入 1 的话，此时 ConcurrentLinkedQueue 的状态如下图所示：
 
-![offer 1后队列的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-02.png)
+![offer 1后队列的状态](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-02.png)
 
 如图，此时队列的尾节点应该为 Node1,而 tail 指向的节点依然还是 Node0,因此可以说明 tail 是延迟更新的。那么我们继续来看 offer 2 的时候的情况，很显然此时第 4 行 q 指向的节点不为 null 了，而是指向 Node1,第 5 行 if 判断为 false,第 11 行 if 判断为 false,代码会走到第 13 行。
 
@@ -148,11 +148,11 @@ p = (p != t && t != (t = tail)) ? t : q;
 
 在第一次循环中指针 p 指向了队列真正的队尾节点 Node1，那么在下一次循环中第 4 行 q 指向的节点为 null，那么在第 5 行中 if 判断为 true,那么在第 7 行依然通过 casNext 方法设置 p 节点的 next 为当前新增的 Node,接下来走到第 8 行，这个时候 p!=t，第 8 行 if 判断为 true,会通过`casTail(t, newNode)`将当前节点 Node 设置为队列的队尾节点,此时的队列状态示意图如下图所示：
 
-![队列offer 2后的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-03.png)
+![队列offer 2后的状态](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-03.png)
 
 **tail 指向的节点由 Node0 改变为 Node2**,这里的 casTail 失败不需要重试的原因是，offer 代码中主要是通过 p 的 next 节点 q(`Node<E> q = p.next`)决定后面的逻辑走向的，当 casTail 失败时状态示意图如下：
 
-![队列进行入队操作后casTail失败后的状态图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-04.png)
+![队列进行入队操作后casTail失败后的状态图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-04.png)
 
 如图，**如果这里 casTail 设置 tail 失败即 tail 还是指向 Node0 节点的话，无非就是多循环几次通过 13 行代码定位到队尾节点**。
 
@@ -170,7 +170,7 @@ p = (p != t && t != (t = tail)) ? t : q;
 
 很显然这么写另有深意，其实在**多线程环境**下这行代码很有意思的。 `t != (t = tail)`这个操作**并非一个原子操作**，有这样一种情况：
 
-![线程A和线程B有可能的执行时序](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-05.png)
+![线程A和线程B有可能的执行时序](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-05.png)
 
 如图，假设线程 A 此时读取了变量 t，线程 B 刚好在这个时候 offer 一个 Node 后，此时会修改 tail 指针,那么这个时候线程 A 再次执行 t=tail 时 t 会指向另外一个节点，很显然线程 A 前后两次读取的变量 t 指向的节点不相同，即`t != (t = tail)`为 true,并且由于 t 指向节点的变化`p != t`也为 true，此时该行代码的执行结果为 p 和 t 最新的 t 指针指向了同一个节点，并且此时 t 也是队列真正的对尾节点。那么，现在已经定位到队列真正的队尾节点，就可以执行 offer 操作了。
 
@@ -211,11 +211,11 @@ public E poll() {
 
 我们还是先站在**单线程的角度**去理清该方法的基本逻辑。假设 ConcurrentLinkedQueue 初始状态如下图所示：
 
-![队列初始状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-06.png)
+![队列初始状态](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-06.png)
 
 参数 offer 时的定义，我们还是先将**变量 p 作为队列要删除真正的队头节点，h（head）指向的节点并不一定是队列的队头节点**。先来看 poll 出 Node1 时的情况，由于`p=h=head`，参照上图，很显然此时 p 指向的 Node1 的数据域不为 null,在第 4 行代码中`item!=null`判断为 true 后接下来通过`casItem`将 Node1 的数据域设置为 null。如果 CAS 设置失败则此次循环结束等待下一次循环进行重试。若第 4 行执行成功进入到第 5 行代码，此时 p 和 h 都指向 Node1,第 5 行 if 判断为 false,然后直接到第 7 行 return 回 Node1 的数据域 1，方法运行结束，此时的队列状态如下图。
 
-![队列出队操作后的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-07.png)
+![队列出队操作后的状态](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-07.png)
 
 下面继续从队列中 poll，很显然当前 h 和 p 指向的 Node1 的数据域为 null，那么第一件事就是要**定位准备删除的队头节点(找到数据域不为 null 的节点)**。
 
@@ -223,7 +223,7 @@ public E poll() {
 
 继续看，第三行代码 item 为 null,第 4 行代码 if 判断为 false,走到第 8 行代码（`q = p.next`）if 也为 false，由于 q 指向了 Node2,在第 11 行的 if 判断也为 false，因此代码走到了第 13 行，这个时候 p 和 q 共同指向了 Node2,也就找到了要删除的真正的队头节点。可以总结出，定位待删除的队头节点的过程为：**如果当前节点的数据域为 null，很显然该节点不是待删除的节点，就用当前节点的下一个节点去试探**。在经过第一次循环后，此时状态图为下图：
 
-![经过一次循环后的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-08.png)
+![经过一次循环后的状态](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-08.png)
 
 进行下一次循环，第 4 行的操作同上述，当前假设第 4 行中 casItem 设置成功，由于 p 已经指向了 Node2,而 h 还依旧指向 Node1,此时第 5 行的 if 判断为 true，然后执行`updateHead(h, ((q = p.next) != null) ? q : p)`，此时 q 指向的 Node3，所有传入 updateHead 方法的分别是指向 Node1 的 h 引用和指向 Node3 的 q 引用。updateHead 方法的源码为：
 
@@ -236,7 +236,7 @@ final void updateHead(Node<E> h, Node<E> p) {
 
 该方法主要是通过`casHead`将队列的 head 指向 Node3,并且通过 `h.lazySetNext`将 Node1 的 next 域指向它自己。最后在第 7 行代码中返回 Node2 的值。此时队列的状态如下图所示：
 
-![Node2从队列中出队后的状态](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-09.png)
+![Node2从队列中出队后的状态](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-09.png)
 
 Node1 的 next 域指向它自己，head 指向了 Node3。如果队列为空队列的话，就会执行到代码的第 8 行`(q = p.next) == null`，if 判断为 true,因此在第 10 行中直接返回 null。以上的分析是从单线程执行的角度去看，也可以让我们了解 poll 的整体思路，现在来做一个总结：
 
@@ -295,15 +295,15 @@ queue当前是否为空队列：false
 
 在 offer 方法的第 11 行代码`if (p == q)`，能够让 if 判断为 true 的情况为 p 指向的节点为**哨兵节点**，而什么时候会构造哨兵节点呢？在对 poll 方法的讨论中，我们已经找到了答案，即**当 head 指向的节点的 item 域为 null 时会寻找真正的队头节点，等到待插入的节点插入之后，会更新 head，并且将原来 head 指向的节点设置为哨兵节点。**假设队列初始状态如下图所示：
 
-![offer和poll相互影响分析时队列初始状态.png](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-10.png)
+![offer和poll相互影响分析时队列初始状态.png](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-10.png)
 
 因此在线程 A 执行 offer 时，线程 B 执行 poll 就会存在如下一种情况：
 
-![线程A和线程B可能存在的执行时序](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-11.png)
+![线程A和线程B可能存在的执行时序](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-11.png)
 
 如图，线程 A 的 tail 节点存在 next 节点 Node1,因此会通过引用 q 往前寻找队列真正的队尾节点，当执行到判断`if (p == q)`时，此时线程 B 执行 poll 操作，在对线程 B 来说，head 和 p 指向 Node0,由于 Node0 的 item 域为 null,同样会往前递进找到队列真正的队头节点 Node1,在线程 B 执行完 poll 之后，Node0 就会转换为**哨兵节点**，也就意味着队列的 head 发生了改变，此时队列状态为下图。
 
-![线程B进行poll后队列的状态图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/ConcurrentLinkedQueue-12.png)
+![线程B进行poll后队列的状态图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/ConcurrentLinkedQueue-12.png)
 
 此时线程 A 在执行判断`if (p == q)`时就为 true,会继续执行` p = (t != (t = tail)) ? t : head;`，由于 tail 指针没有发生改变所以 p 被赋值为 head,重新从 head 开始完成插入操作。
 
@@ -327,4 +327,4 @@ queue当前是否为空队列：false
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

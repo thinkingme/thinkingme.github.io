@@ -211,4 +211,4 @@ public int checkReturn() {
 
 “好吧。”三妹无奈地叹了口气。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

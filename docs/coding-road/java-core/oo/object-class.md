@@ -156,7 +156,7 @@ null
 
 第二种：`main()` 方法不在 Person 类中，而在另外一个类中。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/16-01.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/object-class/16-01.png)
 
 实际开发中，我们通常不在当前类中直接创建对象并使用它，而是放在使用对象的类中，比如说上图中的 PersonTest 类。
 
@@ -220,7 +220,7 @@ public class Person {
 
 person 被称为对象 Person 的引用变量，见下图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/object-class/16-02.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/object-class/16-02.png)
 
 通过对象的引用变量，可以直接对字段进行初始化（`person.name = "沉默王二"`），所以以上代码输出结果如下所示：
 
@@ -425,4 +425,4 @@ public class Test {
 
 更多 Java 对象和类的知识，请移步下一篇。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

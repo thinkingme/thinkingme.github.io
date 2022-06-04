@@ -13,7 +13,7 @@ tag:
 
 > 作者：RednaxelaFX，整理：沉默王二，链接：https://www.zhihu.com/question/21574535/answer/18998914
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-extra-meal/instanceof-jvm-b676fee6-bfd4-4ae9-9c7b-e488e345f775.gif)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/basic-extra-meal/instanceof-jvm-b676fee6-bfd4-4ae9-9c7b-e488e345f775.gif)
 
 ---
 
@@ -107,4 +107,4 @@ VM runtime 的：
 
 反正 R 大回答里的很多细节我都是第一次听，逃了逃了。。。。。。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

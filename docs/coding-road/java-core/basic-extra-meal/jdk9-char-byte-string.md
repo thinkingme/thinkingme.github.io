@@ -17,7 +17,7 @@ tag:
 
 以我正在运行着的编程喵喵项目实例（基于 Java 8）来说，结果是这样的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-extra-meal/jdk9-char-byte-string-d826ce88-bbbe-47a3-a1a9-4dd86dd3632f.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/basic-extra-meal/jdk9-char-byte-string-d826ce88-bbbe-47a3-a1a9-4dd86dd3632f.png)
 
 其中 String 对象有 17638 个，占用了 423312 个字节的内存，排在第三位。
 
@@ -106,4 +106,4 @@ Java 会根据字符串的内容自动设置为相应的编码，要么 Latin-1 
 
 > 参考链接：https://www.zhihu.com/question/447224628
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

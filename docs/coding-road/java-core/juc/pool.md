@@ -222,7 +222,7 @@ public void execute(Runnable command) {
 
 整个过程如图所示：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/pool-f9e419fa-9d42-44fc-b14e-5b618a6f906d.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/pool-f9e419fa-9d42-44fc-b14e-5b618a6f906d.png)
 
 ### ThreadPoolExecutor 如何做到线程复用的？
 
@@ -544,4 +544,4 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

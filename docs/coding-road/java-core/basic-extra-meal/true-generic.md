@@ -113,7 +113,7 @@ String s = a.get();
 
 对吧？这就是我们想要的“真正意义上的泛型”，A 不仅仅可以是引用类型 String，还可以是基本数据类型。要知道，Java 的泛型不允许是基本数据类型，只能是包装器类型。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-01.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/generic/true-generic-01.png)
 
 除此之外，Pizza 的泛型还可以直接使用 `new` 关键字进行声明，并且 Pizza 编译器会从构造方法的参数上推断出具体的对象类型，究竟是 String 还是 int。要知道，Java 的泛型因为类型擦除的原因，程序员是无法知道一个 ArrayList 究竟是 `ArrayList<String>` 还是 `ArrayList<Integer>` 的。
 
@@ -184,7 +184,7 @@ _这里必须得说明一点，J2SE1.5 的发布，是 Java 语言发展史上�
 
 但 Java 并不支持高版本 JDK 编译生成的字节码文件在低版本的 JRE（Java 运行时环境）上跑。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-02.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/generic/true-generic-02.png)
 
 针对泛型，兼容性具体表现在什么地方呢？来看下面这段代码。
 
@@ -212,7 +212,7 @@ Java 神奇就神奇在这，表面上万物皆对象，但为了性能上的考
 
 一个好消息是 Valhalla 项目正在努力解决这些因为泛型擦除带来的历史遗留问题。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/generic/true-generic-03.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/generic/true-generic-03.png)
 
 Project Valhalla：正在进行当中的 OpenJDK 项目，计划给未来的 Java 添加改进的泛型支持。
 
@@ -224,4 +224,4 @@ Project Valhalla：正在进行当中的 OpenJDK 项目，计划给未来的 Jav
 
 “嗯嗯。二哥，你讲得可真棒 👍”三妹夸奖得我有点小开心，嘿嘿。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

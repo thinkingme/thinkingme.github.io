@@ -9,7 +9,7 @@ tag:
 
 今天分享的主题是《Lambda 表达式入门》，这也是之前一些读者留言强烈要求我写一写的，不好意思，让你们久等了，现在来满足你们，为时不晚吧？
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/java8/Lambda-1.jpg)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/java8/Lambda-1.jpg)
 
 ### 01、初识 Lambda
 
@@ -66,7 +66,7 @@ public class LamadaTest {
 
 是不是很妙！比起匿名内部类，Lambda 表达式不仅易于理解，更大大简化了必须编写的代码数量。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/java8/Lambda-2.jpg)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/java8/Lambda-2.jpg)
 
 ### 02、Lambda 语法
 
@@ -134,7 +134,7 @@ public static void main(String[] args) {
 
 和匿名内部类一样，不要在 Lambda 表达式主体内对方法内的局部变量进行修改，否则编译也不会通过：Lambda 表达式中使用的变量必须是 final 的。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/java8/Lambda-3.jpg)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/java8/Lambda-3.jpg)
 这个问题发生的原因是因为 Java 规范中是这样规定的：
 
 > Any local variable, formal parameter, or exception parameter used but not declared in a lambda expression
@@ -338,7 +338,7 @@ this = com.cmower.java_demo.journal.LamadaTest@3feba861
 
 符合我们分析的预期。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/java8/Lambda-4.jpg)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/java8/Lambda-4.jpg)
 
 ### 04、最后
 
@@ -346,4 +346,4 @@ this = com.cmower.java_demo.journal.LamadaTest@3feba861
 
 好了，我亲爱的读者朋友们，以上就是本文的全部内容了。能在疫情期间坚持看技术文，二哥必须要伸出大拇指为你点个赞 👍。原创不易，如果觉得有点用的话，请不要吝啬你手中**点赞**的权力——因为这将是我写作的最强动力。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

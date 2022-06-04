@@ -14,7 +14,7 @@ Java 对象模型中：
 
 那到底是先有 Class 还是先有 Object？ JVM 是怎么处理这个“鸡·蛋”问题呢？
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-extra-meal/class-object-2f47490c-70b8-41b8-9551-42c2f98eea91.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/basic-extra-meal/class-object-2f47490c-70b8-41b8-9551-42c2f98eea91.png)
 
 针对这个问题，我在知乎上看到了 R 大的一个回答，正好解答了我心中的疑惑，就分享出来给各位小伙伴一个参考和启发~
 
@@ -84,4 +84,4 @@ http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/ade5be2b1758/src/share/vm/cl
 
 分享的最后，二哥要简单说两句，每次看 R 大的内容，总是感觉膝盖忍不住要跪一下，只能说写过 JVM 的男人就是不一样。喜欢研究 CPP 源码的话小伙伴可以再深入学习下，一定会有所收获。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

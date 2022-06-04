@@ -28,7 +28,7 @@ tag:
 
 这两种模型之间的区别如下表所示：
 
-![两种并发模型的比较](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-a610752d-ef73-47f2-b02c-6954eb3d62bf.png)
+![两种并发模型的比较](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/jmm-a610752d-ef73-47f2-b02c-6954eb3d62bf.png)
 
 **在 Java 中，使用的是共享内存并发模型**。
 
@@ -37,7 +37,7 @@ tag:
 ### 运行时内存的划分
 
 先谈一下运行时数据区，下面这张图相信大家一点都不陌生：
-![Java运行时数据区域](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-0b9e4b1e-90e2-41bb-be89-f65e3a10fa08.png)
+![Java运行时数据区域](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/jmm-0b9e4b1e-90e2-41bb-be89-f65e3a10fa08.png)
 
 对于每一个线程来说，栈都是私有的，而堆是共有的。
 
@@ -53,7 +53,7 @@ tag:
 
 Java 线程之间的通信由 Java 内存模型（简称 JMM）控制，从抽象的角度来说，JMM 定义了线程和主内存之间的抽象关系。JMM 的抽象示意图如图所示：
 
-![JMM抽象示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-f02219aa-e762-4df0-ac08-6f4cceb535c2.jpg)
+![JMM抽象示意图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/jmm-f02219aa-e762-4df0-ac08-6f4cceb535c2.jpg)
 
 从图中可以看出：
 
@@ -162,13 +162,13 @@ Java 内存模型（JMM）对于正确同步多线程程序的内存一致性做
 
 假设**正确使用了同步**，A 线程的 3 个操作执行后释放锁，B 线程获取同一个锁。那么在**顺序一致性模型**中的执行效果如下所示：
 
-![正确同步图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-9ce5973e-6100-41e6-96b8-29ddb738e7f8.png)
+![正确同步图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/jmm-9ce5973e-6100-41e6-96b8-29ddb738e7f8.png)
 
 操作的执行整体上有序，并且两个线程都只能看到这个执行顺序。
 
 假设**没有使用同步**，那么在**顺序一致性模型**中的执行效果如下所示：
 
-![没有正确同步图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/thread/jmm-6357c025-a6e0-4c89-939d-040e549fac12.png)
+![没有正确同步图](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/jmm-6357c025-a6e0-4c89-939d-040e549fac12.png)
 
 操作的执行整体上无序，但是两个线程都只能看到这个执行顺序。之所以可以得到这个保证，是因为顺序一致性模型中的**每个操作必须立即对任意线程可见**。
 
@@ -270,4 +270,4 @@ System.out.println(sum);
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
 
-<img src="http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png">
+<img src="https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png">

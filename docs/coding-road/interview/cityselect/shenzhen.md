@@ -77,4 +77,4 @@ AI 独角兽公司
 
 > 作者：代码随想录，转载链接：[https://mp.weixin.qq.com/s/hBU-eEUq8aN5PWwdZFmC4g](https://mp.weixin.qq.com/s/hBU-eEUq8aN5PWwdZFmC4g)
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

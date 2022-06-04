@@ -44,7 +44,7 @@ static final int MIN_TREEIFY_CAPACITY = 64;
 
 JDK 8 中 HashMap 的结构示意图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-interview-01.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/hashmap-interview-01.png)
 
 ### 02、为什么链表改为红黑树的阈值是 8?
 
@@ -124,7 +124,7 @@ HashMap 中采用的是链地址法 。
 
 2 的 N 次幂有助于减少碰撞的几率。如果 length 为 2 的幂次方，则 length-1 转化为二进制必定是 11111……的形式，在与 h 的二进制与操作效率会非常的快，而且空间不浪费。我们来举个例子，看下图：
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-interview-02.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/hashmap-interview-02.png)
 
 当 length =15 时，6 和 7 的结果一样，这样表示他们在 table 存储的位置是相同的，也就是产生了碰撞，6、7 就会在一个位置形成链表，4 和 5 的结果也是一样，这样就会导致查询速度降低。
 
@@ -164,7 +164,7 @@ static final int tableSizeFor(int cap) {
 
 6、如果冲突后是链表，判断该链表是否大于 8 ，如果大于 8 并且数组容量小于 64，就进行扩容；如果链表节点大于 8 并且数组的容量大于 64，则将这个结构转换为红黑树；否则，链表插入键值对，若 key 存在，就覆盖掉 value。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-interview-03.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/hashmap-interview-03.png)
 
 ### 11、HashMap 的扩容方式？
 
@@ -189,4 +189,4 @@ HashMap 在容量超过负载因子所定义的容量之后，就会扩容。
 
 > 参考链接：https://zhuanlan.zhihu.com/p/362214327
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

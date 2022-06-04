@@ -199,7 +199,7 @@ public void add(int index, E element) {
 
 “三妹，注意看，我画幅图来表示下。”我认真地做起了图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/arraylist-01.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/arraylist-01.png)
 
 “二哥，那怎么**更新 ArrayList 中的元素**呢？”三妹继续问。
 
@@ -295,7 +295,7 @@ private void fastRemove(int index) {
 
 “三妹，注意看，我画幅图来表示下。”我认真地做起了图。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/arraylist-02.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/collection/arraylist-02.png)
 
 “二哥，那怎么**查找 ArrayList 中的元素**呢？”三妹继续问。
 
@@ -390,4 +390,4 @@ ArrayList，如果有个中文名的话，应该叫动态数组，也就是可�
 
 计算机内部是如何表示十进制数的，右移时又发生了什么，静下心来去研究一下，你就会发现，哦，原来这么有趣呢？
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)

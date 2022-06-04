@@ -12,7 +12,7 @@ tag:
 
 需要刷题笔记的小伙伴请扫描下方的二维码关注作者的原创公众号「**沉默王二**」回复关键字「**100**」就可以拉取到下载链接了。
 
-![扫码关注后回复「100」关键字](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
+![扫码关注后回复「100」关键字](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongzhonghao.png)
 
 > 二哥，去年校招前准备算法时，我在 LeetCode 上刷了很多题，但总感觉题虽然刷了很多，解题能力却没怎么提高，怎么解决这种刷题效率低下的问题呢？
 
@@ -47,6 +47,6 @@ tag:
 
 二哥已经把这份刷题笔记下载好了，需要的小伙伴请扫描下方的二维码关注作者的原创公众号「**沉默王二**」回复关键字「**100**」就可以拉取到下载链接了（无套路，没加密）。
 
-![扫码关注后回复「100」关键字](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/gongzhonghao.png)
+![扫码关注后回复「100」关键字](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/gongzhonghao.png)
 
 > 笔记版权归原作者（霜神）所有，出处：https://books.halfrost.com/leetcode/
