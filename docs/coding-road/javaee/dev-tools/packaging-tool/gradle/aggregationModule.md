@@ -18,10 +18,14 @@
 > 先看下后期搭建完后实现的项目树结构
 
 ```html
-> Task :spring-security-sso:spring-security-resources:printTree +---
-ishare-project | -- common-dependencies | +---- common-dependency | \----
-common-template | -- spring-security-sso | +---- spring-security-auth | \----
-spring-security-resources 1.2.3.4.5.6.7.8.
+> Task :spring-security-sso:spring-security-resources:printTree
++--- ishare-project
+|   -- common-dependencies
+|   +---- common-dependency
+|   \---- common-template
+|   -- spring-security-sso
+|   +---- spring-security-auth
+|   \---- spring-security-resources
 ```
 
 编写了一个脚本程序，把项目的结构树打印了出来。其中，
@@ -86,13 +90,14 @@ configure(subprojects) { subproject ->
     }
 }
 
-1.2.3.4.5.6.7.8.9.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35.36.37.38.39.40.41.42.43.44.45.46.
 ```
 
 此处主要为了过滤容器模块中的插件配置，容器模块的主要用来管理下属部分的模块，无需添加依赖和插件
 `spring-security-sso`、`common-dependencies`都是容器模块
 
 - `dependency.gradle` 全局依赖和设计版本的常量定义
+
+1. 可以使用ext定义版本如下
 
 ```java
 // when add a new dependency, gradle not download that package
@@ -219,6 +224,54 @@ ext {
     ]
 }
 ```
+
+2. 也可以在对应目录底下创建gradle.properties文件
+
+![image-20220609173720560](assert/aggregationModule/image-20220609173720560.png)
+
+3. 使用java-platform
+
+首先创建一个空项目，只有build.gradle文件，内容如下
+
+```groovy
+plugins {
+    id 'java-platform'
+}
+
+version '1.0'
+repositories {
+    mavenCentral()
+}
+javaPlatform {
+    allowDependencies()
+}
+dependencies {
+    api platform('org.springframework.boot:spring-boot-dependencies:2.3.4.RELEASE')
+    api platform('org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR6')
+    api platform('org.springframework.cloud:spring-cloud-contract-dependencies:2.2.3.RELEASE')
+    api platform('org.junit:junit-bom:5.3.2')
+    constraints {
+        api 'com.google.guava:guava:27.0.1-jre'
+
+        api 'ch.vorburger.mariaDB4j:mariaDB4j-springboot:2.4.0'
+        api 'org.mariadb.jdbc:mariadb-java-client:2.2.5'
+
+        api 'org.mockito:mockito-core:2.22.0'
+        api 'org.mockito:mockito-junit-jupiter:2.22.0'
+        api 'org.assertj:assertj-core:3.11.1'
+    }
+}
+```
+
+然后再其他项目中导入
+
+```bash
+dependencies {
+    implementation platform('该模块')
+}
+```
+
+
 
 - 根目录模块配置`settings.gradle`,此文件只需要存在在根目录中，其余子模块不需要此配置文件
 
@@ -450,7 +503,7 @@ public class SpringSecurityResourceApp {
     }
 }
 
-1.2.3.4.5.6.7.8.9.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.
+
 server:
   port: 8080
   servlet:

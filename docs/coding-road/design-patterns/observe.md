@@ -112,22 +112,21 @@ public interface EventListener extends java.util.EventListener {
 ```
 
 - 事件对象
-
+  
   public class EventObject extends java.util.EventObject {
   public EventObject(Object source) {
   super(source);
   }
-
+  
         public void doEvent() {
             System.out.println("通知一个事件源 source:" + this.getSource());
         }
-
+  
   }
 
 - 事件源
 
 ```java
-
 public class EventSource {
     // 监听器列表，监听器的注册 加入此列表
     private List<EventListener> listeners = new ArrayList<>();
@@ -190,7 +189,7 @@ doClose
 为了方便，同样直接使用 jdk 自带的 Observer
 
 - 观察者
-
+  
   public class Watcher implements Observer {
   @Override
   public void update(Observable o, Object arg) {
@@ -201,7 +200,7 @@ doClose
   }
 
 - 被观察者
-
+  
       public class Watched extends Observable {
           public void notifyObservers(Object arg) {
               /**
@@ -209,14 +208,14 @@ doClose
                * 通知过程中，正在新注册的和撤销的无法通知到
                */
               super.setChanged();
-
+      
               /**
                * 事件触发，通知所有感兴趣的观察者
                */
               super.notifyObservers(arg);
           }
       }
-
+  
   测试执行
 
 ```java

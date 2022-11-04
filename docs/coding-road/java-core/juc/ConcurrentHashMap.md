@@ -12,9 +12,9 @@ tag:
 另外一种方式通过 Collections 的`Map<K,V> synchronizedMap(Map<K,V> m)`将 hashmap 包装成一个线程安全的 map。比如 SynchronzedMap 的 put 方法源码为：
 
 ```java
-	public V put(K key, V value) {
-	    synchronized (mutex) {return m.put(key, value);}
-	}
+    public V put(K key, V value) {
+        synchronized (mutex) {return m.put(key, value);}
+    }
 ```
 
 实际上 SynchronizedMap 实现依然是采用 synchronized 独占式锁进行线程安全的并发控制的。同样，这种方案的性能也是令人不太满意的。针对这种境况，Doug Lea 大师不遗余力的为我们创造了一些线程安全的并发容器，让每一个 java 开发人员倍感幸福。相对于 hashmap 来说，ConcurrentHashMap 就是线程安全的 map，其中**利用了锁分段的思想提高了并发度**。
@@ -51,10 +51,12 @@ JDK 1.6 版本关键要素：
 该属性用来控制 table 数组的大小，根据是否初始化和是否正在扩容有几种情况：
 
 - **当值为负数时：** 如果为-1 表示正在初始化，如果为-N 则表示当前正有 N-1 个线程进行扩容操作；
-- **当值为正数时：** 如果当前数组为 null 的话表示 table 在初始化过程中，sizeCtl 表示为需要新建数组的长度；
-- 若已经初始化了，表示当前数据容器（table 数组）可用容量也可以理解成临界值（插入节点数超过了该临界值就需要扩容），具体指为数组的长度 n 乘以 加载因子 loadFactor；
-- 当值为 0 时，即数组长度为默认初始值。
 
+- **当值为正数时：** 如果当前数组为 null 的话表示 table 在初始化过程中，sizeCtl 表示为需要新建数组的长度；
+
+- 若已经初始化了，表示当前数据容器（table 数组）可用容量也可以理解成临界值（插入节点数超过了该临界值就需要扩容），具体指为数组的长度 n 乘以 加载因子 loadFactor；
+
+- 当值为 0 时，即数组长度为默认初始值。
 4. `sun.misc.Unsafe U`
 
 在 ConcurrentHashMapde 的实现中可以看到大量的 U.compareAndSwapXXXX 的方法去修改 ConcurrentHashMap 的一些属性。
@@ -69,7 +71,7 @@ JDK 1.6 版本关键要素：
 static {
     try {
         U = sun.misc.Unsafe.getUnsafe();
-		.......
+        .......
     } catch (Exception e) {
         throw new Error(e);
     }
@@ -88,7 +90,7 @@ static class Node<K,V> implements Map.Entry<K,V> {
         final K key;
         volatile V val;
         volatile Node<K,V> next;
-		......
+        ......
 }
 ```
 
@@ -108,7 +110,7 @@ static final class TreeNode<K,V> extends Node<K,V> {
         TreeNode<K,V> right;
         TreeNode<K,V> prev;    // needed to unlink next upon deletion
         boolean red;
-		......
+        ......
 }
 ```
 
@@ -126,7 +128,7 @@ static final class TreeBin<K,V> extends Node<K,V> {
         static final int WRITER = 1; // set while holding write lock
         static final int WAITER = 2; // set when waiting for write lock
         static final int READER = 4; // increment value for setting read lock
-		......
+        ......
 }
 ```
 
@@ -205,14 +207,14 @@ ConcurrentHashMap 一共给我们提供了 5 中构造器方法，具体使用�
 
 ```java
 public ConcurrentHashMap(int initialCapacity) {
-	//1. 小于0直接抛异常
+    //1. 小于0直接抛异常
     if (initialCapacity < 0)
         throw new IllegalArgumentException();
-	//2. 判断是否超过了允许的最大值，超过了话则取最大值，否则再对该值进一步处理
+    //2. 判断是否超过了允许的最大值，超过了话则取最大值，否则再对该值进一步处理
     int cap = ((initialCapacity >= (MAXIMUM_CAPACITY >>> 1)) ?
                MAXIMUM_CAPACITY :
                tableSizeFor(initialCapacity + (initialCapacity >>> 1) + 1));
-	//3. 赋值给sizeCtl
+    //3. 赋值给sizeCtl
     this.sizeCtl = cap;
 }
 ```
@@ -248,18 +250,18 @@ private final Node<K,V>[] initTable() {
     Node<K,V>[] tab; int sc;
     while ((tab = table) == null || tab.length == 0) {
         if ((sc = sizeCtl) < 0)
-			// 1. 保证只有一个线程正在进行初始化操作
+            // 1. 保证只有一个线程正在进行初始化操作
             Thread.yield(); // lost initialization race; just spin
         else if (U.compareAndSwapInt(this, SIZECTL, sc, -1)) {
             try {
                 if ((tab = table) == null || tab.length == 0) {
-					// 2. 得出数组的大小
+                    // 2. 得出数组的大小
                     int n = (sc > 0) ? sc : DEFAULT_CAPACITY;
                     @SuppressWarnings("unchecked")
-					// 3. 这里才真正的初始化数组
+                    // 3. 这里才真正的初始化数组
                     Node<K,V>[] nt = (Node<K,V>[])new Node<?,?>[n];
                     table = tab = nt;
-					// 4. 计算数组中可用的大小：实际大小n*0.75（加载因子）
+                    // 4. 计算数组中可用的大小：实际大小n*0.75（加载因子）
                     sc = n - (n >>> 2);
                 }
             } finally {
@@ -288,28 +290,28 @@ private final Node<K,V>[] initTable() {
 /** Implementation for put and putIfAbsent */
 final V putVal(K key, V value, boolean onlyIfAbsent) {
     if (key == null || value == null) throw new NullPointerException();
-	//1. 计算key的hash值
+    //1. 计算key的hash值
     int hash = spread(key.hashCode());
     int binCount = 0;
     for (Node<K,V>[] tab = table;;) {
         Node<K,V> f; int n, i, fh;
-		//2. 如果当前table还没有初始化先调用initTable方法将tab进行初始化
+        //2. 如果当前table还没有初始化先调用initTable方法将tab进行初始化
         if (tab == null || (n = tab.length) == 0)
             tab = initTable();
-		//3. tab中索引为i的位置的元素为null，则直接使用CAS将值插入即可
+        //3. tab中索引为i的位置的元素为null，则直接使用CAS将值插入即可
         else if ((f = tabAt(tab, i = (n - 1) & hash)) == null) {
             if (casTabAt(tab, i, null,
                          new Node<K,V>(hash, key, value, null)))
                 break;                   // no lock when adding to empty bin
         }
-		//4. 当前正在扩容
+        //4. 当前正在扩容
         else if ((fh = f.hash) == MOVED)
             tab = helpTransfer(tab, f);
         else {
             V oldVal = null;
             synchronized (f) {
                 if (tabAt(tab, i) == f) {
-					//5. 当前为链表，在链表中插入新的键值对
+                    //5. 当前为链表，在链表中插入新的键值对
                     if (fh >= 0) {
                         binCount = 1;
                         for (Node<K,V> e = f;; ++binCount) {
@@ -330,7 +332,7 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
                             }
                         }
                     }
-					// 6.当前为红黑树，将新的键值对插入到红黑树中
+                    // 6.当前为红黑树，将新的键值对插入到红黑树中
                     else if (f instanceof TreeBin) {
                         Node<K,V> p;
                         binCount = 2;
@@ -343,7 +345,7 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
                     }
                 }
             }
-			// 7.插入完键值对后再根据实际大小看是否需要转换成红黑树
+            // 7.插入完键值对后再根据实际大小看是否需要转换成红黑树
             if (binCount != 0) {
                 if (binCount >= TREEIFY_THRESHOLD)
                     treeifyBin(tab, i);
@@ -353,7 +355,7 @@ final V putVal(K key, V value, boolean onlyIfAbsent) {
             }
         }
     }
-	//8.对当前容量大小进行检查，如果超过了临界值（实际大小*加载因子）就需要扩容
+    //8.对当前容量大小进行检查，如果超过了临界值（实际大小*加载因子）就需要扩容
     addCount(1L, binCount);
     return null;
 }
@@ -412,7 +414,7 @@ if (fh >= 0) {
     binCount = 1;
     for (Node<K,V> e = f;; ++binCount) {
         K ek;
-		// 找到hash值相同的key,覆盖旧值即可
+        // 找到hash值相同的key,覆盖旧值即可
         if (e.hash == hash &&
             ((ek = e.key) == key ||
              (ek != null && key.equals(ek)))) {
@@ -423,7 +425,7 @@ if (fh >= 0) {
         }
         Node<K,V> pred = e;
         if ((e = e.next) == null) {
-			//如果到链表末尾仍未找到，则直接将新值插入到链表末尾即可
+            //如果到链表末尾仍未找到，则直接将新值插入到链表末尾即可
             pred.next = new Node<K,V>(hash, key,
                                       value, null);
             break;
@@ -489,20 +491,20 @@ if (binCount != 0) {
 ```java
 public V get(Object key) {
     Node<K,V>[] tab; Node<K,V> e, p; int n, eh; K ek;
-	// 1. 重hash
+    // 1. 重hash
     int h = spread(key.hashCode());
     if ((tab = table) != null && (n = tab.length) > 0 &&
         (e = tabAt(tab, (n - 1) & h)) != null) {
         // 2. table[i]桶节点的key与查找的key相同，则直接返回
-		if ((eh = e.hash) == h) {
+        if ((eh = e.hash) == h) {
             if ((ek = e.key) == key || (ek != null && key.equals(ek)))
                 return e.val;
         }
-		// 3. 当前节点hash小于0说明为树节点，在红黑树中查找即可
+        // 3. 当前节点hash小于0说明为树节点，在红黑树中查找即可
         else if (eh < 0)
             return (p = e.find(h, key)) != null ? p.val : null;
         while ((e = e.next) != null) {
-		//4. 从链表中查找，查找到则返回该节点的value，否则就返回null即可
+        //4. 从链表中查找，查找到则返回该节点的value，否则就返回null即可
             if (e.hash == h &&
                 ((ek = e.key) == key || (ek != null && key.equals(ek))))
                 return e.val;
@@ -523,7 +525,7 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
     int n = tab.length, stride;
     if ((stride = (NCPU > 1) ? (n >>> 3) / NCPU : n) < MIN_TRANSFER_STRIDE)
         stride = MIN_TRANSFER_STRIDE; // subdivide range
-	//1. 新建Node数组，容量为之前的两倍
+    //1. 新建Node数组，容量为之前的两倍
     if (nextTab == null) {            // initiating
         try {
             @SuppressWarnings("unchecked")
@@ -537,14 +539,14 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
         transferIndex = n;
     }
     int nextn = nextTab.length;
-	//2. 新建forwardingNode引用，在之后会用到
+    //2. 新建forwardingNode引用，在之后会用到
     ForwardingNode<K,V> fwd = new ForwardingNode<K,V>(nextTab);
     boolean advance = true;
     boolean finishing = false; // to ensure sweep before committing nextTab
     for (int i = 0, bound = 0;;) {
         Node<K,V> f; int fh;
         // 3. 确定遍历中的索引i
-		while (advance) {
+        while (advance) {
             int nextIndex, nextBound;
             if (--i >= bound || finishing)
                 advance = false;
@@ -561,8 +563,8 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
                 advance = false;
             }
         }
-		//4.将原数组中的元素复制到新数组中去
-		//4.5 for循环退出，扩容结束修改sizeCtl属性
+        //4.将原数组中的元素复制到新数组中去
+        //4.5 for循环退出，扩容结束修改sizeCtl属性
         if (i < 0 || i >= n || i + n >= nextn) {
             int sc;
             if (finishing) {
@@ -578,10 +580,10 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
                 i = n; // recheck before commit
             }
         }
-		//4.1 当前数组中第i个元素为null，用CAS设置成特殊节点forwardingNode(可以理解成占位符)
+        //4.1 当前数组中第i个元素为null，用CAS设置成特殊节点forwardingNode(可以理解成占位符)
         else if ((f = tabAt(tab, i)) == null)
             advance = casTabAt(tab, i, null, fwd);
-		//4.2 如果遍历到ForwardingNode节点  说明这个点已经被处理过了 直接跳过  这里是控制并发扩容的核心
+        //4.2 如果遍历到ForwardingNode节点  说明这个点已经被处理过了 直接跳过  这里是控制并发扩容的核心
         else if ((fh = f.hash) == MOVED)
             advance = true; // already processed
         else {
@@ -589,7 +591,7 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
                 if (tabAt(tab, i) == f) {
                     Node<K,V> ln, hn;
                     if (fh >= 0) {
-						//4.3 处理当前节点为链表的头结点的情况，构造两个链表，一个是原链表  另一个是原链表的反序排列
+                        //4.3 处理当前节点为链表的头结点的情况，构造两个链表，一个是原链表  另一个是原链表的反序排列
                         int runBit = fh & n;
                         Node<K,V> lastRun = f;
                         for (Node<K,V> p = f.next; p != null; p = p.next) {
@@ -623,7 +625,7 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
                          //设置advance为true 返回到上面的while循环中 就可以执行i--操作
                          advance = true;
                     }
-					//4.4 处理当前节点是TreeBin时的情况，操作和上面的类似
+                    //4.4 处理当前节点是TreeBin时的情况，操作和上面的类似
                     else if (f instanceof TreeBin) {
                         TreeBin<K,V> t = (TreeBin<K,V>)f;
                         TreeNode<K,V> lo = null, loTail = null;
@@ -803,6 +805,12 @@ private final void addCount(long x, int check) {
 }
 ```
 
+## 问题
+
+### key和value为什么不能为空
+
+原因是因为需要进行加锁，而锁住的正是用key得到的node值，所以不能得到空值。索性就设置为不能为空。
+
 ## 总结
 
 JDK6,7 中的 ConcurrentHashmap 主要使用 Segment 来实现减小锁粒度，分割成若干个 Segment，在 put 的时候需要锁住 Segment，get 时候不加锁，使用 volatile 来保证可见性，当要统计全局时（比如 size），首先会尝试多次计算 modcount 来确定，这几次尝试中，是否有其他线程进行了修改操作，如果没有，则直接返回 size。如果有，则需要依次锁住所有的 Segment 来计算。
@@ -822,7 +830,7 @@ JDK6,7 中的 ConcurrentHashmap 主要使用 Segment 来实现减小锁粒度，
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
