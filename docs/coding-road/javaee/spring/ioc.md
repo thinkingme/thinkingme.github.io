@@ -116,7 +116,6 @@ public class Rectangle {
                 '}';
     }
 }
-
 ```
 
 然后在  `test`  文件中手动用  `set()`  方法给变量赋值。
@@ -429,11 +428,11 @@ New Project 的时候要选择从 Maven 构建，而不是一个简单的 Java �
 
 #### 2\. 添加对应的 pom 依赖，就不用手动导 jar 包了
 
-1.  仓库地址  `https://mvnrepository.com/`
+1. 仓库地址  `https://mvnrepository.com/`
 
-2.  搜  `spring`
+2. 搜  `spring`
 
-3.  选择  `Spring context` → `5.2.3 release`，把里面的配置 copy 到  `pom.xml`  中
+3. 选择  `Spring context` → `5.2.3 release`，把里面的配置 copy 到  `pom.xml`  中
 
 最终在左边 external libraries 会自动出现所需的包，一键导入，不要太方便～
 

@@ -130,7 +130,7 @@ webserver 刚好属于网络 IO 密集型应用，不算是计算密集型。
 
 ## Nginx 目录结构有哪些？
 
-``` 
+```
 tree /usr/local/nginx
 /usr/local/nginx
 ├── client_body_temp

@@ -48,7 +48,7 @@ AOP 是对面向对象编程（Object-oriented Programming，俗称 OOP）的一
 
 ```
 execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?
-				name-pattern(param-pattern)
+                name-pattern(param-pattern)
                 throws-pattern?)
 ```
 
