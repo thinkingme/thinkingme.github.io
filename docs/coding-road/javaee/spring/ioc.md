@@ -461,3 +461,199 @@ Spring 也是用的  `set()`  方法，它只不过提供了一套更加完善
 > 作者：小齐，转载链接：[https://mp.weixin.qq.com/s/CcL3cEcQRi-KhwTwmf5A0w](https://mp.weixin.qq.com/s/CcL3cEcQRi-KhwTwmf5A0w)
 
 ![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)
+
+## IoC和DI使用问题小结
+
+### 为什么推荐构造器注入方式？
+
+先来看看Spring在文档里怎么说：
+
+> The Spring team generally advocates constructor injection as it enables one to implement application components as immutable objects and to ensure that required dependencies are not null. Furthermore constructor-injected components are always returned to client (calling) code in a fully initialized state.
+
+简单的翻译一下：这个构造器注入的方式**能够保证注入的组件不可变，并且确保需要的依赖不为空**。此外，构造器注入的依赖总是能够在返回客户端（组件）代码的时候保证完全初始化的状态。
+
+下面来简单的解释一下：
+
+- **依赖不可变**：其实说的就是final关键字。
+- **依赖不为空**（省去了我们对其检查）：当要实例化UserServiceImpl的时候，由于自己实现了有参数的构造函数，所以不会调用默认构造函数，那么就需要Spring容器传入所需要的参数，所以就两种情况：1、有该类型的参数->传入，OK 。2：无该类型的参数->报错。
+- **完全初始化的状态**：这个可以跟上面的依赖不为空结合起来，向构造器传参之前，要确保注入的内容不为空，那么肯定要调用依赖组件的构造方法完成实例化。而在Java类加载实例化的过程中，构造方法是最后一步（之前如果有父类先初始化父类，然后自己的成员变量，最后才是构造方法），所以返回来的都是初始化之后的状态。
+
+#### 源码
+
+在refresh时，会调用一个方法来初始化所有注册过beanDefination的类，除非他是懒加载之类的。下列是使用Autowrie初始化的相关代码
+
+首先,
+
+在org.springframework.beans.factory.support.AbstractBeanFactory  抽象bean工厂中，的doGetBean方法吗，这个方法是spring创建bean的总方法
+
+```java
+protected <T> T doGetBean(
+            String name, @Nullable Class<T> requiredType, @Nullable Object[] args, boolean typeCheckOnly)
+            throws BeansException {
+
+        String beanName = transformedBeanName(name);
+        Object bean;
+
+        // Eagerly check singleton cache for manually registered singletons.
+        Object sharedInstance = getSingleton(beanName);
+        if (sharedInstance != null && args == null) {
+
+        }else {
+
+            try {
+
+                // Create bean instance.
+                if (mbd.isSingleton()) {
+                    sharedInstance = getSingleton(beanName, () -> {
+                        try {
+                            return createBean(beanName, mbd, args);
+                        }
+                        catch (BeansException ex) {
+                            // Explicitly remove instance from singleton cache: It might have been put there
+                            // eagerly by the creation process, to allow for circular reference resolution.
+                            // Also remove any beans that received a temporary reference to the bean.
+                            destroySingleton(beanName);
+                            throw ex;
+                        }
+                    });
+                    bean = getObjectForBeanInstance(sharedInstance, name, beanName, mbd);
+                }
+
+            }
+        return (T) bean;
+    }
+```
+
+删除一些代码后如上，当bean还没创建时，将进入下面的else中，这是getSingleton方法传入beanfactory的实现。也就是传入自定义创建工厂的方法，我们在想要自定义bean的创建时，就是通过这种方法来进行的。spring自己也使用了这种方法。
+
+让我们进入这个方法看下
+
+```java
+public Object getSingleton(String beanName, ObjectFactory<?> singletonFactory) {
+        Assert.notNull(beanName, "Bean name must not be null");
+        synchronized (this.singletonObjects) {
+            Object singletonObject = this.singletonObjects.get(beanName);
+            if (singletonObject == null) {
+
+                beforeSingletonCreation(beanName);
+
+                try {
+                    //调用自定义beanfactory的创建方法    
+                    singletonObject = singletonFactory.getObject();
+                    newSingleton = true;
+                }
+                catch (IllegalStateException ex) {
+                    // Has the singleton object implicitly appeared in the meantime ->
+                    // if yes, proceed with it since the exception indicates that state.
+                    singletonObject = this.singletonObjects.get(beanName);
+                    if (singletonObject == null) {
+                        throw ex;
+                    }
+                }
+                catch (BeanCreationException ex) {
+                }
+                finally {
+                    if (recordSuppressedExceptions) {
+                        this.suppressedExceptions = null;
+                    }
+                    afterSingletonCreation(beanName);
+                }
+                if (newSingleton) {
+                    addSingleton(beanName, singletonObject);
+                }
+            }
+            return singletonObject;
+        }
+    }
+```
+
+可以看到调用了自定义的创建bean方法
+
+我们返回之前的代码看看spring传入的ObjectFactory（这个接口与FactoryBean类似，但后者的实现通常被定义为BeanFactory中的SPI实例，而该类的实现通常被作为API (通过注入) 提供给其他bean。因此， getObject() 方法具有不同的异常处理行为。）
+
+进入createBean方法
+
+```java
+protected Object createBean(String beanName, RootBeanDefinition mbd, @Nullable Object[] args)
+            throws BeanCreationException {
+        try {
+            Object beanInstance = doCreateBean(beanName, mbdToUse, args);
+            return beanInstance;
+        }
+    }
+```
+
+进入doCreateBean
+
+```java
+protected Object doCreateBean(String beanName, RootBeanDefinition mbd, @Nullable Object[] args)
+            throws BeanCreationException {
+
+        // Instantiate the bean.
+        BeanWrapper instanceWrapper = null;
+        if (mbd.isSingleton()) {
+            instanceWrapper = this.factoryBeanInstanceCache.remove(beanName);
+        }
+        if (instanceWrapper == null) {
+            instanceWrapper = createBeanInstance(beanName, mbd, args);
+        }
+        Object bean = instanceWrapper.getWrappedInstance();
+        Class<?> beanType = instanceWrapper.getWrappedClass();
+
+
+        // Eagerly cache singletons to be able to resolve circular references
+        // even when triggered by lifecycle interfaces like BeanFactoryAware.
+        boolean earlySingletonExposure = (mbd.isSingleton() && this.allowCircularReferences &&
+                isSingletonCurrentlyInCreation(beanName));
+        if (earlySingletonExposure) {
+            addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean));
+        }
+
+        // Initialize the bean instance.
+        Object exposedObject = bean;
+        try {
+            populateBean(beanName, mbd, instanceWrapper);
+            exposedObject = initializeBean(beanName, exposedObject, mbd);
+        }
+        catch (Throwable ex) {
+            if (ex instanceof BeanCreationException && beanName.equals(((BeanCreationException) ex).getBeanName())) {
+                throw (BeanCreationException) ex;
+            }
+            else {
+                throw new BeanCreationException(
+                        mbd.getResourceDescription(), beanName, "Initialization of bean failed", ex);
+            }
+        }
+        return exposedObject;
+    }
+```
+
+这个方法先是创建实例包装器。然后注入属性而在创建实例包装器createBeanInstance方法中，
+
+```java
+    protected BeanWrapper createBeanInstance(String beanName, RootBeanDefinition mbd, @Nullable Object[] args) {
+
+    // Candidate constructors for autowiring?
+        Constructor<?>[] ctors = determineConstructorsFromBeanPostProcessors(beanClass, beanName);
+        if (ctors != null || mbd.getResolvedAutowireMode() == AUTOWIRE_CONSTRUCTOR ||
+                mbd.hasConstructorArgumentValues() || !ObjectUtils.isEmpty(args)) {
+            return autowireConstructor(beanName, mbd, ctors, args);
+        }
+
+        // Preferred constructors for default construction?
+        ctors = mbd.getPreferredConstructors();
+        if (ctors != null) {
+            return autowireConstructor(beanName, mbd, ctors, null);
+        }
+
+        // No special handling: simply use no-arg constructor.
+        return instantiateBean(beanName, mbd);
+
+    }
+```
+
+可以看到根据@Autowire是否在构造器是进行了不同的实现。
+
+#### 结论
+
+当@Autowire在构造器上和不在构造器上时的实现方式是不一样的。而不一样的点正如官方所说那样也就是一开头说的那些。至于为何要这么弄，使用构造器方式应该会更加的严谨而不用的话也行，使用setter方法注入的话spring处理掉循环依赖的问题，采用早期暴露的方式。构造器方式则会直接报错。
