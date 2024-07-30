@@ -474,7 +474,6 @@ void ConcurrentMarkSweepGeneration::compute_new_size() {
     cmsSpace()->reset_after_compaction();
   }
 }
-
 ```
 
 另外，如果空间剩余很多时也会进行缩容操作，JVM 通过  `-XX:MinHeapFreeRatio`  和  `-XX:MaxHeapFreeRatio`  来控制扩容和缩容的比例，调节这两个值也可以控制伸缩的时机，例如扩容便是使用  `GenCollectedHeap::expand_heap_and_allocate()`  来完成的，代码如下：
@@ -495,7 +494,6 @@ HeapWord* GenCollectedHeap::expand_heap_and_allocate(size_t size, bool   is_tlab
   assert(result == NULL || is_in_reserved(result), "result not in heap");
   return result;
 }
-
 ```
 
 整个伸缩的模型理解可以看这个图，当 committed 的空间大小超过了低水位/高水位的大小，capacity 也会随之调整：
@@ -989,7 +987,6 @@ void ConcurrentMarkSweepThread::run_service() {
   }
   verify_ok_to_terminate();
 }
-
 ```
 
 sleepBeforeNextCycle()
@@ -1635,6 +1632,7 @@ GC Locker 可能导致的不良后果有：
 - 如果此时是 Young 区不够 Allocation Failure 导致的 GC，由于无法进行 Young GC，会将对象直接分配至 Old 区。
 
 - 如果 Old 区也没有空间了，则会等待锁释放，导致线程阻塞。
+
 - 可能触发额外不必要的 Young GC，JDK 有一个 Bug，有一定的几率，本来只该触发一次 GCLocker Initiated GC 的 Young GC，实际发生了一次 Allocation Failure GC 又紧接着一次 GCLocker Initiated GC。是因为 GCLocker Initiated GC 的属性被设为 full，导致两次 GC 不能收敛。
 
 **4.9.3 策略**
@@ -1664,6 +1662,7 @@ JNI 产生的 GC 问题较难排查，需要谨慎使用。
 - **保留现场：**目前线上服务基本都是分布式服务，某个节点发生问题后，如果条件允许一定不要直接操作重启、回滚等动作恢复，优先通过摘掉流量的方式来恢复，这样我们可以将堆、栈、GC 日志等关键信息保留下来，不然错过了定位根因的时机，后续解决难度将大大增加。当然除了这些，应用日志、中间件日志、内核日志、各种 Metrics 指标等对问题分析也有很大帮助。
 
 - **因果分析：**判断 GC 异常与其他系统指标异常的因果关系，可以参考笔者在 3.2 中介绍的时序分析、概率分析、实验分析、反证分析等 4 种因果分析法，避免在排查过程中走入误区。
+
 - **根因分析：**确实是 GC 的问题后，可以借助上文提到的工具并通过 5 Why 根因分析法以及跟第三节中的九种常见的场景进行逐一匹配，或者直接参考下文的根因鱼骨图，找出问题发生根因，最后再选择优化手段。
 
 **5.2 根因鱼骨图**

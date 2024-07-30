@@ -69,21 +69,21 @@ private E get(Object[] a, int index) {
 ```java
 public boolean add(E e) {
     final ReentrantLock lock = this.lock;
-	  //1. 使用Lock,保证写线程在同一时刻只有一个
+      //1. 使用Lock,保证写线程在同一时刻只有一个
     lock.lock();
 
     try {
-				//2. 获取旧数组引用
+                //2. 获取旧数组引用
         Object[] elements = getArray();
         int len = elements.length;
 
-				//3. 创建新的数组，并将旧数组的数据复制到新数组中
+                //3. 创建新的数组，并将旧数组的数据复制到新数组中
         Object[] newElements = Arrays.copyOf(elements, len + 1);
 
-				//4. 往新数组中添加新的数据
-				newElements[len] = e;
+                //4. 往新数组中添加新的数据
+                newElements[len] = e;
 
-				//5. 将旧数组引用指向新的数组
+                //5. 将旧数组引用指向新的数组
         setArray(newElements);
         return true;
     } finally {
@@ -148,7 +148,7 @@ CopyOnWrite 容器有很多优点，但是同时也存在两个问题，即内�
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)

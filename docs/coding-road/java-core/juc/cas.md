@@ -138,9 +138,9 @@ private static final long VALUE = U.objectFieldOffset(AtomicInteger.class, "valu
 同样是调用的`Unsafe`的方法。从方法名字上来看，是得到了一个对象字段偏移量。
 
 > 用于获取某个字段相对 Java 对象的“起始地址”的偏移量。
->
+> 
 > 一个 java 对象可以看成是一段内存，各个字段都得按照一定的顺序放在这段内存里，同时考虑到对齐要求，可能这些字段不是连续放置的，
->
+> 
 > 用这个方法能准确地告诉你某个字段相对于对象的起始内存地址的字节偏移量，因为是相对偏移量，所以它其实跟某个具体对象又没什么太大关系，跟 class 的定义和虚拟机的内存模型的实现细节更相关。
 
 继续看源码。前面我们讲到，CAS 是“无锁”的基础，它允许更新失败。所以经常会与 while 循环搭配，在失败后不断去重试。
@@ -218,7 +218,7 @@ pause 指令能让自旋失败时 cpu 睡眠一小段时间再继续自旋，从
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)

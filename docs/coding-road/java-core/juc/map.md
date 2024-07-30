@@ -16,35 +16,35 @@ tag:
 
 ```java
 public class TestVector {
-	private Vector<String> vector;
+    private Vector<String> vector;
 
-	//方法一
-	public  Object getLast(Vector vector) {
-	    int lastIndex = vector.size() - 1;
-	    return vector.get(lastIndex);
-	}
+    //方法一
+    public  Object getLast(Vector vector) {
+        int lastIndex = vector.size() - 1;
+        return vector.get(lastIndex);
+    }
 
-	//方法二
-	public  void deleteLast(Vector vector) {
-	    int lastIndex = vector.size() - 1;
-	    vector.remove(lastIndex);
-	}
+    //方法二
+    public  void deleteLast(Vector vector) {
+        int lastIndex = vector.size() - 1;
+        vector.remove(lastIndex);
+    }
 
-	//方法三
-	public  Object getLastSysnchronized(Vector vector) {
-		synchronized(vector){
-			int lastIndex = vector.size() - 1;
-			return vector.get(lastIndex);
-		}
-	}
+    //方法三
+    public  Object getLastSysnchronized(Vector vector) {
+        synchronized(vector){
+            int lastIndex = vector.size() - 1;
+            return vector.get(lastIndex);
+        }
+    }
 
-	//方法四
-	public  void deleteLastSysnchronized(Vector vector) {
-		synchronized (vector){
-			int lastIndex = vector.size() - 1;
-			vector.remove(lastIndex);
-		}
-	}
+    //方法四
+    public  void deleteLastSysnchronized(Vector vector) {
+        synchronized (vector){
+            int lastIndex = vector.size() - 1;
+            vector.remove(lastIndex);
+        }
+    }
 
 }
 ```
@@ -166,11 +166,11 @@ BlockingQueue 一般用于生产者-消费者模式，生产者是往队列里�
 
 阻塞队列提供了四组不同的方法用于插入、移除、检查元素：
 
-| 方法\处理方式 | 抛出异常  | 返回特殊值 |  一直阻塞  |      超时退出      |
-| :-----------: | :-------: | :--------: | :--------: | :----------------: |
-|   插入方法    |  add(e)   |  offer(e)  | **put(e)** | offer(e,time,unit) |
-|   移除方法    | remove()  |   poll()   | **take()** |  poll(time,unit)   |
-|   检查方法    | element() |   peek()   |     -      |         -          |
+| 方法\处理方式 | 抛出异常      | 返回特殊值    | 一直阻塞       | 超时退出               |
+|:-------:|:---------:|:--------:|:----------:|:------------------:|
+| 插入方法    | add(e)    | offer(e) | **put(e)** | offer(e,time,unit) |
+| 移除方法    | remove()  | poll()   | **take()** | poll(time,unit)    |
+| 检查方法    | element() | peek()   | -          | -                  |
 
 - 抛出异常：如果试图的操作无法立即执行，抛异常。当阻塞队列满时候，再往队列里插入元素，会抛出 IllegalStateException(“Queue full”)异常。当队列为空时，从队列里获取元素时会抛出 NoSuchElementException 异常 。
 - 返回特殊值：如果试图的操作无法立即执行，返回一个特殊值，通常是 true / false。
@@ -203,7 +203,7 @@ public ArrayBlockingQueue(int capacity, boolean fair){
 **DelayQueue**
 
     该队列中的元素只有当其指定的延迟时间到了，才能够从队列中获取到该元素 。注入其中的元素必须实现 java.util.concurrent.Delayed 接口。
-
+    
     DelayQueue是一个没有大小限制的队列，因此往队列中插入数据的操作（生产者）永远不会被阻塞，而只有获取数据的操作（消费者）才会被阻塞。
 
 **PriorityBlockingQueue**
@@ -302,7 +302,6 @@ private void enqueue(E x) {
     // 4 唤醒一个等待的线程
     notEmpty.signal();
 }
-
 ```
 
 总结 put 的流程：
@@ -627,7 +626,7 @@ public class BlackListServiceImpl {
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)

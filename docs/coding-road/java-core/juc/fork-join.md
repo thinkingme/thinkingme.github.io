@@ -148,7 +148,7 @@ public class ForkJoinPool extends AbstractExecutorService {
 
     // 私有构造方法，没有任何安全检查和参数校验，由makeCommonPool直接调用
     // 其他构造方法都是源自于此方法
-    // parallelism: 并行度，
+    // parallelism: 并行度，默认是cpu的核心线程数-1
     // 默认调用java.lang.Runtime.availableProcessors() 方法返回可用处理器的数量
     private ForkJoinPool(int parallelism,
                          ForkJoinWorkerThreadFactory factory, // 工作线程工厂
@@ -168,6 +168,13 @@ public class ForkJoinPool extends AbstractExecutorService {
 
 #### WorkQueue
 
+```java
+static final int MAX_CAP      = 0x7fff;        // max #workers - 1
+static final int SQMASK       = 0x007e;        // max 64 (even) slots
+```
+
+ForkJoinPool的MAX_CAP参数代表了ForkJoinPool的最大并发度，也就是ForkJoinPool中可以并行执行任务的线程数的最大值。MAX_CAP的值是0x7fff，也就是32767，这意味着ForkJoinPool中的线程数不能超过这个数目，否则会抛出IllegalArgumentException¹。MAX_CAP也间接限制了ForkJoinPool内部的workQueues数组的最大容量，因为workQueues数组的长度必须是2的幂次方，并且不小于并发度²。MAX_CAP还用于计算ForkJoinPool的config变量，它是一个32位的int值，其中高16位表示队列的模式（LIFO_QUEUE或FIFO_QUEUE），低16位表示并发度³。
+
 双端队列，ForkJoinTask 存放在这里。
 
 当工作线程在处理自己的工作队列时，会从队列首取任务来执行（FIFO）；如果是窃取其他队列的任务时，窃取的任务位于所属任务队列的队尾（LIFO）。
@@ -185,9 +192,9 @@ ForkJoinPool 的运行状态。**SHUTDOWN**状态用负数表示，其他用 2 �
 下面我们用一个计算斐波那契数列第 n 项的例子来看一下 Fork/Join 的使用：
 
 > 斐波那契数列数列是一个线性递推数列，从第三项开始，每一项的值都等于前两项之和：
->
+> 
 > 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89······
->
+> 
 > 如果设 f(n）为该数列的第 n 项（n∈N\*），那么有：f(n) = f(n-1) + f(n-2)。
 
 ```java
@@ -328,7 +335,7 @@ public void testComputeFibonacci() {
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)

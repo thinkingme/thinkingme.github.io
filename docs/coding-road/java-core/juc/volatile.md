@@ -22,6 +22,12 @@ tag:
 
 为优化程序性能，对原有的指令执行顺序进行优化重新排序。重排序可能发生在多个阶段，比如编译重排序、CPU 重排序等。
 
+#### 验证
+
+可以看[train/T04_Disorder.java at master · thinkingme/train · GitHub](https://github.com/thinkingme/train/blob/master/JVM-master/src/main/java/com/mashibing/jvm/c3_jmm/T04_Disorder.java)
+
+这里面证明的指令重排序的存在
+
 ### happens-before 规则
 
 是一个给程序员使用的规则，只要程序员在写代码的时候遵循 happens-before 规则，JVM 就能保证指令在多线程之间的顺序性符合程序员的预期。
@@ -101,7 +107,7 @@ public class VolatileExample {
 ![内存屏障](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/thread/volatile-aaa0fa44-341f-401f-bfb7-03d0c03dc2b1.png)
 
 > 再逐个解释一下这几个屏障。注：下述 Load 代表读操作，Store 代表写操作
->
+> 
 > **LoadLoad 屏障**：对于这样的语句 Load1; LoadLoad; Load2，在 Load2 及后续读取操作要读取的数据被访问前，保证 Load1 要读取的数据被读取完毕。  
 > **StoreStore 屏障**：对于这样的语句 Store1; StoreStore; Store2，在 Store2 及后续写入操作执行前，这个屏障会把 Store1 强制刷新到内存，保证 Store1 的写入操作对其它处理器可见。  
 > **LoadStore 屏障**：对于这样的语句 Load1; LoadStore; Store2，在 Store2 及后续写入操作被刷出前，保证 Load1 要读取的数据被读取完毕。  
@@ -110,11 +116,11 @@ public class VolatileExample {
 对于连续多个 volatile 变量读或者连续多个 volatile 变量写，编译器做了一定的优化来提高性能，比如：
 
 > 第一个 volatile 读;
->
+> 
 > LoadLoad 屏障；
->
+> 
 > 第二个 volatile 读；
->
+> 
 > LoadStore 屏障
 
 再介绍一下 volatile 与普通变量的重排序规则:
@@ -189,7 +195,7 @@ instance = new Singleton(); // 第10行
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)

@@ -1,18 +1,18 @@
-# 深入浅出理解select、poll、epoll的实现
+# linux io演变过程
 
-## **前言：**
+参考网站
+
+[深入学习IO多路复用 select/poll/epoll 实现原理 - 第一篇_YZF_Kevin的博客-CSDN博客](https://blog.csdn.net/yzf279533105/article/details/129012820)
+
+https://mp.weixin.qq.com/s?__biz=MjM5Njg5NDgwNA==&mid=2247484905&idx=1&sn=a74ed5d7551c4fb80a8abe057405ea5e&scene=21#wechat_redirect
+
+## 前言：
 
 在linux系统中，实际上所有的I/O设备都被抽象为了文件这个概念，一切皆文件，Everything isFile，磁盘、网络数据、终端，甚至进程间通信工具管道pipe等都被当做文件对待。
 
 在了解多路复用select、poll、epoll实现之前，我们先简单回忆复习以下两个概念：
 
-1、什么是多路复用：
-
-- 多路: 指的是多个socket网络连接;
-- 复用: 指的是复用一个线程；
-- 多路复用主要有三种技术：select，poll，epoll。epoll是最新的, 也是目前最好的多路复用技术；
-
-2、5种IO模型：
+### 5种IO模型的演变历史：
 
 ```text
 [1]blockingIO - 阻塞IO
@@ -34,13 +34,29 @@
 
 ![](https://pic3.zhimg.com/v2-89162cb4d5cc7fe4071ade36d3000d8a_b.jpg)
 
-## I/O 多路复用之select、poll、epoll详解
+#### bio
 
-目前支持I/O多路复用的系统调用有`select，pselect，poll，epoll。`与多进程和多线程技术相比，`I/O多路复用技术的最大优势是系统开销小，系统不必创建进程/线程`，也不必维护这些进程/线程，从而大大减小了系统的开销。
+也就是阻塞io模型，这是linux早期的io模型，应用程序使用进程或者线程进行io时，比如调用了read(),如果数据没立即返回，就会阻塞该进程或者线程。当大量读写发生时，就需要创造大量的进程或者线程。一个进程或者线程对应一个文件描述符。
+
+缺点：大量进程线程将会造成资源浪费（内存成本），而且系统调度，线程上下文切换的开销也是巨大的（cpu成本）。
+
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\linux-io\2023-02-28-10-33-56-image.png)
+
+#### nio
+
+于是就出现了nio模型，在linux中，我们可以设置端口为NONBLOCK状态来使用。nio与阻塞io的区别在于，nio在当文件描述没有数据时，会直接返回-1，而不会阻塞当前线程，这样我们就可以只使用一个线程或者进程来监听io是否可以读写。
+
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\linux-io\2023-02-28-10-40-46-image.png)
+
+#### 多路复用
+
+- 多路: 指的是多个socket网络连接;
+- 复用: 指的是复用一个线程；
+- 多路复用主要有三种技术：select，poll，epoll。epoll是最新的, 也是目前最好的多路复用技术；
 
 I/O多路复用就是通过一种机制，一个进程可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。但select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的，而异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间
 
-## **一、select**
+## 一、select
 
 ```cpp
 int select (int n, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
@@ -143,11 +159,22 @@ while {
 
 ## 三、epoll
 
-在linux的网络编程中，很长的时间都在使用select来做事件触发。在linux新的内核中，有了一种替换它的机制，就是epoll。相比于select，epoll最大的好处在于它不会随着监听fd数目的增长而降低效率。如前面我们所说，在内核中的select实现中，它是采用轮询来处理的，轮询的fd数目越多，自然耗时越多。并且，在linux/posix_types.h头文件有这样的声明：  
-#define __FD_SETSIZE 1024  
-表示select最多同时监听1024个fd，当然，可以通过修改头文件再重编译内核来扩大这个数目，但这似乎并不治本。
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\linux-io\2023-02-28-10-59-57-image.png)
+
+在linux的网络编程中，很长的时间都在使用select来做事件触发。在linux新的内核中，有了一种替换它的机制，就是epoll。相比于select，epoll最大的好处在于它不会随着监听fd数目的增长而降低效率。如前面我们所说，
+
+1. 在内核中的select实现中，它是采用轮询来处理的，轮询的fd数目越多，自然耗时越多。并且，
+
+2. 在linux/posix_types.h头文件有这样的声明：  #define __FD_SETSIZE 1024  
+   表示select最多同时监听1024个fd，当然，可以通过修改头文件再重编译内核来扩大这个数目，但这似乎并不治本。
+
+3. 每次监听的fd需要从用户空间拷贝到内核空间。（epoll使用如上图的共享空间mmap来避免拷贝时用户态内核态的切换）
+
+epoll在linux中：
 
 创建一个epoll的句柄，size用来告诉内核这个监听的数目一共有多大。这个参数不同于select()中的第一个参数，给出最大监听的fd+1的值。需要注意的是，当创建好epoll句柄后，它就是会占用一个fd值，在linux下如果查看/proc/进程id/fd/，是能够看到这个fd的，所以在使用完epoll后，必须调用close()关闭，否则可能导致fd被耗尽。
+
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\linux-io\2023-02-28-11-02-30-image.png)
 
 epoll的接口非常简单，一共就三个函数：
 
@@ -247,7 +274,7 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout); 
 ```
 
-- **功能：**等待事件的产生，收集在 epoll 监控的事件中已经发送的事件，类似于 select() 调用。
+- **功能**：**等待事件的产生，收集在 epoll 监控的事件中已经发送的事件，类似于 select() 调用。
 - **参数epfd:** epoll 专用的文件描述符，epoll_create()的返回值
 - **参数events:** 分配好的 epoll_event 结构体数组，epoll 将会把发生的事件赋值到events 数组中（events 不可以是空指针，内核只负责把数据复制到这个 events 数组中，不会去帮助我们在用户态中分配内存）。
 - **参数maxevents:** maxevents 告之内核这个 events 有多少个 。
@@ -406,7 +433,7 @@ int main(){
 
 如下图，可以帮助我们理解的更加丝滑(/手动狗头)：
 
-![](D:\workspace\coding-road\images\select-poll-epoll\2022-11-07-22-04-17-image.png)
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\select-poll-epoll\2022-11-07-22-04-17-image.png)
 
 ![](https://pic2.zhimg.com/v2-70f8e9bc1a028d252c01c32329e49341_b.gif)
 

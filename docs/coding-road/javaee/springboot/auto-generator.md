@@ -82,7 +82,7 @@ Mybatis Generator 是 MyBatis 官方提供的一个代码生成工具，完全�
 
         <!-- jdbc连接 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://ip:3306/codingmoretiny02?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://ip:3306/codingmoretiny02?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false"
                         userId="codingmoretiny02"
                         password="123456">
             <!--高版本的 mysql-connector-java 需要设置 nullCatalogMeansCurrent=true-->

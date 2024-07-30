@@ -1,7 +1,5 @@
 # Java依赖冲突
 
-
-
 **简介：** 由于阿里妈妈联盟团队负责业务的特殊性，系统有庞大的对外依赖，依赖集团六七十个团队服务及N多工具组件，通过此文和大家分享一下我们积累的一些复杂依赖有效治理的经验，除了简单技术技巧的总结外，也会探讨一些关于这方面架构的思考，希望此文能系统彻底的解决java依赖冲突对大家的困扰。
 
 ### 一 概述
@@ -14,11 +12,7 @@
 
 ![image.png](https://ucc.alicdn.com/pic/developer-ecology/63827901df9f4228a6010d0fc3ff7c92.png)
 
-
-
 图1
-
-
 
 以上图为例，目前阿里大部分java工程都是maven工程，此类工程从开发到上线要经历以下两个重要步骤：
 
@@ -100,11 +94,7 @@ STEP2、在IDEA中(快捷键Ctrl+N)查找异常栈中提示缺失的类在哪些
 
 STEP3、查看应用部署机器上应用lib包目录下(一般是/home/admin/union-uc/target/${projectName}/lib或union-pub/target/${projectName}.war/WEB-INF/lib)下，找到相关jar包的版本，如上例中：
 
-
-
 ![image.png](https://ucc.alicdn.com/pic/developer-ecology/4190b7da8dec4785aa2bda98e625126f.png)
-
-
 
 致此定位问题根本原因是应用启动时加载"org.springframework.beans.factory.support.DefaultListableBeanFactory"类未加载到运行时预期所需的spring-beans-4.3.5.RELEASE.jar版本，而是加载了spring-2.5.6.SEC03.jar导致。
 
@@ -126,11 +116,7 @@ STEP3、查看应用部署机器上应用lib包目录下(一般是/home/admin/un
 
 当然不是所有情况都可以通过升降级jar解决冲突，举个例子：
 
-
-
 ![image.png](https://ucc.alicdn.com/pic/developer-ecology/761a3cfd8539442784823d93084b09bd.png)
-
-
 
 如上图假设应用系统同时依赖A.jar，B.jar，而A.jar，B.jar都依赖protobuf-java，系统运行时都会分别用到A.jar，B.jar中protobuf部分的功能，而且A.jar，B.jar依赖的protobuf版本无法通过升高降低版本调整到一致。由于protobuf-java3.0版本序列化协议，类内容各方面都不兼容protobuf-java2.0版本。这种情况无论如何调整依赖都无法解决冲突的问题，要解决这种冲突，请继续往下看，第五第六章内容。
 

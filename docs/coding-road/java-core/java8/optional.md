@@ -50,7 +50,7 @@ public class WithoutOptionalDemo {
 
 ```
 Exception in thread "main" java.lang.NullPointerException
-	at com.cmower.dzone.optional.WithoutOptionalDemo.main(WithoutOptionalDemo.java:24)
+    at com.cmower.dzone.optional.WithoutOptionalDemo.main(WithoutOptionalDemo.java:24)
 ```
 
 ### 02、Optional 是如何解决这个问题的
@@ -266,8 +266,8 @@ public class GetOptionalDemo {
 
 ```
 Exception in thread "main" java.util.NoSuchElementException: No value present
-	at java.base/java.util.Optional.get(Optional.java:141)
-	at com.cmower.dzone.optional.GetOptionalDemo.main(GetOptionalDemo.java:9)
+    at java.base/java.util.Optional.get(Optional.java:141)
+    at com.cmower.dzone.optional.GetOptionalDemo.main(GetOptionalDemo.java:9)
 ```
 
 尽管抛出的异常是 NoSuchElementException 而不是 NPE，但在我们看来，显然是在“五十步笑百步”。建议 `orElseGet()` 方法获取 Optional 对象的值。

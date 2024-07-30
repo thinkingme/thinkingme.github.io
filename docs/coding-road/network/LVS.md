@@ -8,7 +8,7 @@
 
 ### linux路由配置
 
-![](D:\workspace\coding-road\images\LVS\2022-12-05-15-04-26-image.png)
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\LVS\2022-12-05-15-04-26-image.png)
 
 假设我们有上图网络配置的两台linux虚拟机，正常网工应该会在路由器中配置各个网络。这里为了起到学习的目的，我们可以用linux的路由表来模拟。
 
@@ -20,7 +20,7 @@ ifconfig eth0:3 192.168.88.88/24
 
 此时13的路由条目如下图：
 
-![](D:\workspace\coding-road\images\LVS\2022-12-05-15-18-17-image.png)
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\LVS\2022-12-05-15-18-17-image.png)
 
 如果想要14机子能访问到这块网卡(ping 192.168.88.88)
 
@@ -30,7 +30,7 @@ ifconfig eth0:3 192.168.88.88/24
 route add -host 192.168.88.88 gw 192.168.150.13
 ```
 
-![](D:\workspace\coding-road\images\LVS\2022-12-05-15-14-01-image.png)
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\LVS\2022-12-05-15-14-01-image.png)
 
 意思就是把192.168.150.13这台linux当成了路由器。把去往88.88ip的数据包发给13,而13路由表中有关于88.88ip的配置，这样就实现了通信。
 
@@ -66,7 +66,7 @@ route add -host 192.168.88.88 gw 192.168.150.13
 
 ### 整体结构
 
-![](D:\workspace\coding-road\images\LVS\2022-11-30-17-46-00-image.png)
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\LVS\2022-11-30-17-46-00-image.png)
 
 ### 实验步骤
 
@@ -78,7 +78,7 @@ ifconfig eht0:8 192.168.150.100/24
 
 node 02~03 配置arp协议:
 
-![](D:\workspace\coding-road\images\LVS\2022-12-06-14-31-28-image.png)
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\LVS\2022-12-06-14-31-28-image.png)
 
 * 修改内核
 

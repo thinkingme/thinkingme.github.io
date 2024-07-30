@@ -57,27 +57,26 @@ public ThreadPoolExecutor(int corePoolSize,
                           BlockingQueue<Runnable> workQueue,
                           ThreadFactory threadFactory,
                           RejectedExecutionHandler handler)
-
 ```
 
 涉及到 5~7 个参数，我们先看看必须的 5 个参数是什么意思：
 
 - **int corePoolSize**：该线程池中**核心线程数最大值**
-
+  
   > 核心线程：线程池中有两类线程，核心线程和非核心线程。核心线程默认情况下会一直存在于线程池中，即使这个核心线程什么都不干（铁饭碗），而非核心线程如果长时间的闲置，就会被销毁（临时工）。
 
 - **int maximumPoolSize**：该线程池中**线程总数最大值** 。
-
+  
   > 该值等于核心线程数量 + 非核心线程数量。
 
 - **long keepAliveTime**：**非核心线程闲置超时时长**。
-
+  
   > 非核心线程如果处于闲置状态超过该值，就会被销毁。如果设置 allowCoreThreadTimeOut(true)，则会也作用于核心线程。
 
 - **TimeUnit unit**：keepAliveTime 的单位。
-
+  
   TimeUnit 是一个枚举类型 ，包括以下属性：
-
+  
   > NANOSECONDS ： 1 微毫秒 = 1 微秒 / 1000
   > MICROSECONDS ： 1 微秒 = 1 毫秒 / 1000
   > MILLISECONDS ： 1 毫秒 = 1 秒 /1000
@@ -87,23 +86,23 @@ public ThreadPoolExecutor(int corePoolSize,
   > DAYS ： 天
 
 - **BlockingQueue workQueue**：阻塞队列，维护着**等待执行的 Runnable 任务对象**。
-
+  
   常用的几个阻塞队列：
-
+  
   1. **LinkedBlockingQueue**
-
+     
      链式阻塞队列，底层数据结构是链表，默认大小是`Integer.MAX_VALUE`，也可以指定大小。
-
+  
   2. **ArrayBlockingQueue**
-
+     
      数组阻塞队列，底层数据结构是数组，需要指定队列的大小。
-
+  
   3. **SynchronousQueue**
-
+     
      同步队列，内部容量为 0，每个 put 操作必须等待一个 take 操作，反之亦然。
-
+  
   4. **DelayQueue**
-
+     
      延迟队列，该队列中的元素只有当其指定的延迟时间到了，才能够从队列中获取到该元素 。
 
 > 我们将在下一章中重点介绍各种阻塞队列
@@ -111,7 +110,7 @@ public ThreadPoolExecutor(int corePoolSize,
 好了，介绍完 5 个必须的参数之后，还有两个非必须的参数。
 
 - **ThreadFactory threadFactory**
-
+  
   创建线程的工厂 ，用于批量创建线程，统一在创建线程时设置一些参数，如是否守护线程、线程的优先级等。如果不指定，会新建一个默认的线程工厂。
 
 ```java
@@ -132,15 +131,15 @@ static class DefaultThreadFactory implements ThreadFactory {
 ```
 
 - **RejectedExecutionHandler handler**
-
+  
   **拒绝处理策略**，线程数量大于最大线程数就会采用拒绝处理策略，四种拒绝处理的策略为 ：
-
+  
   1. **ThreadPoolExecutor.AbortPolicy**：**默认拒绝处理策略**，丢弃任务并抛出 RejectedExecutionException 异常。
-
+  
   2. **ThreadPoolExecutor.DiscardPolicy**：丢弃新来的任务，但是不抛出异常。
-
+  
   3. **ThreadPoolExecutor.DiscardOldestPolicy**：丢弃队列头部（最旧的）的任务，然后重新尝试执行程序（如果再次失败，重复此过程）。
-
+  
   4. **ThreadPoolExecutor.CallerRunsPolicy**：由调用线程处理该任务。
 
 ### ThreadPoolExecutor 的策略
@@ -165,11 +164,11 @@ private static final int TERMINATED =  3 << COUNT_BITS;
 - 调用 shutdownNow()方法后处于**STOP**状态，线程池不能接受新的任务，中断所有线程，阻塞队列中没有被执行的任务全部丢弃。此时，poolsize=0,阻塞队列的 size 也为 0。
 
 - 当所有的任务已终止，ctl 记录的”任务数量”为 0，线程池会变为**TIDYING**状态。接着会执行 terminated()函数。
-
+  
   > ThreadPoolExecutor 中有一个控制状态的属性叫`ctl`，它是一个 AtomicInteger 类型的变量。线程池状态就是通过 AtomicInteger 类型的成员变量`ctl`来获取的。
-  >
+  > 
   > 获取的`ctl`值传入`runStateOf`方法，与`~CAPACITY`位与运算(`CAPACITY`是低 29 位全 1 的 int 变量)。
-  >
+  > 
   > `~CAPACITY`在这里相当于掩码，用来获取 ctl 的高 3 位，表示线程池状态；而另外的低 29 位用于表示工作线程数
 
 - 线程池处在 TIDYING 状态时，**执行完 terminated()方法之后**，就会由 **TIDYING -> TERMINATED**， 线程池被设置为 TERMINATED 状态。
@@ -423,7 +422,7 @@ private Runnable getTask() {
         // 1.allowCoreThreadTimeOut变量默认是false,核心线程即使空闲也不会被销毁
         // 如果为true,核心线程在keepAliveTime内仍空闲则会被销毁。
         boolean timed = allowCoreThreadTimeOut || wc > corePoolSize;
-		// 2.如果运行线程数超过了最大线程数，但是缓存队列已经空了，这时递减worker数量。
+        // 2.如果运行线程数超过了最大线程数，但是缓存队列已经空了，这时递减worker数量。
 　　　　 // 如果有设置允许线程超时或者线程数量超过了核心线程数量，
         // 并且线程在规定时间内均未poll到任务且队列为空则递减worker数量
         if ((wc > maximumPoolSize || (timed && timedOut))
@@ -539,7 +538,7 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)

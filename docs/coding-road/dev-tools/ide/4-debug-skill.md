@@ -78,9 +78,9 @@ Process finished with exit code
 
 使用起来很简单：
 
-1.  在字段定义处鼠标左键添加断点（会出现「眼睛」的图标）
-2.  在「眼睛」图标上鼠标右键
-3.  在弹框中勾选上`Field access`  和`Field modification`  两个选项
+1. 在字段定义处鼠标左键添加断点（会出现「眼睛」的图标）
+2. 在「眼睛」图标上鼠标右键
+3. 在弹框中勾选上`Field access`  和`Field modification`  两个选项
 
 ![image.gif](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/ide/4-debug-skill-72c23537-3f66-4283-b939-a265b7628a1a.gif)
 
@@ -114,8 +114,8 @@ Process finished with exit code
 
 当阅读源码时，比如 Spring，一个接口的方法可能被多个子类实现，当运行时，需要查看调用栈逐步定位实现类，IDEA 同样支持在接口方法上添加断点（快捷键  `cmd+F8`/`ctrl+F8`）：
 
-1.  鼠标左键在方法处点击断点（♦️ 形状）
-2.  断点上鼠标右键
+1. 鼠标左键在方法处点击断点（♦️ 形状）
+2. 断点上鼠标右键
 
 勾选上绿色框线上的内容，同样可以自定义跳转条件 Condition
 

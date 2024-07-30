@@ -1,5 +1,11 @@
 # spring面试
 
+## Spring系列之父子容器详解
+
+[Spring系列之父子容器详解 - 掘金](https://juejin.cn/post/7094425000450949150)
+
+tomcat也有容器的概念，java也有类继承的概念
+
 ## Spring中有哪些方式可以把Bean注入到IOC容器
 
 7种

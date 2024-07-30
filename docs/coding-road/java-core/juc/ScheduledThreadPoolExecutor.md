@@ -52,7 +52,6 @@ public class ThreadPool {
         return true;
     }
 }
-
 ```
 
 下面截取前面的输出（这个 demo 会一直运行下去）：
@@ -82,7 +81,7 @@ public class ThreadPool {
 
 ```java
 public class ScheduledThreadPoolExecutor extends ThreadPoolExecutor
-	implements ScheduledExecutorService {
+    implements ScheduledExecutorService {
 
     public ScheduledThreadPoolExecutor(int corePoolSize,ThreadFactory threadFactory) {
          super(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS,
@@ -118,11 +117,11 @@ public interface ScheduledExecutorService extends ExecutorService {
 重点理解一下后面两个方法：
 
 - scheduleAtFixedRate
-
+  
   该方法在`initialDelay`时长后第一次执行任务，以后每隔`period`时长，再次执行任务。注意，period 是从**任务开始执行算起**的。开始执行任务后，定时器每隔 period 时长**检查该任务是否完成**，如果完成则再次启动任务，否则等该任务结束后才再次启动任务。
 
 - scheduleWithFixDelay
-
+  
   该方法在`initialDelay`时长后第一次执行任务，以后每当任务执行**完成后**，等待`delay`时长，再次执行任务。
 
 ## 主要方法介绍
@@ -136,7 +135,7 @@ public ScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit) 
         throw new NullPointerException();
     // 这里的decorateTask方法仅仅返回第二个参数
     RunnableScheduledFuture<?> t = decorateTask(command,
-                                   		new ScheduledFutureTask<Void>(command, null, triggerTime(delay,unit)));
+                                           new ScheduledFutureTask<Void>(command, null, triggerTime(delay,unit)));
     // 延时或者周期执行任务的主要方法,稍后统一说明
     delayedExecute(t);
     return t;
@@ -311,7 +310,6 @@ public ScheduledFuture<?> scheduleAtFixedRate(Runnable command,
     delayedExecute(t);
     return t;
 }
-
 ```
 
 `scheduleAtFixedRate`这个方法和`schedule`类似，不同点是`scheduleAtFixedRate`方法内部创建的是`ScheduledFutureTask`，带有初始延时和固定周期的任务 。
@@ -373,16 +371,16 @@ DelayedWorkQueue 是一个无界优先队列，使用数组存储，底层是使
 ```java
 static class DelayedWorkQueue extends AbstractQueue<Runnable>
 implements BlockingQueue<Runnable> {
-	// 队列初始容量
-	private static final int INITIAL_CAPACITY = 16;
-	// 数组用来存储定时任务，通过数组实现堆排序
-	private RunnableScheduledFuture[] queue = new RunnableScheduledFuture[INITIAL_CAPACITY];
-	// 当前在队首等待的线程
-	private Thread leader = null;
-	// 锁和监视器，用于leader线程
-	private final ReentrantLock lock = new ReentrantLock();
-	private final Condition available = lock.newCondition();
-	// 其他代码，略
+    // 队列初始容量
+    private static final int INITIAL_CAPACITY = 16;
+    // 数组用来存储定时任务，通过数组实现堆排序
+    private RunnableScheduledFuture[] queue = new RunnableScheduledFuture[INITIAL_CAPACITY];
+    // 当前在队首等待的线程
+    private Thread leader = null;
+    // 锁和监视器，用于leader线程
+    private final ReentrantLock lock = new ReentrantLock();
+    private final Condition available = lock.newCondition();
+    // 其他代码，略
 }
 ```
 
@@ -505,7 +503,7 @@ public boolean offer(Runnable x) {
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)

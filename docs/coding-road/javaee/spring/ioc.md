@@ -462,7 +462,7 @@ Spring 也是用的  `set()`  方法，它只不过提供了一套更加完善
 
 ![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/xingbiaogongzhonghao.png)
 
-## IoC和DI使用问题小结
+##。
 
 ### 为什么推荐构造器注入方式？
 
@@ -483,6 +483,8 @@ Spring 也是用的  `set()`  方法，它只不过提供了一套更加完善
 在refresh时，会调用一个方法来初始化所有注册过beanDefination的类，除非他是懒加载之类的。下列是使用Autowrie初始化的相关代码
 
 首先,
+
+![](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\images\ioc\2023-03-10-09-07-19-image.png)
 
 在org.springframework.beans.factory.support.AbstractBeanFactory  抽象bean工厂中，的doGetBean方法吗，这个方法是spring创建bean的总方法
 

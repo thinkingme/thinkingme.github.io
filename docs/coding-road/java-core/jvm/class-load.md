@@ -137,13 +137,13 @@ String cmower = new String("沉默王二");
 ```java
 public class Test {
 
-	public static void main(String[] args) {
-		ClassLoader loader = Test.class.getClassLoader();
-		while (loader != null) {
-			System.out.println(loader.toString());
-			loader = loader.getParent();
-		}
-	}
+    public static void main(String[] args) {
+        ClassLoader loader = Test.class.getClassLoader();
+        while (loader != null) {
+            System.out.println(loader.toString());
+            loader = loader.getParent();
+        }
+    }
 
 }
 ```

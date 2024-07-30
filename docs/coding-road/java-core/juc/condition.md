@@ -117,23 +117,23 @@ public static void main(String[] args) {
 public final void await() throws InterruptedException {
     if (Thread.interrupted())
         throw new InterruptedException();
-	// 1. 将当前线程包装成Node，尾插入到等待队列中
+    // 1. 将当前线程包装成Node，尾插入到等待队列中
     Node node = addConditionWaiter();
-	// 2. 释放当前线程所占用的lock，在释放的过程中会唤醒同步队列中的下一个节点
+    // 2. 释放当前线程所占用的lock，在释放的过程中会唤醒同步队列中的下一个节点
     int savedState = fullyRelease(node);
     int interruptMode = 0;
     while (!isOnSyncQueue(node)) {
-		// 3. 当前线程进入到等待状态
+        // 3. 当前线程进入到等待状态
         LockSupport.park(this);
         if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
             break;
     }
-	// 4. 自旋等待获取到同步状态（即获取到lock）
+    // 4. 自旋等待获取到同步状态（即获取到lock）
     if (acquireQueued(node, savedState) && interruptMode != THROW_IE)
         interruptMode = REINTERRUPT;
     if (node.nextWaiter != null) // clean up if cancelled
         unlinkCancelledWaiters();
-	// 5. 处理被中断的情况
+    // 5. 处理被中断的情况
     if (interruptMode != 0)
         reportInterruptAfterWait(interruptMode);
 }
@@ -157,14 +157,14 @@ private Node addConditionWaiter() {
         unlinkCancelledWaiters();
         t = lastWaiter;
     }
-	//将当前线程包装成Node
+    //将当前线程包装成Node
     Node node = new Node(Thread.currentThread(), Node.CONDITION);
     if (t == null)
         firstWaiter = node;
     else
-		//尾插入
+        //尾插入
         t.nextWaiter = node;
-	//更新lastWaiter
+    //更新lastWaiter
     lastWaiter = node;
     return node;
 }
@@ -180,11 +180,11 @@ final int fullyRelease(Node node) {
     try {
         int savedState = getState();
         if (release(savedState)) {
-			//成功释放同步状态
+            //成功释放同步状态
             failed = false;
             return savedState;
         } else {
-			//不成功释放同步状态抛出异常
+            //不成功释放同步状态抛出异常
             throw new IllegalMonitorStateException();
         }
     } finally {
@@ -198,7 +198,7 @@ final int fullyRelease(Node node) {
 
 ```java
 while (!isOnSyncQueue(node)) {
-	// 3. 当前线程进入到等待状态
+    // 3. 当前线程进入到等待状态
     LockSupport.park(this);
     if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
         break;
@@ -231,18 +231,18 @@ condition 还额外支持了超时机制，使用者可调用方法 awaitNanos,a
 要想不响应中断可以调用 condition.awaitUninterruptibly()方法，该方法的源码为：
 
 ```java
-	public final void awaitUninterruptibly() {
-	    Node node = addConditionWaiter();
-	    int savedState = fullyRelease(node);
-	    boolean interrupted = false;
-	    while (!isOnSyncQueue(node)) {
-	        LockSupport.park(this);
-	        if (Thread.interrupted())
-	            interrupted = true;
-	    }
-	    if (acquireQueued(node, savedState) || interrupted)
-	        selfInterrupt();
-	}
+    public final void awaitUninterruptibly() {
+        Node node = addConditionWaiter();
+        int savedState = fullyRelease(node);
+        boolean interrupted = false;
+        while (!isOnSyncQueue(node)) {
+            LockSupport.park(this);
+            if (Thread.interrupted())
+                interrupted = true;
+        }
+        if (acquireQueued(node, savedState) || interrupted)
+            selfInterrupt();
+    }
 ```
 
 这段方法与上面的 await 方法基本一致，只不过减少了对中断的处理，并省略了 reportInterruptAfterWait 方法抛被中断的异常。
@@ -257,7 +257,7 @@ public final void signal() {
     if (!isHeldExclusively())
         throw new IllegalMonitorStateException();
     //2. 获取等待队列中第一个节点，之后的操作都是针对这个节点
-	Node first = firstWaiter;
+    Node first = firstWaiter;
     if (first != null)
         doSignal(first);
 }
@@ -266,16 +266,16 @@ public final void signal() {
 signal 方法首先会检测当前线程是否已经获取 lock，如果没有获取 lock 会直接抛出异常，如果获取的话再得到等待队列的头指针引用的节点，之后的操作的 doSignal 方法也是基于该节点。下面我们来看看 doSignal 方法做了些什么事情，doSignal 方法源码为：
 
 ```java
-	private void doSignal(Node first) {
-	    do {
-	        if ( (firstWaiter = first.nextWaiter) == null)
-	            lastWaiter = null;
-			//1. 将头结点从等待队列中移除
-	        first.nextWaiter = null;
-			//2. while中transferForSignal方法对头结点做真正的处理
-	    } while (!transferForSignal(first) &&
-	             (first = firstWaiter) != null);
-	}
+    private void doSignal(Node first) {
+        do {
+            if ( (firstWaiter = first.nextWaiter) == null)
+                lastWaiter = null;
+            //1. 将头结点从等待队列中移除
+            first.nextWaiter = null;
+            //2. while中transferForSignal方法对头结点做真正的处理
+        } while (!transferForSignal(first) &&
+                 (first = firstWaiter) != null);
+    }
 ```
 
 具体逻辑请看注释，真正对头节点做处理的逻辑在**transferForSignal**放，该方法源码为：
@@ -285,7 +285,7 @@ final boolean transferForSignal(Node node) {
     /*
      * If cannot change waitStatus, the node has been cancelled.
      */
-	//1. 更新状态为0
+    //1. 更新状态为0
     if (!compareAndSetWaitStatus(node, Node.CONDITION, 0))
         return false;
 
@@ -295,7 +295,7 @@ final boolean transferForSignal(Node node) {
      * attempt to set waitStatus fails, wake up to resync (in which
      * case the waitStatus can be transiently and harmlessly wrong).
      */
-	//2.将该节点移入到同步队列中去
+    //2.将该节点移入到同步队列中去
     Node p = enq(node);
     int ws = p.waitStatus;
     if (ws > 0 || !compareAndSetWaitStatus(p, ws, Node.SIGNAL))
@@ -402,7 +402,7 @@ Thread-0接收到通知，条件满足
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)

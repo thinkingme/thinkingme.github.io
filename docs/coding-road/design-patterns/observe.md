@@ -28,20 +28,20 @@ d.组合关系：如一个小组，小组是否存在与小组中是否有组员
     观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。而观察者模式属于行为型模式，行为型模式关注的是对象之间的通讯，观察者模式就是观察者和被观察者之间的通讯。
     观察者模式有一个别名叫“订阅—发布模式”。报纸大家都订过吧，当你订阅了一份报纸，每天都会有一份最新的报纸送到你手上，有多少人订阅报纸，报社就会发多少份报纸，这是典型的订阅—发布模式，报社和订报纸的客户就是上面文章开头所说的“一对多”的依赖关系。
 
-![image-20220530095543437](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095543437.png)
+![image-20220530095543437](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095543437.png)
 
 **Pub-Sub Pattern**
     在“发布者-订阅者”模式中，称为发布者的消息发送者不会将消息编程为直接发送给称为订阅者的特定接收者。这意味着发布者和订阅者不知道彼此的存在。存在第三个组件，称为代理或消息代理或事件总线，它由发布者和订阅者都知道，它过滤所有传入的消息并相应地分发它们。换句话说，pub-sub 是用于在不同系统组件之间传递消息的模式，而这些组件不知道关于彼此身份的任何信息。经纪人如何过滤所有消息？实际上，有几个消息过滤过程。最常用的方法有：基于主题和基于内容的。
 
-![image-20220530095601089](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095601089.png)
+![image-20220530095601089](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095601089.png)
 
 简而言之，这两种模式之间的主要区别可以如下所示：
 
-![image-20220530095609730](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095609730.png)
+![image-20220530095609730](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095609730.png)
 
 观察者模式和发布订阅模式最大的区别就是发布订阅模式有个**事件调度中心**。
 
-![image-20220530095638802](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095638802.png)
+![image-20220530095638802](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095638802.png)
 
 从图中可以看出，观察者模式中观察者和目标直接进行交互，而发布订阅模式中统一由调度中心进行处理，订阅者和发布者互不干扰。这样一方面实现了解耦，还有就是可以实现更细粒度的一些控制。比如发布者发布了很多消息，但是不想所有的订阅者都接收到，就可以在调度中心做一些处理，类似于权限控制之类的。还可以做一些节流操作。
 
@@ -49,15 +49,15 @@ d.组合关系：如一个小组，小组是否存在与小组中是否有组员
 
 监听器监听自己感兴趣的事件，一旦该事件被触发或改变，立即得到通知，做出响应，监听器一般是接口，用来约定调用的方式。当事件源对象上发生操作时，它会将调用事件监听器的一个方法，并在调用该方法时传递事件对象过去。事件监听器实现类通常是由开发人员编写，开发人员通过事件对象拿到事件源，从而对事件源上的操作进行处理。
  **总结**： 当事件源对象上发生操作时，将会调用事件监听器的一个方法，并在调用该方法时把事件对象传递过去。
- ![image-20220530095729566](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095729566.png)
+ ![image-20220530095729566](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095729566.png)
 
-![image-20220530095752334](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095752334.png)
+![image-20220530095752334](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095752334.png)
 
 观察者模式原理和监听器一样的，使用的关键在搞清楚什么是观察者、什么是被观察者。观察者(Observer)相当于事件监听器。被观察者(Observable)相当于事件源和事件，执行事件源通知逻辑时，将会回调 Observer 的回调方法 update，只是在观察者模式中常用的是反射，而在监听器模式中使用的是 callback。
 
 图解两者区别：
 
-![image-20220530095809635](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095809635.png)
+![image-20220530095809635](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530095809635.png)
 
 ### 类图解析
 
@@ -65,12 +65,12 @@ d.组合关系：如一个小组，小组是否存在与小组中是否有组员
 
 事件源经过事件的封装传给监听器，当事件源触发事件后，监听器接收到事件对象可以回调事件的方法。
 
-![image-20220530100607110](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530100607110.png)
+![image-20220530100607110](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530100607110.png)
 
 2. **观察者模式**
    观察者(Observer)相当于事件监听者（监听器），被观察者(Observable)相当于事件源和事件，执行逻辑时通知 observer 即可触发 oberver 的 update,同时可传被观察者和参数。简化了事件-监听模式的实现。
 
-![image-20220530100633169](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530100633169.png)
+![image-20220530100633169](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530100633169.png)
 
 3. **对比**
 
@@ -269,7 +269,7 @@ EurekaServerStartedEvent Eureka Server 启动事件
 
 都是继承 spring 的 ApplicationEvent
 
-![image-20220530111430305](D:\workspace\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530111430305.png)
+![image-20220530111430305](C:\My%20Space\Soft%20Project\Hui%20Ge\coding-road\docs\coding-road\design-patterns\observe.assets\image-20220530111430305.png)
 
 （1)在 Eureka 的服务端：可以在监听到各种事件后将其存储到数据库中：
 

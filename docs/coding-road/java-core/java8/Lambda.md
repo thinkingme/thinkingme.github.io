@@ -336,7 +336,7 @@ this = com.cmower.java_demo.journal.LamadaTest$1@64f033cb
 this = com.cmower.java_demo.journal.LamadaTest@3feba861
 ```
 
-符合我们分析的预期。
+符合我们分析的预期。但是其实看字节码就知道了，Lambda中的this就是外部对象的this，在字节码中会写成XxxxClass.this来指定this是哪个对象的。
 
 ![](https://cdn.jsdelivr.net/gh/thinkingme/thinkingme.github.io@master/images/java8/Lambda-4.jpg)
 

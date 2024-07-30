@@ -29,17 +29,17 @@ tag:
 
 ```java
 public void set(T value) {
-	  //1. 获取当前线程实例对象
+      //1. 获取当前线程实例对象
     Thread t = Thread.currentThread();
 
-	  //2. 通过当前线程实例获取到ThreadLocalMap对象
+      //2. 通过当前线程实例获取到ThreadLocalMap对象
     ThreadLocalMap map = getMap(t);
 
     if (map != null)
-			//3. 如果Map不为null,则以当前threadLocl实例为key,值为value进行存入
-    	map.set(this, value);
+            //3. 如果Map不为null,则以当前threadLocl实例为key,值为value进行存入
+        map.set(this, value);
     else
-			//4.map为null,则新建ThreadLocalMap并存入value
+            //4.map为null,则新建ThreadLocalMap并存入value
       createMap(t, value);
 }
 ```
@@ -83,23 +83,23 @@ T get()
 
 ```java
 public T get() {
-	//1. 获取当前线程的实例对象
+    //1. 获取当前线程的实例对象
   Thread t = Thread.currentThread();
 
-	//2. 获取当前线程的threadLocalMap
+    //2. 获取当前线程的threadLocalMap
   ThreadLocalMap map = getMap(t);
   if (map != null) {
-		//3. 获取map中当前threadLocal实例为key的值的entry
+        //3. 获取map中当前threadLocal实例为key的值的entry
     ThreadLocalMap.Entry e = map.getEntry(this);
 
     if (e != null) {
       @SuppressWarnings("unchecked")
-			//4. 当前entitiy不为null的话，就返回相应的值value
+            //4. 当前entitiy不为null的话，就返回相应的值value
       T result = (T)e.value;
       return result;
     }
   }
-	//5. 若map为null或者entry为null的话通过该方法初始化，并返回该方法返回的value
+    //5. 若map为null或者entry为null的话通过该方法初始化，并返回该方法返回的value
   return setInitialValue();
 }
 ```
@@ -135,11 +135,11 @@ protected T initialValue() {
 
 ```java
 public void remove() {
-	//1. 获取当前线程的threadLocalMap
-	ThreadLocalMap m = getMap(Thread.currentThread());
- 	if (m != null)
-		//2. 从map中删除以当前threadLocal实例为key的键值对
-		m.remove(this);
+    //1. 获取当前线程的threadLocalMap
+    ThreadLocalMap m = getMap(Thread.currentThread());
+     if (m != null)
+        //2. 从map中删除以当前threadLocal实例为key的键值对
+        m.remove(this);
 }
 ```
 
@@ -239,31 +239,31 @@ private void set(ThreadLocal<?> key, Object value) {
 
     Entry[] tab = table;
     int len = tab.length;
-	//根据threadLocal的hashCode确定Entry应该存放的位置
+    //根据threadLocal的hashCode确定Entry应该存放的位置
     int i = key.threadLocalHashCode & (len-1);
 
-	//采用开放地址法，hash冲突的时候使用线性探测
+    //采用开放地址法，hash冲突的时候使用线性探测
     for (Entry e = tab[i];
          e != null;
          e = tab[i = nextIndex(i, len)]) {
         ThreadLocal<?> k = e.get();
-		//覆盖旧Entry
+        //覆盖旧Entry
         if (k == key) {
             e.value = value;
             return;
         }
-		//当key为null时，说明threadLocal强引用已经被释放掉，那么就无法
-		//再通过这个key获取threadLocalMap中对应的entry，这里就存在内存泄漏的可能性
+        //当key为null时，说明threadLocal强引用已经被释放掉，那么就无法
+        //再通过这个key获取threadLocalMap中对应的entry，这里就存在内存泄漏的可能性
         if (k == null) {
-			//用当前插入的值替换掉这个key为null的“脏”entry
+            //用当前插入的值替换掉这个key为null的“脏”entry
             replaceStaleEntry(key, value, i);
             return;
         }
     }
-	//新建entry并插入table中i处
+    //新建entry并插入table中i处
     tab[i] = new Entry(key, value);
     int sz = ++size;
-	//插入后再次清除一些key为null的“脏”entry,如果大于阈值就需要扩容
+    //插入后再次清除一些key为null的“脏”entry,如果大于阈值就需要扩容
     if (!cleanSomeSlots(i, sz) && sz >= threshold)
         rehash();
 }
@@ -351,7 +351,7 @@ private void setThreshold(int len) {
 private void resize() {
     Entry[] oldTab = table;
     int oldLen = oldTab.length;
-	//新数组为原数组的2倍
+    //新数组为原数组的2倍
     int newLen = oldLen * 2;
     Entry[] newTab = new Entry[newLen];
     int count = 0;
@@ -360,11 +360,11 @@ private void resize() {
         Entry e = oldTab[j];
         if (e != null) {
             ThreadLocal<?> k = e.get();
-			//遍历过程中如果遇到脏entry的话直接另value为null,有助于value能够被回收
+            //遍历过程中如果遇到脏entry的话直接另value为null,有助于value能够被回收
             if (k == null) {
                 e.value = null; // Help the GC
             } else {
-				//重新确定entry在新数组的位置，然后进行插入
+                //重新确定entry在新数组的位置，然后进行插入
                 int h = k.threadLocalHashCode & (newLen - 1);
                 while (newTab[h] != null)
                     h = nextIndex(h, newLen);
@@ -373,7 +373,7 @@ private void resize() {
             }
         }
     }
-	//设置新哈希表的threshHold和size属性
+    //设置新哈希表的threshHold和size属性
     setThreshold(newLen);
     size = count;
     table = newTab;
@@ -388,15 +388,15 @@ getEntry 方法源码为：
 
 ```java
 private Entry getEntry(ThreadLocal<?> key) {
-	//1. 确定在散列数组中的位置
+    //1. 确定在散列数组中的位置
     int i = key.threadLocalHashCode & (table.length - 1);
-	//2. 根据索引i获取entry
+    //2. 根据索引i获取entry
     Entry e = table[i];
-	//3. 满足条件则返回该entry
+    //3. 满足条件则返回该entry
     if (e != null && e.get() == key)
         return e;
     else
-		//4. 未查找到满足条件的entry，额外在做的处理
+        //4. 未查找到满足条件的entry，额外在做的处理
         return getEntryAfterMiss(key, i, e);
 }
 ```
@@ -411,13 +411,13 @@ private Entry getEntryAfterMiss(ThreadLocal<?> key, int i, Entry e) {
     while (e != null) {
         ThreadLocal<?> k = e.get();
         if (k == key)
-			//找到和查询的key相同的entry则返回
+            //找到和查询的key相同的entry则返回
             return e;
         if (k == null)
-			//解决脏entry的问题
+            //解决脏entry的问题
             expungeStaleEntry(i);
         else
-			//继续向后环形查找
+            //继续向后环形查找
             i = nextIndex(i, len);
         e = tab[i];
     }
@@ -441,9 +441,9 @@ private void remove(ThreadLocal<?> key) {
          e != null;
          e = tab[i = nextIndex(i, len)]) {
         if (e.get() == key) {
-			//将entry的key置为null
+            //将entry的key置为null
             e.clear();
-			//将该entry的value也置为null
+            //将该entry的value也置为null
             expungeStaleEntry(i);
             return;
         }
@@ -502,7 +502,7 @@ public class ThreadLocalDemo {
 ---
 
 > 编辑：沉默王二，内容大部分来源以下三个开源仓库：
->
+> 
 > - [深入浅出 Java 多线程](http://concurrent.redspider.group/)
 > - [并发编程知识总结](https://github.com/CL0610/Java-concurrency)
 > - [Java 八股文](https://github.com/CoderLeixiaoshuai/java-eight-part)
